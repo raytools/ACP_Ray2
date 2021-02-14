@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include "MTH.h"
+#include "AI.h"
 
 typedef struct HIE_stSuperObject HIE_tdstSuperObject;
 typedef struct HIE_stEngineObject HIE_tdstEngineObject;
+typedef struct stPerso tdstPerso;
 
-
-////////////////
-// SuperObject
-////////////////
+/////////////////
+// SuperObject //
+/////////////////
 
 typedef enum
 {
@@ -62,13 +63,7 @@ typedef struct HIE_stSuperObject
 {
 	HIE_SPO_TYPE ulType;
 
-	union
-	{
-		HIE_tdstEngineObject *p_stEngineObject;
-		//SECTOR *lpSector;
-		//IPO *lpIpo;
-	};
-
+	HIE_tdstEngineObject *p_stEngineObject;
 	HIE_tdstSuperObject *p_stFirstChild;
 	HIE_tdstSuperObject *p_stLastChild;
 	int nChildren;
@@ -115,11 +110,34 @@ typedef struct HIE_stStandardGame
 
 } HIE_tdstStandardGame;
 
+typedef struct stPerso {
+	int a;
+} tdstPerso;
+
+typedef struct stSector {
+	int a;
+	int b;
+} tdstSector;
+
 typedef struct HIE_stEngineObject
 {
-	int p3dData;
-	HIE_tdstStandardGame *p_stStdGame;
-	
-	// TODO
-	
+	union Data {
+		struct Perso {
+			int* p3dData;
+			HIE_tdstStandardGame* p_stStdGame;
+			int* dynam;
+			tdstBrain* p_stBrain;
+			int* off_camera;
+			int* off_collSet;
+			int* off_msWay;
+			int* off_msLight;
+			int* sectInfo;
+		};
+		struct Sector{ // TODO: fill out this struct correctly
+			int persoSPOList;
+			int staticLightsList;
+			int dynamicLightsList;
+		};
+	};
+
 } HIE_tdstEngineObject;

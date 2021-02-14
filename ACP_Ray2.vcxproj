@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ACP_API.h" />
+    <ClInclude Include="AI.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MTH.h" />
     <ClInclude Include="HIE.h" />
