@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "HIE.h"
+#include "ACP_API.h"
 
 typedef struct XHIE_stObjectInfo XHIE_tdstObjectInfo;
 
@@ -31,7 +32,7 @@ typedef struct XHIE_st_llObjectInfo
 // API EXPORTS
 ////////////////
 
-typedef void (*XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
+typedef void (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
 
 ACP_API extern HIE_tdstSuperObject **XHIE_pp_stActiveDynamicWorld;
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_OI_TYPE ulInfoType );
