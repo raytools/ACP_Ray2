@@ -2,13 +2,18 @@
 #include "MTH.h"
 #include "AI.h"
 
-typedef struct HIE_stSuperObject HIE_tdstSuperObject;
-typedef struct HIE_stEngineObject HIE_tdstEngineObject;
-typedef struct stPerso tdstPerso;
+/////////////////////
+//
+// Object Hierarchy
+// 
+/////////////////////
 
-/////////////////
-// SuperObject //
-/////////////////
+typedef struct HIE_stSuperObject HIE_tdstSuperObject;
+typedef union HIE_stEngineObject HIE_tdstEngineObject;
+
+////////////////
+// SuperObject
+////////////////
 
 typedef enum
 {
@@ -64,6 +69,7 @@ typedef struct HIE_stSuperObject
 	HIE_SPO_TYPE ulType;
 
 	HIE_tdstEngineObject *p_stEngineObject;
+
 	HIE_tdstSuperObject *p_stFirstChild;
 	HIE_tdstSuperObject *p_stLastChild;
 	int nChildren;
@@ -95,7 +101,8 @@ typedef struct HIE_stSuperObject
 
 typedef struct HIE_stStandardGame
 {
-	union {
+	union
+	{
 		struct
 		{
 			int lFamilyID;
@@ -107,37 +114,32 @@ typedef struct HIE_stStandardGame
 	};
 
 	// TODO
-
 } HIE_tdstStandardGame;
 
-typedef struct stPerso {
-	int a;
-} tdstPerso;
-
-typedef struct stSector {
-	int a;
-	int b;
-} tdstSector;
-
-typedef struct HIE_stEngineObject
+typedef struct HIE_stPerso
 {
-	union Data {
-		struct Perso {
-			int* p3dData;
-			HIE_tdstStandardGame* p_stStdGame;
-			int* dynam;
-			tdstBrain* p_stBrain;
-			int* off_camera;
-			int* off_collSet;
-			int* off_msWay;
-			int* off_msLight;
-			int* sectInfo;
-		};
-		struct Sector{ // TODO: fill out this struct correctly
-			int persoSPOList;
-			int staticLightsList;
-			int dynamicLightsList;
-		};
-	};
+	// TODO: fix names, replace void pointers
+	void *p3dData;
+	HIE_tdstStandardGame *p_stStdGame;
+	void *dynam;
+	AI_tdstBrain *p_stBrain;
+	void *off_camera;
+	void *off_collSet;
+	void *off_msWay;
+	void *off_msLight;
+	void *sectInfo;
+} HIE_tdstPerso;
 
+typedef struct HIE_stSector
+{
+	// TODO: fill out this struct correctly
+	void *persoSPOList;
+	void *staticLightsList;
+	void *dynamicLightsList;
+} HIE_tdstSector;
+
+typedef union HIE_stEngineObject
+{
+	HIE_tdstPerso stPerso;
+	HIE_tdstSector stSector;
 } HIE_tdstEngineObject;

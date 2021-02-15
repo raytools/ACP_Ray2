@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#define NULL ((void*)0)
+
 typedef unsigned long DWORD;
 typedef unsigned short WORD;
 typedef unsigned char BYTE;

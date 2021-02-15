@@ -2,6 +2,12 @@
 #include "HIE.h"
 #include "ACP_API.h"
 
+///////////////////
+//
+// HIE Extensions
+//
+///////////////////
+
 typedef struct XHIE_stObjectInfo XHIE_tdstObjectInfo;
 
 
