@@ -107,15 +107,67 @@ typedef struct AI_stComport
 	BYTE fieldB;
 } AI_tdstComport;
 
-typedef struct A_stDsgVar
+typedef enum DsgVarTypeId {
+	Boolean,
+	Byte,
+	UByte,
+	Short,
+	UShort,
+	Int,
+	UInt,
+	Float,
+	WayPoint,
+	Perso,
+	List,
+	Vector,
+	Comport,
+	Action,
+	Text,
+	GameMaterial,
+	Caps,
+	Graph,
+	PersoArray,
+	VectorArray,
+	FloatArray,
+	IntegerArray,
+	WayPointArray,
+	TextArray,
+	SuperObject
+} tdeDsgVarTypeId;
+
+typedef struct AI_stDsgVarInfo
+{
+	int offsetInBuffer;
+	tdeDsgVarTypeId type;
+	int saveType;
+	int initType;
+} AI_tdstDsgVarInfo;
+
+typedef struct AI_stDsgVar
 {
 	// TODO: DsgVars
-	void *dsgVar;
+	void *dsgMemBuffer;
+	AI_tdstDsgVarInfo* infos;
+	int memBufferLength;
+
+	BYTE infoCount;
+	BYTE field_d;
+	BYTE field_e;
+	BYTE field_f;
+
 } AI_tdstDsgVar;
+
+typedef struct AI_stDsgMem
+{
+	AI_tdstDsgVar** dsgVar; // Double pointer for some reason, maybe an array of dsgvars?
+	char* memoryBufferInitial;
+	char* memoryBufferCurrent;
+
+} AI_tdstDsgMem;
 
 typedef struct AI_stAIModel
 {
 	AI_tdstComport **ap_stBehaviorsNormal;
-	AI_tdstComport **ap_stehaviorsReflex;
+	AI_tdstComport **ap_stBehaviorsReflex;
 	AI_tdstDsgVar *p_stDsgVar;
 } AI_tdstAIModel;

@@ -158,11 +158,13 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="MTH.h" />
     <ClInclude Include="HIE.h" />
-    <ClInclude Include="XHIE.h" />
+    <ClInclude Include="AI_EXT.h" />
+    <ClInclude Include="HIE_EXT.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI_EXT.c" />
     <ClCompile Include="dllmain.c" />
-    <ClCompile Include="xhie.c" />
+    <ClCompile Include="HIE_EXT.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

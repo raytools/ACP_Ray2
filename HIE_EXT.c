@@ -1,5 +1,5 @@
 #include "ACP_API.h"
-#include "XHIE.h"
+#include "HIE_EXT.h"
 #include "HIE.h"
 
 HIE_tdstSuperObject **XHIE_pp_stActiveDynamicWorld = (HIE_tdstSuperObject **)0x0500FD0;
