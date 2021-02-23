@@ -5,7 +5,6 @@
 HIE_tdstSuperObject **XHIE_pp_stActiveDynamicWorld = (HIE_tdstSuperObject **)0x0500FD0;
 
 XHIE_tdst_llObjectInfo *a_pllObjectNames = (XHIE_tdst_llObjectInfo *)0x005013E0;
-char *szUnknownName = "Unknown";
 
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_OI_TYPE ulInfoType )
 {
@@ -15,9 +14,9 @@ ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_OI_TY
 		return NULL;
 
 	int instId = p_stSpo->p_stEngineObject->stPerso.p_stStdGame->a_lObjectId[ulInfoType];
-	
+
 	if ( instId < 0 || instId >= pllInfo->nItems )
-		return szUnknownName;
+		return NULL;
 
 	XHIE_tdstObjectInfo *item = pllInfo->p_stFirst;
 

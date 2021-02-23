@@ -118,16 +118,16 @@ typedef struct HIE_stStandardGame
 
 typedef struct HIE_stPerso
 {
-	// TODO: fix names, replace void pointers
-	void *p3dData;
+	// TODO: replace void pointers
+	void *p_stP3DData;
 	HIE_tdstStandardGame *p_stStdGame;
-	void *dynam;
+	void *p_stDynam;
 	AI_tdstBrain *p_stBrain;
-	void *off_camera;
-	void *off_collSet;
-	void *off_msWay;
-	void *off_msLight;
-	void *sectInfo;
+	void *p_stCamera;
+	void *p_stCollSet;
+	void *p_stMsWay;
+	void *p_stMsLight;
+	void *p_stSectInfo;
 } HIE_tdstPerso;
 
 typedef struct HIE_stSector

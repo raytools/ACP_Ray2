@@ -77,16 +77,16 @@ typedef struct AI_stBrain
 {
 	AI_tdstMind *p_stMind;
 	// TODO
-	void *field_4;
-	void *field_8;
+	void *_field_4;
+	void *_field_8;
 } AI_tdstBrain;
 
 typedef struct AI_stNodeInterpret
 {
 	// TODO
 	void *Value;
-	BYTE field_4;
-	BYTE field_5;
+	BYTE _field_4;
+	BYTE _field_5;
 	BYTE Depth;
 	BYTE NodeType;
 } AI_tdstNodeInterpret;
@@ -98,71 +98,74 @@ typedef struct AI_stScript
 
 typedef struct AI_stComport
 {
-	// TODO: what's this? fix names
-	AI_tdstScript *scriptsPointer;
-	AI_tdstScript *firstScript;
-	BYTE numScript;
-	BYTE field9;
-	BYTE fieldA;
-	BYTE fieldB;
+	AI_tdstScript *a_stScripts;
+	AI_tdstScript *p_stFirstScript;
+	BYTE nScripts;
+	BYTE _field_9;
+	BYTE _field_A;
+	BYTE _field_B;
 } AI_tdstComport;
 
-typedef enum DsgVarTypeId {
-	Boolean,
-	Byte,
-	UByte,
-	Short,
-	UShort,
-	Int,
-	UInt,
-	Float,
-	WayPoint,
-	Perso,
-	List,
-	Vector,
-	Comport,
-	Action,
-	Text,
-	GameMaterial,
-	Caps,
-	Graph,
-	PersoArray,
-	VectorArray,
-	FloatArray,
-	IntegerArray,
-	WayPointArray,
-	TextArray,
-	SuperObject
-} tdeDsgVarTypeId;
+////////////
+// DsgVar
+////////////
+
+typedef enum AI_eDsgVarTypeId
+{
+	DVT_Boolean,
+	DVT_Byte,
+	DVT_UByte,
+	DVT_Short,
+	DVT_UShort,
+	DVT_Int,
+	DVT_UInt,
+	DVT_Float,
+	DVT_WayPoint,
+	DVT_Perso,
+	DVT_List,
+	DVT_Vector,
+	DVT_Comport,
+	DVT_Action,
+	DVT_Text,
+	DVT_GameMaterial,
+	DVT_Caps,
+	DVT_Graph,
+	DVT_PersoArray,
+	DVT_VectorArray,
+	DVT_FloatArray,
+	DVT_IntegerArray,
+	DVT_WayPointArray,
+	DVT_TextArray,
+	DVT_SuperObject
+} AI_tdeDsgVarTypeId;
 
 typedef struct AI_stDsgVarInfo
 {
-	int offsetInBuffer;
-	tdeDsgVarTypeId type;
+	int lOffset;
+	AI_tdeDsgVarTypeId ulType;
+	
+	// TODO: what's this, names
 	int saveType;
 	int initType;
 } AI_tdstDsgVarInfo;
 
 typedef struct AI_stDsgVar
 {
-	// TODO: DsgVars
-	void *dsgMemBuffer;
-	AI_tdstDsgVarInfo* infos;
-	int memBufferLength;
-
-	BYTE infoCount;
-	BYTE field_d;
-	BYTE field_e;
-	BYTE field_f;
-
+	BYTE *p_MemBufferDefault;
+	AI_tdstDsgVarInfo *a_stInfos;
+	int cbMemBuffer;
+	BYTE nInfos;
+	
+	BYTE _field_D;
+	BYTE _field_E;
+	BYTE _field_F;
 } AI_tdstDsgVar;
 
 typedef struct AI_stDsgMem
 {
-	AI_tdstDsgVar** dsgVar; // Double pointer for some reason, maybe an array of dsgvars?
-	char* memoryBufferInitial;
-	char* memoryBufferCurrent;
-
+	AI_tdstDsgVar **pp_stDsgVar; // Double pointer for some reason, maybe an array of dsgvars?
+	BYTE *p_MemBufferInitial;
+	BYTE *p_MemBuffer;
 } AI_tdstDsgMem;
 
 typedef struct AI_stAIModel
