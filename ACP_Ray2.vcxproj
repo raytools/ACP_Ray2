@@ -101,6 +101,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y $(SolutionDir)*.h $(OutDir)inc\
+del $(OutDir)inc\framework.h
+xcopy /Y $(OutDir)*.lib  $(OutDir)lib\
+xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,6 +127,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y $(SolutionDir)*.h $(OutDir)inc\
+del $(OutDir)inc\framework.h
+xcopy /Y $(OutDir)*.lib  $(OutDir)lib\
+xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -154,8 +166,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ACP_API.h" />
+    <ClInclude Include="ACP_Ray2.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MMG.h" />
+    <ClInclude Include="POS.h" />
     <ClInclude Include="MTH.h" />
     <ClInclude Include="HIE.h" />
     <ClInclude Include="AI_EXT.h" />
@@ -165,6 +180,8 @@
     <ClCompile Include="AI_EXT.c" />
     <ClCompile Include="dllmain.c" />
     <ClCompile Include="HIE_EXT.c" />
+    <ClCompile Include="MMG.c" />
+    <ClCompile Include="POS.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

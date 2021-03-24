@@ -1,27 +1,44 @@
 ﻿#pragma once
 
+
+//////////////////////
+//
+// MTH - Math Module
+//
+//////////////////////
+
+
 #define NULL ((void*)0)
 
+#define FALSE 0
+#define TRUE 1
+
+typedef int BOOL;
 typedef unsigned long DWORD;
 typedef unsigned short WORD;
 typedef unsigned char BYTE;
 
-typedef struct MTH_stVector
+typedef struct MTH_stVector MTH_tdstVector;
+typedef struct MTH_stVector4 Mth_tdstVector4;
+typedef struct MTH_stMatrix MTH_tdstMatrix;
+
+
+struct MTH_stVector
 {
 	float x;
 	float y;
 	float z;
-} MTH_tdstVector;
+};
 
-typedef struct MTH_stVector4
+struct MTH_stVector4
 {
 	float x;
 	float y;
 	float z;
 	float w;
-} Mth_tdstVector4;
+};
 
-typedef struct MTH_stMatrix
+struct MTH_stMatrix
 {
 	int lTransformType;
 	MTH_tdstVector vcPosition;
@@ -45,4 +62,4 @@ typedef struct MTH_stMatrix
 	float scale_3_1;
 	float scale_3_2;
 	float scale_3_3;
-} MTH_tdstMatrix;
+};

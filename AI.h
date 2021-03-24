@@ -1,15 +1,70 @@
 #pragma once
 #include "MTH.h"
 
+
 ////////////////
 //
-// AI Model
+// AI Module
 // 
 ////////////////
 
-typedef struct AI_stComport AI_tdstComport;
-typedef struct AI_stDsgMem AI_tdstDsgMem;
+
+typedef struct AI_stBrain AI_tdstBrain;
+typedef struct AI_stMind AI_tdstMind;
+typedef struct AI_stIntelligence AI_tdstIntelligence;
 typedef struct AI_stAIModel AI_tdstAIModel;
+
+typedef struct AI_stNodeInterpret AI_tdstNodeInterpret;
+typedef struct AI_stScript AI_tdstScript;
+typedef struct AI_stComport AI_tdstComport;
+
+typedef struct AI_stDsgMem AI_tdstDsgMem;
+typedef struct AI_stDsgVar AI_tdstDsgVar;
+typedef struct AI_stDsgVarInfo AI_tdstDsgVarInfo;
+
+
+/////////////////
+// Intelligence
+/////////////////
+
+struct AI_stBrain
+{
+	AI_tdstMind *p_stMind;
+	// TODO
+	void *_field_4;
+	void *_field_8;
+};
+
+struct AI_stMind
+{
+	AI_tdstAIModel *p_stAIModel;
+	AI_tdstIntelligence *p_stIntelligenceRule;
+	AI_tdstIntelligence *p_stIntelligenceReflex;
+	AI_tdstDsgMem *p_stDsgMem;
+};
+
+struct AI_stIntelligence
+{
+	AI_tdstAIModel *p_stAIModel;
+	// TODO: replace void*, names
+	void *p_actionTree;
+	AI_tdstComport *p_stBehavior;
+	AI_tdstComport *p_stLastBehavior;
+};
+
+struct AI_stAIModel
+{
+	AI_tdstComport **ap_stBehaviorsNormal;
+	AI_tdstComport **ap_stBehaviorsReflex;
+	AI_tdstDsgVar *p_stDsgVar;
+};
+
+
+////////////
+// Scripts
+////////////
+
+// TODO: tdstGetSetParam ?
 
 typedef enum
 {
@@ -54,34 +109,9 @@ typedef enum
 	NDT_Caps,
 	NDT_SubRoutine,
 	NDT_Null
-} AI_NODE_TYPE;
+} AI_tdeNodeType;
 
-typedef struct AI_stIntelligence
-{
-	AI_tdstAIModel *p_stAIModel;
-	// TODO: replace void*, names
-	void *p_actionTree;
-	AI_tdstComport *p_stBehavior;
-	AI_tdstComport *p_stLastBehavior;
-} AI_tdstIntelligence;
-
-typedef struct AI_stMind
-{
-	AI_tdstAIModel *p_stAIModel;
-	AI_tdstIntelligence *p_stIntelligenceRule;
-	AI_tdstIntelligence *p_stIntelligenceReflex;
-	AI_tdstDsgMem *p_stDsgMem;
-} AI_tdstMind;
-
-typedef struct AI_stBrain
-{
-	AI_tdstMind *p_stMind;
-	// TODO
-	void *_field_4;
-	void *_field_8;
-} AI_tdstBrain;
-
-typedef struct AI_stNodeInterpret
+struct AI_stNodeInterpret
 {
 	// TODO
 	void *Value;
@@ -89,14 +119,15 @@ typedef struct AI_stNodeInterpret
 	BYTE _field_5;
 	BYTE Depth;
 	BYTE NodeType;
-} AI_tdstNodeInterpret;
+};
 
-typedef struct AI_stScript
+struct AI_stScript
 {
 	AI_tdstNodeInterpret **ap_stNodes;
-} AI_tdstScript;
+	// TODO: is there really no more items?
+};
 
-typedef struct AI_stComport
+struct AI_stComport
 {
 	AI_tdstScript *a_stScripts;
 	AI_tdstScript *p_stFirstScript;
@@ -104,10 +135,11 @@ typedef struct AI_stComport
 	BYTE _field_9;
 	BYTE _field_A;
 	BYTE _field_B;
-} AI_tdstComport;
+};
+
 
 ////////////
-// DsgVar
+// DsgVars
 ////////////
 
 typedef enum AI_eDsgVarTypeId
@@ -139,17 +171,14 @@ typedef enum AI_eDsgVarTypeId
 	DVT_SuperObject
 } AI_tdeDsgVarTypeId;
 
-typedef struct AI_stDsgVarInfo
+struct AI_stDsgMem
 {
-	int lOffset;
-	AI_tdeDsgVarTypeId ulType;
-	
-	// TODO: what's this, names
-	int saveType;
-	int initType;
-} AI_tdstDsgVarInfo;
+	AI_tdstDsgVar **pp_stDsgVar; // Double pointer for some reason, maybe an array of dsgvars?
+	BYTE *p_MemBufferInitial;
+	BYTE *p_MemBuffer;
+};
 
-typedef struct AI_stDsgVar
+struct AI_stDsgVar
 {
 	BYTE *p_MemBufferDefault;
 	AI_tdstDsgVarInfo *a_stInfos;
@@ -159,18 +188,14 @@ typedef struct AI_stDsgVar
 	BYTE _field_D;
 	BYTE _field_E;
 	BYTE _field_F;
-} AI_tdstDsgVar;
+};
 
-typedef struct AI_stDsgMem
+struct AI_stDsgVarInfo
 {
-	AI_tdstDsgVar **pp_stDsgVar; // Double pointer for some reason, maybe an array of dsgvars?
-	BYTE *p_MemBufferInitial;
-	BYTE *p_MemBuffer;
-} AI_tdstDsgMem;
-
-typedef struct AI_stAIModel
-{
-	AI_tdstComport **ap_stBehaviorsNormal;
-	AI_tdstComport **ap_stBehaviorsReflex;
-	AI_tdstDsgVar *p_stDsgVar;
-} AI_tdstAIModel;
+	int lOffset;
+	AI_tdeDsgVarTypeId ulType;
+	
+	// TODO: what's this, names
+	int saveType;
+	int initType;
+};

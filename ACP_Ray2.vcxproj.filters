@@ -24,13 +24,25 @@
     <ClInclude Include="MTH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="XHIE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ACP_API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AI_EXT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HIE_EXT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ACP_Ray2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="POS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MMG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +50,16 @@
     <ClCompile Include="dllmain.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="xhie.c">
+    <ClCompile Include="AI_EXT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HIE_EXT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="POS.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MMG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

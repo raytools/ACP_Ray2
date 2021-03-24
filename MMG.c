@@ -1,0 +1,14 @@
+#include "ACP_API.h"
+#include "MMG.h"
+
+
+////////////////////////////
+//
+// MMG - Memory Management
+//
+////////////////////////////
+
+
+ACP_API void *(*const fn_p_vGenAlloc)(unsigned int Size, unsigned int ChannelId) = 0x443120;
+ACP_API void *(*const fn_p_vDynAlloc)(unsigned int Size) = 0x442680;
+ACP_API void (*const fn_vDynFree)(void *Ptr) = 0x442740;
