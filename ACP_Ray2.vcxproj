@@ -169,6 +169,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="ACP_Ray2.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="JFFTXT.h" />
     <ClInclude Include="MMG.h" />
     <ClInclude Include="POS.h" />
     <ClInclude Include="MTH.h" />
@@ -179,7 +180,9 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
   <ItemGroup>
     <ClCompile Include="AI_EXT.c" />
     <ClCompile Include="dllmain.c" />
+    <ClCompile Include="HIE.c" />
     <ClCompile Include="HIE_EXT.c" />
+    <ClCompile Include="JFFTXT.c" />
     <ClCompile Include="MMG.c" />
     <ClCompile Include="POS.c" />
   </ItemGroup>

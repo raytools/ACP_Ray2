@@ -18,6 +18,7 @@
 #include "AI.h"
 #include "POS.h"
 #include "MMG.h"
+#include "JFFTXT.h"
 
 
 ///////////////

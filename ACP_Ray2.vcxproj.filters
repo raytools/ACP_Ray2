@@ -45,6 +45,9 @@
     <ClInclude Include="MMG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JFFTXT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.c">
@@ -60,6 +63,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MMG.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HIE.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JFFTXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
