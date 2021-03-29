@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "ACP_API.h"
 #include "MTH.h"
 #include "AI.h"
 
@@ -16,6 +17,9 @@ typedef struct HIE_stSuperObject HIE_tdstSuperObject;
 typedef struct HIE_stPerso HIE_tdstPerso;
 typedef struct HIE_stSector HIE_tdstSector;
 typedef struct HIE_stStandardGame HIE_tdstStandardGame;
+
+
+ACP_API extern void (*HIE_fn_vChangeFather)(HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild);
 
 
 ////////////////
@@ -90,11 +94,11 @@ struct HIE_stSuperObject
 	HIE_tdstSuperObject *p_stPrevious;
 	HIE_tdstSuperObject *p_stParent;
 
-	MTH_tdstMatrix *p_stMatrix1;
-	MTH_tdstMatrix *p_stMatrix2;
+	MTH_tdstMatrix *p_stLocalMatrix;
+	MTH_tdstMatrix *p_stGlobalMatrix;
 
-	void *pGlobalMatrix;
-	DWORD ulDrawFlags;
+	int lLastComputeFrame;
+	int lDrawModeMask;
 	HIE_tdeSpoFlags ulFlags;
 
 	union
@@ -150,14 +154,26 @@ struct HIE_stStandardGame
 
 	char _field_10[16];
 
+	BYTE _field_20;
+	BYTE ucHitPoints;
+	BYTE ucHitPointsMax;
+	BYTE ucHitPointsMaxMax;
+
 	DWORD ulCustomBits;
-	DWORD ulAiCustomBits;
 
-	BYTE cIsAPlatform;
-	BYTE cUpdateCheck;
-	BYTE cTransparencyZoneMin;
-	BYTE cTransparencyZoneMax;
+	BYTE ucPlatformType;
+	BYTE ucMiscFlags;
+	BYTE ucTransparencyZoneMin;
+	BYTE ucTransparencyZoneMax;
 
-	DWORD ulCustomBitsInitial;
-	DWORD ulAiCustomBitsInitial;
+	DWORD ulSaveCustomBits;
+
+	BYTE ucSaveHitPoints;
+	BYTE ucSaveHitPointsMax;
+	BYTE ucSaveMiscFlags;
+	BYTE ucTooFarLimit;
+
+	int _field_34[3];
+	char _field_40;
+	BYTE ucActivationBits;
 };

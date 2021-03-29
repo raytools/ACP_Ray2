@@ -27,27 +27,22 @@ XHIE_tdst_llAlways *const p_llAlways = (XHIE_tdst_llAlways *)0x004A6B18;
 ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectInfoType ulInfoType )
 {
 	XHIE_tdst_llObjectInfo *pllInfo = &XHIE_a_llObjectNames[ulInfoType];
-	int instId = p_stPerso->p_stStdGame->a_lObjectId[ulInfoType];
+	int nId = p_stPerso->p_stStdGame->a_lObjectId[ulInfoType];
 
-	if ( instId < 0 || instId >= pllInfo->nItems )
+	if ( nId < 0 || nId >= pllInfo->nItems )
 		return NULL;
 
-	XHIE_tdstObjectInfo *pItem = pllInfo->p_stFirst;
-	while ( instId-- )
+	for ( XHIE_tdstObjectInfo *pItem = pllInfo->p_stFirst; pItem; pItem = pItem->p_stNext )
 	{
-		pItem = pItem->p_stNext;
-
-		if ( !pItem )
-			return NULL;
+		if ( nId == 0 ) return pItem->szName;
+		nId--;
 	}
 
-	return pItem->szName;
+	return NULL;
 }
 
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType )
 {
-	XHIE_tdst_llObjectInfo *pllInfo = &XHIE_a_llObjectNames[ulInfoType];
-
 	if ( p_stSpo->ulType != SOT_PERSO )
 		return NULL;
 
@@ -84,17 +79,13 @@ ACP_API int XHIE_fn_lNewObjectInfo( const char *szName, XHIE_tdeObjectInfoType u
 ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback )
 {
 	int nEnumerated = 0;
-	HIE_tdstSuperObject *pChild = p_stSpo->p_stFirstChild;
 
-	while ( pChild )
+	for ( HIE_tdstSuperObject *pChild = p_stSpo->p_stFirstChild; pChild; pChild = pChild->p_stNext )
 	{
 		BOOL bContinue = p_fnCallback(pChild);
 		nEnumerated++;
 
-		if ( !bContinue )
-			break;
-
-		pChild = pChild->p_stNext;
+		if ( !bContinue ) break;
 	}
 
 	return nEnumerated;
@@ -103,17 +94,13 @@ ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnu
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback )
 {
 	int nEnumerated = 0;
-	XHIE_tdstAlways *pItem = p_llAlways->p_stFirst;
 
-	while ( pItem )
+	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
 	{
 		BOOL bContinue = p_fnCallback(pItem->p_stPerso);
 		nEnumerated++;
 
-		if ( !bContinue )
-			break;
-
-		pItem = pItem->p_stNext;
+		if ( !bContinue ) break;
 	}
 
 	return nEnumerated;

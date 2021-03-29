@@ -11,6 +11,6 @@
 //////////////////
 
 
-typedef BOOL (CALLBACK *AI_tdfnEnumDsgVarCallback)( AI_tdeDsgVarTypeId ulType, void *CurrentValue, void *InitialValue );
+typedef BOOL (CALLBACK *AI_tdfnEnumDsgVarCallback)( AI_tdeDsgVarType ulType, void *CurrentValue, void *InitialValue );
 
 ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback );

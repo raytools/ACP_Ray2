@@ -10,4 +10,4 @@
 ///////////////
 
 
-ACP_API extern void (*const POS_fn_vSetIdentityMatrix)( MTH_tdstMatrix *p_stMatrix );
+ACP_API extern void (*POS_fn_vSetIdentityMatrix)( MTH_tdstMatrix *p_stMatrix );

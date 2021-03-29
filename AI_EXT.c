@@ -18,18 +18,21 @@ ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsg
 	AI_tdstDsgVar *pDsgVar = pAiModel->p_stDsgVar;
 	AI_tdstDsgMem *pDsgMem = pMind->p_stDsgMem;
 
-	for ( int i = 0; i < pDsgVar->nInfos; i++ )
-	{
-		AI_tdstDsgVarInfo *pInfo = &pDsgVar->a_stInfos[i];
+	int nEnumerated = 0;
 
-		void *pCurrentValue = &pDsgMem->p_MemBuffer[pInfo->lOffset];
-		void *pInitialValue = &pDsgMem->p_MemBufferInitial[pInfo->lOffset];
+	for ( int i = 0; i < pDsgVar->nDsgVar; i++ )
+	{
+		AI_tdstDsgVarInfo *pInfo = &pDsgVar->a_stDsgVarInfo[i];
+
+		void *pCurrentValue = &pDsgMem->p_cDsgMemBuffer[pInfo->lOffset];
+		void *pInitialValue = &pDsgMem->p_cDsgMemBufferInit[pInfo->lOffset];
 		
 		BOOL bContinue = p_fnCallback(pInfo->ulType, pCurrentValue, pInitialValue);
+		nEnumerated++;
 
 		if ( !bContinue )
 			break;
 	}
 
-	return pDsgVar->nInfos;
+	return nEnumerated;
 }

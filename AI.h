@@ -14,9 +14,11 @@ typedef struct AI_stMind AI_tdstMind;
 typedef struct AI_stIntelligence AI_tdstIntelligence;
 typedef struct AI_stAIModel AI_tdstAIModel;
 
+typedef struct AI_stGetSetParam AI_tdstGetSetParam;
 typedef struct AI_stNodeInterpret AI_tdstNodeInterpret;
-typedef struct AI_stScript AI_tdstScript;
+typedef struct AI_stScriptRule AI_tdstScriptRule;
 typedef struct AI_stComport AI_tdstComport;
+typedef struct AI_stScriptAI AI_tdstScriptAI;
 
 typedef struct AI_stDsgMem AI_tdstDsgMem;
 typedef struct AI_stDsgVar AI_tdstDsgVar;
@@ -30,41 +32,43 @@ typedef struct AI_stDsgVarInfo AI_tdstDsgVarInfo;
 struct AI_stBrain
 {
 	AI_tdstMind *p_stMind;
-	// TODO
-	void *_field_4;
-	void *_field_8;
+	// GMT_tdstGameMaterial *
+	void *p_stLastCollidedGoThroughMaterial;
+	BYTE bWarnMechanicsFlag;
+	BYTE bActiveDuringTransition;
 };
 
 struct AI_stMind
 {
 	AI_tdstAIModel *p_stAIModel;
-	AI_tdstIntelligence *p_stIntelligenceRule;
-	AI_tdstIntelligence *p_stIntelligenceReflex;
+	AI_tdstIntelligence *p_stIntelligence;
+	AI_tdstIntelligence *p_stReflex;
 	AI_tdstDsgMem *p_stDsgMem;
 };
 
 struct AI_stIntelligence
 {
-	AI_tdstAIModel *p_stAIModel;
-	// TODO: replace void*, names
-	void *p_actionTree;
-	AI_tdstComport *p_stBehavior;
-	AI_tdstComport *p_stLastBehavior;
+	AI_tdstAIModel *p_stScriptAI;
+	void *p_stCurrentSchedule;
+	AI_tdstComport *p_stCurrentComport;
+	AI_tdstComport *p_stPrevComport;
+	void *p_stActionTable;
 };
 
 struct AI_stAIModel
 {
-	AI_tdstComport **ap_stBehaviorsNormal;
-	AI_tdstComport **ap_stBehaviorsReflex;
+	AI_tdstScriptAI *a_stScriptAIIntel;
+	AI_tdstScriptAI *a_stScriptAIReflex;
 	AI_tdstDsgVar *p_stDsgVar;
+	// tdstListOfMacro *
+	void *p_stListOfMacro;
+	BYTE ucSecondPassDone;
 };
 
 
-////////////
-// Scripts
-////////////
-
-// TODO: tdstGetSetParam ?
+//////////////
+// Behaviors
+//////////////
 
 typedef enum
 {
@@ -111,30 +115,82 @@ typedef enum
 	NDT_Null
 } AI_tdeNodeType;
 
-struct AI_stNodeInterpret
+typedef enum
 {
-	// TODO
-	void *Value;
-	BYTE _field_4;
-	BYTE _field_5;
-	BYTE Depth;
-	BYTE NodeType;
+	GSP_Constant = 0x6,
+	GSP_Real = 0x8,
+	GSP_String = 0x9,
+	GSP_WayPointRef = 0xA,
+	GSP_PersoRef = 0xB,
+	GSP_MetaAction = 0x14,
+	GSP_Macro = 0x14,
+	GSP_SubRoutine = 0x14,
+	GSP_Vector = 0x15,
+	GSP_ModuleRef = 0x16,
+	GSP_DsgVarId = 0x17,
+	GSP_ActionRef = 0x18,
+	GSP_Button = 0x19,
+	GSP_Mask = 0x1A,
+	GSP_LipsSynchroRef = 0x1C,
+	GSP_ObjectTableRef = 0x1D,
+	GSP_SuperObjectRef = 0x1E,
+	GSP_FamilyRef = 0x20,
+	GSP_SoundEventRef = 0x21,
+	GSP_ComportRef = 0x22,
+	GSP_TextRef = 0x24,
+	GSP_ParticleGenerator = 0x25,
+	GSP_GameMaterialRef = 0x26,
+	GSP_VisualMaterial = 0x27,
+	GSP_Color = 0x28,
+	GSP_CineRef_Maybe = 0x2A,
+	GSP_Graph_Maybe = 0x2A,
+	GSP_Light = 0x2B,
+	GSP_Caps = 0x2C,
+} AI_tdeGetSetParamType;
+
+struct AI_stGetSetParam
+{
+	union
+	{
+		void *pValue;
+		float xValue;
+		int lValue;
+		DWORD ulValue;
+		short wValue;
+		WORD uwValue;
+		char cValue;
+		BYTE ucValue;
+		char *szValue;
+		MTH_tdstVector stVector;
+	};
+
+	AI_tdeGetSetParamType ulType;
 };
 
-struct AI_stScript
+struct AI_stNodeInterpret
 {
-	AI_tdstNodeInterpret **ap_stNodes;
-	// TODO: is there really no more items?
+	void *Value;
+	WORD uwNodeToSkip;
+	BYTE ucDepth;
+	BYTE ucNodeType;
+};
+
+struct AI_stScriptRule
+{
+	AI_tdstNodeInterpret *p_stNodes;
 };
 
 struct AI_stComport
 {
-	AI_tdstScript *a_stScripts;
-	AI_tdstScript *p_stFirstScript;
-	BYTE nScripts;
-	BYTE _field_9;
-	BYTE _field_A;
-	BYTE _field_B;
+	AI_tdstScriptRule *a_stRules;
+	AI_tdstScriptRule *p_stSchedule;
+	BYTE ucNbRules;
+};
+
+struct AI_stScriptAI
+{
+	AI_tdstComport *a_stComport;
+	DWORD ulNbComport;
 };
 
 
@@ -142,7 +198,7 @@ struct AI_stComport
 // DsgVars
 ////////////
 
-typedef enum AI_eDsgVarTypeId
+typedef enum AI_eDsgVarType
 {
 	DVT_Boolean,
 	DVT_Byte,
@@ -169,32 +225,28 @@ typedef enum AI_eDsgVarTypeId
 	DVT_WayPointArray,
 	DVT_TextArray,
 	DVT_SuperObject
-} AI_tdeDsgVarTypeId;
+} AI_tdeDsgVarType;
 
 struct AI_stDsgMem
 {
-	AI_tdstDsgVar **pp_stDsgVar; // Double pointer for some reason, maybe an array of dsgvars?
-	BYTE *p_MemBufferInitial;
-	BYTE *p_MemBuffer;
+	AI_tdstDsgVar **pp_stDsgVar;
+	char *p_cDsgMemBufferInit;
+	char *p_cDsgMemBuffer;
 };
 
 struct AI_stDsgVar
 {
-	BYTE *p_MemBufferDefault;
-	AI_tdstDsgVarInfo *a_stInfos;
-	int cbMemBuffer;
-	BYTE nInfos;
-	
-	BYTE _field_D;
-	BYTE _field_E;
-	BYTE _field_F;
+	char *p_cDsgMemDefaultInit;
+	AI_tdstDsgVarInfo *a_stDsgVarInfo;
+	DWORD ulBufferSize;
+	BYTE nDsgVar;
 };
 
 struct AI_stDsgVarInfo
 {
 	int lOffset;
-	AI_tdeDsgVarTypeId ulType;
-	
+	AI_tdeDsgVarType ulType;
+
 	// TODO: what's this, names
 	int saveType;
 	int initType;
