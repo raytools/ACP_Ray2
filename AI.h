@@ -9,27 +9,27 @@
 ////////////////
 
 
-typedef struct AI_stBrain AI_tdstBrain;
-typedef struct AI_stMind AI_tdstMind;
-typedef struct AI_stIntelligence AI_tdstIntelligence;
-typedef struct AI_stAIModel AI_tdstAIModel;
+typedef struct AI_tdstBrain AI_tdstBrain;
+typedef struct AI_tdstMind AI_tdstMind;
+typedef struct AI_tdstIntelligence AI_tdstIntelligence;
+typedef struct AI_tdstAIModel AI_tdstAIModel;
 
-typedef struct AI_stGetSetParam AI_tdstGetSetParam;
-typedef struct AI_stNodeInterpret AI_tdstNodeInterpret;
-typedef struct AI_stScriptRule AI_tdstScriptRule;
-typedef struct AI_stComport AI_tdstComport;
-typedef struct AI_stScriptAI AI_tdstScriptAI;
+typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
+typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
+typedef struct AI_tdstScriptRule AI_tdstScriptRule;
+typedef struct AI_tdstComport AI_tdstComport;
+typedef struct AI_tdstScriptAI AI_tdstScriptAI;
 
-typedef struct AI_stDsgMem AI_tdstDsgMem;
-typedef struct AI_stDsgVar AI_tdstDsgVar;
-typedef struct AI_stDsgVarInfo AI_tdstDsgVarInfo;
+typedef struct AI_tdstDsgMem AI_tdstDsgMem;
+typedef struct AI_tdstDsgVar AI_tdstDsgVar;
+typedef struct AI_tdstDsgVarInfo AI_tdstDsgVarInfo;
 
 
 /////////////////
 // Intelligence
 /////////////////
 
-struct AI_stBrain
+struct AI_tdstBrain
 {
 	AI_tdstMind *p_stMind;
 	// GMT_tdstGameMaterial *
@@ -38,7 +38,7 @@ struct AI_stBrain
 	BYTE bActiveDuringTransition;
 };
 
-struct AI_stMind
+struct AI_tdstMind
 {
 	AI_tdstAIModel *p_stAIModel;
 	AI_tdstIntelligence *p_stIntelligence;
@@ -46,7 +46,7 @@ struct AI_stMind
 	AI_tdstDsgMem *p_stDsgMem;
 };
 
-struct AI_stIntelligence
+struct AI_tdstIntelligence
 {
 	AI_tdstAIModel *p_stScriptAI;
 	void *p_stCurrentSchedule;
@@ -55,7 +55,7 @@ struct AI_stIntelligence
 	void *p_stActionTable;
 };
 
-struct AI_stAIModel
+struct AI_tdstAIModel
 {
 	AI_tdstScriptAI *a_stScriptAIIntel;
 	AI_tdstScriptAI *a_stScriptAIReflex;
@@ -70,7 +70,7 @@ struct AI_stAIModel
 // Behaviors
 //////////////
 
-typedef enum
+typedef enum AI_tdeNodeType
 {
 	NDT_KeyWord,
 	NDT_Condition,
@@ -115,7 +115,7 @@ typedef enum
 	NDT_Null
 } AI_tdeNodeType;
 
-typedef enum
+typedef enum AI_tdeGetSetParamType
 {
 	GSP_Constant = 0x6,
 	GSP_Real = 0x8,
@@ -148,7 +148,7 @@ typedef enum
 	GSP_Caps = 0x2C,
 } AI_tdeGetSetParamType;
 
-struct AI_stGetSetParam
+struct AI_tdstGetSetParam
 {
 	union
 	{
@@ -167,7 +167,7 @@ struct AI_stGetSetParam
 	AI_tdeGetSetParamType ulType;
 };
 
-struct AI_stNodeInterpret
+struct AI_tdstNodeInterpret
 {
 	void *Value;
 	WORD uwNodeToSkip;
@@ -175,19 +175,19 @@ struct AI_stNodeInterpret
 	BYTE ucNodeType;
 };
 
-struct AI_stScriptRule
+struct AI_tdstScriptRule
 {
 	AI_tdstNodeInterpret *p_stNodes;
 };
 
-struct AI_stComport
+struct AI_tdstComport
 {
 	AI_tdstScriptRule *a_stRules;
 	AI_tdstScriptRule *p_stSchedule;
 	BYTE ucNbRules;
 };
 
-struct AI_stScriptAI
+struct AI_tdstScriptAI
 {
 	AI_tdstComport *a_stComport;
 	DWORD ulNbComport;
@@ -198,7 +198,7 @@ struct AI_stScriptAI
 // DsgVars
 ////////////
 
-typedef enum AI_eDsgVarType
+typedef enum AI_tdeDsgVarType
 {
 	DVT_Boolean,
 	DVT_Byte,
@@ -227,14 +227,14 @@ typedef enum AI_eDsgVarType
 	DVT_SuperObject
 } AI_tdeDsgVarType;
 
-struct AI_stDsgMem
+struct AI_tdstDsgMem
 {
 	AI_tdstDsgVar **pp_stDsgVar;
 	char *p_cDsgMemBufferInit;
 	char *p_cDsgMemBuffer;
 };
 
-struct AI_stDsgVar
+struct AI_tdstDsgVar
 {
 	char *p_cDsgMemDefaultInit;
 	AI_tdstDsgVarInfo *a_stDsgVarInfo;
@@ -242,12 +242,10 @@ struct AI_stDsgVar
 	BYTE nDsgVar;
 };
 
-struct AI_stDsgVarInfo
+struct AI_tdstDsgVarInfo
 {
-	int lOffset;
+	DWORD ulOffset;
 	AI_tdeDsgVarType ulType;
-
-	// TODO: what's this, names
-	int saveType;
-	int initType;
+	int eSaveType;
+	int eInitType;
 };
