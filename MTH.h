@@ -18,19 +18,19 @@ typedef unsigned long DWORD;
 typedef unsigned short WORD;
 typedef unsigned char BYTE;
 
-typedef struct MTH_stVector MTH_tdstVector;
-typedef struct MTH_stVector4 Mth_tdstVector4;
-typedef struct MTH_stMatrix MTH_tdstMatrix;
+typedef struct MTH_tdstVector MTH_tdstVector;
+typedef struct MTH_tdstVector4 Mth_tdstVector4;
+typedef struct MTH_tdstMatrix MTH_tdstMatrix;
 
 
-struct MTH_stVector
+struct MTH_tdstVector
 {
 	float x;
 	float y;
 	float z;
 };
 
-struct MTH_stVector4
+struct MTH_tdstVector4
 {
 	float x;
 	float y;
@@ -38,7 +38,7 @@ struct MTH_stVector4
 	float w;
 };
 
-struct MTH_stMatrix
+struct MTH_tdstMatrix
 {
 	int lTransformType;
 	MTH_tdstVector vcPosition;

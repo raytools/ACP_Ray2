@@ -9,9 +9,9 @@
 //
 ////////////////////////////
 
-typedef struct JFFTXT_stText JFFTXT_tdstText;
+typedef struct JFFTXT_tdstText JFFTXT_tdstText;
 
-struct JFFTXT_stText
+struct JFFTXT_tdstText
 {
 	char *szText;
 	float X;

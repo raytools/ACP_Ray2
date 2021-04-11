@@ -11,22 +11,22 @@
 ///////////////////////////
 
 
-typedef union HIE_stEngineObject HIE_tdstEngineObject;
-typedef struct HIE_stSuperObject HIE_tdstSuperObject;
+typedef union HIE_tdstEngineObject HIE_tdstEngineObject;
+typedef struct HIE_tdstSuperObject HIE_tdstSuperObject;
 
-typedef struct HIE_stPerso HIE_tdstPerso;
-typedef struct HIE_stSector HIE_tdstSector;
-typedef struct HIE_stStandardGame HIE_tdstStandardGame;
+typedef struct HIE_tdstPerso HIE_tdstPerso;
+typedef struct HIE_tdstSector HIE_tdstSector;
+typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
 
 
-ACP_API extern void (*HIE_fn_vChangeFather)(HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild);
+ACP_API extern void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild );
 
 
 ////////////////
 // SuperObject
 ////////////////
 
-typedef enum
+typedef enum HIE_tdeSpoFlags
 {
 	SOF_NO_COLLISION = 1 << 0,
 	SOF_INVISIBLE = 1 << 1,
@@ -62,7 +62,7 @@ typedef enum
 	SOF_FLAG31 = 1 << 31
 } HIE_tdeSpoFlags;
 
-typedef enum
+typedef enum HIE_tdeSpoType
 {
 	SOT_UNKNOWN = 0x0,
 	SOT_WORLD = 0x1,
@@ -75,13 +75,13 @@ typedef enum
 	SOT_GEOMETRIC_SHADOW_OBJECT = 0x80000,
 } HIE_tdeSpoType;
 
-union HIE_stEngineObject
+union HIE_tdstEngineObject
 {
 	HIE_tdstPerso *p_stPerso;
 	HIE_tdstSector *p_stSector;
 };
 
-struct HIE_stSuperObject
+struct HIE_tdstSuperObject
 {
 	HIE_tdeSpoType ulType;
 	HIE_tdstEngineObject stEngineObject;
@@ -114,13 +114,13 @@ struct HIE_stSuperObject
 // SPO Types
 //////////////
 
-struct HIE_stPerso
+struct HIE_tdstPerso
 {
 	// TODO: replace void pointers
 	void *p_stP3DData;
 	HIE_tdstStandardGame *p_stStdGame;
 	void *p_stDynam;
-	struct AI_stBrain *p_stBrain;
+	AI_tdstBrain *p_stBrain;
 	void *p_stCamera;
 	void *p_stCollSet;
 	void *p_stMsWay;
@@ -128,7 +128,7 @@ struct HIE_stPerso
 	void *p_stSectInfo;
 };
 
-struct HIE_stSector
+struct HIE_tdstSector
 {
 	// TODO: fill out this struct correctly
 	void *persoSPOList;
@@ -136,7 +136,7 @@ struct HIE_stSector
 	void *dynamicLightsList;
 };
 
-struct HIE_stStandardGame
+struct HIE_tdstStandardGame
 {
 	union
 	{

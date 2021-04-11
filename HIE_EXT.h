@@ -10,11 +10,11 @@
 ///////////////////
 
 
-typedef struct XHIE_stObjectInfo XHIE_tdstObjectInfo;
-typedef struct XHIE_st_llObjectInfo XHIE_tdst_llObjectInfo;
+typedef struct XHIE_tdstObjectInfo XHIE_tdstObjectInfo;
+typedef struct XHIE_tdst_llObjectInfo XHIE_tdst_llObjectInfo;
 
-typedef struct XHIE_st_llAlways XHIE_tdst_llAlways;
-typedef struct XHIE_stAlways XHIE_tdstAlways;
+typedef struct XHIE_tdst_llAlways XHIE_tdst_llAlways;
+typedef struct XHIE_tdstAlways XHIE_tdstAlways;
 
 typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
 typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstPerso *p_stPerso );
@@ -29,7 +29,7 @@ ACP_API extern XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames;
 // Object Info
 ////////////////
 
-typedef enum
+typedef enum XHIE_tdeObjectInfoType
 {
 	TOI_FAMILY,
 	TOI_MODEL,
@@ -37,7 +37,7 @@ typedef enum
 	OI_TYPE_COUNT
 } XHIE_tdeObjectInfoType;
 
-struct XHIE_stObjectInfo
+struct XHIE_tdstObjectInfo
 {
 	XHIE_tdstObjectInfo *p_stNext;
 	XHIE_tdstObjectInfo *p_stPrevious;
@@ -46,7 +46,7 @@ struct XHIE_stObjectInfo
 	char *szName;
 };
 
-struct XHIE_st_llObjectInfo
+struct XHIE_tdst_llObjectInfo
 {
 	XHIE_tdstObjectInfo *p_stFirst;
 	XHIE_tdstObjectInfo *p_stLast;
@@ -63,7 +63,7 @@ ACP_API int XHIE_fn_lNewObjectInfo( const char *szName, XHIE_tdeObjectInfoType u
 // SPO & Always Objects
 /////////////////////////
 
-struct XHIE_stAlways
+struct XHIE_tdstAlways
 {
 	XHIE_tdstAlways *p_stNext;
 	XHIE_tdstAlways *p_stPrevious;
@@ -73,7 +73,7 @@ struct XHIE_stAlways
 	HIE_tdstPerso *p_stPerso;
 };
 
-struct XHIE_st_llAlways
+struct XHIE_tdst_llAlways
 {
 	int nMaxAlways;
 	XHIE_tdstAlways *p_stFirst;
