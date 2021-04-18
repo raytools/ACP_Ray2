@@ -19,7 +19,7 @@ typedef unsigned short WORD;
 typedef unsigned char BYTE;
 
 typedef struct MTH_tdstVector MTH_tdstVector;
-typedef struct MTH_tdstVector4 Mth_tdstVector4;
+typedef struct MTH_tdstVector4 MTH_tdstVector4;
 typedef struct MTH_tdstMatrix MTH_tdstMatrix;
 
 

@@ -22,9 +22,34 @@ struct JFFTXT_tdstText
 	BYTE _field_11;
 	BYTE ubHighlight;
 	BYTE ubOptions;
-	DWORD _field_14;
+	DWORD ulHighlightedChar;
 	BYTE ubHighlightColor;
 };
 
+typedef enum JFFTXT_tdeOptions
+{
+	JFF_FADE_IN = 1 << 0,
+	JFF_FADE_OUT = 1 << 1,
+	JFF_CHAR_HIGHLIGHT = 1 << 2,
+	JFF_BG_FRAME = 1 << 3,
+	JFF_HIGHLIGHT_COLOR = 1 << 4
+} JFFTXT_tdeOptions;
+
+typedef enum JFFTXT_tdeExtendParam
+{
+	JTE_ALPHA,
+	JTE_HIGHLIGHT,
+	JTE_FADE_IN,
+	JTE_FADE_OUT,
+	JTE_SIZE,
+	JTE_CHAR_HIGHLIGHT,
+	JTE_BG_FRAME,
+	JTE_HIGHLIGHT_COLOR
+} JFFTXT_tdeExtendParam;
+
+
 ACP_API extern void (*JFFTXT_vAffiche)( void *pContext );
 ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstText *p_stText );
+
+ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH_tdstVector *p_stPos, char *szText, float xAlpha );
+ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulValueToChange, float xNewValue );
