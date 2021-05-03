@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "ACP_API.h"
 #include "MTH.h"
-#include "AI.h"
 
 
 ///////////////////////////
@@ -20,6 +19,14 @@ typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
 
 
 ACP_API extern void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild );
+
+
+////////////////////////////////////////////
+// Forward declarations from other modules
+////////////////////////////////////////////
+
+typedef struct AI_tdstBrain AI_tdstBrain;
+typedef struct DNM_tdstDynam DNM_tdstDynam;
 
 
 ////////////////
@@ -94,8 +101,8 @@ struct HIE_tdstSuperObject
 	HIE_tdstSuperObject *p_stPrevious;
 	HIE_tdstSuperObject *p_stParent;
 
-	MTH_tdstMatrix *p_stLocalMatrix;
-	MTH_tdstMatrix *p_stGlobalMatrix;
+	MTH_tdstTransformation *p_stLocalMatrix;
+	MTH_tdstTransformation *p_stGlobalMatrix;
 
 	int lLastComputeFrame;
 	int lDrawModeMask;
@@ -119,7 +126,7 @@ struct HIE_tdstPerso
 	// TODO: replace void pointers
 	void *p_stP3DData;
 	HIE_tdstStandardGame *p_stStdGame;
-	void *p_stDynam;
+	DNM_tdstDynam *p_stDynam;
 	AI_tdstBrain *p_stBrain;
 	void *p_stCamera;
 	void *p_stCollSet;

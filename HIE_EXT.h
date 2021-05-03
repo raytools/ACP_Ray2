@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "HIE.h"
 #include "ACP_API.h"
+#include "HIE.h"
 
 
 ///////////////////
@@ -23,6 +23,9 @@ ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stActiveDynamicWorld;
 ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stInactiveDynamicWorld;
 ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stFatherSector;
 ACP_API extern XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames;
+
+ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stMainActor;
+ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stNextMainActor;
 
 
 ////////////////
@@ -86,3 +89,5 @@ struct XHIE_tdst_llAlways
 
 ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback );
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );
+
+ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor( void );

@@ -48,6 +48,9 @@
     <ClInclude Include="JFFTXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DNM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.c">

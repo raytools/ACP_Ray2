@@ -17,6 +17,9 @@ ACP_API HIE_tdstSuperObject **const XHIE_pp_stInactiveDynamicWorld = (HIE_tdstSu
 ACP_API HIE_tdstSuperObject **const XHIE_pp_stFatherSector = (HIE_tdstSuperObject **)0x500FC0;
 ACP_API XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames = (XHIE_tdst_llObjectInfo *)0x5013E0;
 
+ACP_API HIE_tdstSuperObject **const XHIE_pp_stMainActor = (HIE_tdstSuperObject **)0x500578;
+ACP_API HIE_tdstSuperObject **const XHIE_pp_stNextMainActor = (HIE_tdstSuperObject **)0x50057C;
+
 XHIE_tdst_llAlways *const p_llAlways = (XHIE_tdst_llAlways *)0x004A6B18;
 
 
@@ -104,4 +107,9 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 	}
 
 	return nEnumerated;
+}
+
+ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor()
+{
+	return *XHIE_pp_stMainActor;
 }

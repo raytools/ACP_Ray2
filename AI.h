@@ -16,7 +16,7 @@ typedef struct AI_tdstAIModel AI_tdstAIModel;
 
 typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
 typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
-typedef struct AI_tdstScriptRule AI_tdstScriptRule;
+typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
 typedef struct AI_tdstComport AI_tdstComport;
 typedef struct AI_tdstScriptAI AI_tdstScriptAI;
 
@@ -49,7 +49,7 @@ struct AI_tdstMind
 struct AI_tdstIntelligence
 {
 	AI_tdstAIModel *p_stScriptAI;
-	void *p_stCurrentSchedule;
+	AI_tdstNodeInterpret *p_stCurrentSchedule;
 	AI_tdstComport *p_stCurrentComport;
 	AI_tdstComport *p_stPrevComport;
 	void *p_stActionTable;
@@ -153,7 +153,7 @@ struct AI_tdstGetSetParam
 	union
 	{
 		void *pValue;
-		float xValue;
+		MTH_tdxReal xValue;
 		int lValue;
 		DWORD ulValue;
 		short wValue;
@@ -161,7 +161,7 @@ struct AI_tdstGetSetParam
 		char cValue;
 		BYTE ucValue;
 		char *szValue;
-		MTH_tdstVector stVector;
+		MTH3D_tdstVector stVector;
 	};
 
 	AI_tdeGetSetParamType ulType;
@@ -175,15 +175,15 @@ struct AI_tdstNodeInterpret
 	BYTE ucNodeType;
 };
 
-struct AI_tdstScriptRule
+struct AI_tdstTreeInterpret
 {
 	AI_tdstNodeInterpret *p_stNodes;
 };
 
 struct AI_tdstComport
 {
-	AI_tdstScriptRule *a_stRules;
-	AI_tdstScriptRule *p_stSchedule;
+	AI_tdstTreeInterpret *a_stRules;
+	AI_tdstTreeInterpret *p_stSchedule;
 	BYTE ucNbRules;
 };
 
@@ -207,7 +207,7 @@ typedef enum AI_tdeDsgVarType
 	DVT_UShort,
 	DVT_Int,
 	DVT_UInt,
-	DVT_Float,
+	DVT_MTH_tdxReal,
 	DVT_WayPoint,
 	DVT_Perso,
 	DVT_List,
@@ -220,7 +220,7 @@ typedef enum AI_tdeDsgVarType
 	DVT_Graph,
 	DVT_PersoArray,
 	DVT_VectorArray,
-	DVT_FloatArray,
+	DVT_MTH_tdxRealArray,
 	DVT_IntegerArray,
 	DVT_WayPointArray,
 	DVT_TextArray,

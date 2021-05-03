@@ -1,7 +1,7 @@
 #include "ACP_API.h"
-#include "HIE.h"
-#include "AI.h"
 #include "AI_EXT.h"
+#include "AI.h"
+#include "HIE.h"
 
 
 //////////////////

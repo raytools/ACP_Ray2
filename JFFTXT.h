@@ -14,9 +14,9 @@ typedef struct JFFTXT_tdstText JFFTXT_tdstText;
 struct JFFTXT_tdstText
 {
 	char *szText;
-	float X;
-	float Y;
-	float xSize;
+	MTH_tdxReal X;
+	MTH_tdxReal Y;
+	MTH_tdxReal xSize;
 	BYTE ubAlpha;
 
 	BYTE _field_11;
@@ -51,5 +51,5 @@ typedef enum JFFTXT_tdeExtendParam
 ACP_API extern void (*JFFTXT_vAffiche)( void *pContext );
 ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstText *p_stText );
 
-ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH_tdstVector *p_stPos, char *szText, float xAlpha );
-ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulValueToChange, float xNewValue );
+ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH3D_tdstVector *p_stPos, char *szText, MTH_tdxReal xAlpha );
+ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulValueToChange, MTH_tdxReal xNewValue );

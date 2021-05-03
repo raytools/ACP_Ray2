@@ -18,48 +18,85 @@ typedef unsigned long DWORD;
 typedef unsigned short WORD;
 typedef unsigned char BYTE;
 
-typedef struct MTH_tdstVector MTH_tdstVector;
-typedef struct MTH_tdstVector4 MTH_tdstVector4;
-typedef struct MTH_tdstMatrix MTH_tdstMatrix;
+typedef float MTH_tdxReal;
+
+typedef struct MTH2D_tdstVector MTH2D_tdstVector;
+typedef struct MTH3D_tdstVector MTH3D_tdstVector;
+typedef struct MTH4D_tdstVector MTH4D_tdstVector;
+
+typedef struct MTH2D_tdstMatrix MTH2D_tdstMatrix;
+typedef struct MTH3D_tdstMatrix MTH3D_tdstMatrix;
+typedef struct MTH4D_tdstMatrix MTH4D_tdstMatrix;
+
+typedef struct MTH_tdstTransformation MTH_tdstTransformation;
+
+// Use 3D structs as default
+
+typedef MTH3D_tdstVector MTH_tdstVector;
+typedef MTH3D_tdstMatrix MTH_tdstMatrix;
 
 
-struct MTH_tdstVector
+////////////
+// 2D Math
+////////////
+
+struct MTH2D_tdstVector
 {
-	float x;
-	float y;
-	float z;
+	MTH_tdxReal x;
+	MTH_tdxReal y;
 };
 
-struct MTH_tdstVector4
+struct MTH2D_tdstMatrix
 {
-	float x;
-	float y;
-	float z;
-	float w;
+	MTH2D_tdstVector stCol_0;
+	MTH2D_tdstVector stCol_1;
 };
 
-struct MTH_tdstMatrix
+
+////////////
+// 3D Math
+////////////
+
+struct MTH3D_tdstVector
 {
-	int lTransformType;
-	MTH_tdstVector vcPosition;
+	MTH_tdxReal x;
+	MTH_tdxReal y;
+	MTH_tdxReal z;
+};
 
-	float m_1_1;
-	float m_1_2;
-	float m_1_3;
-	float m_2_1;
-	float m_2_2;
-	float m_2_3;
-	float m_3_1;
-	float m_3_2;
-	float m_3_3;
+struct MTH3D_tdstMatrix
+{
+	MTH3D_tdstVector stCol_0;
+	MTH3D_tdstVector stCol_1;
+	MTH3D_tdstVector stCol_2;
+};
 
-	float scale_1_1;
-	float scale_1_2;
-	float scale_1_3;
-	float scale_2_1;
-	float scale_2_2;
-	float scale_2_3;
-	float scale_3_1;
-	float scale_3_2;
-	float scale_3_3;
+struct MTH_tdstTransformation
+{
+	int eType;
+	MTH3D_tdstVector stPos;
+
+	MTH3D_tdstMatrix stTransformMatrix;
+	MTH3D_tdstMatrix stScaleMatrix;
+};
+
+
+////////////
+// 4D Math
+////////////
+
+struct MTH4D_tdstVector
+{
+	MTH_tdxReal x;
+	MTH_tdxReal y;
+	MTH_tdxReal z;
+	MTH_tdxReal w;
+};
+
+struct MTH4D_tdstMatrix
+{
+	MTH4D_tdstVector stCol_0;
+	MTH4D_tdstVector stCol_1;
+	MTH4D_tdstVector stCol_2;
+	MTH4D_tdstVector stCol_3;
 };
