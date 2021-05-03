@@ -29,6 +29,8 @@ typedef struct MTH3D_tdstMatrix MTH3D_tdstMatrix;
 typedef struct MTH4D_tdstMatrix MTH4D_tdstMatrix;
 
 typedef struct MTH_tdstTransformation MTH_tdstTransformation;
+typedef struct MTH_tdstRotation MTH_tdstRotation;
+typedef struct MTH_tdstMove MTH_tdstMove;
 
 // Use 3D structs as default
 
@@ -78,6 +80,18 @@ struct MTH_tdstTransformation
 
 	MTH3D_tdstMatrix stTransformMatrix;
 	MTH3D_tdstMatrix stScaleMatrix;
+};
+
+struct MTH_tdstRotation
+{
+	MTH_tdxReal xAngle;
+	MTH3D_tdstVector stAxis;
+};
+
+struct MTH_tdstMove
+{
+	MTH3D_tdstVector stLinear;
+	MTH_tdstRotation stAngular;
 };
 
 

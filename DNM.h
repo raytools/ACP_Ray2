@@ -12,6 +12,8 @@
 
 
 typedef struct DNM_tdstDynam DNM_tdstDynam;
+typedef struct DNM_tdstObstacle DNM_tdstObstacle;
+typedef struct DNM_tdstReport DNM_tdstReport;
 
 typedef struct DNM_tdstBaseDynamics DNM_tdstBaseDynamics;
 typedef struct DNM_tdstAdvancedDynamics DNM_tdstAdvancedDynamics;
@@ -51,8 +53,7 @@ struct DNM_tdstDynamicsBaseBlock
 	MTH_tdstTransformation stCurrentMatrix;
 	MTH3D_tdstMatrix stImposeRotationMatrix;
 	BYTE ucNbFrame;
-	// DNM_stReport *
-	void *p_stReport;
+	DNM_tdstReport *p_stReport;
 };
 
 struct DNM_tdstDynamicsAdvancedBlock
@@ -153,4 +154,33 @@ struct DNM_tdstComplexDynamics
 	DNM_tdstDynamicsBaseBlock stDynamicsBase;
 	DNM_tdstDynamicsAdvancedBlock stDynamicsAdvanced;
 	DNM_tdstDynamicsComplexBlock stDynamicsComplex;
+};
+
+struct DNM_tdstObstacle
+{
+	MTH_tdxReal xRate;
+	MTH3D_tdstVector stNorm;
+	MTH3D_tdstVector stContact;
+	// GMT_tdstGameMaterial *
+	void *hMyMaterial;
+	// GMT_tdstGameMaterial *
+	void *hCollidedMaterial;
+	HIE_tdstSuperObject *p_stSupObj;
+};
+
+struct DNM_tdstReport
+{
+	DWORD ulPrevSurfaceState;
+	DWORD ulCurrSurfaceState;
+	DNM_tdstObstacle stObstacle;
+	DNM_tdstObstacle stGround;
+	DNM_tdstObstacle stWall;
+	DNM_tdstObstacle stCharacter;
+	DNM_tdstObstacle stWater;
+	DNM_tdstObstacle stCeil;
+	MTH_tdstMove stAbsolutePrevSpeed;
+	MTH_tdstMove stAbsoluteCurrSpeed;
+	MTH_tdstMove stAbsolutePrevPosition;
+	MTH_tdstMove stAbsoluteCurrPosition;
+	BYTE ucBitField;
 };
