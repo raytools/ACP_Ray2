@@ -13,7 +13,7 @@
 
 ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
 {
-	if ( p_stSpo->ulType != SOT_PERSO ) return -1;
+	if ( p_stSpo->ulType != e_OT_Perso ) return -1;
 	
 	AI_tdstBrain *pBrain = p_stSpo->stEngineObject.p_stPerso->p_stBrain;
 	if ( !pBrain || !pBrain->p_stMind ) return -1;

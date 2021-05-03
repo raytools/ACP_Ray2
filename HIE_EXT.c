@@ -12,13 +12,13 @@
 ///////////////////
 
 
-ACP_API HIE_tdstSuperObject **const XHIE_pp_stActiveDynamicWorld = (HIE_tdstSuperObject **)0x0500FD0;
-ACP_API HIE_tdstSuperObject **const XHIE_pp_stInactiveDynamicWorld = (HIE_tdstSuperObject **)0x500FC4;
-ACP_API HIE_tdstSuperObject **const XHIE_pp_stFatherSector = (HIE_tdstSuperObject **)0x500FC0;
+ACP_API HIE_tdstSuperObject **const XHIE_p_p_stActiveDynamicWorld = (HIE_tdstSuperObject **)0x0500FD0;
+ACP_API HIE_tdstSuperObject **const XHIE_p_p_stInactiveDynamicWorld = (HIE_tdstSuperObject **)0x500FC4;
+ACP_API HIE_tdstSuperObject **const XHIE_p_p_stFatherSector = (HIE_tdstSuperObject **)0x500FC0;
 ACP_API XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames = (XHIE_tdst_llObjectInfo *)0x5013E0;
 
-ACP_API HIE_tdstSuperObject **const XHIE_pp_stMainActor = (HIE_tdstSuperObject **)0x500578;
-ACP_API HIE_tdstSuperObject **const XHIE_pp_stNextMainActor = (HIE_tdstSuperObject **)0x50057C;
+HIE_tdstSuperObject **const XHIE_p_p_stMainActor = (HIE_tdstSuperObject **)0x500578;
+HIE_tdstSuperObject **const XHIE_p_p_stNextMainActor = (HIE_tdstSuperObject **)0x50057C;
 
 XHIE_tdst_llAlways *const p_llAlways = (XHIE_tdst_llAlways *)0x004A6B18;
 
@@ -46,16 +46,16 @@ ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectI
 
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType )
 {
-	if ( p_stSpo->ulType != SOT_PERSO )
+	if ( p_stSpo->ulType != e_OT_Perso )
 		return NULL;
 
 	return XHIE_fn_szGetPersoName(p_stSpo->stEngineObject.p_stPerso, ulInfoType);
 }
 
-ACP_API int XHIE_fn_lNewObjectInfo( const char *szName, XHIE_tdeObjectInfoType ulInfoType )
+ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType )
 {
-	XHIE_tdst_llObjectInfo *pllInfo = &XHIE_a_llObjectNames[ulInfoType];
-	XHIE_tdstObjectInfo *pPrevious = pllInfo->p_stLast;
+	XHIE_tdst_llObjectInfo *p_llInfo = &XHIE_a_llObjectNames[ulInfoType];
+	XHIE_tdstObjectInfo *pPrevious = p_llInfo->p_stLast;
 
 	int length = strlen(szName) + 1;
 
@@ -63,13 +63,13 @@ ACP_API int XHIE_fn_lNewObjectInfo( const char *szName, XHIE_tdeObjectInfoType u
 	if ( !hName ) return -1;
 	memcpy(hName, szName, length);
 
-	XHIE_tdstObjectInfo stNew = { NULL, pPrevious, pllInfo, hName };
+	XHIE_tdstObjectInfo stNew = { NULL, pPrevious, p_llInfo, hName };
 	XHIE_tdstObjectInfo *hNew = fn_p_vDynAlloc(sizeof(XHIE_tdstObjectInfo));
 	if ( !hNew ) return -1;
 	*hNew = stNew;
 
-	pllInfo->p_stLast = pPrevious->p_stNext = hNew;
-	int newId = pllInfo->nItems++;
+	p_llInfo->p_stLast = pPrevious->p_stNext = hNew;
+	int newId = p_llInfo->nItems++;
 
 	return newId;
 }
@@ -109,7 +109,43 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 	return nEnumerated;
 }
 
-ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor()
+ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor( void )
 {
-	return *XHIE_pp_stMainActor;
+	return *XHIE_p_p_stMainActor;
+}
+
+ACP_API HIE_tdstSuperObject * XHIE_fn_hFindObject( char const *szName )
+{
+	HIE_tdstSuperObject *a_p_stSearchIn[] = {
+		(*XHIE_p_p_stActiveDynamicWorld)->p_stFirstChild,
+		(*XHIE_p_p_stInactiveDynamicWorld)->p_stFirstChild
+	};
+
+	for ( int i = 0; i < ARRAYSIZE(a_p_stSearchIn); i++ )
+	{
+		for ( HIE_tdstSuperObject *pItem = a_p_stSearchIn[i]; pItem; pItem = pItem->p_stNext )
+		{
+			char *szObjName = XHIE_fn_szGetObjectName(pItem, e_OI_Instance);
+			if ( szObjName && !strcmp(szName, szObjName) )
+			{
+				return pItem;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+ACP_API HIE_tdstPerso * XHIE_fn_hFindAlwaysObject( char const *szName )
+{
+	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
+	{
+		char *szObjName = XHIE_fn_szGetPersoName(pItem->p_stPerso, e_OI_Instance);
+		if ( szObjName && !strcmp(szName, szObjName) )
+		{
+			return pItem->p_stPerso;
+		}
+	}
+
+	return NULL;
 }

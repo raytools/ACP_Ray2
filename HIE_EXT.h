@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "ACP_API.h"
+#include "MTH.h"
 #include "HIE.h"
 
 
@@ -19,13 +20,10 @@ typedef struct XHIE_tdstAlways XHIE_tdstAlways;
 typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
 typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstPerso *p_stPerso );
 
-ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stActiveDynamicWorld;
-ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stInactiveDynamicWorld;
-ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stFatherSector;
+ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stActiveDynamicWorld;
+ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stInactiveDynamicWorld;
+ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stFatherSector;
 ACP_API extern XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames;
-
-ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stMainActor;
-ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stNextMainActor;
 
 
 ////////////////
@@ -34,10 +32,10 @@ ACP_API extern HIE_tdstSuperObject **const XHIE_pp_stNextMainActor;
 
 typedef enum XHIE_tdeObjectInfoType
 {
-	TOI_FAMILY,
-	TOI_MODEL,
-	TOI_INSTANCE,
-	OI_TYPE_COUNT
+	e_OI_Family,
+	e_OI_Model,
+	e_OI_Instance,
+	e_Nb_OI
 } XHIE_tdeObjectInfoType;
 
 struct XHIE_tdstObjectInfo
@@ -45,7 +43,6 @@ struct XHIE_tdstObjectInfo
 	XHIE_tdstObjectInfo *p_stNext;
 	XHIE_tdstObjectInfo *p_stPrevious;
 	XHIE_tdst_llObjectInfo *p_stHeader;
-
 	char *szName;
 };
 
@@ -59,7 +56,7 @@ struct XHIE_tdst_llObjectInfo
 
 ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectInfoType ulInfoType );
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType );
-ACP_API int XHIE_fn_lNewObjectInfo( const char *szName, XHIE_tdeObjectInfoType ulInfoType );
+ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType );
 
 
 /////////////////////////
@@ -91,3 +88,5 @@ ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnu
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor( void );
+ACP_API HIE_tdstSuperObject * XHIE_fn_hFindObject( char const *szName );
+ACP_API HIE_tdstPerso * XHIE_fn_hFindAlwaysObject( char const *szName );

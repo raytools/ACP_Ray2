@@ -69,18 +69,18 @@ typedef enum HIE_tdeSpoFlags
 	SOF_FLAG31 = 1 << 31
 } HIE_tdeSpoFlags;
 
-typedef enum HIE_tdeSpoType
+typedef enum HIE_tdeObjType
 {
-	SOT_UNKNOWN = 0x0,
-	SOT_WORLD = 0x1,
-	SOT_PERSO = 0x2,
-	SOT_SECTOR = 0x4,
-	SOT_PHYSICAL_OBJECT = 0x8,
-	SOT_IPO = 0x20,
-	SOT_IPO_2 = 0x40,
-	SOT_GEOMETRIC_OBJECT = 0x400,
-	SOT_GEOMETRIC_SHADOW_OBJECT = 0x80000,
-} HIE_tdeSpoType;
+	e_OT_Unknown = 0x0,
+	e_OT_World = 0x1,
+	e_OT_Perso = 0x2,
+	e_OT_Sector = 0x4,
+	e_OT_PhysicalObject = 0x8,
+	e_OT_IPO = 0x20,
+	e_OT_IPO2 = 0x40,
+	e_OT_GeometricObject = 0x400,
+	e_OT_GeometricShadowObj = 0x80000,
+} HIE_tdeObjType;
 
 union HIE_tdstEngineObject
 {
@@ -90,7 +90,7 @@ union HIE_tdstEngineObject
 
 struct HIE_tdstSuperObject
 {
-	HIE_tdeSpoType ulType;
+	HIE_tdeObjType ulType;
 	HIE_tdstEngineObject stEngineObject;
 
 	HIE_tdstSuperObject *p_stFirstChild;
