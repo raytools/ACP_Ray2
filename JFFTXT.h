@@ -9,30 +9,31 @@
 //
 ////////////////////////////
 
-typedef struct JFFTXT_tdstText JFFTXT_tdstText;
 
-struct JFFTXT_tdstText
+typedef struct JFFTXT_tdstString JFFTXT_tdstString;
+
+struct JFFTXT_tdstString
 {
 	char *szText;
 	MTH_tdxReal X;
 	MTH_tdxReal Y;
 	MTH_tdxReal xSize;
-	BYTE ubAlpha;
+	BYTE ucAlpha;
 
 	BYTE _field_11;
-	BYTE ubHighlight;
-	BYTE ubOptions;
+	BYTE bHighlight;
+	BYTE eOptions;
 	DWORD ulHighlightedChar;
-	BYTE ubHighlightColor;
+	BYTE ucHighlightColor;
 };
 
 typedef enum JFFTXT_tdeOptions
 {
-	JFF_FADE_IN = 1 << 0,
-	JFF_FADE_OUT = 1 << 1,
-	JFF_CHAR_HIGHLIGHT = 1 << 2,
-	JFF_BG_FRAME = 1 << 3,
-	JFF_HIGHLIGHT_COLOR = 1 << 4
+	JTO_FADE_IN = 1 << 0,
+	JTO_FADE_OUT = 1 << 1,
+	JTO_CHAR_HIGHLIGHT = 1 << 2,
+	JTO_BG_FRAME = 1 << 3,
+	JTO_HIGHLIGHT_COLOR = 1 << 4
 } JFFTXT_tdeOptions;
 
 typedef enum JFFTXT_tdeExtendParam
@@ -49,7 +50,7 @@ typedef enum JFFTXT_tdeExtendParam
 
 
 ACP_API extern void (*JFFTXT_vAffiche)( void *pContext );
-ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstText *p_stText );
+ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_stString );
 
 ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH3D_tdstVector *p_stPos, char *szText, MTH_tdxReal xAlpha );
-ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulValueToChange, MTH_tdxReal xNewValue );
+ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulParamToChange, MTH_tdxReal xNewValue );
