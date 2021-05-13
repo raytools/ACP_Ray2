@@ -165,7 +165,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ACP_API.h" />
+    <ClInclude Include="apidef.h" />
     <ClInclude Include="ACP_Ray2.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="DNM.h" />
