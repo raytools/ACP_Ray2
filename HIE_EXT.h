@@ -87,6 +87,6 @@ struct XHIE_tdst_llAlways
 ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback );
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );
 
-ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor( void );
-ACP_API HIE_tdstSuperObject * XHIE_fn_hFindObject( char const *szName );
-ACP_API HIE_tdstPerso * XHIE_fn_hFindAlwaysObject( char const *szName );
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void );
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName );
+ACP_API HIE_tdstPerso * XHIE_fn_p_stFindAlwaysObject( char const *szName );

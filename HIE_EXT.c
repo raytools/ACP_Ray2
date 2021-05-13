@@ -109,12 +109,12 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 	return nEnumerated;
 }
 
-ACP_API HIE_tdstSuperObject * XHIE_fn_hGetMainActor( void )
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void )
 {
 	return *XHIE_p_p_stMainActor;
 }
 
-ACP_API HIE_tdstSuperObject * XHIE_fn_hFindObject( char const *szName )
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 {
 	HIE_tdstSuperObject *a_p_stSearchIn[] = {
 		(*XHIE_p_p_stActiveDynamicWorld)->p_stFirstChild,
@@ -136,7 +136,7 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_hFindObject( char const *szName )
 	return NULL;
 }
 
-ACP_API HIE_tdstPerso * XHIE_fn_hFindAlwaysObject( char const *szName )
+ACP_API HIE_tdstPerso * XHIE_fn_p_stFindAlwaysObject( char const *szName )
 {
 	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
 	{
