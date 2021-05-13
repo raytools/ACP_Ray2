@@ -27,6 +27,13 @@
 // Extensions
 ///////////////
 
+// These headers contain extra types and functions not present in the original engine.
+// To disable extensions, define ACP_NO_EXT.
+
+#ifndef ACP_NO_EXT
+
 #include "HIE_EXT.h"
 #include "AI_EXT.h"
 #include "DNM_EXT.h"
+
+#endif /* ACP_NO_EXT */
