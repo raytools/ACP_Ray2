@@ -15,6 +15,7 @@
 
 #include "MTH.h"
 #include "MMG.h"
+#include "GAM.h"
 #include "HIE.h"
 #include "AI.h"
 #include "POS.h"
@@ -28,3 +29,4 @@
 
 #include "HIE_EXT.h"
 #include "AI_EXT.h"
+#include "DNM_EXT.h"

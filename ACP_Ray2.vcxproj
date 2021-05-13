@@ -171,6 +171,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="DNM.h" />
     <ClInclude Include="DNM_EXT.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GAM.h" />
     <ClInclude Include="JFFTXT.h" />
     <ClInclude Include="MMG.h" />
     <ClInclude Include="POS.h" />
@@ -180,9 +181,11 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="HIE_EXT.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI.c" />
     <ClCompile Include="AI_EXT.c" />
     <ClCompile Include="dllmain.c" />
     <ClCompile Include="DNM_EXT.c" />
+    <ClCompile Include="GAM.c" />
     <ClCompile Include="HIE.c" />
     <ClCompile Include="HIE_EXT.c" />
     <ClCompile Include="JFFTXT.c" />

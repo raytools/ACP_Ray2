@@ -25,6 +25,16 @@ typedef struct AI_tdstDsgVar AI_tdstDsgVar;
 typedef struct AI_tdstDsgVarInfo AI_tdstDsgVarInfo;
 
 
+////////////////////////////////////////////
+// Forward declarations from other modules
+////////////////////////////////////////////
+
+typedef struct HIE_tdstSuperObject HIE_tdstSuperObject;
+
+ACP_API extern AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode,
+                                                            AI_tdstGetSetParam *p_stParam );
+
+
 /////////////////
 // Intelligence
 /////////////////

@@ -54,6 +54,9 @@
     <ClInclude Include="DNM_EXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GAM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.c">
@@ -78,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DNM_EXT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GAM.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
