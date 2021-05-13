@@ -13,80 +13,86 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\API">
+      <UniqueIdentifier>{7f8312a0-6103-4390-bb66-f1bf9ab7d796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\private">
+      <UniqueIdentifier>{d7121c0e-32e8-4a07-8634-0a4b34e63d29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
+    <ClInclude Include="inc\AI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HIE.h">
+    <ClInclude Include="inc\POS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MTH.h">
+    <ClInclude Include="inc\MTH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AI.h">
+    <ClInclude Include="inc\MMG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AI_EXT.h">
+    <ClInclude Include="inc\JFFTXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HIE_EXT.h">
+    <ClInclude Include="inc\HIE_EXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ACP_Ray2.h">
+    <ClInclude Include="inc\HIE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="POS.h">
+    <ClInclude Include="inc\GAM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MMG.h">
+    <ClInclude Include="inc\DNM_EXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JFFTXT.h">
+    <ClInclude Include="inc\DNM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DNM.h">
+    <ClInclude Include="inc\AI_EXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DNM_EXT.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="inc\ACP_Ray2.h">
+      <Filter>Header Files\API</Filter>
     </ClInclude>
-    <ClInclude Include="GAM.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="inc\apidef.h">
+      <Filter>Header Files\API</Filter>
     </ClInclude>
-    <ClInclude Include="apidef.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="inc\private\framework.h">
+      <Filter>Header Files\private</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.c">
+    <ClCompile Include="src\POS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AI_EXT.c">
+    <ClCompile Include="src\HIE_EXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HIE_EXT.c">
+    <ClCompile Include="src\JFFTXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="POS.c">
+    <ClCompile Include="src\MMG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MMG.c">
+    <ClCompile Include="src\HIE.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HIE.c">
+    <ClCompile Include="src\GAM.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JFFTXT.c">
+    <ClCompile Include="src\DNM_EXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DNM_EXT.c">
+    <ClCompile Include="src\AI_EXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GAM.c">
+    <ClCompile Include="src\AI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AI.c">
+    <ClCompile Include="src\dllmain.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

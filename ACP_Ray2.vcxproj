@@ -73,10 +73,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -95,6 +97,7 @@
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc\private;$(ProjectDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -102,8 +105,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)*.h $(OutDir)inc\
-del $(OutDir)inc\framework.h
+      <Command>xcopy /Y $(SolutionDir)inc\*.h $(OutDir)inc\
 xcopy /Y $(OutDir)*.lib  $(OutDir)lib\
 xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </PostBuildEvent>
@@ -119,6 +121,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc\private;$(ProjectDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,8 +131,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y $(SolutionDir)*.h $(OutDir)inc\
-del $(OutDir)inc\framework.h
+      <Command>xcopy /Y $(SolutionDir)inc\*.h $(OutDir)inc\
 xcopy /Y $(OutDir)*.lib  $(OutDir)lib\
 xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </PostBuildEvent>
@@ -165,32 +167,32 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="apidef.h" />
-    <ClInclude Include="ACP_Ray2.h" />
-    <ClInclude Include="AI.h" />
-    <ClInclude Include="DNM.h" />
-    <ClInclude Include="DNM_EXT.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="GAM.h" />
-    <ClInclude Include="JFFTXT.h" />
-    <ClInclude Include="MMG.h" />
-    <ClInclude Include="POS.h" />
-    <ClInclude Include="MTH.h" />
-    <ClInclude Include="HIE.h" />
-    <ClInclude Include="AI_EXT.h" />
-    <ClInclude Include="HIE_EXT.h" />
+    <ClInclude Include="inc\apidef.h" />
+    <ClInclude Include="inc\ACP_Ray2.h" />
+    <ClInclude Include="inc\AI.h" />
+    <ClInclude Include="inc\DNM.h" />
+    <ClInclude Include="inc\DNM_EXT.h" />
+    <ClInclude Include="inc\private\framework.h" />
+    <ClInclude Include="inc\GAM.h" />
+    <ClInclude Include="inc\JFFTXT.h" />
+    <ClInclude Include="inc\MMG.h" />
+    <ClInclude Include="inc\POS.h" />
+    <ClInclude Include="inc\MTH.h" />
+    <ClInclude Include="inc\HIE.h" />
+    <ClInclude Include="inc\AI_EXT.h" />
+    <ClInclude Include="inc\HIE_EXT.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AI.c" />
-    <ClCompile Include="AI_EXT.c" />
-    <ClCompile Include="dllmain.c" />
-    <ClCompile Include="DNM_EXT.c" />
-    <ClCompile Include="GAM.c" />
-    <ClCompile Include="HIE.c" />
-    <ClCompile Include="HIE_EXT.c" />
-    <ClCompile Include="JFFTXT.c" />
-    <ClCompile Include="MMG.c" />
-    <ClCompile Include="POS.c" />
+    <ClCompile Include="src\AI.c" />
+    <ClCompile Include="src\AI_EXT.c" />
+    <ClCompile Include="src\dllmain.c" />
+    <ClCompile Include="src\DNM_EXT.c" />
+    <ClCompile Include="src\GAM.c" />
+    <ClCompile Include="src\HIE.c" />
+    <ClCompile Include="src\HIE_EXT.c" />
+    <ClCompile Include="src\JFFTXT.c" />
+    <ClCompile Include="src\MMG.c" />
+    <ClCompile Include="src\POS.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
