@@ -19,80 +19,83 @@
     <Filter Include="Header Files\private">
       <UniqueIdentifier>{d7121c0e-32e8-4a07-8634-0a4b34e63d29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\private">
+      <UniqueIdentifier>{98930310-a442-4e8f-84e3-beedacb1ffd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\AI.h">
+    <ClInclude Include="src\AI\AI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\POS.h">
+    <ClInclude Include="src\DNM\DNM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\MTH.h">
+    <ClInclude Include="src\GAM\GAM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\MMG.h">
+    <ClInclude Include="src\HIE\HIE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\JFFTXT.h">
+    <ClInclude Include="src\JFFTXT\JFFTXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\HIE_EXT.h">
+    <ClInclude Include="src\MMG\MMG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\HIE.h">
+    <ClInclude Include="src\POS\POS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\GAM.h">
+    <ClInclude Include="src\MTH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\DNM_EXT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\DNM.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\AI_EXT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ACP_Ray2.h">
+    <ClInclude Include="src\apidef.h">
       <Filter>Header Files\API</Filter>
     </ClInclude>
-    <ClInclude Include="inc\apidef.h">
+    <ClInclude Include="src\ACP_Ray2.h">
       <Filter>Header Files\API</Filter>
     </ClInclude>
-    <ClInclude Include="inc\private\framework.h">
+    <ClInclude Include="src\DNM\DNM_Ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\AI_Ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\private\framework.h">
       <Filter>Header Files\private</Filter>
     </ClInclude>
+    <ClInclude Include="src\HIE\HIE_Ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\POS.c">
+    <ClCompile Include="src\AI\AI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\HIE_EXT.c">
+    <ClCompile Include="src\GAM\GAM.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\JFFTXT.c">
+    <ClCompile Include="src\HIE\HIE.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MMG.c">
+    <ClCompile Include="src\JFFTXT\JFFTXT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\HIE.c">
+    <ClCompile Include="src\MMG\MMG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GAM.c">
+    <ClCompile Include="src\POS\POS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\DNM_EXT.c">
+    <ClCompile Include="src\DNM\DNM_Ext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AI_EXT.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\AI.c">
+    <ClCompile Include="src\AI\AI_Ext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\dllmain.c">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HIE\HIE_Ext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

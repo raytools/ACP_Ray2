@@ -13,14 +13,14 @@
 // Modules
 ////////////
 
-#include "MTH.h"
-#include "MMG.h"
-#include "GAM.h"
-#include "HIE.h"
-#include "AI.h"
-#include "POS.h"
-#include "DNM.h"
-#include "JFFTXT.h"
+#include <MTH.h>
+#include <MMG/MMG.h>
+#include <GAM/GAM.h>
+#include <HIE/HIE.h>
+#include <AI/AI.h>
+#include <POS/POS.h>
+#include <DNM/DNM.h>
+#include <JFFTXT/JFFTXT.h>
 
 
 ///////////////
@@ -32,8 +32,8 @@
 
 #ifndef ACP_NO_EXT
 
-#include "HIE_EXT.h"
-#include "AI_EXT.h"
-#include "DNM_EXT.h"
+#include <HIE/HIE_EXT.h>
+#include <AI/AI_EXT.h>
+#include <DNM/DNM_EXT.h>
 
 #endif /* ACP_NO_EXT */

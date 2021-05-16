@@ -1,7 +1,7 @@
-#include "apidef.h"
-#include "AI_EXT.h"
+#include "AI_Ext.h"
 #include "AI.h"
-#include "HIE.h"
+#include <HIE/HIE.h>
+#include <apidef.h>
 
 
 //////////////////

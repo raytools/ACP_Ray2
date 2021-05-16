@@ -1,8 +1,8 @@
-#include "apidef.h"
-#include "HIE_EXT.h"
+#include "HIE_Ext.h"
 #include "HIE.h"
-#include "MMG.h"
-#include "framework.h"
+#include <MMG/MMG.h>
+#include <apidef.h>
+#include <framework.h>
 
 
 ///////////////////

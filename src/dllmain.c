@@ -1,4 +1,4 @@
-#include "framework.h"
+#include <framework.h>
 
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD dwReason, LPVOID lpReserved )
 {

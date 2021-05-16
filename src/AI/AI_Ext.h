@@ -1,7 +1,8 @@
 #pragma once
-#include "apidef.h"
+
 #include "AI.h"
-#include "HIE.h"
+#include <HIE/HIE.h>
+#include <apidef.h>
 
 
 //////////////////

@@ -1,6 +1,6 @@
-#include "apidef.h"
-#include "DNM_EXT.h"
-#include "HIE.h"
+#include "DNM_Ext.h"
+#include <HIE/HIE.h>
+#include <apidef.h>
 
 
 ///////////////////
