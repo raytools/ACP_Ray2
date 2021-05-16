@@ -1,5 +1,4 @@
 #include "MMG.h"
-#include <apidef.h>
 
 
 ////////////////////////////

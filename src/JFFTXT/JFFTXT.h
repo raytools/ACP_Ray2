@@ -13,6 +13,7 @@
 
 typedef struct JFFTXT_tdstString JFFTXT_tdstString;
 
+
 struct JFFTXT_tdstString
 {
 	char *szText;

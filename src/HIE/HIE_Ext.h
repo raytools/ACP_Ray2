@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "HIE.h"
+#include "HIE_Def.h"
 #include <MTH.h>
 #include <apidef.h>
 

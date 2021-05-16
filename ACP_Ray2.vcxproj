@@ -106,11 +106,14 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />
     <ClInclude Include="src\ACP_Ray2.h" />
     <ClInclude Include="src\AI\AI.h" />
     <ClInclude Include="src\DNM\DNM.h" />
+    <ClInclude Include="src\DNM\DNM_Def.h" />
     <ClInclude Include="src\DNM\DNM_Ext.h" />
+    <ClInclude Include="src\HIE\HIE_Def.h" />
     <ClInclude Include="src\private\framework.h" />
     <ClInclude Include="src\GAM\GAM.h" />
     <ClInclude Include="src\JFFTXT\JFFTXT.h" />

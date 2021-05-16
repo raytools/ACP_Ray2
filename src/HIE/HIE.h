@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "HIE_Def.h"
+#include <AI/AI_Def.h>
+#include <DNM/DNM_Def.h>
 #include <MTH.h>
 #include <apidef.h>
 
@@ -11,23 +14,7 @@
 ///////////////////////////
 
 
-typedef union HIE_tdstEngineObject HIE_tdstEngineObject;
-typedef struct HIE_tdstSuperObject HIE_tdstSuperObject;
-
-typedef struct HIE_tdstPerso HIE_tdstPerso;
-typedef struct HIE_tdstSector HIE_tdstSector;
-typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
-
-
 ACP_API extern void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild );
-
-
-////////////////////////////////////////////
-// Forward declarations from other modules
-////////////////////////////////////////////
-
-typedef struct AI_tdstBrain AI_tdstBrain;
-typedef struct DNM_tdstDynam DNM_tdstDynam;
 
 
 ////////////////

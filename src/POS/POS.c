@@ -1,5 +1,4 @@
 #include "POS.h"
-#include <apidef.h>
 
 
 ///////////////

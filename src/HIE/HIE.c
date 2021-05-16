@@ -1,5 +1,4 @@
 #include "HIE.h"
-#include <apidef.h>
 
 
 ///////////////////////////

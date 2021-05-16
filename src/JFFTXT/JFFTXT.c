@@ -1,5 +1,4 @@
 #include "JFFTXT.h"
-#include <apidef.h>
 
 
 ////////////////////////////

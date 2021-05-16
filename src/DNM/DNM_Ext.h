@@ -1,7 +1,7 @@
 #pragma once
 
-#include "DNM.h"
-#include <HIE/HIE.h>
+#include "DNM_Def.h"
+#include <HIE/HIE_Def.h>
 #include <apidef.h>
 
 

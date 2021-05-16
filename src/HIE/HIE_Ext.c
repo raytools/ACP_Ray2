@@ -1,7 +1,6 @@
 #include "HIE_Ext.h"
 #include "HIE.h"
 #include <MMG/MMG.h>
-#include <apidef.h>
 #include <framework.h>
 
 

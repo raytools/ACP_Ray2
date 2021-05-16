@@ -66,6 +66,15 @@
     <ClInclude Include="src\HIE\HIE_Ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\HIE\HIE_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\AI_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DNM\DNM_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AI_Def.h"
+#include <HIE/HIE_Def.h>
 #include <MTH.h>
 #include <apidef.h>
 
@@ -11,30 +13,7 @@
 ////////////////
 
 
-typedef struct AI_tdstBrain AI_tdstBrain;
-typedef struct AI_tdstMind AI_tdstMind;
-typedef struct AI_tdstIntelligence AI_tdstIntelligence;
-typedef struct AI_tdstAIModel AI_tdstAIModel;
-
-typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
-typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
-typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
-typedef struct AI_tdstComport AI_tdstComport;
-typedef struct AI_tdstScriptAI AI_tdstScriptAI;
-
-typedef struct AI_tdstDsgMem AI_tdstDsgMem;
-typedef struct AI_tdstDsgVar AI_tdstDsgVar;
-typedef struct AI_tdstDsgVarInfo AI_tdstDsgVarInfo;
-
-
-////////////////////////////////////////////
-// Forward declarations from other modules
-////////////////////////////////////////////
-
-typedef struct HIE_tdstSuperObject HIE_tdstSuperObject;
-
-ACP_API extern AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode,
-                                                            AI_tdstGetSetParam *p_stParam );
+ACP_API extern AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode, AI_tdstGetSetParam *p_stParam );
 
 
 /////////////////

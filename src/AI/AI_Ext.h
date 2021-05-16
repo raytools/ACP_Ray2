@@ -1,7 +1,7 @@
 #pragma once
 
 #include "AI.h"
-#include <HIE/HIE.h>
+#include <HIE/HIE_Def.h>
 #include <apidef.h>
 
 

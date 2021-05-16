@@ -1,5 +1,4 @@
 #include "GAM.h"
-#include <apidef.h>
 
 
 ///////////////////////

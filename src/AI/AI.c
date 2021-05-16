@@ -1,5 +1,4 @@
 #include "AI.h"
-#include <apidef.h>
 
 
 ////////////////
