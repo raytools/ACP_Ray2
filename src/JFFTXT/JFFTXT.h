@@ -56,3 +56,4 @@ ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_
 
 ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH3D_tdstVector *p_stPos, char *szText, MTH_tdxReal xAlpha );
 ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulParamToChange, MTH_tdxReal xNewValue );
+ACP_API extern void (*JFFTXT_vGetStringExtents)( JFFTXT_tdstString *p_stString, MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight );
