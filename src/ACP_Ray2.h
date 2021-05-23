@@ -20,6 +20,7 @@
 #include <AI/AI.h>
 #include <POS/POS.h>
 #include <DNM/DNM.h>
+#include <GLI/GLI.h>
 #include <JFFTXT/JFFTXT.h>
 
 

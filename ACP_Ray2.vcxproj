@@ -113,6 +113,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="src\DNM\DNM.h" />
     <ClInclude Include="src\DNM\DNM_Def.h" />
     <ClInclude Include="src\DNM\DNM_Ext.h" />
+    <ClInclude Include="src\GLI\GLI.h" />
     <ClInclude Include="src\HIE\HIE_Def.h" />
     <ClInclude Include="src\private\framework.h" />
     <ClInclude Include="src\GAM\GAM.h" />
@@ -130,6 +131,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClCompile Include="src\dllmain.c" />
     <ClCompile Include="src\DNM\DNM_Ext.c" />
     <ClCompile Include="src\GAM\GAM.c" />
+    <ClCompile Include="src\GLI\GLI.c" />
     <ClCompile Include="src\HIE\HIE.c" />
     <ClCompile Include="src\HIE\HIE_Ext.c" />
     <ClCompile Include="src\JFFTXT\JFFTXT.c" />

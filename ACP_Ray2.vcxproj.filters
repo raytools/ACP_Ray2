@@ -75,6 +75,9 @@
     <ClInclude Include="src\DNM\DNM_Def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GLI\GLI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -105,6 +108,9 @@
       <Filter>Source Files\private</Filter>
     </ClCompile>
     <ClCompile Include="src\HIE\HIE_Ext.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GLI\GLI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
