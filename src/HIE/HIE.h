@@ -147,28 +147,27 @@ struct HIE_tdstStandardGame
 	
 	HIE_tdstSuperObject *p_stSuperObject;
 
-	char _field_10[16];
+	int _field_10[2];
 
-	BYTE _field_20;
+	DWORD ulLastTrame;
+	DWORD ubf32Capabilities;
+	BYTE ucTractionFactor;
+	
 	BYTE ucHitPoints;
 	BYTE ucHitPointsMax;
 	BYTE ucHitPointsMaxMax;
 
 	DWORD ulCustomBits;
-
 	BYTE ucPlatformType;
 	BYTE ucMiscFlags;
+	
 	BYTE ucTransparencyZoneMin;
 	BYTE ucTransparencyZoneMax;
 
 	DWORD ulSaveCustomBits;
-
 	BYTE ucSaveHitPoints;
 	BYTE ucSaveHitPointsMax;
 	BYTE ucSaveMiscFlags;
+	
 	BYTE ucTooFarLimit;
-
-	int _field_34[3];
-	char _field_40;
-	BYTE ucActivationBits;
 };
