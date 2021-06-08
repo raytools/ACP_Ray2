@@ -44,6 +44,7 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=MMG/@EntryIndexedValue">MMG</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=MTH/@EntryIndexedValue">MTH</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=POS/@EntryIndexedValue">POS</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=SPTXT/@EntryIndexedValue">SPTXT</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=XAI/@EntryIndexedValue">XAI</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=XDNM/@EntryIndexedValue">XDNM</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=XHIE/@EntryIndexedValue">XHIE</s:String>
