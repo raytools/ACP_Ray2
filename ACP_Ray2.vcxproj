@@ -71,6 +71,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(ProjectDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)
@@ -99,6 +100,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(ProjectDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)
@@ -108,6 +110,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />
     <ClInclude Include="src\ACP_Ray2.h" />
@@ -127,6 +130,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="src\AI\AI_Ext.h" />
     <ClInclude Include="src\HIE\HIE_Ext.h" />
     <ClInclude Include="src\SPTXT\SPTXT.h" />
+    <ClInclude Include="src\SPTXT\SPTXT_Def.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c" />
@@ -140,6 +144,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClCompile Include="src\JFFTXT\JFFTXT.c" />
     <ClCompile Include="src\MMG\MMG.c" />
     <ClCompile Include="src\POS\POS.c" />
+    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c" />
     <ClCompile Include="src\SPTXT\SPTXT.c" />
   </ItemGroup>
   <ItemGroup>

@@ -81,6 +81,12 @@
     <ClInclude Include="src\SPTXT\SPTXT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SPTXT\SPTXT_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -117,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SPTXT\SPTXT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
