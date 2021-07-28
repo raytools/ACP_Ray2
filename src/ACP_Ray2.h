@@ -33,8 +33,10 @@
 
 #ifndef ACP_NO_EXT
 
-#include <HIE/HIE_EXT.h>
-#include <AI/AI_EXT.h>
-#include <DNM/DNM_EXT.h>
+#include <HIE/HIE_Ext.h>
+#include <AI/AI_Ext.h>
+#include <DNM/DNM_Ext.h>
+
+#include <SPTXT/SPTXT.h>
 
 #endif /* ACP_NO_EXT */
