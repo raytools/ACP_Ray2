@@ -13,6 +13,7 @@
 #define FALSE 0
 #define TRUE 1
 
+typedef void *HANDLE;
 typedef int BOOL;
 typedef unsigned long DWORD;
 typedef unsigned short WORD;

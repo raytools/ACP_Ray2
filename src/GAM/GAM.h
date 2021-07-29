@@ -29,3 +29,4 @@ ACP_API extern BYTE (*GAM_fn_ucGetEngineMode)( void );
 ACP_API extern void (*GAM_fn_vChangeEngineMode)( BYTE ucMode );
 ACP_API extern char * (*GAM_fn_p_szGetLevelName)( void );
 ACP_API extern void (*GAM_fn_vAskToChangeLevel)( char *szLevelName, BYTE bSaveGame );
+ACP_API extern HANDLE (*GAM_fn_hGetWindowHandle)( void );

@@ -35,8 +35,9 @@
 	<s:Boolean x:Key="/Default/CodeStyle/Generate/=Implementations/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/CodeStyle/Generate/=Implementations/Options/=Mutable/@EntryIndexedValue">False</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=AI/@EntryIndexedValue">AI</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=D/@EntryIndexedValue">D</s:String>
+	
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=DNM/@EntryIndexedValue">DNM</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=ERM/@EntryIndexedValue">ERM</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=GAM/@EntryIndexedValue">GAM</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=GLI/@EntryIndexedValue">GLI</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=HIE/@EntryIndexedValue">HIE</s:String>
