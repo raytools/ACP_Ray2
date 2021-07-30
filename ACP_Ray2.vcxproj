@@ -132,6 +132,7 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
     <ClInclude Include="src\HIE\HIE_Ext.h" />
     <ClInclude Include="src\SPTXT\SPTXT.h" />
     <ClInclude Include="src\SPTXT\SPTXT_Def.h" />
+    <ClInclude Include="src\TMR\TMR.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c" />
