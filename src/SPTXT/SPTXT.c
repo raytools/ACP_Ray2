@@ -54,7 +54,8 @@ void SPTXT_vDrawString( char *szText, SPTXT_tdstTextInfo *p_stInfo )
 		p_stInfo->X,
 		p_stInfo->Y,
 		p_stInfo->xSize,
-		p_stInfo->ucAlpha
+		p_stInfo->ucAlpha,
+		.bHighlight = p_stInfo->bSelected
 	};
 	MTH2D_tdstVector stTL = { 0 };
 	MTH2D_tdstVector stBR = { 0 };

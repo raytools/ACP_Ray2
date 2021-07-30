@@ -33,4 +33,5 @@ struct SPTXT_tdstTextInfo
 	BYTE ucAlpha;
 	BYTE bFrame;
 	BYTE bRightAlign;
+	BYTE bSelected;
 };
