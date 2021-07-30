@@ -25,6 +25,11 @@ typedef enum GAM_tdeEngineMode
 } GAM_tdeEngineMode;
 
 
+// These should technically be in tdstEngineStructure, but the layout is currently unknown
+ACP_API extern BYTE *const GAM_eEngineMode;
+ACP_API extern BYTE *const GAM_bEngineFrozen;
+
+
 ACP_API extern BYTE (*GAM_fn_ucGetEngineMode)( void );
 ACP_API extern void (*GAM_fn_vChangeEngineMode)( BYTE ucMode );
 ACP_API extern char * (*GAM_fn_p_szGetLevelName)( void );
