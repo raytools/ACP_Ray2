@@ -144,7 +144,7 @@ struct HIE_tdstStandardGame
 
 		int a_lObjectId[3];
 	};
-	
+
 	HIE_tdstSuperObject *p_stSuperObject;
 
 	int _field_10[2];
@@ -152,7 +152,7 @@ struct HIE_tdstStandardGame
 	DWORD ulLastTrame;
 	DWORD ubf32Capabilities;
 	BYTE ucTractionFactor;
-	
+
 	BYTE ucHitPoints;
 	BYTE ucHitPointsMax;
 	BYTE ucHitPointsMaxMax;
@@ -160,7 +160,7 @@ struct HIE_tdstStandardGame
 	DWORD ulCustomBits;
 	BYTE ucPlatformType;
 	BYTE ucMiscFlags;
-	
+
 	BYTE ucTransparencyZoneMin;
 	BYTE ucTransparencyZoneMax;
 
@@ -168,6 +168,41 @@ struct HIE_tdstStandardGame
 	BYTE ucSaveHitPoints;
 	BYTE ucSaveHitPointsMax;
 	BYTE ucSaveMiscFlags;
-	
+
 	BYTE ucTooFarLimit;
+};
+
+struct HIE_tdstFamilyList
+{
+	// TODO: tdstFamily
+	////////////////////////////////////////////////////////////////////////////////
+	// Dear future me:
+	// The original struct was called `LST2_tdstAnchorTotdxHandleToFamilyListDyn`.
+	// The item struct was called `tdstFamilyList_`.
+	// This was somewhat confusing (the item is not a list), so I changed it.
+	// Now it's slightly less confusing but can still cause trouble in the future,
+	// especially while implementing `tdstFamily`.
+	// For that reason I'm leaving this note here.
+
+	//tdstFamily(ListItem) *
+	void *hFirstElement;
+	//tdstFamily(ListItem) *
+	void *hLastElement;
+	int lNumberOfElements;
+};
+
+struct HIE_tdstAlwaysActiveCharacterList
+{
+	HIE_tdstAlwaysActiveCharacter *hFirstElement;
+	HIE_tdstAlwaysActiveCharacter *hLastElement;
+	int lNumberOfElements;
+};
+
+struct HIE_tdstAlwaysActiveCharacter
+{
+	HIE_tdstAlwaysActiveCharacter *hNextBrother;
+	HIE_tdstAlwaysActiveCharacter *hPrevBrother;
+	HIE_tdstAlwaysActiveCharacterList *hFather;
+	HIE_tdstSuperObject *hAlwActSuperObject;
+	BYTE bDynamicAlwaysActive;
 };

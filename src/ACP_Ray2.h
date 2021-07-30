@@ -21,6 +21,10 @@
 #include <POS/POS.h>
 #include <DNM/DNM.h>
 #include <GLI/GLI.h>
+#include <GLI/GLD.h>
+#include <ERM/ERM.h>
+#include <TMR/TMR.h>
+#include <FIL/FIL.h>
 #include <JFFTXT/JFFTXT.h>
 
 

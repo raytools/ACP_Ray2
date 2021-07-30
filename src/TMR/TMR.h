@@ -24,13 +24,13 @@ struct TMR_tdstTimerCount
 struct TMR_tdstEngineTimerStructure
 {
 	DWORD ulFrameNumber;
-	short wTimerHandle;
+	WORD wTimerHandle;
 	DWORD ulCurrentTimerCount;
 	DWORD ulDeltaTimerCount;
 	DWORD a_ulCounter[16];
 	DWORD ulUsefulDeltaTime;
 	DWORD ulPauseTime;
-	float xFrameLength;
+	MTH_tdxReal xFrameLength;
 	TMR_tdstTimerCount stRealTimeCount;
 	TMR_tdstTimerCount stPauseTime;
 	DWORD ulTickPerMs;

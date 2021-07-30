@@ -16,6 +16,8 @@ typedef struct GLI_tdstCamera GLI_tdstCamera;
 typedef struct GLI_tdst2DVertex GLI_tdst2DVertex;
 typedef struct GLI_tdstSpecificAttributesFor3D GLI_tdstSpecificAttributesFor3D;
 typedef struct GLI_tdstViewportManagement GLI_tdstViewportManagement;
+typedef struct GLI_tdstNodeCameraList GLI_tdstNodeCameraList;
+typedef struct GLI_tdstNodeCamera GLI_tdstNodeCamera;
 
 
 ACP_API extern MTH_tdxReal *const GLI_p_fZValueForSprite;
@@ -70,4 +72,19 @@ struct GLI_tdstViewportManagement
 	HIE_tdstSuperObject *hTempCamera;
 	GLI_tdstCamera *p_stCamera;
 	BYTE bValid;
+};
+
+struct GLI_tdstNodeCameraList
+{
+	GLI_tdstNodeCamera *hFirstElement;
+	GLI_tdstNodeCamera *hLastElement;
+	int lNumberOfElements;
+};
+
+struct GLI_tdstNodeCamera
+{
+	HIE_tdstSuperObject *p_stSuperObjectCamera;
+	GLI_tdstNodeCamera *hNextBrother;
+	GLI_tdstNodeCamera *hPrevBrother;
+	GLI_tdstNodeCameraList *hFather;
 };

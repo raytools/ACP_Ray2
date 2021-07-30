@@ -8,8 +8,8 @@
 ///////////////////////
 
 
-ACP_API BYTE *const GAM_p_eEngineMode = 0x500380;
-ACP_API BYTE *const GAM_p_bEngineFrozen = 0x500FAA;
+// Engine structure
+ACP_API GAM_tdstEngineStructure *const GAM_g_stEngineStructure = 0x500380;
 
 
 ACP_API BYTE (*GAM_fn_ucGetEngineMode)( void ) = 0x404C60;
