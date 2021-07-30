@@ -111,6 +111,8 @@ xcopy /Y $(OutDir)*.dll  $(OutDir)lib\</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\ERM\ERM.h" />
+    <ClInclude Include="src\FIL\FIL.h" />
+    <ClInclude Include="src\GLI\GLD.h" />
     <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />
