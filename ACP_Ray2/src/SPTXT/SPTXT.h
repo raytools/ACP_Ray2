@@ -1,8 +1,8 @@
 #pragma once
 
 #include "SPTXT_Def.h"
-#include <MTH.h>
-#include <apidef.h>
+#include "../MTH.h"
+#include "../apidef.h"
 
 
 //////////////////////////////////////////

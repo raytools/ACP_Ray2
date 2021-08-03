@@ -1,7 +1,7 @@
 #include "HIE_Ext.h"
 #include "HIE.h"
-#include <MMG/MMG.h>
-#include <framework.h>
+#include "../MMG/MMG.h"
+#include "../private/framework.h"
 
 
 ///////////////////

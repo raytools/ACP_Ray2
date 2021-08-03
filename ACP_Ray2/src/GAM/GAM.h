@@ -1,12 +1,12 @@
 #pragma once
 
-#include <HIE/HIE.h>
-#include <GLI/GLI.h>
-#include <GLI/GLD.h>
-#include <FIL/FIL.h>
-#include <TMR/TMR.h>
-#include <MTH.h>
-#include <apidef.h>
+#include "../HIE/HIE.h"
+#include "../GLI/GLI.h"
+#include "../GLI/GLD.h"
+#include "../FIL/FIL.h"
+#include "../TMR/TMR.h"
+#include "../MTH.h"
+#include "../apidef.h"
 
 
 ///////////////////////

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "apidef.h"
 
 
@@ -13,19 +14,19 @@
 // Modules
 ////////////
 
-#include <MTH.h>
-#include <MMG/MMG.h>
-#include <GAM/GAM.h>
-#include <HIE/HIE.h>
-#include <AI/AI.h>
-#include <POS/POS.h>
-#include <DNM/DNM.h>
-#include <GLI/GLI.h>
-#include <GLI/GLD.h>
-#include <ERM/ERM.h>
-#include <TMR/TMR.h>
-#include <FIL/FIL.h>
-#include <JFFTXT/JFFTXT.h>
+#include "MTH.h"
+#include "MMG/MMG.h"
+#include "GAM/GAM.h"
+#include "HIE/HIE.h"
+#include "AI/AI.h"
+#include "POS/POS.h"
+#include "DNM/DNM.h"
+#include "GLI/GLI.h"
+#include "GLI/GLD.h"
+#include "ERM/ERM.h"
+#include "TMR/TMR.h"
+#include "FIL/FIL.h"
+#include "JFFTXT/JFFTXT.h"
 
 
 ///////////////
@@ -37,10 +38,10 @@
 
 #ifndef ACP_NO_EXT
 
-#include <HIE/HIE_Ext.h>
-#include <AI/AI_Ext.h>
-#include <DNM/DNM_Ext.h>
+#include "HIE/HIE_Ext.h"
+#include "AI/AI_Ext.h"
+#include "DNM/DNM_Ext.h"
 
-#include <SPTXT/SPTXT.h>
+#include "SPTXT/SPTXT.h"
 
 #endif /* ACP_NO_EXT */

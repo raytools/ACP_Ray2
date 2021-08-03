@@ -1,8 +1,8 @@
 #pragma once
 
 #include "DNM_Def.h"
-#include <HIE/HIE_Def.h>
-#include <MTH.h>
+#include "../HIE/HIE_Def.h"
+#include "../MTH.h"
 
 
 //////////////////////////

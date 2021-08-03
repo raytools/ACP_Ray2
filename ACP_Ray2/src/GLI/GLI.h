@@ -1,8 +1,8 @@
 #pragma once
 
-#include <HIE/HIE_Def.h>
-#include <MTH.h>
-#include <apidef.h>
+#include "../HIE/HIE_Def.h"
+#include "../MTH.h"
+#include "../apidef.h"
 
 
 //////////////////////////

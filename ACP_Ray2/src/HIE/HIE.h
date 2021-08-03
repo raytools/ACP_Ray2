@@ -1,10 +1,10 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
-#include <AI/AI_Def.h>
-#include <DNM/DNM_Def.h>
-#include <MTH.h>
-#include <apidef.h>
+#include "../AI/AI_Def.h"
+#include "../DNM/DNM_Def.h"
+#include "../MTH.h"
+#include "../apidef.h"
 
 
 ///////////////////////////

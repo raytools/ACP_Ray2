@@ -1,6 +1,6 @@
 ﻿#include "SPTXT_Private.h"
-#include <MTH.h>
-#include <framework.h>
+#include "../../MTH.h"
+#include "../../private/framework.h"
 
 
 //////////////////////////////

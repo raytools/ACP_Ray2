@@ -1,8 +1,8 @@
 #include "SPTXT.h"
 #include "private/SPTXT_Private.h"
-#include <JFFTXT/JFFTXT.h>
-#include <GLI/GLI.h>
-#include <framework.h>
+#include "../JFFTXT/JFFTXT.h"
+#include "../GLI/GLI.h"
+#include "../private/framework.h"
 #include <detours.h>
 
 

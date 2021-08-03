@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SPTXT/SPTXT_Def.h>
+#include "../SPTXT_Def.h"
 
 
 ////////////////////////////////////
