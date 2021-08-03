@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{1489c536-ded5-4a81-a3b9-a3c6d9c57f04}</ProjectGuid>
+    <RootNamespace>ACPRay2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;ACPRAY2_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\private;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(SolutionDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(SolutionDir)"
+robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc\$(ProjectName)" *.h /S /PURGE /XD "private" /IS /IT /NP
+robocopy "$(OutDir)." "$(SolutionDir)bin\$(Configuration)\lib" *.dll *.lib /S /IS /IT /NP
+cd .</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;ACPRAY2_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\private;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(SolutionDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(SolutionDir)"
+robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc\$(ProjectName)" *.h /S /PURGE /XD "private" /IS /IT /NP
+robocopy "$(OutDir)." "$(SolutionDir)bin\$(Configuration)\lib" *.dll *.lib /S /IS /IT /NP
+cd .</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ERM\ERM.h" />
+    <ClInclude Include="src\FIL\FIL.h" />
+    <ClInclude Include="src\GLI\GLD.h" />
+    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
+    <ClInclude Include="src\AI\AI_Def.h" />
+    <ClInclude Include="src\apidef.h" />
+    <ClInclude Include="src\ACP_Ray2.h" />
+    <ClInclude Include="src\AI\AI.h" />
+    <ClInclude Include="src\DNM\DNM.h" />
+    <ClInclude Include="src\DNM\DNM_Def.h" />
+    <ClInclude Include="src\DNM\DNM_Ext.h" />
+    <ClInclude Include="src\GLI\GLI.h" />
+    <ClInclude Include="src\HIE\HIE_Def.h" />
+    <ClInclude Include="src\private\framework.h" />
+    <ClInclude Include="src\GAM\GAM.h" />
+    <ClInclude Include="src\JFFTXT\JFFTXT.h" />
+    <ClInclude Include="src\MMG\MMG.h" />
+    <ClInclude Include="src\POS\POS.h" />
+    <ClInclude Include="src\MTH.h" />
+    <ClInclude Include="src\HIE\HIE.h" />
+    <ClInclude Include="src\AI\AI_Ext.h" />
+    <ClInclude Include="src\HIE\HIE_Ext.h" />
+    <ClInclude Include="src\SPTXT\SPTXT.h" />
+    <ClInclude Include="src\SPTXT\SPTXT_Def.h" />
+    <ClInclude Include="src\TMR\TMR.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AI\AI.c" />
+    <ClCompile Include="src\AI\AI_Ext.c" />
+    <ClCompile Include="src\dllmain.c" />
+    <ClCompile Include="src\DNM\DNM_Ext.c" />
+    <ClCompile Include="src\ERM\ERM.c" />
+    <ClCompile Include="src\GAM\GAM.c" />
+    <ClCompile Include="src\GLI\GLI.c" />
+    <ClCompile Include="src\HIE\HIE.c" />
+    <ClCompile Include="src\HIE\HIE_Ext.c" />
+    <ClCompile Include="src\JFFTXT\JFFTXT.c" />
+    <ClCompile Include="src\MMG\MMG.c" />
+    <ClCompile Include="src\POS\POS.c" />
+    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c" />
+    <ClCompile Include="src\SPTXT\SPTXT.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
