@@ -114,10 +114,13 @@ cd .</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ldrdef.h" />
+    <ClInclude Include="src\Loader.h" />
     <ClInclude Include="src\private\framework.h" />
+    <ClInclude Include="src\private\Ldr_Private.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.c" />
+    <ClCompile Include="src\Loader.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACP_Ray2\ACP_Ray2.vcxproj">

@@ -24,9 +24,18 @@
     <ClInclude Include="src\ldrdef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\private\Ldr_Private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Loader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
