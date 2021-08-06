@@ -65,6 +65,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
       <AdditionalIncludeDirectories>$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -92,6 +93,7 @@ cd .</Command>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
       <AdditionalIncludeDirectories>$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -113,14 +115,17 @@ cd .</Command>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cfg\Config.h" />
     <ClInclude Include="src\ldrdef.h" />
-    <ClInclude Include="src\Loader.h" />
+    <ClInclude Include="src\ldr\Loader.h" />
+    <ClInclude Include="src\err\Errlog.h" />
     <ClInclude Include="src\private\framework.h" />
-    <ClInclude Include="src\private\Ldr_Private.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\cfg\Config.c" />
     <ClCompile Include="src\dllmain.c" />
-    <ClCompile Include="src\Loader.c" />
+    <ClCompile Include="src\ldr\Loader.c" />
+    <ClCompile Include="src\err\Errlog.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACP_Ray2\ACP_Ray2.vcxproj">
