@@ -4,7 +4,7 @@
 
 
 #define C_MaxError 512
-#define C_szSeparator "============================================================"
+#define C_szSeparator "======================================================================"
 
 
 char const C_szLogFileName[] = "LdrError.log";

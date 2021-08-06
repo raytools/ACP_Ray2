@@ -8,8 +8,9 @@
 
 typedef enum LDR_tdeCfgSection
 {
-	E_Cfg_General = 1,
-	E_Cfg_LoadOrder = 2,
+	E_Cfg_End,
+	E_Cfg_General,
+	E_Cfg_LoadOrder,
 	
 } LDR_tdeCfgSection;
 

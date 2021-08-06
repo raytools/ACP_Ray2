@@ -115,18 +115,28 @@ BOOL CFG_fn_bReadCfgFile( void )
 		return FALSE;
 	}
 
-	LDR_tdeCfgSection ulSection = CFG_fn_ucReadNextByte(hFile);
-	switch ( ulSection )
+	LDR_tdeCfgSection ulSection;
+	do
 	{
-	case E_Cfg_General:
-		CFG_fn_vReadGeneralCfg(hFile);
-		break;
+		ulSection = CFG_fn_ucReadNextByte(hFile);
 
-	case E_Cfg_LoadOrder:
-		CFG_fn_vReadLoadOrder(hFile);
-		break;
+		switch ( ulSection )
+		{
+		case E_Cfg_General:
+			CFG_fn_vReadGeneralCfg(hFile);
+			break;
+
+		case E_Cfg_LoadOrder:
+			CFG_fn_vReadLoadOrder(hFile);
+			break;
+
+		case E_Cfg_End:
+			goto _EndReadCfg;
+		}
 	}
+	while ( ulSection );
 
+_EndReadCfg:
 	fclose(hFile);
 	return TRUE;
 }
