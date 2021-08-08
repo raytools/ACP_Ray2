@@ -1,14 +1,14 @@
 #include "Config.h"
-#include "../ldr/Loader.h"
-#include "../err/Errlog.h"
-#include "../private/framework.h"
+#include "Errlog.h"
+#include "../Loader.h"
+#include "framework.h"
 
 
 char const C_szCfgFile[] = "Loader.cfg";
 
-DWORD g_ulNbMods = 0;
-BYTE g_bReticulateSplines = 0; // reserved
 BYTE g_bEnableErm = FALSE;
+BYTE g_bReticulateSplines = 0; // reserved
+DWORD g_ulNbLoadOrder = 0;
 char **g_a_szLoadOrder = NULL;
 
 
@@ -19,7 +19,6 @@ FILE * CFG_fn_hOpenCfgFileForReading( void )
 
 	return fopen(szPath, "rb");
 }
-
 
 DWORD CFG_fn_ulReadNextDword( FILE *hFile )
 {
@@ -45,10 +44,10 @@ BYTE CFG_fn_ucReadNextByte( FILE *hFile )
 
 char * CFG_fn_szReadNextString( FILE *hFile )
 {
-	char szBuffer[MAX_STRING];
+	char szBuffer[C_ulMaxString];
 	BYTE nChars = CFG_fn_ucReadNextByte(hFile);
 
-	if ( nChars == 0 || nChars > MAX_STRING )
+	if ( nChars == 0 || nChars > C_ulMaxString )
 	{
 		ERR_Error("Incorrect string length declared in config file");
 		return NULL;
@@ -97,7 +96,7 @@ void CFG_fn_vReadLoadOrder( FILE *hFile )
 		g_a_szLoadOrder[i] = CFG_fn_szReadNextString(hFile);
 	}
 
-	g_ulNbMods = nMods;
+	g_ulNbLoadOrder = nMods;
 }
 
 BOOL CFG_fn_bReadCfgFile( void )
@@ -131,12 +130,11 @@ BOOL CFG_fn_bReadCfgFile( void )
 			break;
 
 		case E_Cfg_End:
-			goto _EndReadCfg;
+			break;
 		}
 	}
 	while ( ulSection );
 
-_EndReadCfg:
 	fclose(hFile);
 	return TRUE;
 }

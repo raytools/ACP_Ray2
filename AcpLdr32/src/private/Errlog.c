@@ -1,9 +1,9 @@
 #include "Errlog.h"
-#include "../ldr/Loader.h"
-#include "../private/framework.h"
+#include "../Loader.h"
+#include "framework.h"
 
 
-#define C_MaxError 512
+#define C_MaxError 512u
 #define C_szSeparator "======================================================================"
 
 
@@ -21,6 +21,7 @@ void ERR_fn_vPrintToLog( char const *szMsg )
 	if ( hFile )
 	{
 		fprintf(hFile, "%s\n", szMsg);
+		fclose(hFile);
 	}
 }
 

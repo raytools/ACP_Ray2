@@ -24,13 +24,19 @@
     <ClInclude Include="src\ldrdef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ldr\Loader.h">
+    <ClInclude Include="src\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cfg\Config.h">
+    <ClInclude Include="src\private\Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\err\Errlog.h">
+    <ClInclude Include="src\private\Errlog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mintypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AcpLdr32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,13 +44,13 @@
     <ClCompile Include="src\dllmain.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ldr\Loader.c">
+    <ClCompile Include="src\Loader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cfg\Config.c">
+    <ClCompile Include="src\private\Config.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\err\Errlog.c">
+    <ClCompile Include="src\private\Errlog.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

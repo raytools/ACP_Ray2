@@ -115,17 +115,19 @@ cd .</Command>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\cfg\Config.h" />
+    <ClInclude Include="src\AcpLdr32.h" />
+    <ClInclude Include="src\private\Config.h" />
     <ClInclude Include="src\ldrdef.h" />
-    <ClInclude Include="src\ldr\Loader.h" />
-    <ClInclude Include="src\err\Errlog.h" />
+    <ClInclude Include="src\Loader.h" />
+    <ClInclude Include="src\private\Errlog.h" />
+    <ClInclude Include="src\mintypes.h" />
     <ClInclude Include="src\private\framework.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\cfg\Config.c" />
+    <ClCompile Include="src\private\Config.c" />
     <ClCompile Include="src\dllmain.c" />
-    <ClCompile Include="src\ldr\Loader.c" />
-    <ClCompile Include="src\err\Errlog.c" />
+    <ClCompile Include="src\Loader.c" />
+    <ClCompile Include="src\private\Errlog.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACP_Ray2\ACP_Ray2.vcxproj">

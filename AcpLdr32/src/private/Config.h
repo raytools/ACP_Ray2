@@ -1,10 +1,11 @@
 #pragma once
 
-#include "../private/framework.h"
+#include "../mintypes.h"
 
 
-#define MAX_STRING 128
+#define C_ulMaxString 128u
 #define C_ulMagicHeader 0xC0DE0005u
+
 
 typedef enum LDR_tdeCfgSection
 {
@@ -15,9 +16,9 @@ typedef enum LDR_tdeCfgSection
 } LDR_tdeCfgSection;
 
 
-extern DWORD g_ulNbMods;
-extern BYTE g_bReticulateSplines;
 extern BYTE g_bEnableErm;
+extern BYTE g_bReticulateSplines;
+extern DWORD g_ulNbLoadOrder;
 extern char **g_a_szLoadOrder;
 
 
