@@ -51,15 +51,27 @@ BOOL LDR_fn_bInitSubmodule( DWORD ulSubmoduleId )
 	char szErr[256];
 
 	LDR_tdstSubmoduleInfo *p_stInfo = &g_a_stSubmodules[ulSubmoduleId].stInfo;
-	BOOL bResult = p_stInfo->p_fnInitProc(ulSubmoduleId);
+	LDR_tdfnInitProc p_fnInitProc = p_stInfo->p_fnInitProc;
+
+	if ( !p_fnInitProc )
+	{
+		sprintf(
+			szErr,
+			"Failed to initialise submodule %u : '%s' - init procedure not set!",
+			ulSubmoduleId, p_stInfo->szName
+		);
+		ERR_Error(szErr);
+		return FALSE;
+	}
+
+	BOOL bResult = p_fnInitProc(ulSubmoduleId);
 
 	if ( !bResult )
 	{
 		sprintf(
 			szErr,
-			"Failed to initialise submodule %u : '%s'. Check application log for details.",
-			ulSubmoduleId,
-			p_stInfo->szName
+			"Submodule %u : '%s' was not initialised, check application log for details.",
+			ulSubmoduleId, p_stInfo->szName
 		);
 		ERR_Error(szErr);
 		return FALSE;
@@ -90,7 +102,7 @@ void LDR_fn_vLoadAllSubmodules( void )
 void LDR_fn_vInitAllSubmodules( void )
 {
 	DWORD ulNbInit = 0;
-	
+
 	for ( DWORD i = 0; i < g_ulNbSubmodules; i++ )
 	{
 		BOOL bResult = LDR_fn_bInitSubmodule(i);
