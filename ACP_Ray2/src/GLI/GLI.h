@@ -19,12 +19,20 @@ typedef struct GLI_tdstViewportManagement GLI_tdstViewportManagement;
 typedef struct GLI_tdstNodeCameraList GLI_tdstNodeCameraList;
 typedef struct GLI_tdstNodeCamera GLI_tdstNodeCamera;
 
+typedef struct GLI_tdstTexture GLI_tdstTexture;
+
 
 ACP_API extern MTH_tdxReal *const GLI_p_fZValueForSprite;
 ACP_API extern BYTE *const GLI_p_bForceAAAColor;
 
-ACP_API extern void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha,
-                                          void *pContext );
+ACP_API extern DWORD *const GLI_g_ulNumberOfLoadedTexture;
+ACP_API extern void **const GLI_g_hConcatTexturesFile;
+ACP_API extern void **const GLI_gs_p_ConvertBufferMipMapping;
+
+
+ACP_API extern void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, void *pContext );
+ACP_API extern void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
+ACP_API extern char * (*GLI_fn_szGetPathOfTexture)( void );
 
 
 struct GLI_tdst2DVertex
@@ -87,4 +95,33 @@ struct GLI_tdstNodeCamera
 	GLI_tdstNodeCamera *hNextBrother;
 	GLI_tdstNodeCamera *hPrevBrother;
 	GLI_tdstNodeCameraList *hFather;
+};
+
+// note: may be incorrect
+struct GLI_tdstTexture
+{
+	DWORD ulLoadedTextureFormat;
+	BYTE bIsAvailable;
+	BYTE ucTextureQuality;
+	BYTE ucDepthQuality;
+	void *p_vBitMap;
+	void *p_vColorTable;
+	void *p_stSpecParam;
+	DWORD lTextureCaps;
+	WORD wHeight;
+	WORD wWidth;
+	WORD wRealHeight;
+	WORD wRealWidth;
+	float xAddU;
+	float xAddV;
+	BOOL lIncrementIsEnable;
+	DWORD ulChromakeyColorRGBA;
+	DWORD ulBlendColorRGBA;
+	int lNumberOfLod;
+	DWORD lCompressionCounter;
+	DWORD lTypeOfCompression;
+	DWORD lTypeOfMipMapping;
+	BYTE ucBilinearMode;
+	BYTE ucCylingMode;
+	char szFileName[128];
 };
