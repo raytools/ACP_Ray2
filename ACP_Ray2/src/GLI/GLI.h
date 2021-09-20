@@ -25,14 +25,19 @@ typedef struct GLI_tdstTexture GLI_tdstTexture;
 ACP_API extern MTH_tdxReal *const GLI_p_fZValueForSprite;
 ACP_API extern BYTE *const GLI_p_bForceAAAColor;
 
-ACP_API extern DWORD *const GLI_g_ulNumberOfLoadedTexture;
 ACP_API extern void **const GLI_g_hConcatTexturesFile;
 ACP_API extern void **const GLI_gs_p_ConvertBufferMipMapping;
+
+ACP_API extern DWORD *const GLI_g_ulNumberOfLoadedTexture;
+ACP_API extern GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
+ACP_API extern DWORD *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
 
 ACP_API extern void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, void *pContext );
 ACP_API extern void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
 ACP_API extern char * (*GLI_fn_szGetPathOfTexture)( void );
+ACP_API extern void (*GLI_vComputeTextures)( void );
+ACP_API extern void (*GLI_vReloadTextures)( void );
 
 
 struct GLI_tdst2DVertex

@@ -143,6 +143,9 @@
     <ClCompile Include="src\ERM\ERM.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\FIL\FIL.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

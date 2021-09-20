@@ -14,6 +14,10 @@ typedef struct FIL_tdstFileNameList FIL_tdstFileNameList;
 typedef struct FIL_tdstFileNameListElement FIL_tdstFileNameListElement;
 
 
+ACP_API extern void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath );
+ACP_API extern void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile );
+
+
 struct FIL_tdstFileNameList
 {
 	FIL_tdstFileNameListElement *hFirstElementDyn;

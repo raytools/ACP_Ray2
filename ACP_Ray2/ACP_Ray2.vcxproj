@@ -142,6 +142,7 @@ cd .</Command>
     <ClCompile Include="src\dllmain.c" />
     <ClCompile Include="src\DNM\DNM_Ext.c" />
     <ClCompile Include="src\ERM\ERM.c" />
+    <ClCompile Include="src\FIL\FIL.c" />
     <ClCompile Include="src\GAM\GAM.c" />
     <ClCompile Include="src\GLI\GLI.c" />
     <ClCompile Include="src\HIE\HIE.c" />
