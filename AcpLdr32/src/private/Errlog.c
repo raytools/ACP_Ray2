@@ -27,8 +27,7 @@ void ERR_fn_vPrintToLog( char const *szMsg )
 
 void ERR_fn_vPrintError( char const *szMsg, char const *szFunc, short wLineNum, char const *szFile )
 {
-	if ( !g_bErrInit )
-		return;
+	if ( !g_bErrInit ) return;
 
 	sprintf(
 		g_szBuffer,
@@ -52,7 +51,7 @@ void ERR_fn_vPrintWarning( char const *szMsg, char const *szFunc, short wLineNum
 		"-> %s : %s\n",
 		szFile, wLineNum, szFunc, szMsg
 	);
-	
+
 	ERR_fn_vPrintToLog(g_szBuffer);
 }
 
@@ -66,7 +65,7 @@ void ERR_fn_vPrintInfo( char const *szMsg, char const *szFunc )
 		"-> %s : %s\n",
 		szFunc, szMsg
 	);
-	
+
 	ERR_fn_vPrintToLog(g_szBuffer);
 }
 

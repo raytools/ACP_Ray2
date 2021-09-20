@@ -10,7 +10,9 @@
 
 char const C_szAcpDir[] = ".\\ACP";
 char const C_szModDir[] = ".\\ACP\\Mods";
+
 char const C_szModInfo[] = "ModInfo";
+char const C_szModInit[] = "ModInit";
 
 DWORD g_ulNbSubmodules = 0;
 LDR_tdstSubmodule g_a_stSubmodules[C_ulMaxSubmodules] = { 0 };
@@ -36,10 +38,20 @@ BOOL LDR_fn_bLoadSubmodule( char const *szPath )
 		return FALSE;
 	}
 
+	LDR_tdfnInitProc p_fnInitProc = (LDR_tdfnInitProc)GetProcAddress(hDll, C_szModInit);
+	if ( !p_fnInitProc )
+	{
+		sprintf(szErr, "Cannot load submodule '%s' - Submodule init procedure invalid or not exported!", szPath);
+		ERR_Error(szErr);
+		return FALSE;
+	}
+
 	DWORD ulSubmoduleId = g_ulNbSubmodules++;
 	LDR_tdstSubmodule *p_stSubmodule = &g_a_stSubmodules[ulSubmoduleId];
+	
 	p_stSubmodule->hDLl = hDll;
 	p_stSubmodule->stInfo = *p_stInfo;
+	p_stSubmodule->p_fnInitProc = p_fnInitProc;
 
 	sprintf(szErr, "Submodule '%s' loaded with id %u.", p_stSubmodule->stInfo.szName, ulSubmoduleId);
 	ERR_Info(szErr);
@@ -50,8 +62,9 @@ BOOL LDR_fn_bInitSubmodule( DWORD ulSubmoduleId )
 {
 	char szErr[256];
 
-	LDR_tdstSubmoduleInfo *p_stInfo = &g_a_stSubmodules[ulSubmoduleId].stInfo;
-	LDR_tdfnInitProc p_fnInitProc = p_stInfo->p_fnInitProc;
+	LDR_tdstSubmodule *p_stSubmodule = &g_a_stSubmodules[ulSubmoduleId];
+	LDR_tdstSubmoduleInfo *p_stInfo = &p_stSubmodule->stInfo;
+	LDR_tdfnInitProc p_fnInitProc = p_stSubmodule->p_fnInitProc;
 
 	if ( !p_fnInitProc )
 	{
