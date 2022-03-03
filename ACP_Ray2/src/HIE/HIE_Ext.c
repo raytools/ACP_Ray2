@@ -26,10 +26,10 @@ XHIE_tdst_llAlways *const p_llAlways = (XHIE_tdst_llAlways *)0x004A6B18;
 // Object Info
 ////////////////
 
-ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectInfoType ulInfoType )
+ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstEngineObject *p_stPerso, XHIE_tdeObjectInfoType ulInfoType )
 {
 	XHIE_tdst_llObjectInfo *pllInfo = &XHIE_a_llObjectNames[ulInfoType];
-	int nId = p_stPerso->p_stStdGame->a_lObjectId[ulInfoType];
+	int nId = p_stPerso->p_stStdGame->a_lObjectType[ulInfoType];
 
 	if ( nId < 0 || nId >= pllInfo->nItems )
 		return NULL;
@@ -45,10 +45,10 @@ ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectI
 
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType )
 {
-	if ( p_stSpo->ulType != e_OT_Perso )
+	if ( p_stSpo->ulType != HIE_C_ulActor )
 		return NULL;
 
-	return XHIE_fn_szGetPersoName(p_stSpo->stEngineObject.p_stPerso, ulInfoType);
+	return XHIE_fn_szGetPersoName(p_stSpo->hLinkedObject.p_stCharacter, ulInfoType);
 }
 
 ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType )
@@ -135,7 +135,7 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 	return NULL;
 }
 
-ACP_API HIE_tdstPerso * XHIE_fn_p_stFindAlwaysObject( char const *szName )
+ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName )
 {
 	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
 	{

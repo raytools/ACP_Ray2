@@ -99,6 +99,15 @@
     <ClInclude Include="src\FIL\FIL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\HIE\HIE_StdGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\basedef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\AI_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
+#include "HIE_StdGame.h"
 #include "../AI/AI_Def.h"
 #include "../DNM/DNM_Def.h"
 #include "../MTH.h"
@@ -23,63 +24,63 @@ ACP_API extern void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_t
 
 typedef enum HIE_tdeSpoFlags
 {
-	SOF_NO_COLLISION = 1 << 0,
-	SOF_INVISIBLE = 1 << 1,
-	SOF_NO_TRANSFORM_MATRIX = 1 << 2,
-	SOF_ZOOM_INSTEAD_OF_SCALE = 1 << 3,
-	SOF_BOUNDING_BOX_INSTEAD_OF_SPHERE = 1 << 4,
-	SOF_DISPLAY_ON_TOP = 1 << 5,
-	SOF_NO_RAY_TRACING = 1 << 6,
-	SOF_NO_SHADOW = 1 << 7,
-	SOF_SEMI_LOOKAT = 1 << 8,
-	SOF_SPECIAL_BOUNDING_VOLUMES = 1 << 9,
-	SOF_FLAG10 = 1 << 10,
-	SOF_FLAG11 = 1 << 11,
-	SOF_FLAG12 = 1 << 12,
-	SOF_FLAG13 = 1 << 13,
-	SOF_FLAG14 = 1 << 14,
-	SOF_INFLUENCED_BY_MAGNET = 1 << 15,
-	SOF_TRANSPARENT = 1 << 16,
-	SOF_NO_LIGHTING = 1 << 17,
-	SOF_SUPERIMPOSED_CLIPPING = 1 << 18,
-	SOF_OUTLINE_MODE = 1 << 19,
-	SOF_FLAG20 = 1 << 20,
-	SOF_FLAG21 = 1 << 21,
-	SOF_FLAG22 = 1 << 22,
-	SOF_FLAG23 = 1 << 23,
-	SOF_FLAG24 = 1 << 24,
-	SOF_FLAG25 = 1 << 25,
-	SOF_FLAG26 = 1 << 26,
-	SOF_FLAG27 = 1 << 27,
-	SOF_FLAG28 = 1 << 28,
-	SOF_FLAG29 = 1 << 29,
-	SOF_FLAG30 = 1 << 30,
-	SOF_FLAG31 = 1 << 31
+	HIE_C_Flag_ulNotPickable = 1 << 0,
+	HIE_C_Flag_ulHidden = 1 << 1,
+	HIE_C_Flag_ulNoTransformationMatrix = 1 << 2,
+	HIE_C_Flag_ulZoomInsteadOfScale = 1 << 3,
+	HIE_C_Flag_ulTypeOfBoundingVolume = 1 << 4,
+	HIE_C_Flag_ulSuperimposed = 1 << 5,
+	HIE_C_Flag_ulNotHitByRayTrace = 1 << 6,
+	HIE_C_Flag_ulNoShadowOnMe = 1 << 7,
+	HIE_C_Flag_ulSemiLookAt = 1 << 8,
+	HIE_C_Flag_ulCheckChildren = 1 << 9,
+	HIE_C_Flag_MagnetModification = 1 << 15,
+	HIE_C_Flag_ModuleTransparency = 1 << 16,
+	HIE_C_Flag_ExcluLight = 1 << 17,
+	HIE_C_Flag_SuperimposedClipping = 1 << 18,
+	HIE_C_Flag_OutlineMode = 1 << 19
 } HIE_tdeSpoFlags;
 
-typedef enum HIE_tdeObjType
+typedef enum HIE_tdeTypeOfObject
 {
-	e_OT_Unknown = 0x0,
-	e_OT_World = 0x1,
-	e_OT_Perso = 0x2,
-	e_OT_Sector = 0x4,
-	e_OT_PhysicalObject = 0x8,
-	e_OT_IPO = 0x20,
-	e_OT_IPO2 = 0x40,
-	e_OT_GeometricObject = 0x400,
-	e_OT_GeometricShadowObj = 0x80000,
-} HIE_tdeObjType;
+	HIE_C_ulUnknown = 0x0,
+	HIE_C_ulSuperObject = 0x1,
+	HIE_C_ulActor = 0x2,
+	HIE_C_ulSector = 0x4,
+	HIE_C_ulPO = 0x8,
+	HIE_C_ulPO_Mirror = 0x10,
+	HIE_C_ulIPO = 0x20,
+	HIE_C_ulIPO_Mirror = 0x40,
+	HIE_C_ulSpecialEffect = 0x80,
+	HIE_C_ulNoAction = 0x100,
+	HIE_C_ulMirror = 0x200,
+	HIE_C_ulEDT_Geometric = 0x400,
+	HIE_C_ulEDT_Light = 0x800,
+	HIE_C_ulEDT_Waypoint = 0x1000,
+	HIE_C_ulEDT_ZdD = 0x2000,
+	HIE_C_ulEDT_ZdE = 0x4000,
+	HIE_C_ulEDT_ZdM = 0x8000,
+	HIE_C_ulEDT_ZdR = 0x10000,
+	HIE_C_ulEDT_BdV = 0x20000,
+	HIE_C_ulEDT_TestPoint = 0x40000
+} HIE_tdeTypeOfObject;
 
-union HIE_tdstEngineObject
+union HIE_tduLinkedObject
 {
-	HIE_tdstPerso *p_stPerso;
+	HIE_tdstSuperObject *p_stSuperObject;
+	HIE_tdstEngineObject *p_stCharacter;
 	HIE_tdstSector *p_stSector;
+	void *p_stPhysicalObject;
+	void *p_stInstanciatedPhysicalObject;
+	void *p_stGeometricObject;
+	void *p_stLight;
+	void* p_Void;
 };
 
 struct HIE_tdstSuperObject
 {
-	HIE_tdeObjType ulType;
-	HIE_tdstEngineObject stEngineObject;
+	HIE_tdeTypeOfObject ulType;
+	HIE_tduLinkedObject hLinkedObject;
 
 	HIE_tdstSuperObject *p_stFirstChild;
 	HIE_tdstSuperObject *p_stLastChild;
@@ -109,7 +110,8 @@ struct HIE_tdstSuperObject
 // SPO Types
 //////////////
 
-struct HIE_tdstPerso
+
+struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 {
 	// TODO: replace void pointers
 	void *p_stP3DData;
@@ -131,46 +133,6 @@ struct HIE_tdstSector
 	void *dynamicLightsList;
 };
 
-struct HIE_tdstStandardGame
-{
-	union
-	{
-		struct
-		{
-			int lFamilyID;
-			int lModelID;
-			int lInstanceID;
-		};
-
-		int a_lObjectId[3];
-	};
-
-	HIE_tdstSuperObject *p_stSuperObject;
-
-	int _field_10[2];
-
-	DWORD ulLastTrame;
-	DWORD ubf32Capabilities;
-	BYTE ucTractionFactor;
-
-	BYTE ucHitPoints;
-	BYTE ucHitPointsMax;
-	BYTE ucHitPointsMaxMax;
-
-	DWORD ulCustomBits;
-	BYTE ucPlatformType;
-	BYTE ucMiscFlags;
-
-	BYTE ucTransparencyZoneMin;
-	BYTE ucTransparencyZoneMax;
-
-	DWORD ulSaveCustomBits;
-	BYTE ucSaveHitPoints;
-	BYTE ucSaveHitPointsMax;
-	BYTE ucSaveMiscFlags;
-
-	BYTE ucTooFarLimit;
-};
 
 struct HIE_tdstFamilyList
 {

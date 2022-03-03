@@ -11,9 +11,9 @@
 
 ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
 {
-	if ( p_stSpo->ulType != e_OT_Perso ) return -1;
+	if ( p_stSpo->ulType != HIE_C_ulActor ) return -1;
 	
-	AI_tdstBrain *pBrain = p_stSpo->stEngineObject.p_stPerso->p_stBrain;
+	AI_tdstBrain *pBrain = p_stSpo->hLinkedObject.p_stCharacter->p_stBrain;
 	if ( !pBrain || !pBrain->p_stMind ) return -1;
 
 	AI_tdstDsgMem *pDsgMem = pBrain->p_stMind->p_stDsgMem;
@@ -22,7 +22,7 @@ ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsg
 	AI_tdstDsgVar *pDsgVar = *pDsgMem->pp_stDsgVar;
 	int nEnumerated = 0;
 
-	for ( BYTE i = 0; i < pDsgVar->nDsgVar; i++ )
+	for ( BYTE i = 0; i < pDsgVar->ucNbDsgVar; i++ )
 	{
 		AI_tdstDsgVarInfo *pInfo = &pDsgVar->a_stDsgVarInfo[i];
 
@@ -32,20 +32,20 @@ ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsg
 
 		if ( pDsgMem->p_cDsgMemBuffer )
 		{
-			pCurrentValue = &pDsgMem->p_cDsgMemBuffer[pInfo->ulOffset];
+			pCurrentValue = &pDsgMem->p_cDsgMemBuffer[pInfo->ulOffsetInDsgMem];
 		}
 		
 		if ( pDsgMem->p_cDsgMemBufferInit )
 		{
-			pInitValue = &pDsgMem->p_cDsgMemBufferInit[pInfo->ulOffset];
+			pInitValue = &pDsgMem->p_cDsgMemBufferInit[pInfo->ulOffsetInDsgMem];
 		}
 
 		if ( pDsgVar->p_cDsgMemDefaultInit )
 		{
-			pModelInitValue = &pDsgVar->p_cDsgMemDefaultInit[pInfo->ulOffset];
+			pModelInitValue = &pDsgVar->p_cDsgMemDefaultInit[pInfo->ulOffsetInDsgMem];
 		}
 		
-		BOOL bContinue = p_fnCallback(i, pInfo->ulType, pCurrentValue, pInitValue, pModelInitValue);
+		BOOL bContinue = p_fnCallback(i, pInfo->eTypeId, pCurrentValue, pInitValue, pModelInitValue);
 		nEnumerated++;
 
 		if ( !bContinue )

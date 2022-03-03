@@ -32,9 +32,9 @@ ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSize( DNM_tdstDynamics *p_stDyn
 
 ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSizeSpo( HIE_tdstSuperObject *p_stSpo )
 {
-	if ( p_stSpo->ulType == e_OT_Perso )
+	if ( p_stSpo->ulType == HIE_C_ulActor )
 	{
-		DNM_tdstDynam *p_stDynam = p_stSpo->stEngineObject.p_stPerso->p_stDynam;
+		DNM_tdstDynam *p_stDynam = p_stSpo->hLinkedObject.p_stCharacter->p_stDynam;
 		if ( p_stDynam )
 		{
 			return XDNM_fn_eGetDynamicsSize(p_stDynam->p_stDynamics);

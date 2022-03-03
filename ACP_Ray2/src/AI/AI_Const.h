@@ -1,0 +1,106 @@
+﻿#pragma once
+
+
+/*********************************
+ * Constant values for AI module
+ *********************************/
+
+
+enum AI_tdeTypeInterpret
+{
+	E_ti_KeyWord,
+	E_ti_Condition,
+	E_ti_Operator,
+	E_ti_Function,
+	E_ti_Procedure,
+	E_ti_MetaAction,
+	E_ti_BeginMacro,
+	E_ti_EndMacro,
+	E_ti_EndTree,
+	E_ti_Field,
+	E_ti_DsgVar,
+	E_ti_DsgVarRef,
+	E_ti_Constant,
+	E_ti_Real,
+	E_ti_Button,
+	E_ti_ConstantVector,
+	E_ti_Vector,
+	E_ti_Mask,
+	E_ti_Module,
+	E_ti_DsgVarId,
+	E_ti_String,
+	E_ti_LipsSynchroRef,
+	E_ti_FamilyRef,
+	E_ti_PersoRef,
+	E_ti_ActionRef,
+	E_ti_SuperObjectRef,
+	E_ti_WayPointRef,
+	E_ti_TextRef,
+	E_ti_ComportRef,
+	E_ti_ModuleRef,
+	E_ti_SoundEventRef,
+	E_ti_ObjectTableRef,
+	E_ti_GameMaterialRef,
+	E_ti_ParticleGenerator,
+	E_ti_Color,
+	E_ti_ModelRef,
+	E_ti_Light,
+	E_ti_Caps,
+	E_ti_Graph,
+	E_ti_MacroRef,
+	E_ti_Unknown,
+
+	E_Nb_ti
+};
+typedef unsigned char AI_tdeTypeInterpret;
+
+enum AI_tdeVariableType
+{
+	E_vt_None,
+	E_vt_Boolean,
+	E_vt_Char,
+	E_vt_UChar,
+	E_vt_Short,
+	E_vt_UShort,
+	E_vt_Integer,
+	E_vt_PositiveInteger,
+	E_vt_Float,
+	E_vt_String,
+	E_vt_WayPoint,
+	E_vt_Perso,
+	E_vt_List,
+	E_vt_1bit,
+	E_vt_2bit,
+	E_vt_3bit,
+	E_vt_4bit,
+	E_vt_5bit,
+	E_vt_6bit,
+	E_vt_7bit,
+	E_vt_MetaActionReturn,
+	E_vt_Vector,
+	E_vt_Module,
+	E_vt_DsgVarId,
+	E_vt_Action,
+	E_vt_Button,
+	E_vt_Mask,
+	E_vt_Surface,
+	E_vt_LipsSynchro,
+	E_vt_ObjectTable,
+	E_vt_SuperObject,
+	E_vt_Environment,
+	E_vt_Family,
+	E_vt_SoundEvent,
+	E_vt_Comport,
+	E_vt_Font,
+	E_vt_Text,
+	E_vt_ParticleGenerator,
+	E_vt_GameMaterial,
+	E_vt_Color,
+	E_vt_Model,
+	E_vt_Array,
+	E_vt_Light,
+	E_vt_Caps,
+	E_vt_Graph,
+	E_Nb_vt
+};
+typedef enum AI_tdeVariableType AI_tdeVariableType;

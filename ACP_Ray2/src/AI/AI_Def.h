@@ -1,11 +1,9 @@
 #pragma once
 
 
-///////////////////////////////////
-//
-// Type definitions for AI module
-//
-///////////////////////////////////
+/**********************************
+ * Type definitions for AI module
+ **********************************/
 
 
 typedef struct AI_tdstBrain AI_tdstBrain;
@@ -18,6 +16,8 @@ typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
 typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
 typedef struct AI_tdstComport AI_tdstComport;
 typedef struct AI_tdstScriptAI AI_tdstScriptAI;
+typedef struct AI_tdstMacro AI_tdstMacro;
+typedef struct AI_tdstListOfMacro AI_tdstListOfMacro;
 
 typedef struct AI_tdstDsgMem AI_tdstDsgMem;
 typedef struct AI_tdstDsgVar AI_tdstDsgVar;

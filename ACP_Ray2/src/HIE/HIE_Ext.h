@@ -19,7 +19,7 @@ typedef struct XHIE_tdst_llAlways XHIE_tdst_llAlways;
 typedef struct XHIE_tdstAlways XHIE_tdstAlways;
 
 typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
-typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstPerso *p_stPerso );
+typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstEngineObject *p_stPerso );
 
 ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stActiveDynamicWorld;
 ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stInactiveDynamicWorld;
@@ -55,7 +55,7 @@ struct XHIE_tdst_llObjectInfo
 };
 
 
-ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstPerso *p_stPerso, XHIE_tdeObjectInfoType ulInfoType );
+ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstEngineObject *p_stPerso, XHIE_tdeObjectInfoType ulInfoType );
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType );
 ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType );
 
@@ -71,7 +71,7 @@ struct XHIE_tdstAlways
 	XHIE_tdst_llAlways *p_stHeader;
 
 	int lModelID;
-	HIE_tdstPerso *p_stPerso;
+	HIE_tdstEngineObject *p_stPerso;
 };
 
 struct XHIE_tdst_llAlways
@@ -90,4 +90,4 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void );
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName );
-ACP_API HIE_tdstPerso * XHIE_fn_p_stFindAlwaysObject( char const *szName );
+ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName );
