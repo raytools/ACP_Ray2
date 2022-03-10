@@ -6,6 +6,7 @@
 #include "../DNM/DNM_Def.h"
 #include "../POS/POS.h"
 #include "../MTH.h"
+#include "../LST.h"
 #include "../apidef.h"
 
 
@@ -83,13 +84,8 @@ struct HIE_tdstSuperObject
 	HIE_tdeTypeOfObject ulType;
 	HIE_tduLinkedObject hLinkedObject;
 
-	HIE_tdstSuperObject *p_stFirstChild;
-	HIE_tdstSuperObject *p_stLastChild;
-	int nChildren;
-
-	HIE_tdstSuperObject *p_stNext;
-	HIE_tdstSuperObject *p_stPrevious;
-	HIE_tdstSuperObject *p_stParent;
+	LST_M_DynamicParentDecl(HIE_tdstSuperObject)
+	LST_M_DynamicChildDecl(HIE_tdstSuperObject, HIE_tdstSuperObject)
 
 	POS_tdstCompletePosition *p_stLocalMatrix;
 	POS_tdstCompletePosition *p_stGlobalMatrix;
@@ -98,12 +94,8 @@ struct HIE_tdstSuperObject
 	int lDrawModeMask;
 	HIE_tdeSpoFlags ulFlags;
 
-	union
-	{
-		void *pBoundingVolume;
-		//BOUNDING_VOL_BOX *lp_bvBoundingBox;
-		//BOUNDING_VOL_SPHERE *lp_bvBoundingSphere;
-	};
+	void *pBoundingVolume;
+	MTH_tdxReal fTransparenceLevel;
 };
 
 
@@ -135,8 +127,11 @@ struct HIE_tdstSector
 };
 
 
+
 struct HIE_tdstFamilyList
 {
+	LST_M_DynamicParentDecl(void)
+
 	// TODO: tdstFamily
 	////////////////////////////////////////////////////////////////////////////////
 	// Dear future me:
@@ -146,26 +141,13 @@ struct HIE_tdstFamilyList
 	// Now it's slightly less confusing but can still cause trouble in the future,
 	// especially while implementing `tdstFamily`.
 	// For that reason I'm leaving this note here.
-
-	//tdstFamily(ListItem) *
-	void *hFirstElement;
-	//tdstFamily(ListItem) *
-	void *hLastElement;
-	int lNumberOfElements;
-};
-
-struct HIE_tdstAlwaysActiveCharacterList
-{
-	HIE_tdstAlwaysActiveCharacter *hFirstElement;
-	HIE_tdstAlwaysActiveCharacter *hLastElement;
-	int lNumberOfElements;
 };
 
 struct HIE_tdstAlwaysActiveCharacter
 {
 	HIE_tdstSuperObject *hAlwActSuperObject;
-	HIE_tdstAlwaysActiveCharacter *hNextBrother;
-	HIE_tdstAlwaysActiveCharacter *hPrevBrother;
-	HIE_tdstAlwaysActiveCharacterList *hFather;
+	LST_M_DynamicElementDecl(HIE_tdstAlwaysActiveCharacter)
 	//BYTE bDynamicAlwaysActive;
 };
+
+LST_M_DynamicListDecl(HIE_tdstAlwaysActiveCharacter);

@@ -2,8 +2,9 @@
 
 #include "GLD.h"
 #include "../HIE/HIE_Def.h"
-#include "../MTH.h"
 #include "../POS/POS.h"
+#include "../MTH.h"
+#include "../LST.h"
 #include "../apidef.h"
 
 
@@ -18,7 +19,6 @@ typedef struct GLI_tdstCamera GLI_tdstCamera;
 typedef struct GLI_tdst2DVertex GLI_tdst2DVertex;
 typedef struct GLI_tdstSpecificAttributesFor3D GLI_tdstSpecificAttributesFor3D;
 typedef struct GLI_tdstViewportManagement GLI_tdstViewportManagement;
-typedef struct GLI_tdstNodeCameraList GLI_tdstNodeCameraList;
 typedef struct GLI_tdstNodeCamera GLI_tdstNodeCamera;
 
 typedef struct GLI_tdstTexture GLI_tdstTexture;
@@ -94,20 +94,13 @@ struct GLI_tdstViewportManagement
 	ACP_tdxBool bValid;
 };
 
-struct GLI_tdstNodeCameraList
-{
-	GLI_tdstNodeCamera *hFirstElement;
-	GLI_tdstNodeCamera *hLastElement;
-	int lNumberOfElements;
-};
-
 struct GLI_tdstNodeCamera
 {
 	HIE_tdstSuperObject *p_stSuperObjectCamera;
-	GLI_tdstNodeCamera *hNextBrother;
-	GLI_tdstNodeCamera *hPrevBrother;
-	GLI_tdstNodeCameraList *hFather;
+	LST_M_DynamicElementDecl(GLI_tdstNodeCamera)
 };
+
+LST_M_DynamicListDecl(GLI_tdstNodeCamera);
 
 // note: may be incorrect
 struct GLI_tdstTexture

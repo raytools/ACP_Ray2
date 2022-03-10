@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../LST.h"
 #include "../apidef.h"
 
 
@@ -10,25 +11,15 @@
 /////////////////////////////////////
 
 
-typedef struct FIL_tdstFileNameList FIL_tdstFileNameList;
-typedef struct FIL_tdstFileNameListElement FIL_tdstFileNameListElement;
-
-
 ACP_API extern void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath );
 ACP_API extern void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile );
 
 
-struct FIL_tdstFileNameList
-{
-	FIL_tdstFileNameListElement *hFirstElementDyn;
-	FIL_tdstFileNameListElement *hLastElementDyn;
-	int lNumberOfElementsDyn;
-};
-
+typedef struct FIL_tdstFileNameListElement FIL_tdstFileNameListElement;
 struct FIL_tdstFileNameListElement
 {
-	FIL_tdstFileNameListElement *hNextBrotherDyn;
-	FIL_tdstFileNameListElement *hPrevBrotherDyn;
-	FIL_tdstFileNameList *hFatherDyn;
+	LST_M_DynamicElementDecl(FIL_tdstFileNameListElement)
 	char *szFileName;
 };
+
+LST_M_DynamicListDecl(FIL_tdstFileNameListElement);
