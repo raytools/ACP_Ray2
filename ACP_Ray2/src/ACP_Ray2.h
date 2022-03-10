@@ -1,6 +1,7 @@
 #pragma once
 
 #include "apidef.h"
+#include "basedef.h"
 
 
 ////////////////////////////////////
@@ -15,11 +16,12 @@
 ////////////
 
 #include "MTH.h"
+#include "LST.h"
+#include "POS/POS.h"
 #include "MMG/MMG.h"
 #include "GAM/GAM.h"
 #include "HIE/HIE.h"
 #include "AI/AI.h"
-#include "POS/POS.h"
 #include "DNM/DNM.h"
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"
