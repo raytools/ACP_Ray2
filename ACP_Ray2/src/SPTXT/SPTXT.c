@@ -2,6 +2,7 @@
 #include "private/SPTXT_Private.h"
 #include "../JFFTXT/JFFTXT.h"
 #include "../GLI/GLI.h"
+#include "../LST.h"
 #include "../private/framework.h"
 #include <detours.h>
 
@@ -19,9 +20,6 @@
 
 BYTE g_bIsModuleInit = FALSE;
 void *g_pContext = NULL;
-
-SPTXT_tdstNodeText *g_llTextFirst = NULL;
-SPTXT_tdstNodeText *g_llTextLast = NULL;
 
 SPTXT_tdstTextInfo g_stTextInfo = { 0 };
 SPTXT_tdstTextInfo g_stDefaultTextInfo = { 0, 0, 8, 0xFF, FALSE, FALSE };
@@ -94,7 +92,8 @@ void SPTXT_vDrawText( void *pContext )
 {
 	g_pContext = pContext;
 
-	for ( SPTXT_tdstNodeText *pNode = g_llTextFirst; pNode; pNode = pNode->p_stNext )
+	SPTXT_tdstNodeText *pNode;
+	LST_M_DynamicForEach(&g_stTextNodeList, pNode)
 	{
 		g_stTextInfo = g_stDefaultTextInfo;
 		pNode->p_fnCallback(&g_stTextInfo);
@@ -134,41 +133,19 @@ ACP_API void SPTXT_vDeInit( void )
 
 ACP_API void SPTXT_vAddTextCallback( SPTXT_tdfnTextCallback p_fnCallback )
 {
-	SPTXT_tdstNodeText *p_stNode = SPTXT_fn_p_stAllocNode(p_fnCallback);
-
-	if ( g_llTextLast )
-	{
-		g_llTextLast->p_stNext = p_stNode;
-		p_stNode->p_stPrevious = g_llTextLast;
-		g_llTextLast = p_stNode;
-	}
-	else
-	{
-		g_llTextFirst = p_stNode;
-		g_llTextLast = p_stNode;
-	}
+	SPTXT_tdstNodeText *p_stNode = SPTXT_fn_p_stCreateNode();
+	p_stNode->p_fnCallback = p_fnCallback;
 }
 
 ACP_API void SPTXT_vRemoveTextCallback( SPTXT_tdfnTextCallback p_fnCallback )
 {
-	for ( SPTXT_tdstNodeText *pNode = g_llTextFirst; pNode; pNode = pNode->p_stNext )
+	SPTXT_tdstNodeText *pNode;
+	LST_M_DynamicForEach(&g_stTextNodeList, pNode)
 	{
 		if ( pNode->p_fnCallback == p_fnCallback )
 		{
-			SPTXT_tdstNodeText *pPrev = pNode->p_stPrevious;
-			SPTXT_tdstNodeText *pNext = pNode->p_stNext;
-
-			if ( pPrev )
-				pPrev->p_stNext = pNext;
-			else
-				g_llTextFirst = pNext;
-
-			if ( pNext )
-				pNext->p_stPrevious = pPrev;
-			else
-				g_llTextLast = pPrev;
-
-			SPTXT_fn_vFreeNode(pNode);
+			SPTXT_fn_vDeleteNode(pNode);
+			break;
 		}
 	}
 }
