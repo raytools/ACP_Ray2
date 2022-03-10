@@ -4,11 +4,33 @@
 #include "../apidef.h"
 
 
-///////////////
-//
-// POS Module
-//
-///////////////
+/****************************************************************************
+ *
+ * POS Module
+ *
+ ****************************************************************************/
 
 
-ACP_API extern void (*POS_fn_vSetIdentityMatrix)( MTH_tdstTransformation *p_stMatrix );
+typedef struct POS_tdstCompletePosition POS_tdstCompletePosition;
+
+
+ACP_API extern void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );
+
+
+typedef enum MTH_tdeMatrixType
+{
+	MTH_C_Type_IdentityMatrix		= 1,
+	MTH_C_Type_TranslationMatrix	= 2,
+	MTH_C_Type_RotationMatrix		= 3,
+	MTH_C_Type_CompleteMatrix		= 4
+} MTH_tdeMatrixType;
+
+struct POS_tdstCompletePosition
+{
+	MTH_tdeMatrixType eType;
+
+	MTH3D_tdstVector stPos;
+
+	MTH3D_tdstMatrix stRotationMatrix;
+	MTH3D_tdstMatrix stTransformMatrix;
+};

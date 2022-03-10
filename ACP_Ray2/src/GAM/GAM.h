@@ -9,28 +9,47 @@
 #include "../apidef.h"
 
 
-///////////////////////
-//
-// GAM - Game Library
-// 
-///////////////////////
+/****************************************************************************
+ *
+ * GAM - Main engine module
+ *
+ ****************************************************************************/
 
+
+#define MAX_NAME_LEVEL 30
 
 typedef struct GAM_tdstEngineStructure GAM_tdstEngineStructure;
 typedef struct GAM_tdstLanguageStructure GAM_tdstLanguageStructure;
 
 typedef enum GAM_tdeEngineMode
 {
-	e_EM_Preload = 1,
-	e_EM_Shutdown = 2,
-	e_EM_FilesLoaded = 3,
-	// state 4?
-	e_EM_LoadingScreen = 5,
-	e_EM_ChangeLevel = 6,
-	e_EM_DesinitDeathLoop = 7,
-	e_EM_SnifThePlayerIsDead = 8,
-	e_EM_Play = 9
+	EM_ModeInvalid = 0,
+	EM_ModeStartingProgram,
+	EM_ModeStoppingProgram,
+	EM_ModeEnterGame,
+	EM_ModeQuitGame,
+	EM_ModeEnterLevel,
+	EM_ModeChangeLevel,
+	EM_ModeDeadLoop,
+	EM_ModePlayerDead,
+	EM_ModePlaying,
+	EM_NbTotalEngineMode
 } GAM_tdeEngineMode;
+
+typedef enum GAM_tdeInputMode
+{
+	IM_Normal,
+	IM_Commands,
+	IM_NbOfMode
+} GAM_tdeInputMode;
+
+typedef enum GAM_tdeDisplayFixMode
+{
+	DFM_DisplayAll			= 0xFF,
+	DFM_DisplayHitPoints	= 0x01,
+	DFM_DisplayGameSave		= 0x02,
+	DFM_DisplayNothing		= 0x00
+} GAM_tdeDisplayFixMode;
 
 
 // Engine structure
@@ -47,47 +66,66 @@ ACP_API extern HANDLE (*GAM_fn_hGetWindowHandle)( void );
 struct GAM_tdstEngineStructure
 {
 	char eEngineMode;
-	char szLevelName[30];
-	char szNextLevelName[30];
-	char szFirstLevelName[30];
+	char szLevelName[MAX_NAME_LEVEL];
+	char szNextLevelName[MAX_NAME_LEVEL];
+	char szFirstLevelName[MAX_NAME_LEVEL];
+
 	BYTE eInputMode;
 	BYTE eDisplayFixMode;
 	DWORD ulDisplayMode;
+
 	TMR_tdstEngineTimerStructure stEngineTimer;
-	WORD hGLDDevice;
-	WORD hGLDViewport;
+
+	GLD_tdhDevice hGLDDevice;
+	GLD_tdhViewport hGLDViewport;
+
 	GLD_tdstViewportAttributes stViewportAttr;
 	GLI_tdstCamera *p_stGameViewportCamera;
-	int hDrawSem;
-	WORD hGLDFixViewport;
+
+	void *hDrawSem;
+	GLD_tdhViewport hGLDFixViewport;
 	GLD_tdstViewportAttributes stFixViewportAttr;
 	GLI_tdstSpecificAttributesFor3D stFixAttributes3D;
 	GLI_tdstCamera *p_stFixCamera;
+
 	GLI_tdstViewportManagement *a_hViewportArray;
+
 	GLI_tdstNodeCameraList hCameraList;
 	HIE_tdstFamilyList hFamilyList;
+
 	HIE_tdstAlwaysActiveCharacterList hAlwaysActiveCharactersList;
 	HIE_tdstSuperObject *g_hMainActor;
 	HIE_tdstSuperObject *g_hNextMainActor;
+
 	HIE_tdstSuperObject *g_hStdCamCharacter;
+
 	GAM_tdstLanguageStructure *p_stLanguageTable;
 	FIL_tdstFileNameList *hLevelNameList;
-	MTH_tdstTransformation stMainCharacterPosition;
-	MTH_tdstTransformation stMainCameraPosition;
+
+	POS_tdstCompletePosition stMainCharacterPosition;
+	POS_tdstCompletePosition stMainCameraPosition;
+
 	int lSubMapNumber;
+
 	BYTE bEngineIsInPaused;
 	BYTE bEngineHasInPaused;
-	char a_szLevelName[80][30];
+
+	char a_szLevelName[80][MAX_NAME_LEVEL];
 	BYTE ucNumberOfLevels;
 	BYTE ucCurrentLevel;
+
 	BYTE ucPreviousLevel;
 	BYTE ucExitIdToQuitPrevLevel;
 	BYTE ucLevelGlobalCounter;
-	BYTE xDemoMode;
+
+	ACP_tdxBool xDemoMode;
+
 	BYTE ucCurrentLanguage;
 	BYTE ucNbLanguages;
-	BYTE bEngineFrozen;
-	BYTE bResurrection;
+
+	ACP_tdxBool bEngineFrozen; /* if true, unprotected characters are not treated in the engine loop */
+	ACP_tdxBool bResurrection;
+
 	char cCameraMode;
 };
 

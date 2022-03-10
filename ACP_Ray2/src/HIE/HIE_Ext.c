@@ -45,7 +45,7 @@ ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstEngineObject *p_stPerso, XHIE_tde
 
 ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType )
 {
-	if ( p_stSpo->ulType != HIE_C_ulActor )
+	if ( p_stSpo->ulType != HIE_C_Type_Actor )
 		return NULL;
 
 	return XHIE_fn_szGetPersoName(p_stSpo->hLinkedObject.p_stCharacter, ulInfoType);
@@ -125,7 +125,7 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 		for ( HIE_tdstSuperObject *pItem = a_p_stSearchIn[i]; pItem; pItem = pItem->p_stNext )
 		{
 			char *szObjName = XHIE_fn_szGetObjectName(pItem, e_OI_Instance);
-			if ( szObjName && !strcmp(szName, szObjName) )
+			if ( szObjName && !_stricmp(szName, szObjName) )
 			{
 				return pItem;
 			}
@@ -140,7 +140,7 @@ ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName 
 	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
 	{
 		char *szObjName = XHIE_fn_szGetPersoName(pItem->p_stPerso, e_OI_Instance);
-		if ( szObjName && !strcmp(szName, szObjName) )
+		if ( szObjName && !_stricmp(szName, szObjName) )
 		{
 			return pItem->p_stPerso;
 		}

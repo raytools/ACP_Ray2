@@ -4,6 +4,7 @@
 #include "HIE_StdGame.h"
 #include "../AI/AI_Def.h"
 #include "../DNM/DNM_Def.h"
+#include "../POS/POS.h"
 #include "../MTH.h"
 #include "../apidef.h"
 
@@ -24,16 +25,16 @@ ACP_API extern void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_t
 
 typedef enum HIE_tdeSpoFlags
 {
-	HIE_C_Flag_ulNotPickable = 1 << 0,
-	HIE_C_Flag_ulHidden = 1 << 1,
-	HIE_C_Flag_ulNoTransformationMatrix = 1 << 2,
-	HIE_C_Flag_ulZoomInsteadOfScale = 1 << 3,
-	HIE_C_Flag_ulTypeOfBoundingVolume = 1 << 4,
-	HIE_C_Flag_ulSuperimposed = 1 << 5,
-	HIE_C_Flag_ulNotHitByRayTrace = 1 << 6,
-	HIE_C_Flag_ulNoShadowOnMe = 1 << 7,
-	HIE_C_Flag_ulSemiLookAt = 1 << 8,
-	HIE_C_Flag_ulCheckChildren = 1 << 9,
+	HIE_C_Flag_NotPickable = 1 << 0,
+	HIE_C_Flag_Hidden = 1 << 1,
+	HIE_C_Flag_NoTransformationMatrix = 1 << 2,
+	HIE_C_Flag_ZoomInsteadOfScale = 1 << 3,
+	HIE_C_Flag_TypeOfBoundingVolume = 1 << 4,
+	HIE_C_Flag_Superimposed = 1 << 5,
+	HIE_C_Flag_NotHitByRayTrace = 1 << 6,
+	HIE_C_Flag_NoShadowOnMe = 1 << 7,
+	HIE_C_Flag_SemiLookAt = 1 << 8,
+	HIE_C_Flag_CheckChildren = 1 << 9,
 	HIE_C_Flag_MagnetModification = 1 << 15,
 	HIE_C_Flag_ModuleTransparency = 1 << 16,
 	HIE_C_Flag_ExcluLight = 1 << 17,
@@ -43,26 +44,26 @@ typedef enum HIE_tdeSpoFlags
 
 typedef enum HIE_tdeTypeOfObject
 {
-	HIE_C_ulUnknown = 0x0,
-	HIE_C_ulSuperObject = 0x1,
-	HIE_C_ulActor = 0x2,
-	HIE_C_ulSector = 0x4,
-	HIE_C_ulPO = 0x8,
-	HIE_C_ulPO_Mirror = 0x10,
-	HIE_C_ulIPO = 0x20,
-	HIE_C_ulIPO_Mirror = 0x40,
-	HIE_C_ulSpecialEffect = 0x80,
-	HIE_C_ulNoAction = 0x100,
-	HIE_C_ulMirror = 0x200,
-	HIE_C_ulEDT_Geometric = 0x400,
-	HIE_C_ulEDT_Light = 0x800,
-	HIE_C_ulEDT_Waypoint = 0x1000,
-	HIE_C_ulEDT_ZdD = 0x2000,
-	HIE_C_ulEDT_ZdE = 0x4000,
-	HIE_C_ulEDT_ZdM = 0x8000,
-	HIE_C_ulEDT_ZdR = 0x10000,
-	HIE_C_ulEDT_BdV = 0x20000,
-	HIE_C_ulEDT_TestPoint = 0x40000
+	HIE_C_Type_Unknown = 0x0,
+	HIE_C_Type_SuperObject = 0x1,
+	HIE_C_Type_Actor = 0x2,
+	HIE_C_Type_Sector = 0x4,
+	HIE_C_Type_PO = 0x8,
+	HIE_C_Type_PO_Mirror = 0x10,
+	HIE_C_Type_IPO = 0x20,
+	HIE_C_Type_IPO_Mirror = 0x40,
+	HIE_C_Type_SpecialEffect = 0x80,
+	HIE_C_Type_NoAction = 0x100,
+	HIE_C_Type_Mirror = 0x200,
+	HIE_C_Type_EDT_Geometric = 0x400,
+	HIE_C_Type_EDT_Light = 0x800,
+	HIE_C_Type_EDT_Waypoint = 0x1000,
+	HIE_C_Type_EDT_ZdD = 0x2000,
+	HIE_C_Type_EDT_ZdE = 0x4000,
+	HIE_C_Type_EDT_ZdM = 0x8000,
+	HIE_C_Type_EDT_ZdR = 0x10000,
+	HIE_C_Type_EDT_BdV = 0x20000,
+	HIE_C_Type_EDT_TestPoint = 0x40000
 } HIE_tdeTypeOfObject;
 
 union HIE_tduLinkedObject
@@ -90,8 +91,8 @@ struct HIE_tdstSuperObject
 	HIE_tdstSuperObject *p_stPrevious;
 	HIE_tdstSuperObject *p_stParent;
 
-	MTH_tdstTransformation *p_stLocalMatrix;
-	MTH_tdstTransformation *p_stGlobalMatrix;
+	POS_tdstCompletePosition *p_stLocalMatrix;
+	POS_tdstCompletePosition *p_stGlobalMatrix;
 
 	int lLastComputeFrame;
 	int lDrawModeMask;
@@ -162,9 +163,9 @@ struct HIE_tdstAlwaysActiveCharacterList
 
 struct HIE_tdstAlwaysActiveCharacter
 {
+	HIE_tdstSuperObject *hAlwActSuperObject;
 	HIE_tdstAlwaysActiveCharacter *hNextBrother;
 	HIE_tdstAlwaysActiveCharacter *hPrevBrother;
 	HIE_tdstAlwaysActiveCharacterList *hFather;
-	HIE_tdstSuperObject *hAlwActSuperObject;
-	BYTE bDynamicAlwaysActive;
+	//BYTE bDynamicAlwaysActive;
 };

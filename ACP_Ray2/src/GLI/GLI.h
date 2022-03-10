@@ -1,7 +1,9 @@
 #pragma once
 
+#include "GLD.h"
 #include "../HIE/HIE_Def.h"
 #include "../MTH.h"
+#include "../POS/POS.h"
 #include "../apidef.h"
 
 
@@ -33,7 +35,12 @@ ACP_API extern GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
 ACP_API extern DWORD *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
 
-ACP_API extern void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, void *pContext );
+ACP_API extern void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
+ACP_API extern MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
+
+ACP_API extern void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, void *hMaterial );
+ACP_API extern void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
+
 ACP_API extern void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
 ACP_API extern char * (*GLI_fn_szGetPathOfTexture)( void );
 ACP_API extern void (*GLI_vComputeTextures)( void );
@@ -49,10 +56,10 @@ struct GLI_tdst2DVertex
 
 struct GLI_tdstCamera
 {
+	int lSizeOfThis;
+	int lTypeOfThis;
 	int lCameraMode;
-	DWORD _dword_4;
-	DWORD _dword_8;
-	MTH_tdstTransformation stMatrix;
+	POS_tdstCompletePosition stMatrix;
 	MTH_tdxReal xAlphaX;
 	MTH_tdxReal xAlphaY;
 	MTH_tdxReal xNear;
@@ -84,7 +91,7 @@ struct GLI_tdstViewportManagement
 	HIE_tdstSuperObject *hCamera;
 	HIE_tdstSuperObject *hTempCamera;
 	GLI_tdstCamera *p_stCamera;
-	BYTE bValid;
+	ACP_tdxBool bValid;
 };
 
 struct GLI_tdstNodeCameraList

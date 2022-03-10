@@ -3,6 +3,7 @@
 #include "DNM_Def.h"
 #include "../HIE/HIE_Def.h"
 #include "../MTH.h"
+#include "../POS/POS.h"
 
 
 //////////////////////////
@@ -34,8 +35,8 @@ struct DNM_tdstDynamicsBaseBlock
 	MTH3D_tdstVector stSpeedAnim;
 	MTH3D_tdstVector stSafeTranslation;
 	MTH3D_tdstVector stAddTranslation;
-	MTH_tdstTransformation stPreviousMatrix;
-	MTH_tdstTransformation stCurrentMatrix;
+	POS_tdstCompletePosition stPreviousMatrix;
+	POS_tdstCompletePosition stCurrentMatrix;
 	MTH3D_tdstMatrix stImposeRotationMatrix;
 	BYTE ucNbFrame;
 	DNM_tdstReport *p_stReport;
@@ -106,8 +107,8 @@ struct DNM_tdstDynamicsComplexBlock
 	MTH3D_tdstVector stFallTranslation;
 	DNM_tdstMACDPID stExternalDatas;
 	HIE_tdstSuperObject *p_stPlatform;
-	MTH_tdstTransformation stAbsolutePreviousMatrix;
-	MTH_tdstTransformation stPrevPreviousMatrix;
+	POS_tdstCompletePosition stAbsolutePreviousMatrix;
+	POS_tdstCompletePosition stPrevPreviousMatrix;
 };
 
 

@@ -3,11 +3,11 @@
 #include "basedef.h"
 
 
-//////////////////////
-//
-// MTH - Math Module
-//
-//////////////////////
+/****************************************************************************
+ *
+ * MTH - Common Mathematic Library
+ *
+ ****************************************************************************/
 
 
 typedef float MTH_tdxReal;
@@ -20,7 +20,6 @@ typedef struct MTH2D_tdstMatrix MTH2D_tdstMatrix;
 typedef struct MTH3D_tdstMatrix MTH3D_tdstMatrix;
 typedef struct MTH4D_tdstMatrix MTH4D_tdstMatrix;
 
-typedef struct MTH_tdstTransformation MTH_tdstTransformation;
 typedef struct MTH_tdstRotation MTH_tdstRotation;
 typedef struct MTH_tdstMove MTH_tdstMove;
 
@@ -30,9 +29,9 @@ typedef MTH3D_tdstVector MTH_tdstVector;
 typedef MTH3D_tdstMatrix MTH_tdstMatrix;
 
 
-////////////
-// 2D Math
-////////////
+/****************************************
+ * 2D math
+ ****************************************/
 
 struct MTH2D_tdstVector
 {
@@ -47,9 +46,9 @@ struct MTH2D_tdstMatrix
 };
 
 
-////////////
-// 3D Math
-////////////
+/****************************************
+ * 3D math
+ ****************************************/
 
 struct MTH3D_tdstVector
 {
@@ -65,15 +64,6 @@ struct MTH3D_tdstMatrix
 	MTH3D_tdstVector stCol_2;
 };
 
-struct MTH_tdstTransformation
-{
-	int eType;
-	MTH3D_tdstVector stPos;
-
-	MTH3D_tdstMatrix stTransformMatrix;
-	MTH3D_tdstMatrix stScaleMatrix;
-};
-
 struct MTH_tdstRotation
 {
 	MTH_tdxReal xAngle;
@@ -87,9 +77,9 @@ struct MTH_tdstMove
 };
 
 
-////////////
-// 4D Math
-////////////
+/****************************************
+ * 4D math
+ ****************************************/
 
 struct MTH4D_tdstVector
 {
