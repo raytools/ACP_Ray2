@@ -192,3 +192,9 @@ struct DNM_tdstParsingDatas
 	MTH_tdxReal xOutAlpha;
 	MTH3D_tdstVector stVector;
 };
+
+struct DNM_tdstMecMatCharacteristics
+{
+	MTH_tdxReal xSlide;
+	MTH_tdxReal xRebound;
+};

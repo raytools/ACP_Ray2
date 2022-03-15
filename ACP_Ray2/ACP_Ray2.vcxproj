@@ -115,7 +115,10 @@ cd .</Command>
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\ERM\ERM.h" />
     <ClInclude Include="src\FIL\FIL.h" />
+    <ClInclude Include="src\GEO\GEO.h" />
     <ClInclude Include="src\GLI\GLD.h" />
+    <ClInclude Include="src\GLI\GLI_Const.h" />
+    <ClInclude Include="src\GMT\GMT.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />

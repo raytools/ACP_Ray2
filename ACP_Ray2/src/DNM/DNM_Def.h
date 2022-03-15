@@ -23,3 +23,4 @@ typedef struct DNM_tdstDynamicsComplexBlock DNM_tdstDynamicsComplexBlock;
 
 typedef struct DNM_tdstMACDPID DNM_tdstMACDPID;
 typedef struct DNM_tdstParsingDatas DNM_tdstParsingDatas;
+typedef struct DNM_tdstMecMatCharacteristics DNM_tdstMecMatCharacteristics;

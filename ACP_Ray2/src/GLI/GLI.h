@@ -1,6 +1,8 @@
 #pragma once
 
+#include "GLI_Const.h"
 #include "GLD.h"
+#include "../GEO/GEO.h"
 #include "../HIE/HIE_Def.h"
 #include "../POS/POS.h"
 #include "../MTH.h"
@@ -22,6 +24,8 @@ typedef struct GLI_tdstViewportManagement GLI_tdstViewportManagement;
 typedef struct GLI_tdstNodeCamera GLI_tdstNodeCamera;
 
 typedef struct GLI_tdstTexture GLI_tdstTexture;
+typedef struct GLI_tdstAnimatedTextureNode GLI_tdstAnimatedTextureNode;
+typedef struct GLI_tdstMaterial GLI_tdstMaterial;
 
 
 ACP_API extern MTH_tdxReal *const GLI_p_fZValueForSprite;
@@ -102,32 +106,79 @@ struct GLI_tdstNodeCamera
 
 LST_M_DynamicListDecl(GLI_tdstNodeCamera);
 
-// note: may be incorrect
 struct GLI_tdstTexture
 {
-	DWORD ulLoadedTextureFormat;
-	BYTE bIsAvailable;
-	BYTE ucTextureQuality;
-	BYTE ucDepthQuality;
+	BOOL bIsAvailable;
+	int lTextureQuality;
+
+	/* texture data */
 	void *p_vBitMap;
 	void *p_vColorTable;
+
+	/* Parameter specific for graphics card */
 	void *p_stSpecParam;
-	DWORD lTextureCaps;
-	WORD wHeight;
-	WORD wWidth;
-	WORD wRealHeight;
-	WORD wRealWidth;
+
+	DWORD ulTextureCaps;
+
+	/* texture size (after compression) */
+	WORD uwHeight;
+	WORD uwWidth;
+
+	/* texture size (before compression) */
+	WORD uwRealHeight;
+	WORD uwRealWidth;
+
+	/* data for scrolling texture */
 	MTH_tdxReal xAddU;
 	MTH_tdxReal xAddV;
 	BOOL lIncrementIsEnable;
+
 	DWORD ulChromakeyColorRGBA;
-	DWORD ulBlendColorRGBA;
-	// int lNumberOfLod;
-	DWORD lCompressionCounter;
-	DWORD lTypeOfCompression;
-	DWORD lTypeOfMipMapping;
+
+	/* MipMapping */
+	int lNumberOfLod;
+	DWORD ulCompressionCounter;
+	DWORD ulTypeOfCompression;
+	DWORD ulTypeOfMipMapping;
 	GLI_tdstTexture * p_TextureOfSubstitution;
+
 	BYTE ucBilinearMode;
 	BYTE ucCylingMode;
+
 	char szFileName[128];
+};
+
+struct GLI_tdstAnimatedTextureNode
+{
+	GLI_tdstTexture *p_stTexture;
+	MTH_tdxReal xDisplayTime;
+	GLI_tdstAnimatedTextureNode *p_stNextDisplayNode;
+};
+
+struct GLI_tdstMaterial
+{
+	DWORD ulMaterialType;
+
+	GEO_tdstColor stAmbient;
+	GEO_tdstColor stDiffuse;
+	GEO_tdstColor stSpecular;
+	GEO_tdstColor stColor;
+	int lSpecularExponent;
+
+	GLI_tdstTexture *p_stTexture;
+
+	/* scrolling material */
+	MTH_tdxReal xAddU;
+	MTH_tdxReal xAddV;
+	MTH_tdxReal xConstantAddU;
+	MTH_tdxReal xConstantAddV;
+	int lIncrementIsEnable;
+
+	/* for animated textures */
+	DWORD dwActualRefreshNumber;
+	GLI_tdstAnimatedTextureNode *p_stFirstAnimatedTextureNode;
+	GLI_tdstAnimatedTextureNode *p_stActualAnimatedTextureNode;
+	int lNumberOfDisplayNode;
+	MTH_tdxReal xActualDisplayTimeSinceStartOfLastTexture;
+	ACP_tdxBool xIsLocked;
 };

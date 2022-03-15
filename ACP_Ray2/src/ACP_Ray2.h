@@ -24,6 +24,8 @@
 #include "AI/AI.h"
 #include "ALW/ALW.h"
 #include "DNM/DNM.h"
+#include "GMT/GMT.h"
+#include "GEO/GEO.h"
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"
 #include "ERM/ERM.h"
