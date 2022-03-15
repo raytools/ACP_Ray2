@@ -143,3 +143,21 @@ for (																		   \
 	(hElement);																   \
 	(i)++, (hElement) = LST_M_DynamicGetNextBrother(hElement)				   \
 )
+
+#define LST_M_DynamicGetNthElement( hAnchor, N, hElement, i )				   \
+do {																		   \
+	for (																	   \
+		(i) = 0, (hElement) = LST_M_DynamicGetFirstElement(hAnchor);		   \
+		(i) < (N);															   \
+		(i)++, (hElement) = LST_M_DynamicGetNextBrother(hElement)			   \
+	) ;																		   \
+} while ( 0 )
+
+#define LST_M_DynamicGetNthBrother( hFirstElement, N, hElement, i )			   \
+do {																		   \
+	for (																	   \
+		(i) = 0, (hElement) = (hFirstElement);								   \
+		(i) < (N);															   \
+		(i)++, (hElement) = LST_M_DynamicGetNextBrother(hElement)			   \
+	) ;																		   \
+} while ( 0 )
