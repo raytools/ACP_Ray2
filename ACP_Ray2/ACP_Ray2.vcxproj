@@ -121,6 +121,7 @@ cd .</Command>
     <ClInclude Include="src\GMT\GMT.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
     <ClInclude Include="src\LST.h" />
+    <ClInclude Include="src\PO\PO.h" />
     <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />

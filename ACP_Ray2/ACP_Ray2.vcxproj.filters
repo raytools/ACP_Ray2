@@ -123,6 +123,9 @@
     <ClInclude Include="src\GMT\GMT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\PO\PO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
