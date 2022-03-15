@@ -37,3 +37,4 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void );
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName );
+ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObjectByName( char const *szName );

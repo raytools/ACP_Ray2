@@ -18,12 +18,9 @@
 // Object Type
 ////////////////
 
-char * XHIE_fn_szGetNameFromTypeElement( HIE_tdstSuperObject *p_stSpo, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem)
 {
-	if ( p_stSpo->ulType != HIE_C_Type_Actor )
-		return NULL;
-
-	int lId = p_stSpo->hLinkedObject.p_stCharacter->p_stStdGame->lObjectPersonalType;
+	int lId = p_stCharacter->p_stStdGame->lObjectPersonalType;
 	
 	if ( lId < 0 || lId >= hTypeElem->lNbOfElements )
 		return NULL;
@@ -38,19 +35,27 @@ char * XHIE_fn_szGetNameFromTypeElement( HIE_tdstSuperObject *p_stSpo, LST_M_Anc
 	return pItem->szName;
 }
 
+char * XHIE_fn_szGetSuperObjectTypeName( HIE_tdstSuperObject *p_stSpo, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+{
+	if ( p_stSpo->ulType != HIE_C_Type_Actor )
+		return NULL;
+
+	return XHIE_fn_szGetEngineObjectTypeName(p_stSpo->hLinkedObject.p_stCharacter, hTypeElem);
+}
+
 ACP_API char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo )
 {
-	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stPersonalType);
+	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stPersonalType);
 }
 
 ACP_API char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo )
 {
-	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stModelType);
+	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stModelType);
 }
 
 ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo )
 {
-	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stFamilyType);
+	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stFamilyType);
 }
 
 int XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
@@ -148,6 +153,21 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szN
 			{
 				return pItem;
 			}
+		}
+	}
+
+	return NULL;
+}
+
+ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObjectByName( char const *szName )
+{
+	ALW_tdstAlwaysModelList *pItem;
+	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
+	{
+		char *szObjName = XHIE_fn_szGetEngineObjectTypeName(pItem->p_stAlwaysObject, &HIE_g_stObjectTypes->stPersonalType);
+		if ( szObjName && !_stricmp(szName, szObjName) )
+		{
+			return pItem->p_stAlwaysObject;
 		}
 	}
 
