@@ -27,6 +27,7 @@
 #include "GMT/GMT.h"
 #include "GEO/GEO.h"
 #include "PO/PO.h"
+#include "IPO/IPO.h"
 #include "SCT/SCT.h"
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"

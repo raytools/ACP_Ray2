@@ -9,6 +9,7 @@
 #include "../GEO/GEO.h"
 #include "../PO/PO.h"
 #include "../SCT/SCT.h"
+#include "../GLI/GLI_Def.h"
 #include "../MTH.h"
 #include "../LST.h"
 #include "../apidef.h"
@@ -78,8 +79,8 @@ union HIE_tduLinkedObject
 	SCT_tdstSector *p_stSector;
 	GEO_tdstGeometricObject *p_stGeometricObject;
 	PO_tdstPhysicalObject *p_stPhysicalObject;
-	void *p_stInstanciatedPhysicalObject;
-	void *p_stLight;
+	PO_tdstInstantiatedPhysicalObject *p_stInstantiatedPhysicalObject;
+	GLI_tdstLight *p_stLight;
 	void* p_Void;
 };
 

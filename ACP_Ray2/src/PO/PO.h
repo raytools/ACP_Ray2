@@ -28,3 +28,10 @@ typedef struct PO_tdstPhysicalObject
 	GEO_tdstBoundingSphere *hBoundingVolume;
 }
 PO_tdstPhysicalObject;
+
+typedef struct PO_tdstInstantiatedPhysicalObject
+{
+	PO_tdstPhysicalObject *hPhysicalObject;
+	GEO_tdxHandleToRadiosity hRadiosity;
+}
+PO_tdstInstantiatedPhysicalObject;
