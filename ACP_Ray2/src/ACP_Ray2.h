@@ -26,6 +26,8 @@
 #include "DNM/DNM.h"
 #include "GMT/GMT.h"
 #include "GEO/GEO.h"
+#include "PO/PO.h"
+#include "SCT/SCT.h"
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"
 #include "ERM/ERM.h"

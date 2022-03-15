@@ -94,17 +94,17 @@ struct GAM_tdstEngineStructure
 
 	GLI_tdstViewportManagement *a_hViewportArray;
 
-	LST_M_AnchorTo(GLI_tdstNodeCamera) hCameraList;
-	HIE_tdstFamilyList hFamilyList;
+	LST_M_DynamicAnchorTo(GLI_tdstNodeCamera) hCameraList;
+	LST_M_DynamicAnchorTo(HIE_tdstFamilyList) hFamilyList;
 
-	LST_M_AnchorTo(HIE_tdstAlwaysActiveCharacter) hAlwaysActiveCharactersList;
+	LST_M_DynamicAnchorTo(HIE_tdstAlwaysActiveCharacter) hAlwaysActiveCharactersList;
 	HIE_tdstSuperObject *g_hMainActor;
 	HIE_tdstSuperObject *g_hNextMainActor;
 
 	HIE_tdstSuperObject *g_hStdCamCharacter;
 
 	GAM_tdstLanguageStructure *p_stLanguageTable;
-	LST_M_AnchorTo(FIL_tdstFileNameListElement) *hLevelNameList;
+	LST_M_DynamicAnchorTo(FIL_tdstFileNameListElement) *hLevelNameList;
 
 	POS_tdstCompletePosition stMainCharacterPosition;
 	POS_tdstCompletePosition stMainCameraPosition;

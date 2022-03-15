@@ -13,31 +13,31 @@
  ****************************************************************************/
 
 
+#define LST_M_AnchorTo(Type, x) struct LST_tdstAnchorTo_##Type##_##x
+
 /*
  * Dynamic (double linked) list declaration
  */
 
-#define LST_M_AnchorTo(Type) struct LST_tdstAnchorTo_##Type
-
-#define LST_M_DynamicAnchorDecl(Type) LST_M_AnchorTo(Type)
+#define LST_M_DynamicAnchorTo(Type) LST_M_AnchorTo(Type, Dyn)
 
 #define LST_M_DynamicParentDecl(Type)										   \
-	Type * hFirstElement;													   \
-	Type * hLastElement;													   \
-	long lNbOfElements;
+	Type * hFirstElementDyn;												   \
+	Type * hLastElementDyn;													   \
+	long lNbOfElementsDyn;
 
 #define LST_M_DynamicChildDecl(Type, ParentType)							   \
-	Type * hNextBrother;													   \
-	Type * hPrevBrother;													   \
-	ParentType * hFather;
+	Type * hNextBrotherDyn;													   \
+	Type * hPrevBrotherDyn;													   \
+	ParentType * hFatherDyn;
 
 #define LST_M_DynamicElementDecl(Type)										   \
-	Type * hNextBrother;													   \
-	Type * hPrevBrother;													   \
-	LST_M_AnchorTo(Type) * hFather;
+	Type * hNextBrotherDyn;													   \
+	Type * hPrevBrotherDyn;													   \
+	LST_M_DynamicAnchorTo(Type) * hFatherDyn;
 
 #define LST_M_DynamicListDecl(Type)											   \
-	LST_M_DynamicAnchorDecl(Type)											   \
+	LST_M_DynamicAnchorTo(Type)												   \
 	{																		   \
 		LST_M_DynamicParentDecl(Type)										   \
 	}
@@ -47,13 +47,13 @@
  * Dynamic list access functions
  */
 
-#define LST_M_DynamicGetNextBrother( hElement ) ((hElement)->hNextBrother)
-#define LST_M_DynamicGetPrevBrother( hElement ) ((hElement)->hPrevBrother)
-#define LST_M_DynamicGetFather( hElement ) ((hElement)->hFather)
+#define LST_M_DynamicGetNextBrother( hElement ) ((hElement)->hNextBrotherDyn)
+#define LST_M_DynamicGetPrevBrother( hElement ) ((hElement)->hPrevBrotherDyn)
+#define LST_M_DynamicGetFather( hElement ) ((hElement)->hFatherDyn)
 
-#define LST_M_DynamicGetFirstElement( hAnchor ) ((hAnchor)->hFirstElement)
-#define LST_M_DynamicGetLastElement( hAnchor ) ((hAnchor)->hLastElement)
-#define LST_M_DynamicGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElements)
+#define LST_M_DynamicGetFirstElement( hAnchor ) ((hAnchor)->hFirstElementDyn)
+#define LST_M_DynamicGetLastElement( hAnchor ) ((hAnchor)->hLastElementDyn)
+#define LST_M_DynamicGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsDyn)
 
 // Initialise anchor of list
 #define LST_M_DynamicInitAnchor( hAnchor )									   \
@@ -161,3 +161,54 @@ do {																		   \
 		(i)++, (hElement) = LST_M_DynamicGetNextBrother(hElement)			   \
 	) ;																		   \
 } while ( 0 )
+
+
+/*
+ * Static (single linked) list declaration
+ */
+
+#define LST_M_StaticAnchorTo(Type) LST_M_AnchorTo(Type, Sta)
+
+#define LST_M_StaticParentDecl(Type)										   \
+	Type * hFirstElementSta;												   \
+	Type * hLastElementSta;													   \
+	long lNbOfElementsSta;
+
+#define LST_M_StaticChildDecl(Type, ParentType)								   \
+	Type * hNextBrotherSta;
+
+#define LST_M_StaticElementDecl(Type)										   \
+	Type * hNextBrotherSta;
+
+#define LST_M_StaticListDecl(Type)											   \
+	LST_M_StaticAnchorTo(Type)												   \
+	{																		   \
+		LST_M_StaticParentDecl(Type)										   \
+	}
+
+
+/*
+ * Static list access functions
+ */
+
+#define LST_M_StaticGetNextBrother( hElement ) ((hElement)->hNextBrotherSta)
+
+#define LST_M_StaticGetFirstElement( hAnchor ) ((hAnchor)->hFirstElementDyn)
+#define LST_M_StaticGetLastElement( hAnchor ) ((hAnchor)->hLastElementDyn)
+#define LST_M_StaticGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsDyn)
+
+// Initialise anchor of list
+#define LST_M_StaticInitAnchor( hAnchor )									   \
+do {																		   \
+	LST_M_StaticGetFirstElement(hAnchor) = NULL;							   \
+	LST_M_StaticGetLastElement(hAnchor) = NULL;								   \
+	LST_M_StaticGetNbOfElements(hAnchor) = 0;								   \
+} while ( 0 )
+
+// Initialise list element
+#define LST_M_StaticInitElement( hElement )									   \
+do {																		   \
+	LST_M_StaticGetNextBrother(hElement) = NULL;							   \
+} while ( 0 )
+
+// TODO: Static list add/remove/foreach/nth macros

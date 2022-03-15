@@ -33,7 +33,7 @@ LST_M_DynamicListDecl(ALW_tdstAlwaysModelList);
 struct ALW_tdstAlways
 {
 	DWORD ulMaxNbOfAlways;
-	LST_M_AnchorTo(ALW_tdstAlwaysModelList) hLstAlwaysModel;
+	LST_M_DynamicAnchorTo(ALW_tdstAlwaysModelList) hLstAlwaysModel;
 
 	HIE_tdstSuperObject *p_stAlwaysSuperObject; /* Contains all generated always objects */
 	HIE_tdstEngineObject *p_stAlwaysEngineObjectInit;

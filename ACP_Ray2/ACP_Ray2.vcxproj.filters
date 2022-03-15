@@ -126,6 +126,18 @@
     <ClInclude Include="src\PO\PO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SCT\SCT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GLI\GLI_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SCT\SCT_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HIE\HIE_Family.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

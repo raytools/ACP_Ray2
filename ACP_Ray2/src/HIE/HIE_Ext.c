@@ -18,11 +18,11 @@
 // Object Type
 ////////////////
 
-char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem)
+char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem)
 {
 	int lId = p_stCharacter->hStandardGame->lObjectPersonalType;
 	
-	if ( lId < 0 || lId >= hTypeElem->lNbOfElements )
+	if ( lId < 0 || lId >= LST_M_DynamicGetNbOfElements(hTypeElem) )
 		return NULL;
 
 	HIE_tdstObjectTypeElement *pItem;
@@ -35,7 +35,7 @@ char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, L
 	return pItem->szName;
 }
 
-char * XHIE_fn_szGetSuperObjectTypeName( HIE_tdstSuperObject *p_stSpo, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+char * XHIE_fn_szGetSuperObjectTypeName( HIE_tdstSuperObject *p_stSpo, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor )
 		return NULL;
@@ -58,7 +58,7 @@ ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo 
 	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stFamilyType);
 }
 
-int XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+int XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
 	HIE_tdstObjectTypeElement *pItem;
 	int i;
@@ -72,7 +72,7 @@ int XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_AnchorTo(HIE_tdstObject
 	return -1;
 }
 
-ACP_API int XHIE_fn_lNewObjectType( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+ACP_API int XHIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
 	int length = strlen(szName) + 1;
 

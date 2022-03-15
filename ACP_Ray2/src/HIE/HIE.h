@@ -2,11 +2,13 @@
 
 #include "HIE_Def.h"
 #include "HIE_StdGame.h"
+#include "HIE_Family.h"
 #include "../AI/AI_Def.h"
 #include "../DNM/DNM_Def.h"
 #include "../POS/POS.h"
 #include "../GEO/GEO.h"
 #include "../PO/PO.h"
+#include "../SCT/SCT.h"
 #include "../MTH.h"
 #include "../LST.h"
 #include "../apidef.h"
@@ -73,7 +75,7 @@ union HIE_tduLinkedObject
 {
 	HIE_tdstSuperObject *p_stSuperObject;
 	HIE_tdstEngineObject *p_stCharacter;
-	HIE_tdstSector *p_stSector;
+	SCT_tdstSector *p_stSector;
 	GEO_tdstGeometricObject *p_stGeometricObject;
 	PO_tdstPhysicalObject *p_stPhysicalObject;
 	void *p_stInstanciatedPhysicalObject;
@@ -100,12 +102,6 @@ struct HIE_tdstSuperObject
 	MTH_tdxReal fTransparenceLevel;
 };
 
-
-//////////////
-// SPO Types
-//////////////
-
-
 struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 {
 	// TODO: replace void pointers
@@ -117,36 +113,12 @@ struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 	void *hCollSet;
 	void *hMSWay;
 	void *hMSLight;
-	void *hSectInfo;
+	SCT_tdstSectInfo *hSectInfo;
 	void *hMicro;
 	void *hMSPrtSrc;
 	void *hMSSound;
 	void *hAnimEffect;
 	void *hMSMagnet;
-};
-
-struct HIE_tdstSector
-{
-	// TODO: fill out this struct correctly
-	void *persoSPOList;
-	void *staticLightsList;
-	void *dynamicLightsList;
-};
-
-
-struct HIE_tdstFamilyList
-{
-	LST_M_DynamicParentDecl(void)
-
-	// TODO: tdstFamily
-	////////////////////////////////////////////////////////////////////////////////
-	// Dear future me:
-	// The original struct was called `LST2_tdstAnchorTotdxHandleToFamilyListDyn`.
-	// The item struct was called `tdstFamilyList_`.
-	// This was somewhat confusing (the item is not a list), so I changed it.
-	// Now it's slightly less confusing but can still cause trouble in the future,
-	// especially while implementing `tdstFamily`.
-	// For that reason I'm leaving this note here.
 };
 
 struct HIE_tdstAlwaysActiveCharacter

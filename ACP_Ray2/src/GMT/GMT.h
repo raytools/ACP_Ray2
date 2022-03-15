@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../GLI/GLI.h"
+#include "../GLI/GLI_Def.h"
 #include "../DNM/DNM.h"
 #include "../basedef.h"
 #include "../apidef.h"

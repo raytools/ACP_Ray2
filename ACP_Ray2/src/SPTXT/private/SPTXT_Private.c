@@ -11,7 +11,7 @@
 //////////////////////////////
 
 
-LST_M_AnchorTo(SPTXT_tdstNodeText) g_stTextNodeList;
+LST_M_DynamicAnchorTo(SPTXT_tdstNodeText) g_stTextNodeList;
 
 #ifdef _DEBUG
 DWORD g_ulNbNodes = 0;

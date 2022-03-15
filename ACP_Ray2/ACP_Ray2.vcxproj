@@ -118,10 +118,14 @@ cd .</Command>
     <ClInclude Include="src\GEO\GEO.h" />
     <ClInclude Include="src\GLI\GLD.h" />
     <ClInclude Include="src\GLI\GLI_Const.h" />
+    <ClInclude Include="src\GLI\GLI_Def.h" />
     <ClInclude Include="src\GMT\GMT.h" />
+    <ClInclude Include="src\HIE\HIE_Family.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\PO\PO.h" />
+    <ClInclude Include="src\SCT\SCT.h" />
+    <ClInclude Include="src\SCT\SCT_Def.h" />
     <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />

@@ -7,3 +7,8 @@
 #else
 #define ACP_API __declspec(dllimport)
 #endif
+
+#define ACP_PTR ACP_API extern
+
+#define ACP_FUNC ACP_PTR
+#define ACP_VAR ACP_PTR

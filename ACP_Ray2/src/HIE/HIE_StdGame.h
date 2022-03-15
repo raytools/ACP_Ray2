@@ -147,7 +147,7 @@ LST_M_DynamicListDecl(HIE_tdstObjectTypeElement);
 
 struct HIE_tdstObjectType
 {
-	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stFamilyType;
-	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stModelType;
-	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stPersonalType;
+	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stFamilyType;
+	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stModelType;
+	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stPersonalType;
 };
