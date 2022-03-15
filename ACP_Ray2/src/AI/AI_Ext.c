@@ -13,7 +13,7 @@ ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsg
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor ) return -1;
 	
-	AI_tdstBrain *pBrain = p_stSpo->hLinkedObject.p_stCharacter->p_stBrain;
+	AI_tdstBrain *pBrain = p_stSpo->hLinkedObject.p_stCharacter->hBrain;
 	if ( !pBrain || !pBrain->p_stMind ) return -1;
 
 	AI_tdstDsgMem *pDsgMem = pBrain->p_stMind->p_stDsgMem;

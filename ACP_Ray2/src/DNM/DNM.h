@@ -21,13 +21,16 @@ struct DNM_tdstDynamicsBaseBlock
 {
 	int lObjectType;
 	void *pCurrentIdCard;
+
 	DWORD ulFlags;
 	DWORD ulEndFlags;
+
 	MTH_tdxReal xGravity;
-	MTH_tdxReal xSlopeLimit;
-	MTH_tdxReal xCosSlope;
+	MTH_tdxReal xSlopeLimit; /* tan of slope limit */
+	MTH_tdxReal xCosSlope; /* cos of slope limit */
 	MTH_tdxReal xSlide;
 	MTH_tdxReal xRebound;
+
 	MTH3D_tdstVector stImposeSpeed;
 	MTH3D_tdstVector stProposeSpeed;
 	MTH3D_tdstVector stPreviousSpeed;
@@ -35,9 +38,11 @@ struct DNM_tdstDynamicsBaseBlock
 	MTH3D_tdstVector stSpeedAnim;
 	MTH3D_tdstVector stSafeTranslation;
 	MTH3D_tdstVector stAddTranslation;
+
 	POS_tdstCompletePosition stPreviousMatrix;
 	POS_tdstCompletePosition stCurrentMatrix;
 	MTH3D_tdstMatrix stImposeRotationMatrix;
+
 	BYTE ucNbFrame;
 	DNM_tdstReport *p_stReport;
 };
@@ -47,16 +52,20 @@ struct DNM_tdstDynamicsAdvancedBlock
 	MTH_tdxReal xInertiaX;
 	MTH_tdxReal xInertiaY;
 	MTH_tdxReal xInertiaZ;
+
 	MTH_tdxReal xStreamPrority;
 	MTH_tdxReal xStreamFactor;
+
 	MTH_tdxReal xSlideFactorX;
 	MTH_tdxReal xSlideFactorY;
 	MTH_tdxReal xSlideFactorZ;
 	MTH_tdxReal xPreviousSlide;
+
 	MTH3D_tdstVector stMaxSpeed;
 	MTH3D_tdstVector stStreamSpeed;
 	MTH3D_tdstVector stAddSpeed;
 	MTH3D_tdstVector stLimit;
+
 	MTH3D_tdstVector stCollisionTranslation;
 	MTH3D_tdstVector stInertiaTranslation;
 	MTH3D_tdstVector stGroundNormal;
@@ -64,7 +73,7 @@ struct DNM_tdstDynamicsAdvancedBlock
 	BYTE ucCollideCounter;
 };
 
-// WTF? Used in complex dynamics
+/* Module Allowing the Communication of Datas from the Player or the Intelligence to the Dynamics */
 struct DNM_tdstMACDPID
 {
 	MTH_tdxReal xData0;
@@ -102,6 +111,7 @@ struct DNM_tdstDynamicsComplexBlock
 	MTH_tdxReal xTiltInertia;
 	MTH_tdxReal xTiltOrigin;
 	MTH_tdxReal xTiltAngle;
+
 	MTH_tdxReal xHangingLimit;
 	MTH3D_tdstVector stContact;
 	MTH3D_tdstVector stFallTranslation;
@@ -119,8 +129,7 @@ struct DNM_tdstDynamicsComplexBlock
 struct DNM_tdstDynam
 {
 	DNM_tdstDynamics *p_stDynamics;
-	// DNM_tdstParsingDatas *
-	void *p_stParsingDatas;
+	DNM_tdstParsingDatas *p_stParsingDatas; /* Data used during the frame */
 	int eUsedMechanics;
 };
 
@@ -156,17 +165,30 @@ struct DNM_tdstObstacle
 
 struct DNM_tdstReport
 {
+	/* Surface report */
 	DWORD ulPrevSurfaceState;
 	DWORD ulCurrSurfaceState;
+
+	/* Obstacle report */
 	DNM_tdstObstacle stObstacle;
 	DNM_tdstObstacle stGround;
 	DNM_tdstObstacle stWall;
 	DNM_tdstObstacle stCharacter;
 	DNM_tdstObstacle stWater;
 	DNM_tdstObstacle stCeil;
+
+	/* Kinetic report */
 	MTH_tdstMove stAbsolutePrevSpeed;
 	MTH_tdstMove stAbsoluteCurrSpeed;
 	MTH_tdstMove stAbsolutePrevPosition;
 	MTH_tdstMove stAbsoluteCurrPosition;
+
 	BYTE ucBitField;
+};
+
+struct DNM_tdstParsingDatas
+{
+	MTH3D_tdstVector stPosition;
+	MTH_tdxReal xOutAlpha;
+	MTH3D_tdstVector stVector;
 };

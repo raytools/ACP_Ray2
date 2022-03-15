@@ -20,7 +20,7 @@
 
 char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem)
 {
-	int lId = p_stCharacter->p_stStdGame->lObjectPersonalType;
+	int lId = p_stCharacter->hStandardGame->lObjectPersonalType;
 	
 	if ( lId < 0 || lId >= hTypeElem->lNbOfElements )
 		return NULL;

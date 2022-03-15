@@ -107,15 +107,20 @@ struct HIE_tdstSuperObject
 struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 {
 	// TODO: replace void pointers
-	void *p_stP3DData;
-	HIE_tdstStandardGame *p_stStdGame;
-	DNM_tdstDynam *p_stDynam;
-	AI_tdstBrain *p_stBrain;
-	void *p_stCamera;
-	void *p_stCollSet;
-	void *p_stMsWay;
-	void *p_stMsLight;
-	void *p_stSectInfo;
+	void *h3dData;
+	HIE_tdstStandardGame *hStandardGame;
+	DNM_tdstDynam *hDynam;
+	AI_tdstBrain *hBrain;
+	void *hCineInfo;
+	void *hCollSet;
+	void *hMSWay;
+	void *hMSLight;
+	void *hSectInfo;
+	void *hMicro;
+	void *hMSPrtSrc;
+	void *hMSSound;
+	void *hAnimEffect;
+	void *hMSMagnet;
 };
 
 struct HIE_tdstSector
