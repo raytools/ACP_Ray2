@@ -55,6 +55,10 @@ typedef enum GAM_tdeDisplayFixMode
 // Engine structure
 ACP_API extern GAM_tdstEngineStructure *const GAM_g_stEngineStructure;
 
+ACP_API extern HIE_tdstSuperObject **const GAM_pp_stDynamicWorld;
+ACP_API extern HIE_tdstSuperObject **const GAM_pp_stInactiveDynamicWorld;
+ACP_API extern HIE_tdstSuperObject **const GAM_pp_stFatherSector;
+
 
 ACP_API extern BYTE (*GAM_fn_ucGetEngineMode)( void );
 ACP_API extern void (*GAM_fn_vChangeEngineMode)( BYTE ucMode );

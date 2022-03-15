@@ -1,5 +1,8 @@
 #include "HIE_Ext.h"
 #include "HIE.h"
+#include "../GAM/GAM.h"
+#include "../ALW/ALW.h"
+#include "../LST.h"
 #include "../MMG/MMG.h"
 #include "../private/framework.h"
 
@@ -10,16 +13,7 @@
 //
 ///////////////////
 
-
-ACP_API HIE_tdstSuperObject **const XHIE_p_p_stActiveDynamicWorld = (HIE_tdstSuperObject **)0x0500FD0;
-ACP_API HIE_tdstSuperObject **const XHIE_p_p_stInactiveDynamicWorld = (HIE_tdstSuperObject **)0x500FC4;
-ACP_API HIE_tdstSuperObject **const XHIE_p_p_stFatherSector = (HIE_tdstSuperObject **)0x500FC0;
 ACP_API XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames = (XHIE_tdst_llObjectInfo *)0x5013E0;
-
-HIE_tdstSuperObject **const XHIE_p_p_stMainActor = (HIE_tdstSuperObject **)0x500578;
-HIE_tdstSuperObject **const XHIE_p_p_stNextMainActor = (HIE_tdstSuperObject **)0x50057C;
-
-XHIE_tdst_llAlways *const p_llAlways = (XHIE_tdst_llAlways *)0x004A6B18;
 
 
 ////////////////
@@ -81,8 +75,9 @@ ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType u
 ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback )
 {
 	int nEnumerated = 0;
+	HIE_tdstSuperObject *pChild;
 
-	for ( HIE_tdstSuperObject *pChild = p_stSpo->p_stFirstChild; pChild; pChild = pChild->p_stNext )
+	LST_M_DynamicForEach(p_stSpo, pChild)
 	{
 		BOOL bContinue = p_fnCallback(pChild);
 		nEnumerated++;
@@ -96,10 +91,11 @@ ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnu
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback )
 {
 	int nEnumerated = 0;
+	ALW_tdstAlwaysModelList *pItem;
 
-	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
+	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
 	{
-		BOOL bContinue = p_fnCallback(pItem->p_stPerso);
+		BOOL bContinue = p_fnCallback(pItem->p_stAlwaysObject);
 		nEnumerated++;
 
 		if ( !bContinue ) break;
@@ -110,19 +106,20 @@ ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback 
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void )
 {
-	return *XHIE_p_p_stMainActor;
+	return GAM_g_stEngineStructure->g_hMainActor;
 }
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 {
 	HIE_tdstSuperObject *a_p_stSearchIn[] = {
-		(*XHIE_p_p_stActiveDynamicWorld)->p_stFirstChild,
-		(*XHIE_p_p_stInactiveDynamicWorld)->p_stFirstChild
+		*GAM_pp_stDynamicWorld,
+		*GAM_pp_stInactiveDynamicWorld
 	};
+	HIE_tdstSuperObject *pItem;
 
 	for ( int i = 0; i < ARRAYSIZE(a_p_stSearchIn); i++ )
 	{
-		for ( HIE_tdstSuperObject *pItem = a_p_stSearchIn[i]; pItem; pItem = pItem->p_stNext )
+		LST_M_DynamicForEach(a_p_stSearchIn[i], pItem)
 		{
 			char *szObjName = XHIE_fn_szGetObjectName(pItem, e_OI_Instance);
 			if ( szObjName && !_stricmp(szName, szObjName) )
@@ -137,12 +134,13 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 
 ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName )
 {
-	for ( XHIE_tdstAlways *pItem = p_llAlways->p_stFirst; pItem; pItem = pItem->p_stNext )
+	ALW_tdstAlwaysModelList *pItem;
+	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
 	{
-		char *szObjName = XHIE_fn_szGetPersoName(pItem->p_stPerso, e_OI_Instance);
+		char *szObjName = XHIE_fn_szGetPersoName(pItem->p_stAlwaysObject, e_OI_Instance);
 		if ( szObjName && !_stricmp(szName, szObjName) )
 		{
-			return pItem->p_stPerso;
+			return pItem->p_stAlwaysObject;
 		}
 	}
 

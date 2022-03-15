@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
+#include "../LST.h"
 #include "../MTH.h"
 #include "../apidef.h"
 
@@ -15,15 +16,9 @@
 typedef struct XHIE_tdstObjectInfo XHIE_tdstObjectInfo;
 typedef struct XHIE_tdst_llObjectInfo XHIE_tdst_llObjectInfo;
 
-typedef struct XHIE_tdst_llAlways XHIE_tdst_llAlways;
-typedef struct XHIE_tdstAlways XHIE_tdstAlways;
-
 typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
 typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstEngineObject *p_stPerso );
 
-ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stActiveDynamicWorld;
-ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stInactiveDynamicWorld;
-ACP_API extern HIE_tdstSuperObject **const XHIE_p_p_stFatherSector;
 ACP_API extern XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames;
 
 
@@ -63,27 +58,6 @@ ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType u
 /////////////////////////
 // SPO & Always Objects
 /////////////////////////
-
-struct XHIE_tdstAlways
-{
-	XHIE_tdstAlways *p_stNext;
-	XHIE_tdstAlways *p_stPrevious;
-	XHIE_tdst_llAlways *p_stHeader;
-
-	int lModelID;
-	HIE_tdstEngineObject *p_stPerso;
-};
-
-struct XHIE_tdst_llAlways
-{
-	int nMaxAlways;
-	XHIE_tdstAlways *p_stFirst;
-	XHIE_tdstAlways *p_stLast;
-	int nItems;
-
-	// TODO: Always SPO, EngineObjectInit, Generator
-};
-
 
 ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback );
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );

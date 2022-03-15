@@ -111,6 +111,9 @@
     <ClInclude Include="src\LST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ALW\ALW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -156,6 +159,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\FIL\FIL.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ALW\ALW.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
