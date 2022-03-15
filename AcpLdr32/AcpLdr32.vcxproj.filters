@@ -33,9 +33,6 @@
     <ClInclude Include="src\private\Errlog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\mintypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\AcpLdr32.h">
       <Filter>Header Files</Filter>
     </ClInclude>

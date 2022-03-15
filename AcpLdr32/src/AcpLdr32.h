@@ -8,7 +8,6 @@
 ////////////////////////////////////
 
 
+#include <basedef.h>
 #include "ldrdef.h"
-#include "mintypes.h"
-
 #include "Loader.h"

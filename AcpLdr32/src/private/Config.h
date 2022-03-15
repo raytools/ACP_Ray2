@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../mintypes.h"
+#include <basedef.h>
 
 
 #define C_ulMaxString 128u

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../mintypes.h"
+#include <basedef.h>
 
 
 #define ERR_Error(szMsg) ERR_fn_vPrintError(szMsg, __func__, (short)__LINE__, __FILE__)

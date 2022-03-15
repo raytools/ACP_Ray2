@@ -92,7 +92,7 @@ cd .</Command>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <CompileAs>CompileAsC</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)detours;$(SolutionDir)ACP_Ray2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
@@ -120,7 +120,6 @@ cd .</Command>
     <ClInclude Include="src\ldrdef.h" />
     <ClInclude Include="src\Loader.h" />
     <ClInclude Include="src\private\Errlog.h" />
-    <ClInclude Include="src\mintypes.h" />
     <ClInclude Include="src\private\framework.h" />
   </ItemGroup>
   <ItemGroup>

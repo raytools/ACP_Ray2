@@ -1,7 +1,7 @@
 #pragma once
 
+#include <basedef.h>
 #include "ldrdef.h"
-#include "mintypes.h"
 
 
 typedef BOOL (CALLBACK * LDR_tdfnInitProc)( DWORD ulSubmoduleId );
