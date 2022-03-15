@@ -127,7 +127,6 @@ struct HIE_tdstSector
 };
 
 
-
 struct HIE_tdstFamilyList
 {
 	LST_M_DynamicParentDecl(void)

@@ -1,17 +1,28 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
+#include "../LST.h"
 #include "../MTH.h"
+#include "../apidef.h"
 
 
-/****************
+/****************************************************************************
  * StandardGame
- ****************/
+ ****************************************************************************/
+
 
 typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
 
+typedef struct HIE_tdstObjectTypeElement HIE_tdstObjectTypeElement;
+typedef struct HIE_tdstObjectType HIE_tdstObjectType;
+
+/* Defined in HIE.c */
+ACP_API extern HIE_tdstObjectType *const HIE_g_stObjectTypes;
+
+
 #define Std_C_InvalidObjectType (-1)
 #define Std_C_AlwaysObjectType  0x00010000
+
 
 /*
  * Misc Flags
@@ -86,19 +97,11 @@ typedef enum HIE_tdeObjectinitInit
 
 struct HIE_tdstStandardGame
 {
-	union
-	{
-		struct
-		{
-			int lFamilyType;
-			int lModelType;
-			int lInstanceType;
-			// -1 (Std_C_InvalidObjectType) is an invalid type
-			// (if > Std_C_AlwaysObjectType) is an always object
-		};
-
-		int a_lObjectType[3];
-	};
+	int lObjectFamilyType;
+	int lObjectModelType;
+	int lObjectPersonalType;
+	// -1 (Std_C_InvalidObjectType) is an invalid type
+	// (if > Std_C_AlwaysObjectType) is an always object
 
 	HIE_tdstSuperObject *p_stSuperObject;
 
@@ -126,4 +129,25 @@ struct HIE_tdstStandardGame
 	BYTE ucSaveMiscFlags;
 
 	BYTE ucTooFarLimit;
+};
+
+
+/*
+ * Object Type
+ */
+
+struct HIE_tdstObjectTypeElement
+{
+	LST_M_DynamicElementDecl(HIE_tdstObjectTypeElement)
+	char *szName;
+	BYTE ucElementPriority;
+};
+
+LST_M_DynamicListDecl(HIE_tdstObjectTypeElement);
+
+struct HIE_tdstObjectType
+{
+	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stFamilyType;
+	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stModelType;
+	LST_M_AnchorTo(HIE_tdstObjectTypeElement) stPersonalType;
 };

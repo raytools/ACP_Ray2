@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
+#include "HIE_StdGame.h"
 #include "../LST.h"
 #include "../MTH.h"
 #include "../apidef.h"
@@ -13,46 +14,18 @@
 ///////////////////
 
 
-typedef struct XHIE_tdstObjectInfo XHIE_tdstObjectInfo;
-typedef struct XHIE_tdst_llObjectInfo XHIE_tdst_llObjectInfo;
-
 typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
 typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstEngineObject *p_stPerso );
 
-ACP_API extern XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames;
-
 
 ////////////////
-// Object Info
+// Object Type
 ////////////////
 
-typedef enum XHIE_tdeObjectInfoType
-{
-	e_OI_Family,
-	e_OI_Model,
-	e_OI_Instance,
-	e_Nb_OI
-} XHIE_tdeObjectInfoType;
-
-struct XHIE_tdstObjectInfo
-{
-	XHIE_tdstObjectInfo *p_stNext;
-	XHIE_tdstObjectInfo *p_stPrevious;
-	XHIE_tdst_llObjectInfo *p_stHeader;
-	char *szName;
-};
-
-struct XHIE_tdst_llObjectInfo
-{
-	XHIE_tdstObjectInfo *p_stFirst;
-	XHIE_tdstObjectInfo *p_stLast;
-	int nItems;
-};
-
-
-ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstEngineObject *p_stPerso, XHIE_tdeObjectInfoType ulInfoType );
-ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType );
-ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType );
+ACP_API char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo );
+ACP_API char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo );
+ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo );
+ACP_API int XHIE_fn_lNewObjectType( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem );
 
 
 /////////////////////////
@@ -63,5 +36,4 @@ ACP_API int XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnu
 ACP_API int XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );
 
 ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void );
-ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName );
-ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName );
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName );

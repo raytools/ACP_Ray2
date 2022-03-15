@@ -13,58 +13,80 @@
 //
 ///////////////////
 
-ACP_API XHIE_tdst_llObjectInfo *const XHIE_a_llObjectNames = (XHIE_tdst_llObjectInfo *)0x5013E0;
-
 
 ////////////////
-// Object Info
+// Object Type
 ////////////////
 
-ACP_API char * XHIE_fn_szGetPersoName( HIE_tdstEngineObject *p_stPerso, XHIE_tdeObjectInfoType ulInfoType )
-{
-	XHIE_tdst_llObjectInfo *pllInfo = &XHIE_a_llObjectNames[ulInfoType];
-	int nId = p_stPerso->p_stStdGame->a_lObjectType[ulInfoType];
-
-	if ( nId < 0 || nId >= pllInfo->nItems )
-		return NULL;
-
-	for ( XHIE_tdstObjectInfo *pItem = pllInfo->p_stFirst; pItem; pItem = pItem->p_stNext )
-	{
-		if ( nId == 0 ) return pItem->szName;
-		nId--;
-	}
-
-	return NULL;
-}
-
-ACP_API char * XHIE_fn_szGetObjectName( HIE_tdstSuperObject *p_stSpo, XHIE_tdeObjectInfoType ulInfoType )
+char * XHIE_fn_szGetNameFromTypeElement( HIE_tdstSuperObject *p_stSpo, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor )
 		return NULL;
 
-	return XHIE_fn_szGetPersoName(p_stSpo->hLinkedObject.p_stCharacter, ulInfoType);
+	int lId = p_stSpo->hLinkedObject.p_stCharacter->p_stStdGame->lObjectPersonalType;
+	
+	if ( lId < 0 || lId >= hTypeElem->lNbOfElements )
+		return NULL;
+
+	HIE_tdstObjectTypeElement *pItem;
+	int i;
+	LST_M_DynamicGetNthElement(hTypeElem, lId, pItem, i);
+
+	if ( !pItem )
+		return NULL;
+
+	return pItem->szName;
 }
 
-ACP_API int XHIE_fn_lNewObjectInfo( char const *szName, XHIE_tdeObjectInfoType ulInfoType )
+ACP_API char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo )
 {
-	XHIE_tdst_llObjectInfo *p_llInfo = &XHIE_a_llObjectNames[ulInfoType];
-	XHIE_tdstObjectInfo *pPrevious = p_llInfo->p_stLast;
+	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stPersonalType);
+}
 
+ACP_API char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo )
+{
+	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stModelType);
+}
+
+ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo )
+{
+	return XHIE_fn_szGetNameFromTypeElement(p_stSpo, &HIE_g_stObjectTypes->stFamilyType);
+}
+
+int XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+{
+	HIE_tdstObjectTypeElement *pItem;
+	int i;
+
+	LST_M_DynamicForEachIndex(hTypeElem, pItem, i)
+	{
+		if ( !_stricmp(pItem->szName, szName) )
+			return i;
+	}
+
+	return -1;
+}
+
+ACP_API int XHIE_fn_lNewObjectType( char const *szName, LST_M_AnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+{
 	int length = strlen(szName) + 1;
 
 	char *hName = fn_p_vDynAlloc(length);
-	if ( !hName ) return -1;
+	if ( !hName )
+		return -1;
+
 	memcpy(hName, szName, length);
+	
+	HIE_tdstObjectTypeElement *hNew = fn_p_vDynAlloc(sizeof(HIE_tdstObjectTypeElement));
+	if ( !hNew )
+		return -1;
 
-	XHIE_tdstObjectInfo stNew = { NULL, pPrevious, p_llInfo, hName };
-	XHIE_tdstObjectInfo *hNew = fn_p_vDynAlloc(sizeof(XHIE_tdstObjectInfo));
-	if ( !hNew ) return -1;
-	*hNew = stNew;
+	hNew->szName = hName;
 
-	p_llInfo->p_stLast = pPrevious->p_stNext = hNew;
-	int newId = p_llInfo->nItems++;
+	LST_M_DynamicAddTail(hTypeElem, hNew);
+	int lNewId = XHIE_fn_lFindTypeIdByName(szName, hTypeElem);
 
-	return newId;
+	return lNewId;
 }
 
 
@@ -109,7 +131,7 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void )
 	return GAM_g_stEngineStructure->g_hMainActor;
 }
 
-ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
+ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName )
 {
 	HIE_tdstSuperObject *a_p_stSearchIn[] = {
 		*GAM_pp_stDynamicWorld,
@@ -121,26 +143,11 @@ ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindObject( char const *szName )
 	{
 		LST_M_DynamicForEach(a_p_stSearchIn[i], pItem)
 		{
-			char *szObjName = XHIE_fn_szGetObjectName(pItem, e_OI_Instance);
+			char *szObjName = XHIE_fn_szGetSuperObjectPersonalName(pItem);
 			if ( szObjName && !_stricmp(szName, szObjName) )
 			{
 				return pItem;
 			}
-		}
-	}
-
-	return NULL;
-}
-
-ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObject( char const *szName )
-{
-	ALW_tdstAlwaysModelList *pItem;
-	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
-	{
-		char *szObjName = XHIE_fn_szGetPersoName(pItem->p_stAlwaysObject, e_OI_Instance);
-		if ( szObjName && !_stricmp(szName, szObjName) )
-		{
-			return pItem->p_stAlwaysObject;
 		}
 	}
 
