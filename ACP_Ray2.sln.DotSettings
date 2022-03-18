@@ -46,6 +46,7 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=GLI/@EntryIndexedValue">GLI</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=HIE/@EntryIndexedValue">HIE</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=IPO/@EntryIndexedValue">IPO</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=IPT/@EntryIndexedValue">IPT</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=JFFTXT/@EntryIndexedValue">JFFTXT</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=LST/@EntryIndexedValue">LST</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=MMG/@EntryIndexedValue">MMG</s:String>

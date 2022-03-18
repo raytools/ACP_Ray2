@@ -122,6 +122,7 @@ cd .</Command>
     <ClInclude Include="src\GMT\GMT.h" />
     <ClInclude Include="src\HIE\HIE_Family.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
+    <ClInclude Include="src\IPT\IPT.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\PO\PO.h" />
     <ClInclude Include="src\SCT\SCT.h" />
@@ -161,6 +162,7 @@ cd .</Command>
     <ClCompile Include="src\GLI\GLI.c" />
     <ClCompile Include="src\HIE\HIE.c" />
     <ClCompile Include="src\HIE\HIE_Ext.c" />
+    <ClCompile Include="src\IPT\IPT.c" />
     <ClCompile Include="src\JFFTXT\JFFTXT.c" />
     <ClCompile Include="src\MMG\MMG.c" />
     <ClCompile Include="src\POS\POS.c" />

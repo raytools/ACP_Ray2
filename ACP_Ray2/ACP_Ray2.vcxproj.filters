@@ -138,6 +138,9 @@
     <ClInclude Include="src\HIE\HIE_Family.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\IPT\IPT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -186,6 +189,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ALW\ALW.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IPT\IPT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
