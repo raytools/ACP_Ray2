@@ -75,7 +75,8 @@ typedef struct GLI_tdstMaterial
 	int lNumberOfDisplayNode;
 	MTH_tdxReal xActualDisplayTimeSinceStartOfLastTexture;
 	ACP_tdxBool xIsLocked;
-} GLI_tdstMaterial;
+}
+GLI_tdstMaterial;
 
 typedef struct GLI_tdstTexture
 {
@@ -111,10 +112,10 @@ typedef struct GLI_tdstTexture
 	DWORD ulCompressionCounter;
 	DWORD ulTypeOfCompression;
 	DWORD ulTypeOfMipMapping;
-	GLI_tdstTexture * p_TextureOfSubstitution;
+	GLI_tdstTexture *p_TextureOfSubstitution;
 
 	BYTE ucBilinearMode;
-	BYTE ucCylingMode;
+	BYTE ucCyclingMode;
 
 	char szFileName[128];
 }

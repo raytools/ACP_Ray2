@@ -4,11 +4,11 @@
 #include "../apidef.h"
 
 
-/////////////////////////////////////
-//
-// FIL - Files and paths management
-//
-/////////////////////////////////////
+/****************************************************************************
+ *
+ * FIL - Files and paths management
+ *
+ ****************************************************************************/
 
 
 ACP_API extern void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath );
@@ -23,3 +23,13 @@ struct FIL_tdstFileNameListElement
 };
 
 LST_M_DynamicListDecl(FIL_tdstFileNameListElement);
+
+typedef struct FIL_tdstRealGFFileHeader
+{
+    DWORD ulFormat;
+    DWORD ulWidth;
+    DWORD ulHeight;
+    BYTE ucBpp;
+    BYTE ucRLECode;
+}
+FIL_tdstRealGFFileHeader;
