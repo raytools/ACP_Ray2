@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../GEO/GEO.h"
+#include "../GEO/GEO_Def.h"
 #include "../basedef.h"
 #include "../apidef.h"
 

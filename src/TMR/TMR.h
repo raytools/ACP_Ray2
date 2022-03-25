@@ -1,37 +1,34 @@
-﻿#pragma once
+﻿/****************************************************************************
+ *
+ * TMR - Timer Module
+ *
+ ****************************************************************************/
 
-#include "../MTH.h"
-#include "../apidef.h"
+#pragma once
 
-
-///////////////////////
-//
-// TMR - Timer Module
-//
-///////////////////////
-
-
-typedef struct TMR_tdstTimerCount TMR_tdstTimerCount;
-typedef struct TMR_tdstEngineTimerStructure TMR_tdstEngineTimerStructure;
+#include "MTH.h"
+#include "apidef.h"
 
 
-struct TMR_tdstTimerCount
+typedef struct TMR_tdstTimerCount
 {
-	DWORD ulLowPart;
-	DWORD ulHighPart;
-};
+	unsigned long ulLowPart;
+	unsigned long ulHighPart;
+}
+TMR_tdstTimerCount;
 
-struct TMR_tdstEngineTimerStructure
+typedef struct TMR_tdstEngineTimerStructure
 {
-	DWORD ulFrameNumber;
-	WORD wTimerHandle;
-	DWORD ulCurrentTimerCount;
-	DWORD ulDeltaTimerCount;
-	DWORD a_ulCounter[16];
-	DWORD ulUsefulDeltaTime;
-	DWORD ulPauseTime;
+	unsigned long ulFrameNumber;
+	unsigned short wTimerHandle;
+	unsigned long ulCurrentTimerCount;
+	unsigned long ulDeltaTimerCount;
+	unsigned long a_ulCounter[16];
+	unsigned long ulUsefulDeltaTime;
+	unsigned long ulPauseTime;
 	MTH_tdxReal xFrameLength;
 	TMR_tdstTimerCount stRealTimeCount;
 	TMR_tdstTimerCount stPauseTime;
-	DWORD ulTickPerMs;
-};
+	unsigned long ulTickPerMs;
+}
+TMR_tdstEngineTimerStructure;

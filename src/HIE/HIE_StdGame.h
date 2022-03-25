@@ -11,11 +11,6 @@
  ****************************************************************************/
 
 
-typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
-
-typedef struct HIE_tdstObjectTypeElement HIE_tdstObjectTypeElement;
-typedef struct HIE_tdstObjectType HIE_tdstObjectType;
-
 /* Defined in HIE.c */
 ACP_API extern HIE_tdstObjectType *const HIE_g_stObjectTypes;
 

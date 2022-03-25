@@ -1,28 +1,34 @@
+/****************************************************************************
+ *
+ * ERM - Error Management Module
+ *
+ ****************************************************************************/
+
 #pragma once
 
-#include "../MTH.h"
-#include "../apidef.h"
+#include "apidef.h"
 
 
-////////////////////////
-//
-// ERM - Error Manager
-//
-////////////////////////
+/*
+ * TODO: Update with correct names from CPA source
+ */
 
-
-typedef struct ERM_tdstErrorInfo ERM_tdstErrorInfo;
-
-
-ACP_API extern BYTE (*ERM_fn_ucInitErrMsg)( void );
-ACP_API extern ERM_tdstErrorInfo * (*ERM_fn_p_stFindstMyLastErrorInfo)( DWORD ulThreadId );
-ACP_API extern void (*ERM_fn_vUpdateLastError)( WORD uwMaxFatalErr, BYTE ucModule, DWORD ulThreadId, WORD uwError, int, BYTE, BYTE, char *szMsg );
-ACP_API extern void (*ERM_fn_vClearLastError)( DWORD ulThreadId );
-
-
-struct ERM_tdstErrorInfo
+typedef struct ERM_tdstErrorInfo
 {
-	WORD uwError;
-	BYTE ucModule;
-	DWORD ulThreadId;
-};
+	unsigned short uwError;
+	unsigned char ucModule;
+	unsigned long ulThreadId;
+}
+ERM_tdstErrorInfo;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC unsigned char (*ERM_fn_ucInitErrMsg)( void );
+ACP_FUNC ERM_tdstErrorInfo * (*ERM_fn_p_stFindstMyLastErrorInfo)( unsigned long ulThreadId );
+ACP_FUNC void (*ERM_fn_vClearLastError)( unsigned long ulThreadId );
+ACP_FUNC void (*ERM_fn_vUpdateLastError)( unsigned short uwMaxFatalErr, unsigned char ucModule,
+												unsigned long ulThreadId, unsigned short uwError,
+												int, unsigned char, unsigned char, char *szMsg );

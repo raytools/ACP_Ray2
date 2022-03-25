@@ -6,7 +6,7 @@
 #include "../AI/AI_Def.h"
 #include "../DNM/DNM_Def.h"
 #include "../POS/POS.h"
-#include "../GEO/GEO.h"
+#include "../GEO/GEO_Def.h"
 #include "../PO/PO.h"
 #include "../SCT/SCT.h"
 #include "../GLI/GLI_Def.h"
@@ -72,7 +72,7 @@ typedef enum HIE_tdeTypeOfObject
 	HIE_C_Type_EDT_TestPoint			= 0x40000
 } HIE_tdeTypeOfObject;
 
-union HIE_tduLinkedObject
+typedef union HIE_tduLinkedObject
 {
 	HIE_tdstSuperObject *p_stSuperObject;
 	HIE_tdstEngineObject *p_stCharacter;
@@ -82,7 +82,7 @@ union HIE_tduLinkedObject
 	PO_tdstInstantiatedPhysicalObject *p_stInstantiatedPhysicalObject;
 	GLI_tdstLight *p_stLight;
 	void* p_Void;
-};
+} HIE_tduLinkedObject;
 
 struct HIE_tdstSuperObject
 {

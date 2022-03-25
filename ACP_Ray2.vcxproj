@@ -114,6 +114,7 @@
     <ClInclude Include="src\ERM\ERM.h" />
     <ClInclude Include="src\FIL\FIL.h" />
     <ClInclude Include="src\GEO\GEO.h" />
+    <ClInclude Include="src\GEO\GEO_Def.h" />
     <ClInclude Include="src\GLI\GLD.h" />
     <ClInclude Include="src\GLI\GLI_Const.h" />
     <ClInclude Include="src\GLI\GLI_Def.h" />

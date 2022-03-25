@@ -1,12 +1,11 @@
+/****************************************************************************
+ *
+ * FIL - Files and paths management
+ *
+ ****************************************************************************/
+
 #include "FIL.h"
 
 
-/////////////////////////////////////
-//
-// FIL - Files and paths management
-//
-/////////////////////////////////////
-
-
-ACP_API void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath ) = 0x493300;
-ACP_API void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile ) = 0x493590;
+void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath ) = OFFSET(0x493300);
+void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile ) = OFFSET(0x493590);

@@ -1,35 +1,39 @@
-#pragma once
-
-#include "../LST.h"
-#include "../apidef.h"
-
-
 /****************************************************************************
  *
  * FIL - Files and paths management
  *
  ****************************************************************************/
 
+#pragma once
 
-ACP_API extern void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath );
-ACP_API extern void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile );
+#include "LST.h"
+#include "apidef.h"
 
 
 typedef struct FIL_tdstFileNameListElement FIL_tdstFileNameListElement;
-struct FIL_tdstFileNameListElement
+LST_M_DynamicListDecl(FIL_tdstFileNameListElement);
+
+typedef struct FIL_tdstFileNameListElement
 {
 	LST_M_DynamicElementDecl(FIL_tdstFileNameListElement)
 	char *szFileName;
-};
-
-LST_M_DynamicListDecl(FIL_tdstFileNameListElement);
+}
+FIL_tdstFileNameListElement;
 
 typedef struct FIL_tdstRealGFFileHeader
 {
-    DWORD ulFormat;
-    DWORD ulWidth;
-    DWORD ulHeight;
-    BYTE ucBpp;
-    BYTE ucRLECode;
+    unsigned long ulFormat;
+    unsigned long ulWidth;
+    unsigned long ulHeight;
+    unsigned char ucBpp;
+    unsigned char ucRLECode;
 }
 FIL_tdstRealGFFileHeader;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void * (*FIL_fn_vOpenConcatFile)( char const *szFilePath );
+ACP_FUNC void (*FIL_fn_vCloseConcatFile)( void **p_hCntFile );

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "HIE_Def.h"
-#include "../GEO/GEO.h"
+#include "../GEO/GEO_Def.h"
 #include "../LST.h"
 #include "../MTH.h"
 #include "../apidef.h"
@@ -10,13 +10,6 @@
 /****************************************************************************
  * FamilyList
  ****************************************************************************/
-
-typedef struct HIE_tdstFamilyList HIE_tdstFamilyList;
-typedef struct HIE_tdstObjectsTablesList HIE_tdstObjectsTablesList;
-
-typedef struct HIE_tdstState HIE_tdstState;
-typedef struct HIE_tdstTransition HIE_tdstTransition;
-typedef struct HIE_tdstProhibit HIE_tdstProhibit;
 
 
 LST_M_DynamicListDecl(HIE_tdstFamilyList);

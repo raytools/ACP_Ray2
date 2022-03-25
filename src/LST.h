@@ -1,16 +1,17 @@
-#pragma once
-
-#include "basedef.h"
-
-
 /****************************************************************************
  *
  * LST - Linked List module
  *
+ ****************************************************************************/
+
+/*
  * Note: As in the original CPA implementation, "dynamic" lists
  * are double-linked, whereas "static" lists are single-linked.
- *
- ****************************************************************************/
+ */
+
+#pragma once
+
+#include "basedef.h"
 
 
 #define LST_M_AnchorTo(Type, x) struct LST_tdstAnchorTo_##Type##_##x
@@ -55,7 +56,7 @@
 #define LST_M_DynamicGetLastElement( hAnchor ) ((hAnchor)->hLastElementDyn)
 #define LST_M_DynamicGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsDyn)
 
-// Initialise anchor of list
+/* Initialise anchor of list */
 #define LST_M_DynamicInitAnchor( hAnchor )									   \
 do {																		   \
 	LST_M_DynamicGetFirstElement(hAnchor) = NULL;							   \
@@ -63,7 +64,7 @@ do {																		   \
 	LST_M_DynamicGetNbOfElements(hAnchor) = 0;								   \
 } while ( 0 )
 
-// Initialise list element
+/* Initialise list element */
 #define LST_M_DynamicInitElement( hElement )								   \
 do {																		   \
 	LST_M_DynamicGetNextBrother(hElement) = NULL;							   \
@@ -71,7 +72,7 @@ do {																		   \
 	LST_M_DynamicGetFather(hElement) = NULL;								   \
 } while ( 0 )
 
-// Remove element from list
+/* Remove element from list */
 #define LST_M_DynamicIsolate( hElement )																			   \
 do {																												   \
 	if ( LST_M_DynamicGetNextBrother(hElement) != NULL )															   \
@@ -94,7 +95,7 @@ do {																												   \
 	LST_M_DynamicInitElement(hElement);																				   \
 } while ( 0 )
 
-// Add element at the beginning of the list
+/* Add element at the beginning of the list */
 #define LST_M_DynamicAddHead( hAnchor, hElement )																	   \
 do {																												   \
 	LST_M_DynamicIsolate(hElement);																					   \
@@ -111,7 +112,7 @@ do {																												   \
 	LST_M_DynamicGetNbOfElements(hAnchor)++;																		   \
 } while ( 0 )
 
-// Add element at the end of the list
+/* Add element at the end of the list */
 #define LST_M_DynamicAddTail( hAnchor, hElement )																	   \
 do {																												   \
 	LST_M_DynamicIsolate(hElement);																					   \
@@ -128,7 +129,7 @@ do {																												   \
 	LST_M_DynamicGetNbOfElements(hAnchor)++;																		   \
 } while ( 0 )
 
-// Iterate over all elements of the list
+/* Iterate over all elements of the list */
 #define LST_M_DynamicForEach( hAnchor, hElement )							   \
 for (																		   \
 	(hElement) = LST_M_DynamicGetFirstElement(hAnchor);						   \
@@ -136,7 +137,7 @@ for (																		   \
 	(hElement) = LST_M_DynamicGetNextBrother(hElement)						   \
 )
 
-// Iterate over all elements of the list, with index variable
+/* Iterate over all elements of the list, with index variable */
 #define LST_M_DynamicForEachIndex( hAnchor, hElement, i )					   \
 for (																		   \
 	(i) = 0, (hElement) = LST_M_DynamicGetFirstElement(hAnchor);			   \
@@ -197,7 +198,7 @@ do {																		   \
 #define LST_M_StaticGetLastElement( hAnchor ) ((hAnchor)->hLastElementDyn)
 #define LST_M_StaticGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsDyn)
 
-// Initialise anchor of list
+/* Initialise anchor of list */
 #define LST_M_StaticInitAnchor( hAnchor )									   \
 do {																		   \
 	LST_M_StaticGetFirstElement(hAnchor) = NULL;							   \
@@ -205,10 +206,12 @@ do {																		   \
 	LST_M_StaticGetNbOfElements(hAnchor) = 0;								   \
 } while ( 0 )
 
-// Initialise list element
+/* Initialise list element */
 #define LST_M_StaticInitElement( hElement )									   \
 do {																		   \
 	LST_M_StaticGetNextBrother(hElement) = NULL;							   \
 } while ( 0 )
 
-// TODO: Static list add/remove/foreach/nth macros
+/*
+ * TODO: Static list add/remove/foreach/nth macros
+ */

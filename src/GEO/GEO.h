@@ -1,24 +1,20 @@
-#pragma once
-
-#include "../GMT/GMT.h"
-#include "../MTH.h"
-#include "../apidef.h"
-
-
 /****************************************************************************
  *
  * GEO - Common Geometry module
  *
  ****************************************************************************/
 
+#pragma once
+
+#include "GEO_Def.h"
+#include "GMT/GMT.h"
+#include "MTH.h"
+#include "apidef.h"
+
 
 /* Constant for no element parallel boxes */
 #define GEO_C_xNoParallelBox ((ACP_tdxIndex)-1)
 
-
-typedef float GEO_tdxColorValue;
-typedef void *GEO_tdxHandleToRadiosity;
-typedef struct GEO_tdstGeometricObject GEO_tdstGeometricObject;
 
 typedef struct GEO_tdstColor
 {
@@ -27,6 +23,19 @@ typedef struct GEO_tdstColor
 	GEO_tdxColorValue xB;
 	GEO_tdxColorValue xA;
 } GEO_tdstColor;
+
+typedef struct GEO_tdstDoubledIndex
+{
+	ACP_tdxIndex a2_xIndex[2];
+}
+GEO_tdstDoubledIndex;
+
+typedef struct GEO_tdstTripledIndex
+{
+	ACP_tdxIndex a3_xIndex[3];
+}
+GEO_tdstTripledIndex;
+
 
 /*
  * Bounding volume: parallel box and sphere
@@ -46,30 +55,10 @@ typedef struct GEO_tdstBoundingSphere
 }
 GEO_tdstBoundingSphere;
 
-typedef struct GEO_tdstDoubledIndex
-{
-	ACP_tdxIndex a2_xIndex[2];
-}
-GEO_tdstDoubledIndex;
 
-typedef struct GEO_tdstTripledIndex
-{
-	ACP_tdxIndex a3_xIndex[3];
-}
-GEO_tdstTripledIndex;
-
-
-typedef struct GEO_tdstVisualSet
-{
-	MTH_tdxReal xLastDistance;
-	ACP_tdxIndex xNbLodDefinitions;
-	MTH_tdxReal *d_xThresholdsTable;
-	GEO_tdstGeometricObject **d_p_stLodDefinitions;
-
-	GEO_tdxHandleToRadiosity *d_hRLI;
-	int lNbOfRLI;
-}
-GEO_tdstVisualSet;
+/*
+ * Geometric object
+ */
 
 typedef struct GEO_tdstGeometricObject
 {
@@ -92,7 +81,7 @@ typedef struct GEO_tdstGeometricObject
 	/* Bounding volume (for element) */
 	GEO_tdstParallelBox *d_stListOfParallelBoxes;
 
-	DWORD ulType;
+	unsigned long ulType;
 
 	ACP_tdxIndex xNbPoints;
 	ACP_tdxIndex xNbElements;
@@ -104,3 +93,15 @@ typedef struct GEO_tdstGeometricObject
 	MTH3D_tdstVector xBoundingSphereCenter;
 }
 GEO_tdstGeometricObject;
+
+typedef struct GEO_tdstVisualSet
+{
+	MTH_tdxReal xLastDistance;
+	ACP_tdxIndex xNbLodDefinitions;
+	MTH_tdxReal *d_xThresholdsTable;
+	GEO_tdstGeometricObject **d_p_stLodDefinitions;
+
+	GEO_tdxHandleToRadiosity *d_hRLI;
+	long lNbOfRLI;
+}
+GEO_tdstVisualSet;
