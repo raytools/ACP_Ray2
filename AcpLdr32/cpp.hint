@@ -1,2 +1,0 @@
-#define LDR_API __declspec(dllexport)
-#define LDR_API __declspec(dllimport)

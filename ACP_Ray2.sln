@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACP_Ray2", "ACP_Ray2\ACP_Ray2.vcxproj", "{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AcpLdr32", "AcpLdr32\AcpLdr32.vcxproj", "{546D8EA6-E0BC-4D55-A9EF-8E933419EF37}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACP_Ray2", "ACP_Ray2.vcxproj", "{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Debug|x86.Build.0 = Debug|Win32
 		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.ActiveCfg = Release|Win32
 		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.Build.0 = Release|Win32
-		{546D8EA6-E0BC-4D55-A9EF-8E933419EF37}.Debug|x86.ActiveCfg = Debug|Win32
-		{546D8EA6-E0BC-4D55-A9EF-8E933419EF37}.Debug|x86.Build.0 = Debug|Win32
-		{546D8EA6-E0BC-4D55-A9EF-8E933419EF37}.Release|x86.ActiveCfg = Release|Win32
-		{546D8EA6-E0BC-4D55-A9EF-8E933419EF37}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{546d8ea6-e0bc-4d55-a9ef-8e933419ef37}</ProjectGuid>
-    <RootNamespace>AcpLdr32</RootNamespace>
+    <ProjectGuid>{1489c536-ded5-4a81-a3b9-a3c6d9c57f04}</ProjectGuid>
+    <RootNamespace>ACPRay2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -45,27 +45,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>AcpLdr32</TargetName>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\lib</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>AcpLdr32</TargetName>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\lib</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;ACPLDR32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;ACPRAY2_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <CompileAs>CompileAsC</CompileAs>
       <AdditionalIncludeDirectories>$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -76,8 +75,7 @@
     </Link>
     <PostBuildEvent>
       <Command>cd "$(SolutionDir)"
-robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc\$(ProjectName)" *.h /S /PURGE /XD "private" /IS /IT /NP
-robocopy "$(OutDir)." "$(SolutionDir)bin\$(Configuration)\lib" *.dll *.lib /S /IS /IT /NP
+robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc" *.h /S /PURGE /XD "private" /IS /IT /NP
 cd .</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -87,13 +85,12 @@ cd .</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;ACPLDR32_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;ACPRAY2_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <CompileAs>CompileAsC</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)detours;$(SolutionDir)ACP_Ray2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <UseFullPaths>false</UseFullPaths>
+      <AdditionalIncludeDirectories>$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,33 +103,72 @@ cd .</Command>
     </Link>
     <PostBuildEvent>
       <Command>cd "$(SolutionDir)"
-robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc\$(ProjectName)" *.h /S /PURGE /XD "private" /IS /IT /NP
-robocopy "$(OutDir)." "$(SolutionDir)bin\$(Configuration)\lib" *.dll *.lib /S /IS /IT /NP
+robocopy "$(ProjectDir)src" "$(SolutionDir)bin\$(Configuration)\inc" *.h /S /PURGE /XD "private" /IS /IT /NP
 cd .</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\AcpLdr32.h" />
-    <ClInclude Include="src\private\Config.h" />
-    <ClInclude Include="src\ldrdef.h" />
-    <ClInclude Include="src\Loader.h" />
-    <ClInclude Include="src\private\Errlog.h" />
+    <ClInclude Include="src\AI\AI_Const.h" />
+    <ClInclude Include="src\ALW\ALW.h" />
+    <ClInclude Include="src\basedef.h" />
+    <ClInclude Include="src\ERM\ERM.h" />
+    <ClInclude Include="src\FIL\FIL.h" />
+    <ClInclude Include="src\GEO\GEO.h" />
+    <ClInclude Include="src\GLI\GLD.h" />
+    <ClInclude Include="src\GLI\GLI_Const.h" />
+    <ClInclude Include="src\GLI\GLI_Def.h" />
+    <ClInclude Include="src\GMT\GMT.h" />
+    <ClInclude Include="src\HIE\HIE_Family.h" />
+    <ClInclude Include="src\HIE\HIE_StdGame.h" />
+    <ClInclude Include="src\IPT\IPT.h" />
+    <ClInclude Include="src\LST.h" />
+    <ClInclude Include="src\PO\PO.h" />
+    <ClInclude Include="src\SCT\SCT.h" />
+    <ClInclude Include="src\SCT\SCT_Def.h" />
+    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
+    <ClInclude Include="src\AI\AI_Def.h" />
+    <ClInclude Include="src\apidef.h" />
+    <ClInclude Include="src\ACP_Ray2.h" />
+    <ClInclude Include="src\AI\AI.h" />
+    <ClInclude Include="src\DNM\DNM.h" />
+    <ClInclude Include="src\DNM\DNM_Def.h" />
+    <ClInclude Include="src\DNM\DNM_Ext.h" />
+    <ClInclude Include="src\GLI\GLI.h" />
+    <ClInclude Include="src\HIE\HIE_Def.h" />
     <ClInclude Include="src\private\framework.h" />
+    <ClInclude Include="src\GAM\GAM.h" />
+    <ClInclude Include="src\JFFTXT\JFFTXT.h" />
+    <ClInclude Include="src\MMG\MMG.h" />
+    <ClInclude Include="src\POS\POS.h" />
+    <ClInclude Include="src\MTH.h" />
+    <ClInclude Include="src\HIE\HIE.h" />
+    <ClInclude Include="src\AI\AI_Ext.h" />
+    <ClInclude Include="src\HIE\HIE_Ext.h" />
+    <ClInclude Include="src\SPTXT\SPTXT.h" />
+    <ClInclude Include="src\SPTXT\SPTXT_Def.h" />
+    <ClInclude Include="src\TMR\TMR.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\private\Config.c" />
+    <ClCompile Include="src\AI\AI.c" />
+    <ClCompile Include="src\AI\AI_Ext.c" />
+    <ClCompile Include="src\ALW\ALW.c" />
     <ClCompile Include="src\dllmain.c" />
-    <ClCompile Include="src\Loader.c" />
-    <ClCompile Include="src\private\Errlog.c" />
+    <ClCompile Include="src\DNM\DNM_Ext.c" />
+    <ClCompile Include="src\ERM\ERM.c" />
+    <ClCompile Include="src\FIL\FIL.c" />
+    <ClCompile Include="src\GAM\GAM.c" />
+    <ClCompile Include="src\GLI\GLI.c" />
+    <ClCompile Include="src\HIE\HIE.c" />
+    <ClCompile Include="src\HIE\HIE_Ext.c" />
+    <ClCompile Include="src\IPT\IPT.c" />
+    <ClCompile Include="src\JFFTXT\JFFTXT.c" />
+    <ClCompile Include="src\MMG\MMG.c" />
+    <ClCompile Include="src\POS\POS.c" />
+    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c" />
+    <ClCompile Include="src\SPTXT\SPTXT.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ACP_Ray2\ACP_Ray2.vcxproj">
-      <Project>{1489c536-ded5-4a81-a3b9-a3c6d9c57f04}</Project>
-      <Private>false</Private>
-    </ProjectReference>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
