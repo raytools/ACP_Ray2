@@ -1,20 +1,13 @@
+/****************************************************************************
+ *
+ * POS - Position module
+ *
+ ****************************************************************************/
+
 #pragma once
 
 #include "../MTH.h"
 #include "../apidef.h"
-
-
-/****************************************************************************
- *
- * POS Module
- *
- ****************************************************************************/
-
-
-typedef struct POS_tdstCompletePosition POS_tdstCompletePosition;
-
-
-ACP_API extern void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );
 
 
 typedef enum MTH_tdeMatrixType
@@ -23,9 +16,10 @@ typedef enum MTH_tdeMatrixType
 	MTH_C_Type_TranslationMatrix	= 2,
 	MTH_C_Type_RotationMatrix		= 3,
 	MTH_C_Type_CompleteMatrix		= 4
-} MTH_tdeMatrixType;
+}
+MTH_tdeMatrixType;
 
-struct POS_tdstCompletePosition
+typedef struct POS_tdstCompletePosition
 {
 	MTH_tdeMatrixType eType;
 
@@ -33,4 +27,12 @@ struct POS_tdstCompletePosition
 
 	MTH3D_tdstMatrix stRotationMatrix;
 	MTH3D_tdstMatrix stTransformMatrix;
-};
+}
+POS_tdstCompletePosition;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );

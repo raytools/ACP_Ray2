@@ -1,20 +1,18 @@
+/****************************************************************************
+ *
+ * DNM Extensions
+ *
+ ****************************************************************************/
+
 #include "DNM_Ext.h"
-#include "DNM.h"
-#include "../HIE/HIE.h"
+#include "HIE/HIE.h"
 
 
-///////////////////
-//
-// DNM Extensions
-//
-///////////////////
-
-
-ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSize( DNM_tdstDynamics *p_stDynamics )
+XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSize( DNM_tdstDynamics *p_stDynamics )
 {
 	if ( p_stDynamics )
 	{
-		DWORD ulEndFlags = p_stDynamics->stDynamicsBase.ulEndFlags;
+		unsigned long ulEndFlags = p_stDynamics->stDynamicsBase.ulEndFlags;
 
 		if ( (ulEndFlags & 4) != 0 )
 		{
@@ -30,7 +28,7 @@ ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSize( DNM_tdstDynamics *p_stDyn
 	return e_DynamicsSize_Error;
 }
 
-ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSizeSpo( HIE_tdstSuperObject *p_stSpo )
+XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSizeSpo( HIE_tdstSuperObject *p_stSpo )
 {
 	if ( p_stSpo->ulType == HIE_C_Type_Actor )
 	{

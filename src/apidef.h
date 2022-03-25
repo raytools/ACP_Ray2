@@ -1,4 +1,11 @@
+/****************************************************************************
+ *
+ * API/Library definitions for ACP
+ *
+ ****************************************************************************/
+
 #pragma once
+
 
 #define CALLBACK __stdcall
 
@@ -12,3 +19,5 @@
 
 #define ACP_FUNC ACP_PTR
 #define ACP_VAR ACP_PTR
+
+#define OFFSET(x) ((void*)(x))

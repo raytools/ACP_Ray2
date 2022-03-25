@@ -1,29 +1,29 @@
+/****************************************************************************
+ *
+ * DNM - Dynamics Module
+ *
+ ****************************************************************************/
+
 #pragma once
 
 #include "DNM_Def.h"
-#include "../HIE/HIE_Def.h"
-#include "../MTH.h"
-#include "../POS/POS.h"
+#include "HIE/HIE_Def.h"
+#include "GMT/GMT.h"
+#include "POS/POS.h"
+#include "MTH.h"
 
 
-//////////////////////////
-//
-// DNM - Dynamics Module
-// 
-//////////////////////////
+/*
+ * Dynamics Blocks
+ */
 
-
-////////////////////
-// Dynamics Blocks
-////////////////////
-
-struct DNM_tdstDynamicsBaseBlock
+typedef struct DNM_tdstDynamicsBaseBlock
 {
-	int lObjectType;
+	long lObjectType;
 	void *pCurrentIdCard;
 
-	DWORD ulFlags;
-	DWORD ulEndFlags;
+	unsigned long ulFlags;
+	unsigned long ulEndFlags;
 
 	MTH_tdxReal xGravity;
 	MTH_tdxReal xSlopeLimit; /* tan of slope limit */
@@ -43,11 +43,11 @@ struct DNM_tdstDynamicsBaseBlock
 	POS_tdstCompletePosition stCurrentMatrix;
 	MTH3D_tdstMatrix stImposeRotationMatrix;
 
-	BYTE ucNbFrame;
+	unsigned char ucNbFrame;
 	DNM_tdstReport *p_stReport;
-};
+} DNM_tdstDynamicsBaseBlock;
 
-struct DNM_tdstDynamicsAdvancedBlock
+typedef struct DNM_tdstDynamicsAdvancedBlock
 {
 	MTH_tdxReal xInertiaX;
 	MTH_tdxReal xInertiaY;
@@ -70,11 +70,12 @@ struct DNM_tdstDynamicsAdvancedBlock
 	MTH3D_tdstVector stInertiaTranslation;
 	MTH3D_tdstVector stGroundNormal;
 	MTH3D_tdstVector stWallNormal;
-	BYTE ucCollideCounter;
-};
+	unsigned char ucCollideCounter;
+}
+DNM_tdstDynamicsAdvancedBlock;
 
 /* Module Allowing the Communication of Datas from the Player or the Intelligence to the Dynamics */
-struct DNM_tdstMACDPID
+typedef struct DNM_tdstMACDPID
 {
 	MTH_tdxReal xData0;
 	MTH3D_tdstVector stData1;
@@ -97,15 +98,16 @@ struct DNM_tdstMACDPID
 	} stData7;
 
 	char cData8;
-	WORD uwData9;
+	unsigned short uwData9;
 	MTH3D_tdstVector stData10;
 	MTH_tdxReal xData11;
 	MTH3D_tdstVector stData12;
 	MTH_tdxReal xData13;
-	BYTE ucData14;
-};
+	unsigned char ucData14;
+}
+DNM_tdstMACDPID;
 
-struct DNM_tdstDynamicsComplexBlock
+typedef struct DNM_tdstDynamicsComplexBlock
 {
 	MTH_tdxReal xTiltIntensity;
 	MTH_tdxReal xTiltInertia;
@@ -119,55 +121,59 @@ struct DNM_tdstDynamicsComplexBlock
 	HIE_tdstSuperObject *p_stPlatform;
 	POS_tdstCompletePosition stAbsolutePreviousMatrix;
 	POS_tdstCompletePosition stPrevPreviousMatrix;
-};
+}
+DNM_tdstDynamicsComplexBlock;
 
 
-/////////////
-// Dynamics
-/////////////
+/*
+ * Dynamics
+ */
 
-struct DNM_tdstDynam
+typedef struct DNM_tdstDynam
 {
 	DNM_tdstDynamics *p_stDynamics;
 	DNM_tdstParsingDatas *p_stParsingDatas; /* Data used during the frame */
-	int eUsedMechanics;
-};
+	long eUsedMechanics;
+}
+DNM_tdstDynam;
 
-struct DNM_tdstBaseDynamics
+typedef struct DNM_tdstBaseDynamics
 {
 	DNM_tdstDynamicsBaseBlock stDynamicsBase;
-};
+}
+DNM_tdstBaseDynamics;
 
-struct DNM_tdstAdvancedDynamics
+typedef struct DNM_tdstAdvancedDynamics
 {
 	DNM_tdstDynamicsBaseBlock stDynamicsBase;
 	DNM_tdstDynamicsAdvancedBlock stDynamicsAdvanced;
-};
+}
+DNM_tdstAdvancedDynamics;
 
-struct DNM_tdstComplexDynamics
+typedef struct DNM_tdstComplexDynamics
 {
 	DNM_tdstDynamicsBaseBlock stDynamicsBase;
 	DNM_tdstDynamicsAdvancedBlock stDynamicsAdvanced;
 	DNM_tdstDynamicsComplexBlock stDynamicsComplex;
-};
+}
+DNM_tdstComplexDynamics;
 
-struct DNM_tdstObstacle
+typedef struct DNM_tdstObstacle
 {
 	MTH_tdxReal xRate;
 	MTH3D_tdstVector stNorm;
 	MTH3D_tdstVector stContact;
-	// GMT_tdstGameMaterial *
-	void *hMyMaterial;
-	// GMT_tdstGameMaterial *
-	void *hCollidedMaterial;
+	GMT_tdstGameMaterial *hMyMaterial;
+	GMT_tdstGameMaterial *hCollidedMaterial;
 	HIE_tdstSuperObject *p_stSupObj;
-};
+}
+DNM_tdstObstacle;
 
-struct DNM_tdstReport
+typedef struct DNM_tdstReport
 {
 	/* Surface report */
-	DWORD ulPrevSurfaceState;
-	DWORD ulCurrSurfaceState;
+	unsigned long ulPrevSurfaceState;
+	unsigned long ulCurrSurfaceState;
 
 	/* Obstacle report */
 	DNM_tdstObstacle stObstacle;
@@ -183,18 +189,21 @@ struct DNM_tdstReport
 	MTH_tdstMove stAbsolutePrevPosition;
 	MTH_tdstMove stAbsoluteCurrPosition;
 
-	BYTE ucBitField;
-};
+	unsigned char ucBitField;
+}
+DNM_tdstReport;
 
-struct DNM_tdstParsingDatas
+typedef struct DNM_tdstParsingDatas
 {
 	MTH3D_tdstVector stPosition;
 	MTH_tdxReal xOutAlpha;
 	MTH3D_tdstVector stVector;
-};
+}
+DNM_tdstParsingDatas;
 
-struct DNM_tdstMecMatCharacteristics
+typedef struct DNM_tdstMecMatCharacteristics
 {
 	MTH_tdxReal xSlide;
 	MTH_tdxReal xRebound;
-};
+}
+DNM_tdstMecMatCharacteristics;

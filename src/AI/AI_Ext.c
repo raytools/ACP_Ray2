@@ -1,15 +1,14 @@
+/****************************************************************************
+ *
+ * AI Extensions
+ *
+ ****************************************************************************/
+
 #include "AI_Ext.h"
-#include "../HIE/HIE.h"
+#include "HIE/HIE.h"
 
 
-//////////////////
-//
-// AI Extensions
-//
-//////////////////
-
-
-ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
+int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor ) return -1;
 	
@@ -22,7 +21,7 @@ ACP_API int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsg
 	AI_tdstDsgVar *pDsgVar = *pDsgMem->pp_stDsgVar;
 	int nEnumerated = 0;
 
-	for ( BYTE i = 0; i < pDsgVar->ucNbDsgVar; i++ )
+	for ( unsigned char i = 0; i < pDsgVar->ucNbDsgVar; i++ )
 	{
 		AI_tdstDsgVarInfo *pInfo = &pDsgVar->a_stDsgVarInfo[i];
 

@@ -1,11 +1,10 @@
-﻿#include "ALW.h"
-
-
-/****************************************************************************
+﻿/****************************************************************************
  *
  * ALW - Always object module
  *
  ****************************************************************************/
 
+#include "ALW.h"
 
-ACP_API ALW_tdstAlways *const ALW_g_stAlways = (ALW_tdstAlways *)0x004A6B18;
+
+ALW_tdstAlways *const ALW_g_stAlways = OFFSET(0x004A6B18);
