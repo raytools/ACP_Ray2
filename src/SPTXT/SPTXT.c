@@ -1,17 +1,17 @@
+/****************************************************************************
+ *
+ * SPTXT - Spitfire's Text Helper Module
+ *
+ ****************************************************************************/
+
 #include "SPTXT.h"
 #include "private/SPTXT_Private.h"
-#include "../JFFTXT/JFFTXT.h"
-#include "../GLI/GLI.h"
-#include "../LST.h"
-#include "../private/framework.h"
+
+#include "JFFTXT/JFFTXT.h"
+#include "GLI/GLI.h"
+#include "LST.h"
+#include "private/framework.h"
 #include <detours.h>
-
-
-//////////////////////////////////////////
-//
-// SPTXT - Spitfire's Text Helper Module
-//
-//////////////////////////////////////////
 
 
 #define TEXT_MARGIN 2
@@ -25,23 +25,23 @@ SPTXT_tdstTextInfo g_stTextInfo = { 0 };
 SPTXT_tdstTextInfo g_stDefaultTextInfo = { 0, 0, 8, 0xFF, FALSE, FALSE };
 
 
-int SPTXT_fn_lGetCharHeight( MTH_tdxReal xSize )
+long SPTXT_fn_lGetCharHeight( MTH_tdxReal xSize )
 {
 	MTH_tdxReal size = 15.0f - xSize;
 	MTH_tdxReal height = 38.0f - size * 2.5f;
-	return (int)height + TEXT_MARGIN + TEXT_MARGIN;
+	return (long)height + TEXT_MARGIN + TEXT_MARGIN;
 }
 
-int SPTXT_fn_lGetCharWidth( MTH_tdxReal xSize )
+long SPTXT_fn_lGetCharWidth( MTH_tdxReal xSize )
 {
 	MTH_tdxReal size = 15.0f - xSize;
 	MTH_tdxReal width = 46.0f - size * 4.0f;
-	return (int)width;
+	return (long)width;
 }
 
-int SPTXT_fn_lGetFmtStringLength( char const *szFmt, va_list args )
+long SPTXT_fn_lGetFmtStringLength( char const *szFmt, va_list args )
 {
-	int lSize = vsnprintf(NULL, 0, szFmt, args);
+	long lSize = vsnprintf(NULL, 0, szFmt, args);
 	return lSize + 1;
 }
 
@@ -175,7 +175,7 @@ ACP_API void SPTXT_vPrintFmtLine( char const *szFmt, ... )
 	va_list args;
 	va_start(args, szFmt);
 
-	int lSize = SPTXT_fn_lGetFmtStringLength(szFmt, args);
+	long lSize = SPTXT_fn_lGetFmtStringLength(szFmt, args);
 	char *szBuffer = _alloca(lSize);
 
 	if ( szBuffer )

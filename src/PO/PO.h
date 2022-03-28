@@ -1,15 +1,14 @@
-#pragma once
-
-#include "../GEO/GEO_Def.h"
-#include "../basedef.h"
-#include "../apidef.h"
-
-
 /*****************************************************************************
  *
  * PO - Physical objects module
  *
  *****************************************************************************/
+
+#pragma once
+
+#include "GEO/GEO_Def.h"
+#include "basedef.h"
+#include "apidef.h"
 
 
 typedef struct PO_tdstPhysicalCollSet

@@ -1,16 +1,23 @@
+/****************************************************************************
+ *
+ * HIE - Object Hierarchy
+ *
+ ****************************************************************************/
+
 #include "HIE.h"
 #include "HIE_StdGame.h"
+#include "HIE_Family.h"
 
 
-///////////////////////////
-//
-// HIE - Object Hierarchy
-// 
-///////////////////////////
+/****************************************************************************
+ * HIE.h
+ ****************************************************************************/
+
+void (*HIE_fn_vChangeFather)(HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, unsigned char bFirstChild) = OFFSET(0x45C080);
 
 
-ACP_API void (*HIE_fn_vChangeFather)(HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, BYTE bFirstChild) = 0x45C080;
+/****************************************************************************
+ * HIE_StdGame.h
+ ****************************************************************************/
 
-
-/* Declared in HIE_StdGame.h */
-ACP_API HIE_tdstObjectType *const HIE_g_stObjectTypes = (HIE_tdstObjectType *)0x5013E0;
+HIE_tdstObjectType *const HIE_g_stObjectTypes = OFFSET(0x5013E0);

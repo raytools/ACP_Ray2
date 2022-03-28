@@ -1,16 +1,15 @@
+/****************************************************************************
+ *
+ * JFFTXT - 2D Text Module
+ *
+ ****************************************************************************/
+
 #include "JFFTXT.h"
 
 
-////////////////////////////
-//
-// JFFTXT - 2D Text Module
-//
-////////////////////////////
+void (*JFFTXT_vAffiche)( void *pContext ) = OFFSET(0x465C10);
+void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_stString ) = OFFSET(0x4660B0);
 
-
-ACP_API void (*JFFTXT_vAffiche)( void *pContext ) = 0x465C10;
-ACP_API void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_stString ) = 0x4660B0;
-
-ACP_API void (*JFFTXT_vAddText)( DWORD ulTextId, MTH3D_tdstVector *p_stPos, char *szText, float xAlpha ) = 0x465A50;
-ACP_API void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulParamToChange, float xNewValue ) = 0x465AA0;
-ACP_API void (*JFFTXT_vGetStringExtents)( JFFTXT_tdstString *p_stString, MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight ) = 0x465E30;
+void (*JFFTXT_vAddText)( unsigned long ulTextId, MTH3D_tdstVector *p_stPos, char *szText, float xAlpha ) = OFFSET(0x465A50);
+void (*JFFTXT_vExtendText)( unsigned long ulTextId, JFFTXT_tdeExtendParam ulParamToChange, float xNewValue ) = OFFSET(0x465AA0);
+void (*JFFTXT_vGetStringExtents)( JFFTXT_tdstString *p_stString, MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight ) = OFFSET(0x465E30);

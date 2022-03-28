@@ -8,7 +8,7 @@
 #include "HIE/HIE.h"
 
 
-int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
+long XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor ) return -1;
 	
@@ -19,7 +19,7 @@ int XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallb
 	if ( !pDsgMem ) return -1;
 	
 	AI_tdstDsgVar *pDsgVar = *pDsgMem->pp_stDsgVar;
-	int nEnumerated = 0;
+	long nEnumerated = 0;
 
 	for ( unsigned char i = 0; i < pDsgVar->ucNbDsgVar; i++ )
 	{

@@ -31,4 +31,4 @@ ACP_FUNC ERM_tdstErrorInfo * (*ERM_fn_p_stFindstMyLastErrorInfo)( unsigned long 
 ACP_FUNC void (*ERM_fn_vClearLastError)( unsigned long ulThreadId );
 ACP_FUNC void (*ERM_fn_vUpdateLastError)( unsigned short uwMaxFatalErr, unsigned char ucModule,
 												unsigned long ulThreadId, unsigned short uwError,
-												int, unsigned char, unsigned char, char *szMsg );
+												long, unsigned char, unsigned char, char *szMsg );

@@ -1,44 +1,21 @@
-#pragma once
-
-#include "GLI_Const.h"
-#include "GLI_Def.h"
-#include "GLD.h"
-#include "../GEO/GEO.h"
-#include "../HIE/HIE_Def.h"
-#include "../POS/POS.h"
-#include "../MTH.h"
-#include "../LST.h"
-#include "../apidef.h"
-
-
 /****************************************************************************
  *
  * GLI - Graphics module
  *
  ****************************************************************************/
 
+#pragma once
 
-ACP_VAR MTH_tdxReal *const GLI_p_fZValueForSprite;
-ACP_VAR BYTE *const GLI_p_bForceAAAColor;
+#include "GLI_Const.h"
+#include "GLI_Def.h"
+#include "GLD.h"
 
-ACP_VAR void **const GLI_g_hConcatTexturesFile;
-ACP_VAR void **const GLI_gs_p_ConvertBufferMipMapping;
-
-ACP_VAR DWORD *const GLI_g_ulNumberOfLoadedTexture;
-ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
-ACP_VAR DWORD *const GLI_gs_aDEFTableOfTextureMemoryChannels;
-
-
-ACP_FUNC void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
-ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
-
-ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, void *hMaterial );
-ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
-
-ACP_FUNC void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
-ACP_FUNC char * (*GLI_fn_szGetPathOfTexture)( void );
-ACP_FUNC void (*GLI_vComputeTextures)( void );
-ACP_FUNC void (*GLI_vReloadTextures)( void );
+#include "GEO/GEO.h"
+#include "HIE/HIE_Def.h"
+#include "POS/POS.h"
+#include "MTH.h"
+#include "LST.h"
+#include "apidef.h"
 
 
 typedef struct GLI_tdst2DVertex
@@ -51,13 +28,13 @@ GLI_tdst2DVertex;
 
 typedef struct GLI_tdstMaterial
 {
-	DWORD ulMaterialType;
+	unsigned long ulMaterialType;
 
 	GEO_tdstColor stAmbient;
 	GEO_tdstColor stDiffuse;
 	GEO_tdstColor stSpecular;
 	GEO_tdstColor stColor;
-	int lSpecularExponent;
+	long lSpecularExponent;
 
 	GLI_tdstTexture *p_stTexture;
 
@@ -66,13 +43,13 @@ typedef struct GLI_tdstMaterial
 	MTH_tdxReal xAddV;
 	MTH_tdxReal xConstantAddU;
 	MTH_tdxReal xConstantAddV;
-	int lIncrementIsEnable;
+	long lIncrementIsEnable;
 
 	/* for animated textures */
-	DWORD dwActualRefreshNumber;
+	unsigned long dwActualRefreshNumber;
 	GLI_tdstAnimatedTextureNode *p_stFirstAnimatedTextureNode;
 	GLI_tdstAnimatedTextureNode *p_stActualAnimatedTextureNode;
-	int lNumberOfDisplayNode;
+	long lNumberOfDisplayNode;
 	MTH_tdxReal xActualDisplayTimeSinceStartOfLastTexture;
 	ACP_tdxBool xIsLocked;
 }
@@ -81,7 +58,7 @@ GLI_tdstMaterial;
 typedef struct GLI_tdstTexture
 {
 	BOOL bIsAvailable;
-	int lTextureQuality;
+	long lTextureQuality;
 
 	/* texture data */
 	void *p_vBitMap;
@@ -90,32 +67,32 @@ typedef struct GLI_tdstTexture
 	/* Parameter specific for graphics card */
 	void *p_stSpecParam;
 
-	DWORD ulTextureCaps;
+	unsigned long ulTextureCaps;
 
 	/* texture size (after compression) */
-	WORD uwHeight;
-	WORD uwWidth;
+	unsigned short uwHeight;
+	unsigned short uwWidth;
 
 	/* texture size (before compression) */
-	WORD uwRealHeight;
-	WORD uwRealWidth;
+	unsigned short uwRealHeight;
+	unsigned short uwRealWidth;
 
 	/* data for scrolling texture */
 	MTH_tdxReal xAddU;
 	MTH_tdxReal xAddV;
 	BOOL lIncrementIsEnable;
 
-	DWORD ulChromakeyColorRGBA;
+	unsigned long ulChromakeyColorRGBA;
 
 	/* MipMapping */
-	int lNumberOfLod;
-	DWORD ulCompressionCounter;
-	DWORD ulTypeOfCompression;
-	DWORD ulTypeOfMipMapping;
+	long lNumberOfLod;
+	unsigned long ulCompressionCounter;
+	unsigned long ulTypeOfCompression;
+	unsigned long ulTypeOfMipMapping;
 	GLI_tdstTexture *p_TextureOfSubstitution;
 
-	BYTE ucBilinearMode;
-	BYTE ucCyclingMode;
+	unsigned char ucBilinearMode;
+	unsigned char ucCyclingMode;
 
 	char szFileName[128];
 }
@@ -131,9 +108,9 @@ GLI_tdstAnimatedTextureNode;
 
 typedef struct GLI_tdstCamera
 {
-	int lSizeOfThis;
-	int lTypeOfThis;
-	int lCameraMode;
+	long lSizeOfThis;
+	long lTypeOfThis;
+	long lCameraMode;
 	POS_tdstCompletePosition stMatrix;
 	MTH_tdxReal xAlphaX;
 	MTH_tdxReal xAlphaY;
@@ -183,8 +160,8 @@ GLI_tdstSpecificAttributesFor3D;
 
 typedef struct GLI_tdstZBufferForLight
 {
-	int lSizeX;
-	int lSizeY;
+	long lSizeX;
+	long lSizeY;
 
 	MTH_tdxReal xCoefX;
 	MTH_tdxReal xCoefY;
@@ -197,7 +174,7 @@ typedef struct GLI_tdstLight
 {
 	BOOL bOnOff;
 	BOOL bThisLightIsZBuffered;
-	int lTypeOfLight;
+	long lTypeOfLight;
 
 	MTH_tdxReal xFar;
 	MTH_tdxReal xNear;
@@ -211,10 +188,10 @@ typedef struct GLI_tdstLight
 	GLI_tdstZBufferForLight stZBuffer;
 	GEO_tdstColor stColor;
 
-	BYTE bValid;
-	BYTE ucObjectPainted;
-	BYTE bIsPainting;
-	BYTE ucIsAlpha; /* 0: RGBA; 1: A Only; 2: RGB Only */
+	ACP_tdxBool bValid;
+	unsigned char ucObjectPainted;
+	ACP_tdxBool bIsPainting;
+	unsigned char ucIsAlpha; /* 0: RGBA; 1: A Only; 2: RGB Only */
 	MTH3D_tdstVector stInter_Min_Pos;
 	MTH3D_tdstVector stExter_Min_Pos;
 	MTH3D_tdstVector stInter_Max_Pos;
@@ -226,3 +203,34 @@ typedef struct GLI_tdstLight
 	GEO_tdstColor stBackgroundColor;
 }
 GLI_tdstLight;
+
+
+/*
+ * Variables
+ */
+
+ACP_VAR MTH_tdxReal *const GLI_p_fZValueForSprite;
+ACP_VAR unsigned char *const GLI_p_bForceAAAColor;
+
+ACP_VAR void **const GLI_g_hConcatTexturesFile;
+ACP_VAR void **const GLI_gs_p_ConvertBufferMipMapping;
+
+ACP_VAR unsigned long *const GLI_g_ulNumberOfLoadedTexture;
+ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
+ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
+ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
+
+ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, void *hMaterial );
+ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
+
+ACP_FUNC void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
+ACP_FUNC char * (*GLI_fn_szGetPathOfTexture)( void );
+ACP_FUNC void (*GLI_vComputeTextures)( void );
+ACP_FUNC void (*GLI_vReloadTextures)( void );

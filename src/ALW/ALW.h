@@ -21,7 +21,7 @@ typedef struct ALW_tdstAlwaysModelList
 {
 	LST_M_DynamicElementDecl(ALW_tdstAlwaysModelList)
 
-	int lObjectModelType;
+	long lObjectModelType;
 	HIE_tdstEngineObject *p_stAlwaysObject;
 }
 ALW_tdstAlwaysModelList;

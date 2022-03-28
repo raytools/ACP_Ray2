@@ -1,12 +1,13 @@
-﻿#pragma once
+﻿/****************************************************************************
+ * Type definitions for HIE module
+ ****************************************************************************/
+
+#pragma once
 
 
-////////////////////////////////////
-//
-// Type definitions for HIE module
-//
-////////////////////////////////////
-
+/****************************************************************************
+ * HIE.h
+ ****************************************************************************/
 
 typedef union HIE_tduLinkedObject HIE_tduLinkedObject;
 typedef struct HIE_tdstSuperObject HIE_tdstSuperObject;
@@ -16,7 +17,7 @@ typedef struct HIE_tdstAlwaysActiveCharacter HIE_tdstAlwaysActiveCharacter;
 
 
 /****************************************************************************
- * From HIE_StdGame.h
+ * HIE_StdGame.h
  ****************************************************************************/
 
 typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
@@ -26,7 +27,7 @@ typedef struct HIE_tdstObjectType HIE_tdstObjectType;
 
 
 /****************************************************************************
- * from HIE_Family.h
+ * HIE_Family.h
  ****************************************************************************/
 
 typedef struct HIE_tdstFamilyList HIE_tdstFamilyList;

@@ -12,4 +12,4 @@ ERM_tdstErrorInfo * (*ERM_fn_p_stFindstMyLastErrorInfo)( unsigned long ulThreadI
 void (*ERM_fn_vClearLastError)( unsigned long ulThreadId ) = OFFSET(0x402710);
 void (*ERM_fn_vUpdateLastError)( unsigned short uwMaxFatalErr, unsigned char ucModule,
 								 unsigned long ulThreadId, unsigned short uwError,
-								 int, unsigned char, unsigned char, char *szMsg ) = OFFSET(0x402810);
+								 long, unsigned char, unsigned char, char *szMsg ) = OFFSET(0x402810);

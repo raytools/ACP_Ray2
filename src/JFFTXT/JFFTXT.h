@@ -1,33 +1,30 @@
+/****************************************************************************
+ *
+ * JFFTXT - 2D Text Module
+ *
+ ****************************************************************************/
+
 #pragma once
 
-#include "../MTH.h"
-#include "../apidef.h"
+#include "MTH.h"
+#include "apidef.h"
 
 
-////////////////////////////
-//
-// JFFTXT - 2D Text Module
-//
-////////////////////////////
-
-
-typedef struct JFFTXT_tdstString JFFTXT_tdstString;
-
-
-struct JFFTXT_tdstString
+typedef struct JFFTXT_tdstString
 {
 	char *szText;
 	MTH_tdxReal X;
 	MTH_tdxReal Y;
 	MTH_tdxReal xSize;
-	BYTE ucAlpha;
+	unsigned char ucAlpha;
 
-	BYTE _field_11;
-	BYTE bHighlight;
-	BYTE eOptions;
-	DWORD ulHighlightedChar;
-	BYTE ucHighlightColor;
-};
+	unsigned char _field_11;
+	unsigned char bHighlight;
+	unsigned char eOptions;
+	unsigned long ulHighlightedChar;
+	unsigned char ucHighlightColor;
+}
+JFFTXT_tdstString;
 
 typedef enum JFFTXT_tdeOptions
 {
@@ -36,7 +33,8 @@ typedef enum JFFTXT_tdeOptions
 	JTO_CHAR_HIGHLIGHT = 1 << 2,
 	JTO_BG_FRAME = 1 << 3,
 	JTO_HIGHLIGHT_COLOR = 1 << 4
-} JFFTXT_tdeOptions;
+}
+JFFTXT_tdeOptions;
 
 typedef enum JFFTXT_tdeExtendParam
 {
@@ -48,12 +46,13 @@ typedef enum JFFTXT_tdeExtendParam
 	JTE_CHAR_HIGHLIGHT,
 	JTE_BG_FRAME,
 	JTE_HIGHLIGHT_COLOR
-} JFFTXT_tdeExtendParam;
+}
+JFFTXT_tdeExtendParam;
 
 
-ACP_API extern void (*JFFTXT_vAffiche)( void *pContext );
-ACP_API extern void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_stString );
+ACP_FUNC void (*JFFTXT_vAffiche)( void *pContext );
+ACP_FUNC void (*JFFTXT_vDrawString)( void *pContext, JFFTXT_tdstString *p_stString );
 
-ACP_API extern void (*JFFTXT_vAddText)( DWORD ulTextId, MTH3D_tdstVector *p_stPos, char *szText, MTH_tdxReal xAlpha );
-ACP_API extern void (*JFFTXT_vExtendText)( DWORD ulTextId, JFFTXT_tdeExtendParam ulParamToChange, MTH_tdxReal xNewValue );
-ACP_API extern void (*JFFTXT_vGetStringExtents)( JFFTXT_tdstString *p_stString, MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight );
+ACP_FUNC void (*JFFTXT_vAddText)( unsigned long ulTextId, MTH3D_tdstVector *p_stPos, char *szText, MTH_tdxReal xAlpha );
+ACP_FUNC void (*JFFTXT_vExtendText)( unsigned long ulTextId, JFFTXT_tdeExtendParam ulParamToChange, MTH_tdxReal xNewValue );
+ACP_FUNC void (*JFFTXT_vGetStringExtents)( JFFTXT_tdstString *p_stString, MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight );

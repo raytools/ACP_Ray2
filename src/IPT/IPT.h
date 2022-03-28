@@ -1,25 +1,15 @@
-#pragma once
-
-#include <stddef.h>
-
-#include "../LST.h"
-#include "../MTH.h"
-#include "../basedef.h"
-#include "../apidef.h"
-
-
-/*****************************************************************************
+/****************************************************************************
  *
  * IPT - Input module
  *
- *****************************************************************************/
+ ****************************************************************************/
 
+#pragma once
 
-typedef struct IPT_tdstInput IPT_tdstInput;
-typedef struct IPT_tdstEntryElement IPT_tdstEntryElement;
-
-
-ACP_VAR IPT_tdstInput *const IPT_g_stInputStructure;
+#include "LST.h"
+#include "MTH.h"
+#include "basedef.h"
+#include "apidef.h"
 
 
 typedef enum IPT_tdeDeviceEvent
@@ -138,7 +128,7 @@ typedef enum IPT_tdePadEvent
 }
 IPT_tdePadEvent;
 
-enum IPT_tdeEntryActionName
+typedef enum IPT_tdeEntryActionName
 {
 	IPT_E_Entry_Action_Pad_AxeX,
 	IPT_E_Entry_Action_Pad_AxeY,
@@ -278,25 +268,26 @@ enum IPT_tdeEntryActionName
 	IPT_E_Entry_FlyingModeStrafeLeft,
 	IPT_E_Entry_FlyingModeDoubleSpeed,
 	IPT_E_Entry_MemoryStackLog
-};
+}
+IPT_tdeEntryActionName;
 
 
 typedef struct IPT_tdstHistoricElement
 {
-	BYTE bf2State;
-	BYTE bf6DeviceType;
-	BYTE ucCounter;
+	unsigned char bf2State;
+	unsigned char bf6DeviceType;
+	unsigned char ucCounter;
 	short wDeviceValue;
 }
 IPT_tdstHistoricElement;
 
 typedef struct IPT_tdstEntryElement
 {
-	DWORD ulNumberOfKeyWordElement;
+	unsigned long ulNumberOfKeyWordElement;
 	struct IPT_tdstKeyWordElement *d_stKeyWordElementArray; /* TODO: struct IPT_tdstKeyWordElement */
 
 	char *p_szEntryName;
-	int lState; /* Pos: Counter since pressed (LONG_MAX), Neg: Counter since released (LONG_MIN) */
+	long lState; /* Pos: Counter since pressed (LONG_MAX), Neg: Counter since released (LONG_MIN) */
 	MTH_tdxReal xAnalogicValue;
 	BOOL bIsActivate;
 }
@@ -307,19 +298,19 @@ LST_M_DynamicListDecl(IPT_tdstEntryElement);
 
 typedef struct IPT_tdstInput
 {
-	BYTE ucOnePadActivate;
-	BYTE a_ucValideAndActiveDevice[IPT_E_NbOfDeviceEvent];
+	unsigned char ucOnePadActivate;
+	unsigned char a_ucValideAndActiveDevice[IPT_E_NbOfDeviceEvent];
 	/* Note: struct unknown, missing from source files */
 	void *_a_hINODevice[IPT_E_NbOfDeviceEvent];
 
-	BYTE a_ucKeyboardCounter[256];
-	BYTE a_ucPadAndJoyCounter[IPT_E_NbOfDeviceEvent][IPT_E_NbOfPadAndJoyAction];
-	BYTE ucKeyboardType;
-	BYTE a_ucMouseButtonsCounter[9]; /* Unused? */
+	unsigned char a_ucKeyboardCounter[256];
+	unsigned char a_ucPadAndJoyCounter[IPT_E_NbOfDeviceEvent][IPT_E_NbOfPadAndJoyAction];
+	unsigned char ucKeyboardType;
+	unsigned char a_ucMouseButtonsCounter[9]; /* Unused? */
 
-	BYTE _gap_06E8[24];
+	char _gap_06E8[24];
 	
-	DWORD ulNumberOfEntryElement;
+	unsigned long ulNumberOfEntryElement;
 	IPT_tdstEntryElement *d_stEntryElementArray;
 	LST_M_DynamicAnchorTo(IPT_tdstEntryElement) hEntryElement; /* Unused? */
 
@@ -327,3 +318,10 @@ typedef struct IPT_tdstInput
 	IPT_tdstHistoricElement *hEventHistoric;
 }
 IPT_tdstInput;
+
+
+/*
+ * Variables
+ */
+
+ACP_VAR IPT_tdstInput *const IPT_g_stInputStructure;

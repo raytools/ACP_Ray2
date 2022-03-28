@@ -1,57 +1,55 @@
+/****************************************************************************
+ *
+ * GLD - Graphics Library for Display
+ *
+ ****************************************************************************/
+
 #pragma once
 
-#include "../MTH.h"
-#include "../apidef.h"
+#include "basedef.h"
+#include "apidef.h"
 
 
-///////////////////////////////////////
-//
-// GLD - Graphics Library for Display
-//
-///////////////////////////////////////
-
-
-typedef struct GLD_tdstViewportAttributes GLD_tdstViewportAttributes;
 typedef short GLD_tdhDevice;
 typedef short GLD_tdhViewport;
 
-
-struct GLD_tdstViewportAttributes
+typedef struct GLD_tdstViewportAttributes
 {
-	DWORD dwInitialHeight;
-	DWORD dwInitialWidth;
-	DWORD dwHeight;
-	DWORD dwWidth;
+	unsigned long dwInitialHeight;
+	unsigned long dwInitialWidth;
+	unsigned long dwHeight;
+	unsigned long dwWidth;
 
-	DWORD dwTopInPix;
-	DWORD dwBottomInPix;
-	DWORD dwLeftInPix;
-	DWORD dwRightInPix;
-	DWORD dwTopInPixForClip;
-	DWORD dwBottomInPixForClip;
-	DWORD dwLeftInPixForClip;
-	DWORD dwRightInPixForClip;
+	unsigned long dwTopInPix;
+	unsigned long dwBottomInPix;
+	unsigned long dwLeftInPix;
+	unsigned long dwRightInPix;
+	unsigned long dwTopInPixForClip;
+	unsigned long dwBottomInPixForClip;
+	unsigned long dwLeftInPixForClip;
+	unsigned long dwRightInPixForClip;
 
-	DWORD dwWidthInPercent;
-	DWORD dwHeightInPercent;
+	unsigned long dwWidthInPercent;
+	unsigned long dwHeightInPercent;
 
-	DWORD dwClipTopInPix;
-	DWORD dwClipBottomInPix;
-	DWORD dwClipLeftInPix;
-	DWORD dwClipRightInPix;
-	DWORD dwClipTopInPerMille;
-	DWORD dwClipBottomInPerMille;
-	DWORD dwClipLeftInPerMille;
-	DWORD dwClipRightInPerMille;
+	unsigned long dwClipTopInPix;
+	unsigned long dwClipBottomInPix;
+	unsigned long dwClipLeftInPix;
+	unsigned long dwClipRightInPix;
+	unsigned long dwClipTopInPerMille;
+	unsigned long dwClipBottomInPerMille;
+	unsigned long dwClipLeftInPerMille;
+	unsigned long dwClipRightInPerMille;
 
-	int iOffsetPosX;
-	int iOffsetPosY;
+	long lOffsetPosX;
+	long lOffsetPosY;
 
 	char *p_cVirtualScreen;
-	int lPitch;
+	long lPitch;
 
 	void *p_vSpecificToXD;
 
-	WORD hDevice;
-	WORD hViewport;
-};
+	GLD_tdhDevice hDevice;
+	GLD_tdhViewport hViewport;
+}
+GLD_tdstViewportAttributes;

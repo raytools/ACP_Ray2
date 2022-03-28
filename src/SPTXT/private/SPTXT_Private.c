@@ -1,23 +1,22 @@
-﻿#include "SPTXT_Private.h"
-#include "../../MTH.h"
-#include "../../LST.h"
-#include "../../private/framework.h"
+﻿/****************************************************************************
+ *
+ * Private functions for SPTXT module
+ *
+ ****************************************************************************/
 
+#include "SPTXT_Private.h"
+#include "MTH.h"
+#include "LST.h"
+#include "private/framework.h"
 
-//////////////////////////////
-//
-// SPTXT - Private functions
-//
-//////////////////////////////
-
-
-LST_M_DynamicAnchorTo(SPTXT_tdstNodeText) g_stTextNodeList;
 
 #ifdef _DEBUG
 DWORD g_ulNbNodes = 0;
 DWORD g_ulNbNodesTotal = 0;
 DWORD g_ulNbNodesFreed = 0;
 #endif
+
+LST_M_DynamicAnchorTo(SPTXT_tdstNodeText) g_stTextNodeList;
 
 
 SPTXT_tdstNodeText * SPTXT_fn_p_stCreateNode( void )

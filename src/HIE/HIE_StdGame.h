@@ -1,18 +1,13 @@
-﻿#pragma once
-
-#include "HIE_Def.h"
-#include "../LST.h"
-#include "../MTH.h"
-#include "../apidef.h"
-
-
-/****************************************************************************
- * StandardGame
+﻿/****************************************************************************
+ * HIE - StandardGame
  ****************************************************************************/
 
+#pragma once
 
-/* Defined in HIE.c */
-ACP_API extern HIE_tdstObjectType *const HIE_g_stObjectTypes;
+#include "HIE_Def.h"
+#include "LST.h"
+#include "MTH.h"
+#include "apidef.h"
 
 
 #define Std_C_InvalidObjectType (-1)
@@ -88,13 +83,14 @@ typedef enum HIE_tdeObjectinitInit
 	Std_C_OI_NeverBackWhenTaken,
 	Std_C_OI_NumberOfObjectInit,
 	Std_C_OI_WhenGeneratorIsDesactivated
-} HIE_tdeObjectinitInit;
+}
+HIE_tdeObjectinitInit;
 
-struct HIE_tdstStandardGame
+typedef struct HIE_tdstStandardGame
 {
-	int lObjectFamilyType;
-	int lObjectModelType;
-	int lObjectPersonalType;
+	long lObjectFamilyType;
+	long lObjectModelType;
+	long lObjectPersonalType;
 	// -1 (Std_C_InvalidObjectType) is an invalid type
 	// (if > Std_C_AlwaysObjectType) is an always object
 
@@ -103,46 +99,55 @@ struct HIE_tdstStandardGame
 	HIE_tdeObjectinitInit eInitFlagWhenOutOfZone;
 	HIE_tdeObjectinitInit eInitFlagWhenDeadOrTaken;
 
-	DWORD ulLastTrame;
-	DWORD ubf32Capabilities;
-	BYTE ucTractionFactor;
+	unsigned long ulLastTrame;
+	unsigned long ubf32Capabilities;
+	unsigned char ucTractionFactor;
 
-	BYTE ucHitPoints;
-	BYTE ucHitPointsMax;
-	BYTE ucHitPointsMaxMax;
+	unsigned char ucHitPoints;
+	unsigned char ucHitPointsMax;
+	unsigned char ucHitPointsMaxMax;
 
-	DWORD ulCustomBits;
-	BYTE ucPlatformType;
-	BYTE ucMiscFlags;
+	unsigned long ulCustomBits;
+	unsigned char ucPlatformType;
+	unsigned char ucMiscFlags;
 
-	BYTE ucTransparencyZoneMin;
-	BYTE ucTransparencyZoneMax;
+	unsigned char ucTransparencyZoneMin;
+	unsigned char ucTransparencyZoneMax;
 
-	DWORD ulSaveCustomBits;
-	BYTE ucSaveHitPoints;
-	BYTE ucSaveHitPointsMax;
-	BYTE ucSaveMiscFlags;
+	unsigned long ulSaveCustomBits;
+	unsigned char ucSaveHitPoints;
+	unsigned char ucSaveHitPointsMax;
+	unsigned char ucSaveMiscFlags;
 
-	BYTE ucTooFarLimit;
-};
+	unsigned char ucTooFarLimit;
+}
+HIE_tdstStandardGame;
 
 
 /*
  * Object Type
  */
 
-struct HIE_tdstObjectTypeElement
+typedef struct HIE_tdstObjectTypeElement
 {
 	LST_M_DynamicElementDecl(HIE_tdstObjectTypeElement)
 	char *szName;
-	BYTE ucElementPriority;
-};
+	unsigned char ucElementPriority;
+}
+HIE_tdstObjectTypeElement;
 
 LST_M_DynamicListDecl(HIE_tdstObjectTypeElement);
 
-struct HIE_tdstObjectType
+typedef struct HIE_tdstObjectType
 {
 	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stFamilyType;
 	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stModelType;
 	LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) stPersonalType;
-};
+}
+HIE_tdstObjectType;
+
+/*
+ * Variables
+ */
+
+ACP_VAR HIE_tdstObjectType *const HIE_g_stObjectTypes;

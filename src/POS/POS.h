@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "../MTH.h"
-#include "../apidef.h"
+#include "MTH.h"
+#include "apidef.h"
 
 
 typedef enum MTH_tdeMatrixType

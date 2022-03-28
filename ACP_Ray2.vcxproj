@@ -119,6 +119,7 @@
     <ClInclude Include="src\GLI\GLI_Const.h" />
     <ClInclude Include="src\GLI\GLI_Def.h" />
     <ClInclude Include="src\GMT\GMT.h" />
+    <ClInclude Include="src\HIE\HIE_Const.h" />
     <ClInclude Include="src\HIE\HIE_Family.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
     <ClInclude Include="src\IPT\IPT.h" />
@@ -146,7 +147,7 @@
     <ClInclude Include="src\AI\AI_Ext.h" />
     <ClInclude Include="src\HIE\HIE_Ext.h" />
     <ClInclude Include="src\SPTXT\SPTXT.h" />
-    <ClInclude Include="src\SPTXT\SPTXT_Def.h" />
+    <ClInclude Include="src\SPTXT\SPTXT_Const.h" />
     <ClInclude Include="src\TMR\TMR.h" />
   </ItemGroup>
   <ItemGroup>

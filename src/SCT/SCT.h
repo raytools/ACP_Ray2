@@ -1,18 +1,17 @@
-#pragma once
-
-#include "SCT_Def.h"
-#include "../HIE/HIE_Def.h"
-#include "../GLI/GLI.h"
-#include "../LST.h"
-#include "../MTH.h"
-#include "../apidef.h"
-
-
 /****************************************************************************
  *
  * SCT - Sector module
  *
  ****************************************************************************/
+
+#pragma once
+
+#include "SCT_Def.h"
+#include "HIE/HIE_Def.h"
+#include "GLI/GLI_Def.h"
+#include "LST.h"
+#include "MTH.h"
+#include "apidef.h"
 
 
 LST_M_DynamicListDecl(SCT_tdstListOfSOCharacters);
@@ -56,7 +55,7 @@ SCT_tdstListOfSOSectorsInGraphicInteraction;
 typedef struct SCT_tdstListOfSOSectorsInSoundInteraction
 {
 	HIE_tdstSuperObject *hPointerOfSectorSO;
-	int lVolume;
+	long lVolume;
 	LST_M_StaticElementDecl(SCT_tdstListOfSOSectorsInSoundInteraction)
 }
 SCT_tdstListOfSOSectorsInSoundInteraction;
@@ -98,7 +97,7 @@ typedef struct SCT_tdstSector
 	char cPriority;
 
 	void *pSkyVisualMaterial;
-	BYTE ucFogIntensity;
+	unsigned char ucFogIntensity;
 }
 SCT_tdstSector;
 
