@@ -18,6 +18,9 @@
 #define FRAME_MARGIN (TEXT_MARGIN*0.1f)
 
 
+/* Pointer to original function for detour callback */
+void (*SPTXT_JFFTXT_vAffiche)( void *pContext ) = NULL;
+
 BYTE g_bIsModuleInit = FALSE;
 void *g_pContext = NULL;
 
@@ -103,7 +106,7 @@ void SPTXT_vDrawText( void *pContext )
 void SPTXT_vAffiche( void *pContext )
 {
 	SPTXT_vDrawText(pContext);
-	JFFTXT_vAffiche(pContext);
+	SPTXT_JFFTXT_vAffiche(pContext);
 }
 
 ACP_API void SPTXT_vInit( void )
@@ -111,8 +114,10 @@ ACP_API void SPTXT_vInit( void )
 	if ( g_bIsModuleInit )
 		return;
 
+	SPTXT_JFFTXT_vAffiche = JFFTXT_vAffiche;
+
 	DetourTransactionBegin();
-	DetourAttach((PVOID *)&JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
+	DetourAttach((PVOID *)&SPTXT_JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
 	DetourTransactionCommit();
 
 	g_bIsModuleInit = TRUE;
@@ -124,8 +129,10 @@ ACP_API void SPTXT_vDeInit( void )
 		return;
 
 	DetourTransactionBegin();
-	DetourDetach((PVOID *)&JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
+	DetourDetach((PVOID *)&SPTXT_JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
 	DetourTransactionCommit();
+
+	SPTXT_JFFTXT_vAffiche = NULL;
 
 	g_bIsModuleInit = FALSE;
 }
