@@ -1,19 +1,18 @@
+/****************************************************************************
+ *
+ * ACP_Ray2 - Library main include file
+ *
+ ****************************************************************************/
+
 #pragma once
 
 #include "apidef.h"
 #include "basedef.h"
 
 
-////////////////////////////////////
-//
-// ACP_Ray2 - library include file
-//
-////////////////////////////////////
-
-
-////////////
-// Modules
-////////////
+/****************************************************************************
+ * CPA Modules
+ ****************************************************************************/
 
 #include "MTH.h"
 #include "LST.h"
@@ -37,12 +36,13 @@
 #include "JFFTXT/JFFTXT.h"
 
 
-///////////////
-// Extensions
-///////////////
-
-// These headers contain extra types and functions not present in the original engine.
-// To disable extensions, define ACP_NO_EXT.
+/****************************************************************************
+ * Extensions
+ ****************************************************************************/
+/*
+ * These headers contain extra types and functions that extend the CPA engine.
+ * To disable extensions, define ACP_NO_EXT.
+ */
 
 #ifndef ACP_NO_EXT
 
@@ -50,6 +50,10 @@
 #include "AI/AI_Ext.h"
 #include "DNM/DNM_Ext.h"
 
+/* Spitfire's Text Helper Module */
 #include "SPTXT/SPTXT.h"
+
+/* Spitfire's Better Log Tool */
+#include "BLT/BLT.h"
 
 #endif /* ACP_NO_EXT */
