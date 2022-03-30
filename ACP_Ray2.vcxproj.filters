@@ -156,7 +156,13 @@
     <ClInclude Include="src\BLT\BLT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\private\BLT_Private.h">
+    <ClInclude Include="src\BLT\private\BLT_IO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BLT\private\BLT_Modules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BLT\BLT_Def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -215,7 +221,7 @@
     <ClCompile Include="src\BLT\BLT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BLT\private\BLT_Private.c">
+    <ClCompile Include="src\BLT\private\BLT_IO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

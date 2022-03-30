@@ -1,10 +1,10 @@
 ﻿/****************************************************************************
  *
- * Private functions for BLT module
+ * BLT - I/O functions
  *
  ****************************************************************************/
 
-#include "BLT_Private.h"
+#include "BLT_IO.h"
 #include "GAM/GAM.h"
 #include "private/framework.h"
 
@@ -46,4 +46,24 @@ void BLT_fn_vPrintToInfoWindow( char *szText )
 
 	if ( lResult == IDCANCEL )
 		g_bSuppressInfoWindow = TRUE;
+}
+
+void BLT_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )
+{
+	va_list args;
+	va_start(args, szFormat);
+
+	long lSize = vsnprintf(NULL, 0, szFormat, args);
+	char *szBuffer = _alloca(lSize + 1);
+
+	va_end(args);
+	va_start(args, szFormat);
+
+	vsprintf(szBuffer, szFormat, args);
+
+	BLT_fn_vPrintToFile(szBuffer, hFile);
+	if ( bInfoWindow )
+		BLT_fn_vPrintToInfoWindow(szBuffer);
+
+	va_end(args);
 }
