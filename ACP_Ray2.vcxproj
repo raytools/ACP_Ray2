@@ -91,6 +91,7 @@ cd .</Command>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -115,6 +116,7 @@ cd .</Command>
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\BLT\BLT.h" />
     <ClInclude Include="src\BLT\BLT_Def.h" />
+    <ClInclude Include="src\BLT\private\BLT_Err.h" />
     <ClInclude Include="src\BLT\private\BLT_IO.h" />
     <ClInclude Include="src\BLT\private\BLT_Modules.h" />
     <ClInclude Include="src\ERM\ERM.h" />

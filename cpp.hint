@@ -11,3 +11,4 @@
 #define LST_M_StaticAnchorTo(Type) LST_M_AnchorTo(Type, Sta)
 #define LST_M_DynamicElementDecl(Type) Type * hNextBrother; Type * hPrevBrother; LST_M_AnchorTo(Type) * hFather;
 #define LST_M_StaticElementDecl(Type) Type * hNextBrotherSta;
+#define M_DefineError(name, msg) 

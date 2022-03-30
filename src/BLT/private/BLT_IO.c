@@ -9,7 +9,7 @@
 #include "private/framework.h"
 
 
-BOOL g_bSuppressInfoWindow = FALSE;
+BOOL BLT_g_bSuppressInfoWindow = FALSE;
 
 
 FILE * BLT_fn_hOpenFileForWrite( char *szFilePath )
@@ -34,7 +34,7 @@ void BLT_fn_vPrintToFile( char *szText, FILE *hFile )
 
 void BLT_fn_vPrintToInfoWindow( char *szText )
 {
-	if ( g_bSuppressInfoWindow )
+	if ( BLT_g_bSuppressInfoWindow )
 		return;
 
 	long lResult = MessageBox(
@@ -45,7 +45,24 @@ void BLT_fn_vPrintToInfoWindow( char *szText )
 	);
 
 	if ( lResult == IDCANCEL )
-		g_bSuppressInfoWindow = TRUE;
+		BLT_g_bSuppressInfoWindow = TRUE;
+}
+
+BOOL BLT_fn_bAskForDebug( void )
+{
+	long lResult = MessageBox(
+		GAM_fn_hGetWindowHandle(),
+		"Do you want to debug?",
+		"CPA Information Window",
+		MB_TOPMOST | MB_ICONEXCLAMATION | MB_YESNO
+	);
+
+	return (lResult == IDYES);
+}
+
+void BLT_fn_vCloseApp( void )
+{
+	GAM_fn_vChangeEngineMode(E_EM_ModeStoppingProgram);
 }
 
 void BLT_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )

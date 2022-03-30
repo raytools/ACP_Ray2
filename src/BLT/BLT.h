@@ -77,6 +77,6 @@ ACP_API void BLT_fn_vErrorFromId(
 
 
 /* Write a predefined error from the module's error table to the log */
-#define BLT_M_vLogId(uwErrorId, xModuleId) BLT_fn_vErrorFromId((uwErrorId), (xModuleId), __FILE__, __LINE__, NULL)
+#define BLT_M_vLogId(xModuleId, uwErrorId) BLT_fn_vErrorFromId((uwErrorId), (xModuleId), __FILE__, __LINE__, NULL)
 /* Write a predefined error from the module's error table to the log (with extra message line) */
-#define BLT_M_vLogIdEx(uwErrorId, xModuleId, szExtraMsg) BLT_fn_vErrorFromId((uwErrorId), (xModuleId), __FILE__, __LINE__, (szExtraMsg))
+#define BLT_M_vLogIdEx(xModuleId, uwErrorId, szExtraMsg) BLT_fn_vErrorFromId((uwErrorId), (xModuleId), __FILE__, __LINE__, (szExtraMsg))
