@@ -61,6 +61,15 @@ void SPTXT_vDrawString( char *szText, SPTXT_tdstTextInfo *p_stInfo )
 	MTH2D_tdstVector stTL = { 0 };
 	MTH2D_tdstVector stBR = { 0 };
 
+	if ( p_stInfo->bWantExtents )
+	{
+		JFFTXT_vGetStringExtents(&stDummy, &stTL, &stBR);
+		
+		MTH_tdxReal xExtentX = stBR.x - stTL.x - 2;
+		if ( p_stInfo->xExtentX < xExtentX )
+			p_stInfo->xExtentX = xExtentX;
+	}
+
 	if ( p_stInfo->bRightAlign )
 	{
 		JFFTXT_vGetStringExtents(&stDummy, &stTL, &stBR);
@@ -169,6 +178,11 @@ ACP_API void SPTXT_vNewLine( void )
 {
 	MTH_tdxReal xHeight = SPTXT_fn_lGetCharHeight(g_stTextInfo.xSize);
 	g_stTextInfo.Y += xHeight;
+
+	if ( g_stTextInfo.bWantExtents )
+	{
+		g_stTextInfo.xExtentY += xHeight * 0.1f;
+	}
 }
 
 ACP_API void SPTXT_vPrintLine( char *szText )

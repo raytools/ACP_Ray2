@@ -17,9 +17,13 @@ typedef struct SPTXT_tdstTextInfo
 	MTH_tdxReal Y;
 	MTH_tdxReal xSize;
 	unsigned char ucAlpha;
-	unsigned char bFrame;
-	unsigned char bRightAlign;
-	unsigned char bSelected;
+	ACP_tdxBool bFrame;
+	ACP_tdxBool bRightAlign;
+	ACP_tdxBool bSelected;
+
+	BOOL bWantExtents;
+	MTH_tdxReal xExtentX;
+	MTH_tdxReal xExtentY;
 }
 SPTXT_tdstTextInfo;
 
@@ -41,3 +45,6 @@ ACP_API void SPTXT_vNewLine( void );
 ACP_API void SPTXT_vPrintLine( char *szText );
 ACP_API void SPTXT_vPrintFmtLine( char const *szFmt, ... );
 ACP_API void SPTXT_vResetTextInfo( SPTXT_tdstTextInfo *p_stInfo );
+
+ACP_API long SPTXT_fn_lGetCharHeight( MTH_tdxReal xSize );
+ACP_API long SPTXT_fn_lGetCharWidth( MTH_tdxReal xSize );

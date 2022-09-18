@@ -21,17 +21,16 @@
  * Private error tab for BLT
  ****************************************************************************/
 #define M_DefineError(name, msg) name,
-
-enum BLT_tdeBLTErrTab
+enum BCF_tdeBCFErrTab
 {
-#include "private/BLT_Err.h"
+	#include "private/BLT_Err.h"
 	BLT_NbErr
 };
 
 #define M_DefineError(name, msg) msg,
 char *g_a_szBLTErrTab[BLT_NbErr] =
 {
-#include "private/BLT_Err.h"
+	#include "private/BLT_Err.h"
 };
 /****************************************************************************/
 
