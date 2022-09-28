@@ -7,6 +7,7 @@
 #pragma once
 
 #include "DNM_Def.h"
+#include "DNM_Const.h"
 #include "HIE/HIE_Def.h"
 #include "GMT/GMT.h"
 #include "POS/POS.h"

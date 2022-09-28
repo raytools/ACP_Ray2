@@ -168,6 +168,9 @@
     <ClInclude Include="src\BLT\private\BLT_Err.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\DNM\DNM_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

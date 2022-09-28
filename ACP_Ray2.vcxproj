@@ -119,6 +119,7 @@ cd .</Command>
     <ClInclude Include="src\BLT\private\BLT_Err.h" />
     <ClInclude Include="src\BLT\private\BLT_IO.h" />
     <ClInclude Include="src\BLT\private\BLT_Modules.h" />
+    <ClInclude Include="src\DNM\DNM_Const.h" />
     <ClInclude Include="src\ERM\ERM.h" />
     <ClInclude Include="src\FIL\FIL.h" />
     <ClInclude Include="src\GEO\GEO.h" />
