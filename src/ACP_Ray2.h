@@ -33,6 +33,7 @@
 #include "ERM/ERM.h"
 #include "TMR/TMR.h"
 #include "FIL/FIL.h"
+#include "FON/FON.h"
 #include "JFFTXT/JFFTXT.h"
 
 

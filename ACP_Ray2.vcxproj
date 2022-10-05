@@ -122,6 +122,7 @@ cd .</Command>
     <ClInclude Include="src\DNM\DNM_Const.h" />
     <ClInclude Include="src\ERM\ERM.h" />
     <ClInclude Include="src\FIL\FIL.h" />
+    <ClInclude Include="src\FON\FON.h" />
     <ClInclude Include="src\GEO\GEO.h" />
     <ClInclude Include="src\GEO\GEO_Def.h" />
     <ClInclude Include="src\GLI\GLD.h" />
@@ -169,6 +170,7 @@ cd .</Command>
     <ClCompile Include="src\DNM\DNM_Ext.c" />
     <ClCompile Include="src\ERM\ERM.c" />
     <ClCompile Include="src\FIL\FIL.c" />
+    <ClCompile Include="src\FON\FON.c" />
     <ClCompile Include="src\GAM\GAM.c" />
     <ClCompile Include="src\GLI\GLI.c" />
     <ClCompile Include="src\HIE\HIE.c" />
