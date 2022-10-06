@@ -146,6 +146,7 @@ ACP_VAR HIE_tdstSuperObject **const GAM_pp_stFatherSector;
 ACP_FUNC GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void );
 ACP_FUNC void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode );
 ACP_FUNC void (*GAM_fn_vFirstInitEngine)( void );
+ACP_FUNC void (*GAM_fn_vInitGameLoop)( void );
 
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char *szLevelName, ACP_tdxBool bSaveGame );

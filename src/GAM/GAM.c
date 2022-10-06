@@ -19,6 +19,7 @@ HIE_tdstSuperObject **const GAM_pp_stFatherSector = OFFSET(0x500FC0);
 GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void ) = OFFSET(0x404C60);
 void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode ) = OFFSET(0x404BF0);
 void (*GAM_fn_vFirstInitEngine)( void ) = OFFSET(0x403430);
+void (*GAM_fn_vInitGameLoop)( void ) = OFFSET(0x4030C0);
 
 char * (*GAM_fn_p_szGetLevelName)( void ) = OFFSET(0x404DA0);
 void (*GAM_fn_vAskToChangeLevel)( char *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
