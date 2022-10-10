@@ -126,8 +126,10 @@ cd .</Command>
     <ClInclude Include="src\GEO\GEO.h" />
     <ClInclude Include="src\GEO\GEO_Def.h" />
     <ClInclude Include="src\GLI\GLD.h" />
+    <ClInclude Include="src\GLI\GLI_BigGlobals.h" />
     <ClInclude Include="src\GLI\GLI_Const.h" />
     <ClInclude Include="src\GLI\GLI_Def.h" />
+    <ClInclude Include="src\GLI\GLI_Misc.h" />
     <ClInclude Include="src\GMT\GMT.h" />
     <ClInclude Include="src\HIE\HIE_Const.h" />
     <ClInclude Include="src\HIE\HIE_Family.h" />

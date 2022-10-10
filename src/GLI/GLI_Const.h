@@ -5,6 +5,8 @@
 #pragma once
 
 
+#define GLI_C_lMaxVertexPerObject 2500
+
 #define GLI_C_TEXIsUnallocated 0xC0DE0005
 #define GLI_C_lNBMaxOfTextures 1024
 

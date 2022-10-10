@@ -7,6 +7,10 @@
 #include "GLI.h"
 
 
+/*
+ * Variables
+ */
+
 MTH_tdxReal *const GLI_p_fZValueForSprite = OFFSET(0x4A07D4);
 unsigned char *const GLI_p_bForceAAAColor = OFFSET(0x4A72AC);
 
@@ -18,8 +22,33 @@ GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead = OFFSET(0x502680);
 unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels = OFFSET(0x501660);
 
 
+/* Big Globals */
+GLI_tdstInternalGlobalValuesFor3dEngine **const GLI_BIG_GLOBALS = OFFSET(0x5036AC);
+
+
+/*
+ * Functions
+ */
+
 void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha ) = OFFSET(0x42A300);
 MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void ) = OFFSET(0x42A360);
+
+
+void (**GLI_DRV_vSendSpriteToClip)(
+	GLI_tdstAligned2DVector *a4_st2DVertex,
+	MTH_tdxReal xZ,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
+) = OFFSET(0x504530);
+
+void (**GLI_DRV_vSendSpriteToClipWithUV)(
+	GLI_tdstAligned2DVector *a4_st2DVertex,
+	MTH_tdxReal *a8_stUVVertex,
+	MTH_tdxReal xZ,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
+) = OFFSET(0x504524);
+
+
+void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A410);
 
 void (*GLI_vDraw2DSpriteWithPercent)(
 	GLD_tdstViewportAttributes *p_stViewport,
@@ -27,7 +56,7 @@ void (*GLI_vDraw2DSpriteWithPercent)(
 	MTH_tdxReal YMin,
 	MTH_tdxReal XMax,
 	MTH_tdxReal YMax,
-	void *hMaterial
+	GLI_tdstMaterial *hMaterial
 ) = OFFSET(0x429670);
 
 void (*GLI_vDisplayFrame)(
@@ -36,6 +65,7 @@ void (*GLI_vDisplayFrame)(
 	MTH_tdxReal xAlpha,
 	GLD_tdstViewportAttributes *p_stViewport
 ) = OFFSET(0x429820);
+
 
 void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress )
 	= OFFSET(0x426550);

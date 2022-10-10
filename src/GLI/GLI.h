@@ -8,6 +8,8 @@
 
 #include "GLI_Const.h"
 #include "GLI_Def.h"
+#include "GLI_Misc.h"
+#include "GLI_BigGlobals.h"
 #include "GLD.h"
 
 #include "GEO/GEO.h"
@@ -227,7 +229,11 @@ ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 ACP_FUNC void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
 ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
 
-ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, void *hMaterial );
+ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
+ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
+
+ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
+ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, GLI_tdstMaterial *hMaterial );
 ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
 
 ACP_FUNC void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
