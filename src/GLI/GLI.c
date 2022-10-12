@@ -73,3 +73,6 @@ void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffe
 char * (*GLI_fn_szGetPathOfTexture)( void ) = OFFSET(0x42D1B0);
 void (*GLI_vComputeTextures)( void ) = OFFSET(0x426980);
 void (*GLI_vReloadTextures)( void ) = OFFSET(0x426A40);
+
+void (*GLI_xCreateMaterial)( GLI_tdstMaterial **p_hMaterial ) = OFFSET(0x4245F0);
+void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstTexture *p_stTexture ) = OFFSET(0x424A00);

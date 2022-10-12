@@ -22,6 +22,6 @@ void (*GAM_fn_vFirstInitEngine)( void ) = OFFSET(0x403430);
 void (*GAM_fn_vInitGameLoop)( void ) = OFFSET(0x4030C0);
 
 char * (*GAM_fn_p_szGetLevelName)( void ) = OFFSET(0x404DA0);
-void (*GAM_fn_vAskToChangeLevel)( char *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
+void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
 
 void * (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);

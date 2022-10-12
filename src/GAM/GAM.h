@@ -149,6 +149,6 @@ ACP_FUNC void (*GAM_fn_vFirstInitEngine)( void );
 ACP_FUNC void (*GAM_fn_vInitGameLoop)( void );
 
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
-ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char *szLevelName, ACP_tdxBool bSaveGame );
+ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
 ACP_FUNC void * (*GAM_fn_hGetWindowHandle)( void );

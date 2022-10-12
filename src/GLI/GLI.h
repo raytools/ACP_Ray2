@@ -240,3 +240,6 @@ ACP_FUNC void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, voi
 ACP_FUNC char * (*GLI_fn_szGetPathOfTexture)( void );
 ACP_FUNC void (*GLI_vComputeTextures)( void );
 ACP_FUNC void (*GLI_vReloadTextures)( void );
+
+ACP_FUNC void (*GLI_xCreateMaterial)( GLI_tdstMaterial **p_hMaterial );
+ACP_FUNC void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstTexture *p_stTexture );
