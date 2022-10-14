@@ -15,16 +15,14 @@
  * Object Type
  */
 
-char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem)
+char * XHIE_fn_szGetTypeName( long lID, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
-	long lId = p_stCharacter->hStandardGame->lObjectPersonalType;
-	
-	if ( lId < 0 || lId >= LST_M_DynamicGetNbOfElements(hTypeElem) )
+	if ( lID < 0 || lID >= LST_M_DynamicGetNbOfElements(hTypeElem) )
 		return NULL;
 
 	HIE_tdstObjectTypeElement *pItem;
 	long i;
-	LST_M_DynamicGetNthElement(hTypeElem, lId, pItem, i);
+	LST_M_DynamicGetNthElement(hTypeElem, lID, pItem, i);
 
 	if ( !pItem )
 		return NULL;
@@ -32,28 +30,47 @@ char * XHIE_fn_szGetEngineObjectTypeName( HIE_tdstEngineObject *p_stCharacter, L
 	return pItem->szName;
 }
 
-char * XHIE_fn_szGetSuperObjectTypeName( HIE_tdstSuperObject *p_stSpo, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+
+char * XHIE_fn_szGetEngineObjectPersonalName( HIE_tdstEngineObject *p_stActor )
+{
+	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectPersonalType, &HIE_g_stObjectTypes->stPersonalType);
+}
+
+char * XHIE_fn_szGetEngineObjectModelName( HIE_tdstEngineObject *p_stActor )
+{
+	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectModelType, &HIE_g_stObjectTypes->stModelType);
+}
+
+char * XHIE_fn_szGetEngineObjectFamilyName( HIE_tdstEngineObject *p_stActor )
+{
+	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectFamilyType, &HIE_g_stObjectTypes->stFamilyType);
+}
+
+
+char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo )
 {
 	if ( p_stSpo->ulType != HIE_C_Type_Actor )
 		return NULL;
 
-	return XHIE_fn_szGetEngineObjectTypeName(p_stSpo->hLinkedObject.p_stCharacter, hTypeElem);
-}
-
-char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo )
-{
-	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stPersonalType);
+	return XHIE_fn_szGetEngineObjectPersonalName(p_stSpo->hLinkedObject.p_stCharacter);
 }
 
 char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo )
 {
-	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stModelType);
+	if ( p_stSpo->ulType != HIE_C_Type_Actor )
+		return NULL;
+
+	return XHIE_fn_szGetEngineObjectModelName(p_stSpo->hLinkedObject.p_stCharacter);
 }
 
 char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo )
 {
-	return XHIE_fn_szGetSuperObjectTypeName(p_stSpo, &HIE_g_stObjectTypes->stFamilyType);
+	if ( p_stSpo->ulType != HIE_C_Type_Actor )
+		return NULL;
+
+	return XHIE_fn_szGetEngineObjectFamilyName(p_stSpo->hLinkedObject.p_stCharacter);
 }
+
 
 long XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
@@ -161,7 +178,7 @@ HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObjectByName( char const *szName )
 	ALW_tdstAlwaysModelList *pItem;
 	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
 	{
-		char *szObjName = XHIE_fn_szGetEngineObjectTypeName(pItem->p_stAlwaysObject, &HIE_g_stObjectTypes->stPersonalType);
+		char *szObjName = XHIE_fn_szGetEngineObjectPersonalName(pItem->p_stAlwaysObject);
 		if ( szObjName && !_stricmp(szName, szObjName) )
 		{
 			return pItem->p_stAlwaysObject;

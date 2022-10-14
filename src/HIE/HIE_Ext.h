@@ -20,9 +20,14 @@ typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstEngineObject *p_stP
  * Object Type
  */
 
+ACP_API char * XHIE_fn_szGetEngineObjectPersonalName( HIE_tdstEngineObject *p_stActor );
+ACP_API char * XHIE_fn_szGetEngineObjectModelName( HIE_tdstEngineObject *p_stActor );
+ACP_API char * XHIE_fn_szGetEngineObjectFamilyName( HIE_tdstEngineObject *p_stActor );
+
 ACP_API char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo );
 ACP_API char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo );
 ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo );
+
 ACP_API long XHIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem );
 
 
