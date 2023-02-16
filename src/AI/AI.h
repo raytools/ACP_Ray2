@@ -65,6 +65,13 @@ AI_tdstAIModel;
 
 
 /*
+ * Variables
+ */
+
+ACP_VAR ACP_tdxBool *const AI_g_bInGameMenu;
+
+
+/*
  * Functions
  */
 

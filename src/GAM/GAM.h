@@ -153,4 +153,5 @@ ACP_FUNC void (*GAM_fn_vEngine)( void );
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
-ACP_FUNC void * (*GAM_fn_hGetWindowHandle)( void );
+ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );
+ACP_FUNC long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam );

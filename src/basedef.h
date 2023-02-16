@@ -22,3 +22,5 @@ typedef unsigned char ACP_tdxBool; /* size of ACP_tdxBool : 1 byte */
 
 typedef signed short ACP_tdxIndex;
 typedef unsigned long ACP_tdxAddress;
+
+typedef void *HANDLE;

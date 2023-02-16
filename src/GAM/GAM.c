@@ -26,4 +26,5 @@ void (*GAM_fn_vEngine)( void ) = OFFSET(0x40ADA0);
 char * (*GAM_fn_p_szGetLevelName)( void ) = OFFSET(0x404DA0);
 void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
 
-void * (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
+HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
+long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);

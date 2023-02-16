@@ -293,8 +293,6 @@ typedef struct IPT_tdstEntryElement
 }
 IPT_tdstEntryElement;
 
-LST_M_DynamicListDecl(IPT_tdstEntryElement);
-
 
 typedef struct IPT_tdstInput
 {
@@ -309,10 +307,10 @@ typedef struct IPT_tdstInput
 	unsigned char a_ucMouseButtonsCounter[9]; /* Unused? */
 
 	char _gap_06E8[24];
-	
+
 	unsigned long ulNumberOfEntryElement;
 	IPT_tdstEntryElement *d_stEntryElementArray;
-	LST_M_DynamicAnchorTo(IPT_tdstEntryElement) hEntryElement; /* Unused? */
+	LST_M_DynamicParentDecl(IPT_tdstEntryElement) /* Unused? */
 
 	short sEventHistoricSize;
 	IPT_tdstHistoricElement *hEventHistoric;
