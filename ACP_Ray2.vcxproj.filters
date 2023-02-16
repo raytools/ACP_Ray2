@@ -180,6 +180,9 @@
     <ClInclude Include="src\GLI\GLI_Misc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\AGO\AGO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -240,6 +243,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\FON\FON.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AGO\AGO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

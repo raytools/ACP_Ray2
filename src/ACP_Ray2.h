@@ -34,6 +34,7 @@
 #include "TMR/TMR.h"
 #include "FIL/FIL.h"
 #include "FON/FON.h"
+#include "AGO/AGO.h"
 #include "JFFTXT/JFFTXT.h"
 
 

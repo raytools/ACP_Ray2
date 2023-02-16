@@ -163,6 +163,7 @@ cd .</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AGO\AGO.h" />
     <ClInclude Include="src\AI\AI_Const.h" />
     <ClInclude Include="src\AI\AI_DsgVar.h" />
     <ClInclude Include="src\AI\AI_Scr.h" />
@@ -217,6 +218,7 @@ cd .</Command>
     <ClInclude Include="src\TMR\TMR.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AGO\AGO.c" />
     <ClCompile Include="src\AI\AI.c" />
     <ClCompile Include="src\AI\AI_Ext.c" />
     <ClCompile Include="src\ALW\ALW.c" />
