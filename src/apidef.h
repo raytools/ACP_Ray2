@@ -9,11 +9,18 @@
 
 #define CALLBACK __stdcall
 
+#ifndef ACP_USE_STATIC
+
 #ifdef ACPRAY2_EXPORTS
 #define ACP_API __declspec(dllexport)
 #else
 #define ACP_API __declspec(dllimport)
 #endif
+
+#else
+#define ACP_API
+#endif
+
 
 #define ACP_PTR ACP_API extern
 
