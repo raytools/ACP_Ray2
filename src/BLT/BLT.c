@@ -287,6 +287,7 @@ void BLT_fn_vError(
 		BLT_M_vLogId(g_xBLTModuleId, BLT_Err_MsgTooLong);
 
 	strncpy(stError.szErrorMsg, szMsg, BLT_C_MaxErrorMsg - 1);
+	stError.szErrorMsg[BLT_C_MaxErrorMsg-1] = '\0';
 	stError.eType = eType;
 	stError.xModuleId = BLT_C_DefaultModule;
 	stError.szFileName = szInFile;
@@ -352,6 +353,7 @@ void BLT_fn_vErrorFromId(
 		BLT_M_vLogId(g_xBLTModuleId, BLT_Err_MsgTooLong);
 
 	strncpy(stError.szErrorMsg, p_stTab->d_szErrorMsg[uwErrorId], BLT_C_MaxErrorMsg - 1);
+	stError.szErrorMsg[BLT_C_MaxErrorMsg-1] = '\0';
 	stError.eType = eType;
 	stError.uwErrorId = uwErrorId;
 	stError.xModuleId = xModuleId;
