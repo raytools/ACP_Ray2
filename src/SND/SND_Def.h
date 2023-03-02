@@ -4,6 +4,9 @@
 
 #pragma once
 
+#include "basedef.h"
+#include "apidef.h"
+
 
 #define SND_C_UninitializedValue    0x12345678
 #define SND_C_EnumAlignment         0x13245678
