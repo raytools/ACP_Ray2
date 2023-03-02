@@ -27,6 +27,7 @@ typedef union HIE_tduLinkedObject
 {
 	HIE_tdstSuperObject *p_stSuperObject;
 	HIE_tdstEngineObject *p_stCharacter;
+	HIE_tdstEngineObject *p_stActor; /* for convenience */
 	SCT_tdstSector *p_stSector;
 	GEO_tdstGeometricObject *p_stGeometricObject;
 	PO_tdstPhysicalObject *p_stPhysicalObject;

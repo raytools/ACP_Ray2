@@ -16,9 +16,10 @@
 
 #define LST_M_AnchorTo(Type, x) struct LST_tdstAnchorTo_##Type##_##x
 
-/*
- * Dynamic (double linked) list declaration
- */
+
+/****************************************************************************
+ * Dynamic (double linked) list
+ ****************************************************************************/
 
 #define LST_M_DynamicAnchorTo(Type) LST_M_AnchorTo(Type, Dyn)
 
@@ -43,9 +44,8 @@
 		LST_M_DynamicParentDecl(Type)										   \
 	}
 
-
 /*
- * Dynamic list access functions
+ * Dynamic list access macros
  */
 
 #define LST_M_DynamicGetNextBrother( hElement ) ((hElement)->hNextBrotherDyn)
@@ -164,9 +164,9 @@ do {																		   \
 } while ( 0 )
 
 
-/*
- * Static (single linked) list declaration
- */
+/****************************************************************************
+ * Static (single linked) list
+ ****************************************************************************/
 
 #define LST_M_StaticAnchorTo(Type) LST_M_AnchorTo(Type, Sta)
 
@@ -187,16 +187,15 @@ do {																		   \
 		LST_M_StaticParentDecl(Type)										   \
 	}
 
-
 /*
- * Static list access functions
+ * Static list access macros
  */
 
 #define LST_M_StaticGetNextBrother( hElement ) ((hElement)->hNextBrotherSta)
 
-#define LST_M_StaticGetFirstElement( hAnchor ) ((hAnchor)->hFirstElementDyn)
-#define LST_M_StaticGetLastElement( hAnchor ) ((hAnchor)->hLastElementDyn)
-#define LST_M_StaticGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsDyn)
+#define LST_M_StaticGetFirstElement( hAnchor ) ((hAnchor)->hFirstElementSta)
+#define LST_M_StaticGetLastElement( hAnchor ) ((hAnchor)->hLastElementSta)
+#define LST_M_StaticGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsSta)
 
 /* Initialise anchor of list */
 #define LST_M_StaticInitAnchor( hAnchor )									   \
@@ -212,6 +211,47 @@ do {																		   \
 	LST_M_StaticGetNextBrother(hElement) = NULL;							   \
 } while ( 0 )
 
+/* TODO: Static list add/remove/foreach/nth macros */
+
+
+/****************************************************************************
+ * Static optimized list
+ ****************************************************************************/
+
+#define LST_M_OptAnchorTo(Type) LST_M_AnchorTo(Type, Opt)
+
+#define LST_M_OptParentDecl(Type)											   \
+	Type * hFirstElementOpt;												   \
+	long lNbOfElementsOpt;
+
+#define LST_M_OptChildDecl(Type, ParentType)
+#define LST_M_OptElementDecl(Type)
+
+#define LST_M_OptListDecl(Type)												   \
+	LST_M_OptAnchorTo(Type)													   \
+	{																		   \
+		LST_M_OptParentDecl(Type)											   \
+	}
+
 /*
- * TODO: Static list add/remove/foreach/nth macros
+ * Optimized list access functions
  */
+
+#define LST_M_OptGetNextBrother( hElement ) ((hElement)+1)
+#define LST_M_OptGetPrevBrother( hElement ) ((hElement)-1)
+
+#define LST_M_OptGetFirstElement( hAnchor ) ((hAnchor)->hFirstElementOpt)
+#define LST_M_OptGetNbOfElements( hAnchor ) ((hAnchor)->lNbOfElementsOpt)
+
+/* Initialise anchor of list */
+#define LST_M_OptInitAnchor( hAnchor )										   \
+do {																		   \
+	LST_M_OptGetFirstElement(hAnchor) = NULL;								   \
+	LST_M_OptGetNbOfElements(hAnchor) = 0;									   \
+} while ( 0 )
+
+/* Initialise list element */
+#define LST_M_OptInitElement( hElement )
+
+/* TODO: Optimized list add/remove/foreach/nth macros */
+
