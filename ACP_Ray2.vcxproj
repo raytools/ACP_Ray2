@@ -163,6 +163,7 @@ cd .</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\compat.h" />
     <ClInclude Include="src\AGO\AGO.h" />
     <ClInclude Include="src\AI\AI_Const.h" />
     <ClInclude Include="src\AI\AI_DsgVar.h" />

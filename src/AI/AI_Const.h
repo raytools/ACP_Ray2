@@ -5,7 +5,7 @@
 #pragma once
 
 
-enum AI_tdeTypeInterpret
+enum AI_tdeTypeInterpret_
 {
 	AI_E_ti_KeyWord,
 	AI_E_ti_Condition,

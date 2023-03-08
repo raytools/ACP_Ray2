@@ -11,9 +11,9 @@
 GAM_tdstEngineStructure *const GAM_g_stEngineStructure = OFFSET(0x500380);
 char const *const GAM_g_szCmdLine = OFFSET(0x4E0DA0);
 
-HIE_tdstSuperObject **const GAM_pp_stDynamicWorld = OFFSET(0x0500FD0);
-HIE_tdstSuperObject **const GAM_pp_stInactiveDynamicWorld = OFFSET(0x500FC4);
-HIE_tdstSuperObject **const GAM_pp_stFatherSector = OFFSET(0x500FC0);
+HIE_tdstSuperObject **const GAM_g_p_stDynamicWorld = OFFSET(0x0500FD0);
+HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld = OFFSET(0x500FC4);
+HIE_tdstSuperObject **const GAM_g_p_stFatherSector = OFFSET(0x500FC0);
 
 
 GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void ) = OFFSET(0x404C60);

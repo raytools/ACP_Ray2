@@ -6,6 +6,11 @@
 
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "apidef.h"
 #include "basedef.h"
 
@@ -42,11 +47,9 @@
 /****************************************************************************
  * Extensions
  ****************************************************************************/
-/*
- * These headers contain extra types and functions that extend the CPA engine.
- * To disable extensions, define ACP_NO_EXT.
- */
 
+/* These headers contain extra types and functions that extend the CPA engine. */
+/* To disable extensions, define ACP_NO_EXT. */
 #ifndef ACP_NO_EXT
 
 #include "HIE/HIE_Ext.h"
@@ -60,3 +63,16 @@
 #include "BLT/BLT.h"
 
 #endif /* ACP_NO_EXT */
+
+
+/* For compatibility with older mods */
+#ifdef ACP_COMPAT
+
+#include "compat.h"
+
+#endif /* ACP_COMPAT */
+
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif

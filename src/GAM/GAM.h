@@ -18,7 +18,7 @@
 
 #define MAX_NAME_LEVEL 30
 
-enum GAM_tdeEngineMode
+enum GAM_tdeEngineMode_
 {
 	E_EM_ModeInvalid = 0,
 	E_EM_ModeStartingProgram,
@@ -34,7 +34,7 @@ enum GAM_tdeEngineMode
 };
 typedef unsigned char GAM_tdeEngineMode;
 
-enum GAM_tdeInputMode
+enum GAM_tdeInputMode_
 {
 	E_IM_Normal,
 	E_IM_Commands,
@@ -42,7 +42,7 @@ enum GAM_tdeInputMode
 };
 typedef unsigned char GAM_tdeInputMode;
 
-enum GAM_tdeDisplayFixMode
+enum GAM_tdeDisplayFixMode_
 {
 	E_DFM_DisplayAll			= 0xFF,
 	E_DFM_DisplayHitPoints		= 0x01,
@@ -134,9 +134,9 @@ GAM_tdstEngineStructure;
 ACP_VAR GAM_tdstEngineStructure *const GAM_g_stEngineStructure;
 ACP_VAR char const *const GAM_g_szCmdLine;
 
-ACP_VAR HIE_tdstSuperObject **const GAM_pp_stDynamicWorld;
-ACP_VAR HIE_tdstSuperObject **const GAM_pp_stInactiveDynamicWorld;
-ACP_VAR HIE_tdstSuperObject **const GAM_pp_stFatherSector;
+ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stDynamicWorld;
+ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld;
+ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stFatherSector;
 
 
 /*

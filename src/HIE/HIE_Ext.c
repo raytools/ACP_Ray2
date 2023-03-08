@@ -153,8 +153,8 @@ HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void )
 HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName )
 {
 	HIE_tdstSuperObject *a_p_stSearchIn[] = {
-		*GAM_pp_stDynamicWorld,
-		*GAM_pp_stInactiveDynamicWorld
+		*GAM_g_p_stDynamicWorld,
+		*GAM_g_p_stInactiveDynamicWorld
 	};
 	HIE_tdstSuperObject *pItem;
 

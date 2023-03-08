@@ -90,9 +90,9 @@ SND_tdstSndBankDescriptorList;
  * Variables
  */
 
-ACP_VAR SND_tdstSndBankDescriptorList *SND_g_stBankDescriptionList;
+ACP_VAR SND_tdstSndBankDescriptorList *const SND_g_stBankDescriptionList;
 
-ACP_VAR long *SND_g_lSoundObjectTypeMenu;
+ACP_VAR long *const SND_g_lSoundObjectTypeMenu;
 
 
 /*
