@@ -13,7 +13,7 @@
 
 #define SND_C_NbTypeResource 12
 
-typedef enum SND_tdeTypeResource_
+typedef enum SND_tdeTypeResource
 {
 	SND_E_TR_Invalid,
 	SND_E_TR_Sample,
@@ -31,7 +31,7 @@ typedef enum SND_tdeTypeResource_
 }
 SND_tdeTypeResource;
 
-typedef enum SND_tdeTypeStorage_
+typedef enum SND_tdeTypeStorage
 {
 	SND_E_TS_External,
 	SND_E_TS_Megafile,
@@ -40,7 +40,7 @@ typedef enum SND_tdeTypeStorage_
 }
 SND_tdeTypeStorage;
 
-typedef union SND_tduResMem_
+typedef union SND_tduResMem
 {
 	SND_tdstTypeSampleMem stSample;
 	SND_tdstTypeMidiMem stMidi;
@@ -53,7 +53,7 @@ typedef union SND_tduResMem_
 }
 SND_tduResMem;
 
-typedef union SND_tduResDisk_
+typedef union SND_tduResDisk
 {
 	/* TODO
 	tdstTypeSampleDisk stSample;
@@ -73,13 +73,13 @@ typedef union SND_tduResDisk_
 SND_tduResDisk;
 
 
-typedef struct SND_tdstSndPolyResource_
+typedef struct SND_tdstSndPolyResource
 {
 	LST_M_OptParentDecl(SND_tdstBlockResourceMem)
 }
 SND_tdstSndPolyResource;
 
-typedef struct SND_tdstBlockResourceMem_
+typedef struct SND_tdstBlockResourceMem
 {
 	SND_tdxId Id;
 	SND_tdeTypeResource eType;
@@ -91,7 +91,7 @@ typedef struct SND_tdstBlockResourceMem_
 }
 SND_tdstBlockResourceMem;
 
-typedef struct SND_tdstBlockResourceDisk_
+typedef struct SND_tdstBlockResourceDisk
 {
 	SND_tdxId Id;
 	SND_tdeTypeResource eType;
@@ -103,7 +103,7 @@ typedef struct SND_tdstBlockResourceDisk_
 }
 SND_tdstBlockResourceDisk;
 
-typedef union SND_tduBlockResource_
+typedef union SND_tduBlockResource
 {
 	SND_tdstBlockResourceMem stMem;
 	SND_tdstBlockResourceDisk stDisk;

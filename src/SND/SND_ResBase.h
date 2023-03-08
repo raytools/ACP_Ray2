@@ -8,7 +8,7 @@
 #include "basedef.h"
 
 
-typedef enum SND_tdeTypeZip_
+typedef enum SND_tdeTypeZip
 {
 	SND_SAMPLE_Invalid,
 	SND_SAMPLE_PCM,
@@ -21,7 +21,7 @@ typedef enum SND_tdeTypeZip_
 SND_tdeTypeZip;
 
 
-typedef struct SND_tdstSampleMemory_
+typedef struct SND_tdstSampleMemory
 {
 	void *pvPtrFirst;
 	unsigned long ulNbEchLoop;
@@ -29,7 +29,7 @@ typedef struct SND_tdstSampleMemory_
 }
 SND_tdstSampleMemory;
 
-typedef struct SND_tdstSampleStreaming_
+typedef struct SND_tdstSampleStreaming
 {
 	char szFileName[13];
 	unsigned long ulOffsetFirst;
@@ -38,7 +38,7 @@ typedef struct SND_tdstSampleStreaming_
 }
 SND_tdstSampleStreaming;
 
-typedef union SND_tduDataSample_
+typedef union SND_tduDataSample
 {
 	SND_tdstSampleMemory stMem;
 	SND_tdstSampleStreaming stStream;

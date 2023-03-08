@@ -12,7 +12,7 @@
 #define SND_C_NbTypeEvent 12
 
 
-typedef enum SND_tdeTypeEvent_
+typedef enum SND_tdeTypeEvent
 {
 	SND_EVT_Invalid,
 	SND_EVT_Son_Play,
@@ -31,33 +31,33 @@ typedef enum SND_tdeTypeEvent_
 SND_tdeTypeEvent;
 
 
-typedef struct SND_tdstDeTune_
+typedef struct SND_tdstDeTune
 {
 	SND_tdxSndReal rDelta;
 }
 SND_tdstDeTune;
 
-typedef struct SND_tdstEvtPlay_
+typedef struct SND_tdstEvtPlay
 {
 	SND_tduRefRes uResource;
 	SND_tdstDeTune stDeTune;
 }
 SND_tdstEvtPlay;
 
-typedef struct SND_tdstEvtStop_
+typedef struct SND_tdstEvtStop
 {
 	SND_tduRefEvt uEvt;
 }
 SND_tdstEvtStop;
 
-typedef struct SND_tdstEvtStopNGo_
+typedef struct SND_tdstEvtStopNGo
 {
 	SND_tduRefEvt uEvtStop;
 	SND_tduRefEvt uEvtGo;
 }
 SND_tdstEvtStopNGo;
 
-typedef struct SND_tdstEvtStopNGoFade_
+typedef struct SND_tdstEvtStopNGoFade
 {
 	SND_tduRefEvt uEvtStop;
 	SND_tduRefEvt uEvtGo;
@@ -65,7 +65,7 @@ typedef struct SND_tdstEvtStopNGoFade_
 }
 SND_tdstEvtStopNGoFade;
 
-typedef struct SND_tdstEvtExtraParam_
+typedef struct SND_tdstEvtExtraParam
 {
 	SND_tduRefRes uResource;
 	SND_tdxSndReal rCoefA;
@@ -74,7 +74,7 @@ typedef struct SND_tdstEvtExtraParam_
 }
 SND_tdstEvtExtraParam;
 
-typedef struct SND_tdstEvtExtraAll_
+typedef struct SND_tdstEvtExtraAll
 {
 	SND_tduRefRes uResource;
 	SND_tdxSndRealTwin rtCoefPitch;
@@ -83,13 +83,13 @@ typedef struct SND_tdstEvtExtraAll_
 }
 SND_tdstEvtExtraAll;
 
-typedef struct SND_tdstEvtEffect_
+typedef struct SND_tdstEvtEffect
 {
 	int lIdEffect;
 }
 SND_tdstEvtEffect;
 
-typedef struct SND_tdstEvtChangeVolume_
+typedef struct SND_tdstEvtChangeVolume
 {
 	BOOL bConcernWithObjectType;
 	long lNewVolume;
@@ -97,7 +97,7 @@ typedef struct SND_tdstEvtChangeVolume_
 SND_tdstEvtChangeVolume;
 
 
-typedef union SND_tduEvtParams_
+typedef union SND_tduEvtParams
 {
 	SND_tdstEvtPlay stPlay;
 	SND_tdstEvtStop stStop;
@@ -110,7 +110,7 @@ typedef union SND_tduEvtParams_
 }
 SND_tduEvtParams;
 
-typedef struct SND_tdstBlockEvent_
+typedef struct SND_tdstBlockEvent
 {
 	SND_tdxId Id;
 	SND_tdeTypeEvent eType;

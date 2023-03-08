@@ -16,22 +16,22 @@ typedef unsigned long SND_tdxId;
 typedef void (CALLBACK *SND_td_pfn_vSoundCallback)( long lParam );
 
 
-typedef struct SND_tdstSndBankDescriptorElement_ SND_tdstSndBankDescriptorElement;
-typedef struct SND_tdstSndBankDescriptorList_ SND_tdstSndBankDescriptorList;
+typedef struct SND_tdstSndBankDescriptorElement SND_tdstSndBankDescriptorElement;
+typedef struct SND_tdstSndBankDescriptorList SND_tdstSndBankDescriptorList;
 
-typedef struct SND_tdstBlockEvent_ SND_tdstBlockEvent;
-typedef union SND_tduBlockResource_ SND_tduBlockResource;
-typedef struct SND_tdstBlockResourceMem_ SND_tdstBlockResourceMem;
+typedef struct SND_tdstBlockEvent SND_tdstBlockEvent;
+typedef union SND_tduBlockResource SND_tduBlockResource;
+typedef struct SND_tdstBlockResourceMem SND_tdstBlockResourceMem;
 
 
-typedef union SND_tduRefEvt_
+typedef union SND_tduRefEvt
 {
 	SND_tdxId Id;
 	SND_tdstBlockEvent *pstPtr;
 }
 SND_tduRefEvt;
 
-typedef union SND_tduRefRes_
+typedef union SND_tduRefRes
 {
 	SND_tdxId Id;
 	SND_tdstBlockResourceMem *pstPtr;

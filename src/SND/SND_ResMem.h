@@ -10,7 +10,7 @@
 #include "basedef.h"
 
 
-typedef struct SND_tdstMidiMemory_
+typedef struct SND_tdstMidiMemory
 {
 	unsigned int ulMidiDeviceId;
 	unsigned long ulLength;
@@ -18,7 +18,7 @@ typedef struct SND_tdstMidiMemory_
 }
 SND_tdstMidiMemory;
 
-typedef struct SND_tdstMidiStreaming_
+typedef struct SND_tdstMidiStreaming
 {
 	char szFichier[13];
 	unsigned long ulOffset;
@@ -27,7 +27,7 @@ typedef struct SND_tdstMidiStreaming_
 }
 SND_tdstMidiStreaming;
 
-typedef union SND_tduDataMidi_
+typedef union SND_tduDataMidi
 {
 	SND_tdstMidiMemory stMem;
 	SND_tdstMidiStreaming stStream;
@@ -35,7 +35,7 @@ typedef union SND_tduDataMidi_
 SND_tduDataMidi;
 
 
-typedef struct SND_tdstInfoTrackMem_
+typedef struct SND_tdstInfoTrackMem
 {
 	LST_M_OptChildDecl(SND_tdstInfoTrackMem, SND_tdstInfoTrackList)
 	unsigned long ulFadeIn;
@@ -46,14 +46,14 @@ typedef struct SND_tdstInfoTrackMem_
 }
 SND_tdstInfoTrackMem;
 
-typedef struct SND_tdstInfoTrackList_
+typedef struct SND_tdstInfoTrackList
 {
 	LST_M_OptParentDecl(SND_tdstInfoTrackMem)
 }
 SND_tdstInfoTrackList;
 
 
-typedef struct SND_tdstSwitchElement_
+typedef struct SND_tdstSwitchElement
 {
 	SND_tduRefRes uRes;
 	SND_tdxHandleToSoundInfo hIndice;
@@ -62,7 +62,7 @@ typedef struct SND_tdstSwitchElement_
 SND_tdstSwitchElement;
 
 
-typedef struct SND_tdstRangeSplitMem_
+typedef struct SND_tdstRangeSplitMem
 {
 	SND_tduRefRes uRes;
 	SND_tdxSndReal rPitchA;
@@ -77,13 +77,13 @@ typedef struct SND_tdstRangeSplitMem_
 }
 SND_tdstRangeSplitMem;
 
-typedef struct SND_tdstRangeSplitListMem_
+typedef struct SND_tdstRangeSplitListMem
 {
 	LST_M_OptParentDecl(SND_tdstRangeSplitMem)
 }
 SND_tdstRangeSplitListMem;
 
-typedef struct SND_tdstRandomElement_
+typedef struct SND_tdstRandomElement
 {
 	SND_tduRefRes uRes;
 	SND_tdxSndReal rProb;
@@ -97,7 +97,7 @@ SND_tdstRandomElement;
  * Types in memory
  */
 
-typedef struct SND_tdstTypeSampleMem_
+typedef struct SND_tdstTypeSampleMem
 {
 	BOOL bPitchable;
 	BOOL bVolable;
@@ -115,7 +115,7 @@ typedef struct SND_tdstTypeSampleMem_
 }
 SND_tdstTypeSampleMem;
 
-typedef struct SND_tdstTypeMidiMem_
+typedef struct SND_tdstTypeMidiMem
 {
 	BOOL bStream;
 	BOOL bVolable;
@@ -127,7 +127,7 @@ typedef struct SND_tdstTypeMidiMem_
 }
 SND_tdstTypeMidiMem;
 
-typedef struct SND_tdstTypeCD_
+typedef struct SND_tdstTypeCD
 {
 	short wTrackId;
 	BOOL bVolable;
@@ -140,7 +140,7 @@ typedef struct SND_tdstTypeCD_
 }
 SND_tdstTypeCD;
 
-typedef struct SND_tdstTypeSequenceMem_
+typedef struct SND_tdstTypeSequenceMem
 {
 	BOOL bLoop;
 	unsigned long ulStartLoop;
@@ -151,7 +151,7 @@ typedef struct SND_tdstTypeSequenceMem_
 }
 SND_tdstTypeSequenceMem;
 
-typedef struct SND_tdstTypeSwitchMem_
+typedef struct SND_tdstTypeSwitchMem
 {
 	LST_M_OptParentDecl(SND_tdstSwitchElement)
 	unsigned long ulNbElements;
@@ -162,7 +162,7 @@ typedef struct SND_tdstTypeSwitchMem_
 }
 SND_tdstTypeSwitchMem;
 
-typedef struct SND_tdstTypeSplitMem_
+typedef struct SND_tdstTypeSplitMem
 {
 	unsigned long ulNbRanges;
 	BOOL bStayActive;
@@ -170,7 +170,7 @@ typedef struct SND_tdstTypeSplitMem_
 }
 SND_tdstTypeSplitMem;
 
-typedef struct SND_tdstTypeRandomMem_
+typedef struct SND_tdstTypeRandomMem
 {
 	unsigned long ulNbElements;
 	SND_tdxSndReal rProbNothing;

@@ -16,7 +16,7 @@
 #include "apidef.h"
 
 
-typedef enum SND_tdeBankState_
+typedef enum SND_tdeBankState
 {
 	SND_BANK_NotLoaded,
 	SND_BANK_Loaded,
@@ -28,25 +28,25 @@ typedef enum SND_tdeBankState_
 SND_tdeBankState;
 
 
-typedef struct SND_tdstSndBankHeader_
+typedef struct SND_tdstSndBankHeader
 {
 	long lVersion;
 }
 SND_tdstSndBankHeader;
 
-typedef struct SND_tdstSndBankPolyEvent_
+typedef struct SND_tdstSndBankPolyEvent
 {
 	LST_M_OptParentDecl(SND_tdstBlockEvent)
 }
 SND_tdstSndBankPolyEvent;
 
-typedef struct SND_tdstSndBankPolyRes_
+typedef struct SND_tdstSndBankPolyRes
 {
 	LST_M_OptParentDecl(SND_tduBlockResource)
 }
 SND_tdstSndBankPolyRes;
 
-typedef struct SND_tdstSndBankHead_
+typedef struct SND_tdstSndBankHead
 {
 	SND_tdstSndBankHeader stHeader;
 	SND_tdstSndBankPolyEvent stEventList;
@@ -61,7 +61,7 @@ typedef struct SND_tdstSndBankHead_
 SND_tdstSndBankHead;
 
 
-typedef struct SND_tdstSndBankDescriptorElement_
+typedef struct SND_tdstSndBankDescriptorElement
 {
 	int _gap_00;
 	int lId;
@@ -79,7 +79,7 @@ typedef struct SND_tdstSndBankDescriptorElement_
 }
 SND_tdstSndBankDescriptorElement;
 
-typedef struct SND_tdstSndBankDescriptorList_
+typedef struct SND_tdstSndBankDescriptorList
 {
 	LST_M_DynamicParentDecl(SND_tdstSndBankDescriptorElement)
 }

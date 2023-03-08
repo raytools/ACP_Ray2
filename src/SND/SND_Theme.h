@@ -16,7 +16,7 @@
 #define SND_C_Theme_NoPartOutro -1
 
 
-typedef enum SND_tdeTypeTransition_
+typedef enum SND_tdeTypeTransition
 {
 	SND_E_Transition_Crossfade,
 	SND_E_Transition_AtEndOfPart,
@@ -24,7 +24,7 @@ typedef enum SND_tdeTypeTransition_
 	SND_E_Transition_ForAlignment = SND_C_EnumAlignment
 } SND_tdeTypeTransition;
 
-typedef struct SND_tdstThemePart_
+typedef struct SND_tdstThemePart
 {
 	SND_tduRefRes uRes;
 	BOOL bLoopStart;
@@ -36,7 +36,7 @@ typedef struct SND_tdstThemePart_
 }
 SND_tdstThemePart;
 
-typedef struct SND_tdstThemePartOutro_
+typedef struct SND_tdstThemePartOutro
 {
 	SND_tduRefRes uRes;
 	SND_tdeTypeTransition eTransition;
@@ -45,7 +45,7 @@ typedef struct SND_tdstThemePartOutro_
 SND_tdstThemePartOutro;
 
 
-typedef struct SND_tdstTypeThemeDisk_
+typedef struct SND_tdstTypeThemeDisk
 {
 	unsigned long ulStartLoop;
 	unsigned long ulEndLoopObsolete;
@@ -57,7 +57,7 @@ typedef struct SND_tdstTypeThemeDisk_
 }
 SND_tdstTypeThemeDisk;
 
-typedef struct SND_tdstTypeThemeMem_
+typedef struct SND_tdstTypeThemeMem
 {
 	unsigned long ulStartLoop;
 	unsigned long ulEndLoopObsolete;
