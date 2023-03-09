@@ -11,179 +11,200 @@
 #include "private/framework.h"
 
 
-/*
- * Object Type
- */
+/****************************************************************************
+ * Name -> Object Type
+ ****************************************************************************/
 
-char * XHIE_fn_szGetTypeName( long lID, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+HIE_tdxObjectType HIE_fn_lFindObjectTypeByName( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
 {
-	if ( lID < 0 || lID >= LST_M_DynamicGetNbOfElements(hTypeElem) )
-		return NULL;
-
-	HIE_tdstObjectTypeElement *pItem;
+	HIE_tdstObjectTypeElement *p_stType;
 	long i;
-	LST_M_DynamicGetNthElement(hTypeElem, lID, pItem, i);
-
-	if ( !pItem )
-		return NULL;
-
-	return pItem->szName;
-}
-
-
-char * XHIE_fn_szGetEngineObjectPersonalName( HIE_tdstEngineObject *p_stActor )
-{
-	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectPersonalType, &HIE_g_stObjectTypes->stPersonalType);
-}
-
-char * XHIE_fn_szGetEngineObjectModelName( HIE_tdstEngineObject *p_stActor )
-{
-	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectModelType, &HIE_g_stObjectTypes->stModelType);
-}
-
-char * XHIE_fn_szGetEngineObjectFamilyName( HIE_tdstEngineObject *p_stActor )
-{
-	return XHIE_fn_szGetTypeName(p_stActor->hStandardGame->lObjectFamilyType, &HIE_g_stObjectTypes->stFamilyType);
-}
-
-
-char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo )
-{
-	if ( p_stSpo->ulType != HIE_C_Type_Actor )
-		return NULL;
-
-	return XHIE_fn_szGetEngineObjectPersonalName(p_stSpo->hLinkedObject.p_stCharacter);
-}
-
-char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo )
-{
-	if ( p_stSpo->ulType != HIE_C_Type_Actor )
-		return NULL;
-
-	return XHIE_fn_szGetEngineObjectModelName(p_stSpo->hLinkedObject.p_stCharacter);
-}
-
-char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo )
-{
-	if ( p_stSpo->ulType != HIE_C_Type_Actor )
-		return NULL;
-
-	return XHIE_fn_szGetEngineObjectFamilyName(p_stSpo->hLinkedObject.p_stCharacter);
-}
-
-
-long XHIE_fn_lFindTypeIdByName( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
-{
-	HIE_tdstObjectTypeElement *pItem;
-	long i;
-
-	LST_M_DynamicForEachIndex(hTypeElem, pItem, i)
+	LST_M_DynamicForEachIndex(hTypeElem, p_stType, i)
 	{
-		if ( !_stricmp(pItem->szName, szName) )
+		if ( !_stricmp(p_stType->szName, szName) )
 			return i;
 	}
 
-	return -1;
+	return Std_C_InvalidObjectType;
 }
 
-long XHIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+HIE_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName )
 {
-	long length = strlen(szName) + 1;
+	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stFamilyType);
+}
 
-	char *hName = fn_p_vDynAlloc(length);
+HIE_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName )
+{
+	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stModelType);
+}
+
+HIE_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName )
+{
+	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stPersonalType);
+}
+
+
+/****************************************************************************
+ * Object Type -> SuperObject
+ ****************************************************************************/
+
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( HIE_tdxObjectType lType, HIE_tdstSuperObject *p_stParent )
+{
+	HIE_tdstSuperObject *p_stSuperObj;
+	LST_M_DynamicForEach(p_stParent, p_stSuperObj)
+	{
+		if ( p_stSuperObj->ulType != HIE_C_Type_Actor )
+			continue;
+
+		HIE_tdstEngineObject *p_stActor = HIE_M_hSuperObjectGetActor(p_stSuperObj);
+
+		if ( p_stActor->hStandardGame->lObjectPersonalType == lType )
+			return p_stSuperObj;
+	}
+
+	return NULL;
+}
+
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( HIE_tdxObjectType lType )
+{
+	HIE_tdstSuperObject *p_stSuperObj = NULL;
+
+	p_stSuperObj = HIE_fn_p_stFindObjectChildByPersonalType(lType, *GAM_g_p_stDynamicWorld);
+
+	if ( !p_stSuperObj )
+		p_stSuperObj = HIE_fn_p_stFindObjectChildByPersonalType(lType, *GAM_g_p_stInactiveDynamicWorld);
+
+	return p_stSuperObj;
+}
+
+
+/****************************************************************************
+ * Name -> SuperObject
+ ****************************************************************************/
+
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByName( char const *szName, HIE_tdstSuperObject *p_stParent )
+{
+	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+
+	if ( lType == Std_C_InvalidObjectType )
+		return NULL;
+
+	return HIE_fn_p_stFindObjectChildByPersonalType(lType, p_stParent);
+}
+
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectByName( char const *szName )
+{
+	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+
+	if ( lType == Std_C_InvalidObjectType )
+		return NULL;
+
+	return HIE_fn_p_stFindObjectByPersonalType(lType);
+}
+
+
+/****************************************************************************
+ * Object Type -> Name
+ ****************************************************************************/
+
+char * HIE_fn_szGetObjectTypeName( HIE_tdxObjectType lType, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+{
+	if ( lType <= Std_C_InvalidObjectType || lType >= LST_M_DynamicGetNbOfElements(hTypeElem) )
+		return NULL;
+
+	HIE_tdstObjectTypeElement *pItem;
+	long i;
+	LST_M_DynamicGetNthElement(hTypeElem, lType, pItem, i);
+
+	return (pItem) ? pItem->szName : NULL;
+}
+
+char * HIE_fn_szGetFamilyTypeName( HIE_tdxObjectType lType )
+{
+	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stFamilyType);
+}
+
+char * HIE_fn_szGetModelTypeName( HIE_tdxObjectType lType )
+{
+	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stModelType);
+}
+
+char * HIE_fn_szGetPersonalTypeName( HIE_tdxObjectType lType )
+{
+	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stPersonalType);
+}
+
+
+/****************************************************************************
+ * SuperObject -> Name
+ ****************************************************************************/
+
+char * HIE_fn_szGetObjectFamilyName( HIE_tdstSuperObject *p_stSuperObj )
+{
+	if ( p_stSuperObj->ulType != HIE_C_Type_Actor )
+		return NULL;
+
+	return HIE_fn_szGetFamilyTypeName(HIE_M_lActorGetFamilyType(HIE_M_hSuperObjectGetActor(p_stSuperObj)));
+}
+
+char * HIE_fn_szGetObjectModelName( HIE_tdstSuperObject *p_stSuperObj )
+{
+	if ( p_stSuperObj->ulType != HIE_C_Type_Actor )
+		return NULL;
+	
+	return HIE_fn_szGetModelTypeName(HIE_M_lActorGetModelType(HIE_M_hSuperObjectGetActor(p_stSuperObj)));
+}
+
+char * HIE_fn_szGetObjectPersonalName( HIE_tdstSuperObject *p_stSuperObj )
+{
+	if ( p_stSuperObj->ulType != HIE_C_Type_Actor )
+		return NULL;
+
+	return HIE_fn_szGetPersonalTypeName(HIE_M_lActorGetPersonalType(HIE_M_hSuperObjectGetActor(p_stSuperObj)));
+}
+
+
+/****************************************************************************
+ * Other
+ ****************************************************************************/
+
+HIE_tdstEngineObject * HIE_fn_p_stFindAlwaysObjectByName( char const *szName )
+{
+	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+
+	if ( lType == Std_C_InvalidObjectType )
+		return NULL;
+
+	ALW_tdstAlwaysModelList *pItem;
+	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
+	{
+		HIE_tdstEngineObject *p_stAlwaysObj = pItem->p_stAlwaysObject;
+		
+		if ( p_stAlwaysObj->hStandardGame->lObjectPersonalType == lType )
+			return pItem->p_stAlwaysObject;
+	}
+
+	return NULL;
+}
+
+HIE_tdxObjectType HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+{
+	long lStrLen = strlen(szName) + 1;
+
+	char *hName = fn_p_vDynAlloc(lStrLen);
 	if ( !hName )
-		return -1;
+		return Std_C_InvalidObjectType;
 
-	memcpy(hName, szName, length);
+	memcpy(hName, szName, lStrLen);
 	
 	HIE_tdstObjectTypeElement *hNew = fn_p_vDynAlloc(sizeof(HIE_tdstObjectTypeElement));
 	if ( !hNew )
-		return -1;
+		return Std_C_InvalidObjectType;
 
 	hNew->szName = hName;
 
 	LST_M_DynamicAddTail(hTypeElem, hNew);
-	long lNewId = XHIE_fn_lFindTypeIdByName(szName, hTypeElem);
+	HIE_tdxObjectType lNewType = HIE_fn_lFindObjectTypeByName(szName, hTypeElem);
 
-	return lNewId;
-}
-
-
-/*
- * SPO & Always Objects
- */
-
-long XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback )
-{
-	long nEnumerated = 0;
-	HIE_tdstSuperObject *pChild;
-
-	LST_M_DynamicForEach(p_stSpo, pChild)
-	{
-		BOOL bContinue = p_fnCallback(pChild);
-		nEnumerated++;
-
-		if ( !bContinue ) break;
-	}
-
-	return nEnumerated;
-}
-
-long XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback )
-{
-	long nEnumerated = 0;
-	ALW_tdstAlwaysModelList *pItem;
-
-	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
-	{
-		BOOL bContinue = p_fnCallback(pItem->p_stAlwaysObject);
-		nEnumerated++;
-
-		if ( !bContinue ) break;
-	}
-
-	return nEnumerated;
-}
-
-HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void )
-{
-	return GAM_g_stEngineStructure->g_hMainActor;
-}
-
-HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName )
-{
-	HIE_tdstSuperObject *a_p_stSearchIn[] = {
-		*GAM_g_p_stDynamicWorld,
-		*GAM_g_p_stInactiveDynamicWorld
-	};
-	HIE_tdstSuperObject *pItem;
-
-	for ( int i = 0; i < ARRAYSIZE(a_p_stSearchIn); i++ )
-	{
-		LST_M_DynamicForEach(a_p_stSearchIn[i], pItem)
-		{
-			char *szObjName = XHIE_fn_szGetSuperObjectPersonalName(pItem);
-			if ( szObjName && !_stricmp(szName, szObjName) )
-			{
-				return pItem;
-			}
-		}
-	}
-
-	return NULL;
-}
-
-HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObjectByName( char const *szName )
-{
-	ALW_tdstAlwaysModelList *pItem;
-	LST_M_DynamicForEach(&ALW_g_stAlways->hLstAlwaysModel, pItem)
-	{
-		char *szObjName = XHIE_fn_szGetEngineObjectPersonalName(pItem->p_stAlwaysObject);
-		if ( szObjName && !_stricmp(szName, szObjName) )
-		{
-			return pItem->p_stAlwaysObject;
-		}
-	}
-
-	return NULL;
+	return lNewType;
 }

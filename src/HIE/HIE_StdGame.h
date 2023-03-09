@@ -88,9 +88,9 @@ HIE_tdeObjectinitInit;
 
 typedef struct HIE_tdstStandardGame
 {
-	long lObjectFamilyType;
-	long lObjectModelType;
-	long lObjectPersonalType;
+	HIE_tdxObjectType lObjectFamilyType;
+	HIE_tdxObjectType lObjectModelType;
+	HIE_tdxObjectType lObjectPersonalType;
 	// -1 (Std_C_InvalidObjectType) is an invalid type
 	// (if > Std_C_AlwaysObjectType) is an always object
 

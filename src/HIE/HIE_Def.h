@@ -20,6 +20,8 @@ typedef struct HIE_tdstAlwaysActiveCharacter HIE_tdstAlwaysActiveCharacter;
  * HIE_StdGame.h
  ****************************************************************************/
 
+typedef long HIE_tdxObjectType;
+
 typedef struct HIE_tdstStandardGame HIE_tdstStandardGame;
 
 typedef struct HIE_tdstObjectTypeElement HIE_tdstObjectTypeElement;

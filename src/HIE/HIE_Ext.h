@@ -9,35 +9,52 @@
 #include "HIE.h"
 #include "LST.h"
 #include "MTH.h"
+#include "basedef.h"
 #include "apidef.h"
 
 
-typedef BOOL (CALLBACK *XHIE_tdfnEnumSpoCallback)( HIE_tdstSuperObject *p_stSpo );
-typedef BOOL (CALLBACK *XHIE_tdfnEnumPersoCallback)( HIE_tdstEngineObject *p_stPerso );
+/****************************************************************************
+ * Convenience macros
+ ****************************************************************************/
+
+#define HIE_M_hGetMainActor() (GAM_g_stEngineStructure->g_hMainActor)
+
+#define HIE_M_hSuperObjectGetActor( hSuperObj ) ((hSuperObj)->hLinkedObject.p_stActor)
+#define HIE_M_hSuperObjectGetStdGame( hSuperObj ) (HIE_M_hSuperObjectGetActor(hSuperObj)->hStandardGame)
+
+#define HIE_M_hStdGameGetSuperObject( hStdGame ) ((hStdGame)->p_stSuperObject)
+#define HIE_M_hActorGetSuperObject( hActor ) HIE_M_hStdGameGetSuperObject((hActor)->hStandardGame)
+
+/****************************************************************************/
+
+/* Actor -> Object Type */
+#define HIE_M_lActorGetFamilyType( hActor ) ((hActor)->hStandardGame->lObjectFamilyType)
+#define HIE_M_lActorGetModelType( hActor ) ((hActor)->hStandardGame->lObjectModelType)
+#define HIE_M_lActorGetPersonalType( hActor ) ((hActor)->hStandardGame->lObjectPersonalType)
+
+/* Name -> Object Type */
+ACP_API HIE_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName );
+ACP_API HIE_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName );
+ACP_API HIE_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName );
+
+/* Object Type -> SuperObject */
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( HIE_tdxObjectType lType, HIE_tdstSuperObject *p_stParent );
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( HIE_tdxObjectType lType );
+
+/* Name -> SuperObject */
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByName( char const *szName, HIE_tdstSuperObject *p_stParent );
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectByName( char const *szName );
+
+/* Object Type -> Name */
+ACP_API char * HIE_fn_szGetFamilyTypeName( HIE_tdxObjectType lType );
+ACP_API char * HIE_fn_szGetModelTypeName( HIE_tdxObjectType lType );
+ACP_API char * HIE_fn_szGetPersonalTypeName( HIE_tdxObjectType lType );
+
+/* SuperObject -> Name */
+ACP_API char * HIE_fn_szGetObjectFamilyName( HIE_tdstSuperObject *p_stSuperObj );
+ACP_API char * HIE_fn_szGetObjectModelName( HIE_tdstSuperObject *p_stSuperObj );
+ACP_API char * HIE_fn_szGetObjectPersonalName( HIE_tdstSuperObject *p_stSuperObj );
 
 
-/*
- * Object Type
- */
-
-ACP_API char * XHIE_fn_szGetEngineObjectPersonalName( HIE_tdstEngineObject *p_stActor );
-ACP_API char * XHIE_fn_szGetEngineObjectModelName( HIE_tdstEngineObject *p_stActor );
-ACP_API char * XHIE_fn_szGetEngineObjectFamilyName( HIE_tdstEngineObject *p_stActor );
-
-ACP_API char * XHIE_fn_szGetSuperObjectPersonalName( HIE_tdstSuperObject *p_stSpo );
-ACP_API char * XHIE_fn_szGetSuperObjectModelName( HIE_tdstSuperObject *p_stSpo );
-ACP_API char * XHIE_fn_szGetSuperObjectFamilyName( HIE_tdstSuperObject *p_stSpo );
-
-ACP_API long XHIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem );
-
-
-/*
- * SPO & Always Objects
- */
-
-ACP_API long XHIE_fn_lEnumSpoChildren( HIE_tdstSuperObject *p_stSpo, XHIE_tdfnEnumSpoCallback p_fnCallback );
-ACP_API long XHIE_fn_lEnumAlwaysObjects( XHIE_tdfnEnumPersoCallback p_fnCallback );
-
-ACP_API HIE_tdstSuperObject * XHIE_fn_p_stGetMainActor( void );
-ACP_API HIE_tdstSuperObject * XHIE_fn_p_stFindSuperObjectByName( char const *szName );
-ACP_API HIE_tdstEngineObject * XHIE_fn_p_stFindAlwaysObjectByName( char const *szName );
+ACP_API HIE_tdstEngineObject * HIE_fn_p_stFindAlwaysObjectByName( char const *szName );
+ACP_API long HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem );
