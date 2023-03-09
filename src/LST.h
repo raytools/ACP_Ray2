@@ -211,7 +211,15 @@ do {																		   \
 	LST_M_StaticGetNextBrother(hElement) = NULL;							   \
 } while ( 0 )
 
-/* TODO: Static list add/remove/foreach/nth macros */
+/* Iterate over all elements of the list */
+#define LST_M_StaticForEach( hAnchor, hElement )							   \
+for (																		   \
+	(hElement) = LST_M_StaticGetFirstElement(hAnchor);						   \
+	(hElement);																   \
+	(hElement) = LST_M_StaticGetNextBrother(hElement)						   \
+)
+
+/* TODO: Static list add/remove/nth macros */
 
 
 /****************************************************************************
@@ -253,5 +261,13 @@ do {																		   \
 /* Initialise list element */
 #define LST_M_OptInitElement( hElement )
 
-/* TODO: Optimized list add/remove/foreach/nth macros */
+/* Iterate over all elements of the list */
+#define LST_M_OptForEach( hAnchor, hElement, i )							   \
+for (																		   \
+	(i) = 0, (hElement) = LST_M_OptGetFirstElement(hAnchor);				   \
+	(i) < LST_M_OptGetNbOfElements(hAnchor);								   \
+	(i)++, (hElement) = LST_M_OptGetNextBrother(hElement)					   \
+)
+
+/* TODO: Optimized list add/remove/nth macros */
 

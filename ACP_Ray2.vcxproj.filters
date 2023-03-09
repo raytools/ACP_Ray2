@@ -216,6 +216,9 @@
     <ClInclude Include="src\AI\AI_Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SND\SND_Ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -279,6 +282,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SND\SND.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SND\SND_Ext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

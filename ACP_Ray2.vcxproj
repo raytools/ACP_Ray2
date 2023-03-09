@@ -201,6 +201,7 @@ cd .</Command>
     <ClInclude Include="src\SND\SND.h" />
     <ClInclude Include="src\SND\SND_Def.h" />
     <ClInclude Include="src\SND\SND_Event.h" />
+    <ClInclude Include="src\SND\SND_Ext.h" />
     <ClInclude Include="src\SND\SND_ResBase.h" />
     <ClInclude Include="src\SND\SND_Resource.h" />
     <ClInclude Include="src\SND\SND_ResMem.h" />
@@ -248,6 +249,7 @@ cd .</Command>
     <ClCompile Include="src\MMG\MMG.c" />
     <ClCompile Include="src\POS\POS.c" />
     <ClCompile Include="src\SND\SND.c" />
+    <ClCompile Include="src\SND\SND_Ext.c" />
     <ClCompile Include="src\SPTXT\private\SPTXT_Private.c" />
     <ClCompile Include="src\SPTXT\SPTXT.c" />
   </ItemGroup>
