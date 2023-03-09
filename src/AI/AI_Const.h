@@ -103,3 +103,16 @@ typedef enum AI_tdeVariableType
 	AI_E_Nb_vt
 }
 AI_tdeVariableType;
+
+typedef enum AI_tdeObjectTreeInit
+{
+	AI_E_OTI_WhenGameStart = 0,
+	AI_E_OTI_MapLoaded,
+	AI_E_OTI_ReinitTheMap,
+	AI_E_OTI_LoadSavedGame,
+	AI_E_OTI_PlayerDead,
+	AI_E_OTI_WhenGoOutOfZone = AI_E_OTI_PlayerDead,
+	AI_E_OTI_Always = AI_E_OTI_WhenGoOutOfZone,
+	AI_E_OTI_AlwaysCreated,
+}
+AI_tdeObjectTreeInit;

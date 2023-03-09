@@ -5,51 +5,38 @@
  ****************************************************************************/
 
 #include "AI_Ext.h"
+#include "AI_Array.h"
 #include "HIE/HIE.h"
 
 
-long XAI_fn_lEnumSpoDsgVars( HIE_tdstSuperObject *p_stSpo, AI_tdfnEnumDsgVarCallback p_fnCallback )
+BOOL AI_fn_bGetDsgVar( HIE_tdstSuperObject *p_stSuperObj, unsigned char ucDsgVarId, AI_tdeDsgVarType *p_eType_Out, void **p_pValue_Out )
 {
-	if ( p_stSpo->ulType != HIE_C_Type_Actor ) return -1;
-	
-	AI_tdstBrain *pBrain = p_stSpo->hLinkedObject.p_stCharacter->hBrain;
-	if ( !pBrain || !pBrain->p_stMind ) return -1;
+	if ( !HIE_M_bSuperObjectIsActor(p_stSuperObj) )
+		return FALSE;
 
-	AI_tdstDsgMem *pDsgMem = pBrain->p_stMind->p_stDsgMem;
-	if ( !pDsgMem ) return -1;
-	
-	AI_tdstDsgVar *pDsgVar = *pDsgMem->pp_stDsgVar;
-	long nEnumerated = 0;
+	AI_tdstMind *hMind = AI_M_hGetMindOfSuperObj(p_stSuperObj);
 
-	for ( unsigned char i = 0; i < pDsgVar->ucNbDsgVar; i++ )
-	{
-		AI_tdstDsgVarInfo *pInfo = &pDsgVar->a_stDsgVarInfo[i];
+	if ( ucDsgVarId > AI_M_ucGetNbDsgVar(hMind) )
+		return FALSE;
 
-		void *pCurrentValue = NULL;
-		void *pInitValue = NULL;
-		void *pModelInitValue = NULL;
+	AI_tdstDsgVarInfo *p_stDsgInfo = AI_M_p_stGetDsgVarInfo(hMind, ucDsgVarId);
 
-		if ( pDsgMem->p_cDsgMemBuffer )
-		{
-			pCurrentValue = &pDsgMem->p_cDsgMemBuffer[pInfo->ulOffsetInDsgMem];
-		}
-		
-		if ( pDsgMem->p_cDsgMemBufferInit )
-		{
-			pInitValue = &pDsgMem->p_cDsgMemBufferInit[pInfo->ulOffsetInDsgMem];
-		}
+	if ( p_eType_Out )
+		*p_eType_Out = p_stDsgInfo->eTypeId;
+	if ( p_pValue_Out )
+		*p_pValue_Out = AI_M_p_cGetDsgMemBuffer(hMind) + p_stDsgInfo->ulOffsetInDsgMem;
 
-		if ( pDsgVar->p_cDsgMemDefaultInit )
-		{
-			pModelInitValue = &pDsgVar->p_cDsgMemDefaultInit[pInfo->ulOffsetInDsgMem];
-		}
-		
-		BOOL bContinue = p_fnCallback(i, pInfo->eTypeId, pCurrentValue, pInitValue, pModelInitValue);
-		nEnumerated++;
+	return TRUE;
+}
 
-		if ( !bContinue )
-			break;
-	}
+ACP_tdxBool AI_fn_bGetBooleanInArray( HIE_tdstSuperObject *p_stSpo, unsigned char ucDsgVarId, unsigned int ulIndex )
+{
+	AI_tdstArray *p_stArray;
+	AI_fn_bGetDsgVar(p_stSpo, ucDsgVarId, NULL, &p_stArray);
 
-	return nEnumerated;
+	ulIndex--;
+	unsigned long ulIndexFirstLong = (ulIndex >> 5);
+	unsigned long ulIndexFirstBit = (ulIndex & 31);
+
+	return (AI_M_pArrayElement(p_stArray, ulIndexFirstLong)->lValue & (1 << ulIndexFirstBit)) ? TRUE : FALSE;
 }

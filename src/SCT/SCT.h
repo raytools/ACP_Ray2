@@ -9,6 +9,7 @@
 #include "SCT_Def.h"
 #include "HIE/HIE_Def.h"
 #include "GLI/GLI_Def.h"
+#include "SND/SND_Def.h"
 #include "LST.h"
 #include "MTH.h"
 #include "apidef.h"
@@ -70,7 +71,7 @@ SCT_tdstListOfSOSectorsInInteraction;
 typedef struct SCT_tdstListOfSoundEvent
 {
 	HIE_tdstSuperObject *hPointerOfSectorSO;
-	/* SND_tduRefEvt */ void *uSoundEvent;
+	SND_tduRefEvt *uSoundEvent;
 	LST_M_StaticElementDecl(SCT_tdstListOfSoundEvent)
 }
 SCT_tdstListOfSoundEvent;

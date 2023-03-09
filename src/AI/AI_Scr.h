@@ -5,37 +5,12 @@
 #pragma once
 
 #include "AI_Const.h"
+#include "HIE/HIE_Def.h"
+#include "GMT/GMT_Def.h"
+#include "GLI/GLI_Def.h"
+#include "SND/SND_Def.h"
 #include "MTH.h"
 
-
-typedef struct AI_tdstGetSetParam
-{
-	union
-	{
-		void *pValue;
-		MTH_tdxReal xValue;
-		long lValue;
-		unsigned long ulValue;
-		short wValue;
-		unsigned short uwValue;
-		char cValue;
-		unsigned char ucValue;
-		char *szValue;
-		MTH3D_tdstVector stVector;
-	};
-
-	AI_tdeVariableType ulType;
-}
-AI_tdstGetSetParam;
-
-typedef struct AI_tdstNodeInterpret
-{
-	void *Value;
-	unsigned short uwNodeToSkip;
-	unsigned char ucDepth;
-	AI_tdeTypeInterpret eType;
-}
-AI_tdstNodeInterpret;
 
 typedef struct AI_tdstTreeInterpret
 {
@@ -73,3 +48,93 @@ typedef struct AI_tdstListOfMacro
 	unsigned char ucNbMacro;
 }
 AI_tdstListOfMacro;
+
+
+/*
+ * GetSetParam
+ */
+
+typedef union AI_tduGetSetParam
+{
+	MTH_tdxReal xValue;
+	long lValue;
+	unsigned long ulValue;
+	short wValue;
+	unsigned short uwValue;
+	char cValue;
+	unsigned char ucValue;
+	char *szString;
+	MTH3D_tdstVector stVector;
+	HIE_tdstSuperObject *hSuperObject;
+	HIE_tdstEngineObject *hActor;
+	HIE_tdstState *hState;
+	HIE_tdstObjectsTablesList *hObjectTable;
+	HIE_tdstFamilyList *hFamily;
+	AI_tdstComport *hComport;
+	AI_tdstAIModel *hModel;
+	AI_tdstMacro *hMacro;
+	GMT_tdstGameMaterial *hGameMaterial;
+	GMT_tdxMask xMask;
+	GLI_tdstLight *hLight;
+	SND_tduRefEvt hSoundEvent;
+	//RGBAStruct ColorValue;
+	//FON_tdxHandleOfText hText;
+	//WP_tdhWayPoint m_hWayPoint;
+	//WP_tdHandleOfGraph hGraph;
+	//tdxHandleOfLipsSynchroTable hLipsSynchro;
+	//tdxHandleToParticleGenerator hParticleGenerator;
+}
+AI_tduGetSetParam;
+
+typedef union AI_tduGetSetParamForNode
+{
+	MTH_tdxReal xValue;
+	long lValue;
+	unsigned long ulValue;
+	short wValue;
+	unsigned short uwValue;
+	char cValue;
+	unsigned char ucValue;
+	char *szString;
+	MTH3D_tdstVector *p_stVector;
+	HIE_tdstSuperObject *hSuperObject;
+	HIE_tdstEngineObject *hActor;
+	HIE_tdstState *hState;
+	HIE_tdstObjectsTablesList *hObjectTable;
+	HIE_tdstFamilyList *hFamily;
+	AI_tdstComport *hComport;
+	AI_tdstAIModel *hModel;
+	AI_tdstMacro *hMacro;
+	GMT_tdstGameMaterial *hGameMaterial;
+	GMT_tdxMask xMask;
+	GLI_tdstLight *hLight;
+	SND_tduRefEvt hSoundEvent;
+	//RGBAStruct ColorValue;
+	//FON_tdxHandleOfText hText;
+	//WP_tdhWayPoint m_hWayPoint;
+	//WP_tdHandleOfGraph hGraph;
+	//tdxHandleOfLipsSynchroTable hLipsSynchro;
+	//tdxHandleToParticleGenerator hParticleGenerator;
+}
+AI_tduGetSetParamForNode;
+
+typedef struct AI_tdstGetSetParam
+{
+	AI_tduGetSetParam uParam;
+	AI_tdeVariableType ulType;
+}
+AI_tdstGetSetParam;
+
+typedef struct AI_tdstNodeInterpret
+{
+	union
+	{
+		AI_tduGetSetParamForNode uParam;
+		void *Value;
+	};
+
+	unsigned short uwNodeToSkip;
+	unsigned char ucDepth;
+	AI_tdeTypeInterpret eType;
+}
+AI_tdstNodeInterpret;

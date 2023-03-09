@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "AI_Const.h"
+
 
 typedef enum AI_tdeDsgVarType
 {
@@ -40,7 +42,7 @@ typedef struct AI_tdstDsgVarInfo
 	unsigned long ulOffsetInDsgMem;
 	AI_tdeDsgVarType eTypeId;
 	long eSaveType;
-	long eInitType;
+	AI_tdeObjectTreeInit eInitType;
 }
 AI_tdstDsgVarInfo;
 

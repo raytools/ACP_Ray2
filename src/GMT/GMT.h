@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "GMT_Def.h"
 #include "GLI/GLI_Def.h"
 #include "DNM/DNM_Def.h"
 #include "basedef.h"
@@ -16,9 +17,6 @@
 #define GMT_C_wZDR (short)1
 #define GMT_C_wZDE (short)2
 #define GMT_C_wZDD (short)3
-
-typedef long SND_tdxHandleToSoundMaterial;
-typedef unsigned short GMT_tdxMask;
 
 
 typedef struct GMT_tdstCollideMaterial

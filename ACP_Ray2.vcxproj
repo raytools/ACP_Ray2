@@ -163,6 +163,7 @@ cd .</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AI\AI_Array.h" />
     <ClInclude Include="src\compat.h" />
     <ClInclude Include="src\AGO\AGO.h" />
     <ClInclude Include="src\AI\AI_Const.h" />
@@ -187,10 +188,12 @@ cd .</Command>
     <ClInclude Include="src\GLI\GLI_Def.h" />
     <ClInclude Include="src\GLI\GLI_Misc.h" />
     <ClInclude Include="src\GMT\GMT.h" />
+    <ClInclude Include="src\GMT\GMT_Def.h" />
     <ClInclude Include="src\HIE\HIE_Const.h" />
     <ClInclude Include="src\HIE\HIE_Family.h" />
     <ClInclude Include="src\HIE\HIE_StdGame.h" />
     <ClInclude Include="src\IPT\IPT.h" />
+    <ClInclude Include="src\IPT\IPT_Ext.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\PO\PO.h" />
     <ClInclude Include="src\SCT\SCT.h" />
@@ -233,7 +236,6 @@ cd .</Command>
     <ClCompile Include="src\BLT\BLT.c" />
     <ClCompile Include="src\BLT\private\BLT_IO.c" />
     <ClCompile Include="src\dllmain.c" />
-    <ClCompile Include="src\DNM\DNM_Ext.c" />
     <ClCompile Include="src\ERM\ERM.c" />
     <ClCompile Include="src\FIL\FIL.c" />
     <ClCompile Include="src\FON\FON.c" />

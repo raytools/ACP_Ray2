@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include "HIE.h"
+#include "HIE_Def.h"
+#include "HIE_Const.h"
 #include "LST.h"
-#include "MTH.h"
 #include "basedef.h"
 #include "apidef.h"
 
@@ -19,6 +19,7 @@
 
 #define HIE_M_hGetMainActor() (GAM_g_stEngineStructure->g_hMainActor)
 
+#define HIE_M_bSuperObjectIsActor( hSuperObj ) ((hSuperObj)->ulType == HIE_C_Type_Actor)
 #define HIE_M_hSuperObjectGetActor( hSuperObj ) ((hSuperObj)->hLinkedObject.p_stActor)
 #define HIE_M_hSuperObjectGetStdGame( hSuperObj ) (HIE_M_hSuperObjectGetActor(hSuperObj)->hStandardGame)
 

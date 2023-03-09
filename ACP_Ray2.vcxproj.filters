@@ -207,6 +207,15 @@
     <ClInclude Include="src\compat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\IPT\IPT_Ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GMT\GMT_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\AI_Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -225,9 +234,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\POS\POS.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DNM\DNM_Ext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AI\AI_Ext.c">
