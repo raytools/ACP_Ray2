@@ -7,18 +7,14 @@
 #pragma once
 
 #include "DNM.h"
-#include "HIE/HIE_Def.h"
+#include "basedef.h"
 #include "apidef.h"
 
 
-typedef enum XDNM_tdeDynamicsSize
-{
-	e_DynamicsSize_Base = 0,
-	e_DynamicsSize_Advanced = 1,
-	e_DynamicsSize_Complex = 2,
-	e_DynamicsSize_Error = -1
-}
-XDNM_tdeDynamicsSize;
+#define DNM_M_p_stGetBaseBlock( p_stDynamics ) (&((p_stDynamics)->stDynamicsBase))
+#define DNM_M_p_stGetAdvancedBlock( p_stDynamics ) (&((p_stDynamics)->stDynamicsAdvanced))
+#define DNM_M_p_stGetComplexBlock( p_stDynamics ) (&((p_stDynamics)->stDynamicsComplex))
 
-ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSize( DNM_tdstDynamics *p_stDynamics );
-ACP_API XDNM_tdeDynamicsSize XDNM_fn_eGetDynamicsSizeSpo( HIE_tdstSuperObject *p_stSpo );
+#define DNM_M_bDynamicsIsBaseSize( p_stDynamics ) (DNM_M_p_stGetBaseBlock(p_stDynamics)->ulEndFlags & DNM_C_EndFlag_BaseSize ? TRUE : FALSE)
+#define DNM_M_bDynamicsIsAdvancedSize( p_stDynamics ) (DNM_M_p_stGetBaseBlock(p_stDynamics)->ulEndFlags & DNM_C_EndFlag_AdvancedSize ? TRUE : FALSE)
+#define DNM_M_bDynamicsIsComplexSize( p_stDynamics ) (DNM_M_p_stGetBaseBlock(p_stDynamics)->ulEndFlags & DNM_C_EndFlag_ComplexSize ? TRUE : FALSE)

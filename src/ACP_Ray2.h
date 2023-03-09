@@ -55,6 +55,7 @@ extern "C" {
 #include "HIE/HIE_Ext.h"
 #include "AI/AI_Ext.h"
 #include "DNM/DNM_Ext.h"
+#include "IPT/IPT_Ext.h"
 
 /* Spitfire's Text Helper Module */
 #include "SPTXT/SPTXT.h"
