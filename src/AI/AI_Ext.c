@@ -29,10 +29,10 @@ BOOL AI_fn_bGetDsgVar( HIE_tdstSuperObject *p_stSuperObj, unsigned char ucDsgVar
 	return TRUE;
 }
 
-ACP_tdxBool AI_fn_bGetBooleanInArray( HIE_tdstSuperObject *p_stSpo, unsigned char ucDsgVarId, unsigned int ulIndex )
+ACP_tdxBool AI_fn_bGetBooleanInArray( HIE_tdstSuperObject *p_stSuperObj, unsigned char ucDsgVarId, unsigned int ulIndex )
 {
 	AI_tdstArray *p_stArray;
-	AI_fn_bGetDsgVar(p_stSpo, ucDsgVarId, NULL, &p_stArray);
+	AI_fn_bGetDsgVar(p_stSuperObj, ucDsgVarId, NULL, &p_stArray);
 
 	ulIndex--;
 	unsigned long ulIndexFirstLong = (ulIndex >> 5);

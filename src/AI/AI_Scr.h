@@ -56,6 +56,7 @@ AI_tdstListOfMacro;
 
 typedef union AI_tduGetSetParam
 {
+	void *pvValue;
 	MTH_tdxReal xValue;
 	long lValue;
 	unsigned long ulValue;
@@ -88,6 +89,7 @@ AI_tduGetSetParam;
 
 typedef union AI_tduGetSetParamForNode
 {
+	void *pvValue;
 	MTH_tdxReal xValue;
 	long lValue;
 	unsigned long ulValue;
@@ -127,12 +129,7 @@ AI_tdstGetSetParam;
 
 typedef struct AI_tdstNodeInterpret
 {
-	union
-	{
-		AI_tduGetSetParamForNode uParam;
-		void *Value;
-	};
-
+	AI_tduGetSetParamForNode uParam;
 	unsigned short uwNodeToSkip;
 	unsigned char ucDepth;
 	AI_tdeTypeInterpret eType;

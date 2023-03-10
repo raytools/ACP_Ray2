@@ -37,4 +37,4 @@
 
 
 ACP_API BOOL AI_fn_bGetDsgVar( HIE_tdstSuperObject *p_stSuperObj, unsigned char ucDsgVarId, AI_tdeDsgVarType *p_eType_Out, void **p_pValue_Out );
-ACP_API ACP_tdxBool AI_fn_bGetBooleanInArray( HIE_tdstSuperObject *p_stSpo, unsigned char ucDsgVarId, unsigned int ulIndex );
+ACP_API ACP_tdxBool AI_fn_bGetBooleanInArray( HIE_tdstSuperObject *p_stSuperObj, unsigned char ucDsgVarId, unsigned int ulIndex );
