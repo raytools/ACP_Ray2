@@ -9,7 +9,7 @@
 #include "GLI_Misc.h"
 
 #include "GLD.h"
-#include "GEO/GEO.h"
+#include "GEO/GEO_Def.h"
 #include "POS/POS.h"
 #include "MTH.h"
 #include "basedef.h"

@@ -7,34 +7,10 @@
 #pragma once
 
 #include "GEO_Def.h"
-#include "GMT/GMT.h"
+#include "GEO_Elem.h"
+#include "GMT/GMT_Def.h"
 #include "MTH.h"
 #include "apidef.h"
-
-
-/* Constant for no element parallel boxes */
-#define GEO_C_xNoParallelBox ((ACP_tdxIndex)-1)
-
-
-typedef struct GEO_tdstColor
-{
-	GEO_tdxColorValue xR;
-	GEO_tdxColorValue xG;
-	GEO_tdxColorValue xB;
-	GEO_tdxColorValue xA;
-} GEO_tdstColor;
-
-typedef struct GEO_tdstDoubledIndex
-{
-	ACP_tdxIndex a2_xIndex[2];
-}
-GEO_tdstDoubledIndex;
-
-typedef struct GEO_tdstTripledIndex
-{
-	ACP_tdxIndex a3_xIndex[3];
-}
-GEO_tdstTripledIndex;
 
 
 /*
@@ -69,7 +45,7 @@ typedef struct GEO_tdstGeometricObject
 	GEO_tdstColor *d_stListOfPointsReceivedLightIntensity;
 
 	/* Elements */
-	ACP_tdxIndex *d_xListOfElementsTypes;
+	GEO_tdeElementType *d_xListOfElementsTypes;
 	void **d_hListOfElements;
 
 	/* COL_tdstOctree * */ void *p_stOctree;

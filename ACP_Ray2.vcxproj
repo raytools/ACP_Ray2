@@ -171,6 +171,7 @@ cd .</Command>
     <ClInclude Include="src\AI\AI_Scr.h" />
     <ClInclude Include="src\ALW\ALW.h" />
     <ClInclude Include="src\basedef.h" />
+    <ClInclude Include="src\GEO\GEO_Elem.h" />
     <ClInclude Include="src\LOG\LOG.h" />
     <ClInclude Include="src\LOG\LOG_Def.h" />
     <ClInclude Include="src\LOG\private\LOG_Err.h" />

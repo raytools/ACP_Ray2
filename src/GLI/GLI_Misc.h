@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "GEO/GEO.h"
+#include "GEO/GEO_Def.h"
 #include "MTH.h"
 #include "basedef.h"
 #include "apidef.h"
