@@ -153,19 +153,19 @@
     <ClInclude Include="src\SPTXT\SPTXT_Const.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\BLT.h">
+    <ClInclude Include="src\LOG\LOG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\private\BLT_IO.h">
+    <ClInclude Include="src\LOG\private\LOG_IO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\private\BLT_Modules.h">
+    <ClInclude Include="src\LOG\private\LOG_Modules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\BLT_Def.h">
+    <ClInclude Include="src\LOG\LOG_Def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BLT\private\BLT_Err.h">
+    <ClInclude Include="src\LOG\private\LOG_Err.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DNM\DNM_Const.h">
@@ -269,10 +269,10 @@
     <ClCompile Include="src\IPT\IPT.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BLT\BLT.c">
+    <ClCompile Include="src\LOG\LOG.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BLT\private\BLT_IO.c">
+    <ClCompile Include="src\LOG\private\LOG_IO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\FON\FON.c">

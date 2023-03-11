@@ -61,8 +61,8 @@ extern "C" {
 /* Spitfire's Text Helper Module */
 #include "SPTXT/SPTXT.h"
 
-/* Spitfire's Better Log Tool */
-#include "BLT/BLT.h"
+/* Spitfire's Log & Error Module */
+#include "LOG/LOG.h"
 
 #endif /* ACP_NO_EXT */
 

@@ -1,29 +1,29 @@
 ﻿/****************************************************************************
  *
- * BLT - I/O functions
+ * LOG - I/O functions
  *
  ****************************************************************************/
 
-#include "BLT_IO.h"
+#include "LOG_IO.h"
 #include "GAM/GAM.h"
 #include "private/framework.h"
 
 
-BOOL BLT_g_bSuppressInfoWindow = FALSE;
+BOOL LOG_g_bSuppressInfoWindow = FALSE;
 
 
-FILE * BLT_fn_hOpenFileForWrite( char *szFilePath )
+FILE * LOG_fn_hOpenFileForWrite( char *szFilePath )
 {
 	FILE *hFile = fopen(szFilePath, "w");
 	return hFile;
 }
 
-void BLT_fn_vCloseFile( FILE *hFile )
+void LOG_fn_vCloseFile( FILE *hFile )
 {
 	fclose(hFile);
 }
 
-void BLT_fn_vPrintToFile( char *szText, FILE *hFile )
+void LOG_fn_vPrintToFile( char *szText, FILE *hFile )
 {
 	if ( !hFile )
 		return;
@@ -32,9 +32,9 @@ void BLT_fn_vPrintToFile( char *szText, FILE *hFile )
 	fflush(hFile);
 }
 
-void BLT_fn_vPrintToInfoWindow( char *szText )
+void LOG_fn_vPrintToInfoWindow( char *szText )
 {
-	if ( BLT_g_bSuppressInfoWindow )
+	if ( LOG_g_bSuppressInfoWindow )
 		return;
 
 	long lResult = MessageBox(
@@ -45,10 +45,10 @@ void BLT_fn_vPrintToInfoWindow( char *szText )
 	);
 
 	if ( lResult == IDCANCEL )
-		BLT_g_bSuppressInfoWindow = TRUE;
+		LOG_g_bSuppressInfoWindow = TRUE;
 }
 
-BOOL BLT_fn_bAskForDebug( void )
+BOOL LOG_fn_bAskForDebug( void )
 {
 	long lResult = MessageBox(
 		GAM_fn_hGetWindowHandle(),
@@ -60,12 +60,7 @@ BOOL BLT_fn_bAskForDebug( void )
 	return (lResult == IDYES);
 }
 
-void BLT_fn_vCloseApp( void )
-{
-	GAM_fn_vChangeEngineMode(E_EM_ModeStoppingProgram);
-}
-
-void BLT_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )
+void LOG_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )
 {
 	va_list args;
 	va_start(args, szFormat);
@@ -78,9 +73,9 @@ void BLT_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat
 
 	vsprintf(szBuffer, szFormat, args);
 
-	BLT_fn_vPrintToFile(szBuffer, hFile);
+	LOG_fn_vPrintToFile(szBuffer, hFile);
 	if ( bInfoWindow )
-		BLT_fn_vPrintToInfoWindow(szBuffer);
+		LOG_fn_vPrintToInfoWindow(szBuffer);
 
 	va_end(args);
 }
