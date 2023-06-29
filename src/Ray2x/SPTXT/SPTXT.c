@@ -10,8 +10,8 @@
 #include "JFFTXT/JFFTXT.h"
 #include "GLI/GLI.h"
 #include "LST.h"
+#include "Ray2x/FHK/FHK.h"
 #include "private/framework.h"
-#include <detours.h>
 
 
 #define TEXT_MARGIN 2
@@ -125,9 +125,7 @@ ACP_API void SPTXT_vInit( void )
 
 	SPTXT_JFFTXT_vAffiche = JFFTXT_vAffiche;
 
-	DetourTransactionBegin();
-	DetourAttach((PVOID *)&SPTXT_JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
-	DetourTransactionCommit();
+	FHK_fn_lCreateHook((void**)&SPTXT_JFFTXT_vAffiche, (void*)SPTXT_vAffiche);
 
 	g_bIsModuleInit = TRUE;
 }
@@ -137,12 +135,9 @@ ACP_API void SPTXT_vDeInit( void )
 	if ( !g_bIsModuleInit )
 		return;
 
-	DetourTransactionBegin();
-	DetourDetach((PVOID *)&SPTXT_JFFTXT_vAffiche, (PVOID)SPTXT_vAffiche);
-	DetourTransactionCommit();
+	FHK_fn_lDestroyHook((void**)&SPTXT_JFFTXT_vAffiche, (void*)SPTXT_vAffiche);
 
 	SPTXT_JFFTXT_vAffiche = NULL;
-
 	g_bIsModuleInit = FALSE;
 }
 

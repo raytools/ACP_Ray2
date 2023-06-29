@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{18869684-4f1e-41e0-a461-5a8000077634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SPTXT">
+      <UniqueIdentifier>{6ad5f9aa-9f9f-464c-83cd-8494bf4e74a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LOG">
+      <UniqueIdentifier>{f6673c26-2701-4b9c-8967-3c5e95356069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LOG\private">
+      <UniqueIdentifier>{645b8558-85c4-4412-a672-9257c3570969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SPTXT\private">
+      <UniqueIdentifier>{1f8d4911-553f-4921-88ad-b3af307da6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FHK">
+      <UniqueIdentifier>{12e73c4e-cc0a-4420-8e0d-fd1c5df38a60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Ray2x\LOG\LOG.h">
+      <Filter>src\LOG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\LOG_Def.h">
+      <Filter>src\LOG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT.h">
+      <Filter>src\SPTXT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT_Const.h">
+      <Filter>src\SPTXT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\ACP_Ray2x.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\apidefx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.h">
+      <Filter>src\SPTXT\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Modules.h">
+      <Filter>src\LOG\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Err.h">
+      <Filter>src\LOG\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_IO.h">
+      <Filter>src\LOG\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\FHK\FHK.h">
+      <Filter>src\FHK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Ray2x\LOG\LOG.c">
+      <Filter>src\LOG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c">
+      <Filter>src\SPTXT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\dllmain.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.c">
+      <Filter>src\SPTXT\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\LOG\private\LOG_IO.c">
+      <Filter>src\LOG\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\FHK\FHK.c">
+      <Filter>src\FHK</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

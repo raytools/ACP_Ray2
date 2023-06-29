@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "LOG/LOG.h"
+#include "../LOG.h"
 #include "private/framework.h"
 
 

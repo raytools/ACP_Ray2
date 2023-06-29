@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Static|Win32">
+      <Configuration>Debug Static</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -28,6 +32,12 @@
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -50,6 +60,9 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -60,19 +73,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>ACP_Ray2</TargetName>
-    <OutDir>$(ProjectDir)bin\lib\</OutDir>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>ACP_Ray2</TargetName>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>ACP_Ray2</TargetName>
-    <OutDir>$(ProjectDir)bin\lib\</OutDir>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>ACP_Ray2</TargetName>
-    <OutDir>$(ProjectDir)bin\lib\</OutDir>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -84,7 +103,7 @@
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -99,6 +118,33 @@ robocopy "$(ProjectDir)src" "$(SolutionDir)bin\include" *.h /S /PURGE /XD "priva
 cd .</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;ACPRAY2_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(SolutionDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(SolutionDir)"
+robocopy "$(ProjectDir)src" "$(SolutionDir)bin\include" *.h /S /PURGE /XD "private" /IS /IT /NP
+cd .</Command>
+    </PostBuildEvent>
+    <Lib>
+      <SubSystem>Windows</SubSystem>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -110,7 +156,7 @@ cd .</Command>
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
@@ -134,12 +180,12 @@ cd .</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;ACPRAY2_EXPORTS;ACP_USE_STATIC;_WINDOWS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;ACPRAY2_EXPORTS;_WINDOWS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <CompileAs>CompileAsC</CompileAs>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)detours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
@@ -157,14 +203,13 @@ robocopy "$(ProjectDir)src" "$(SolutionDir)bin\include" *.h /S /PURGE /XD "priva
 cd .</Command>
     </PostBuildEvent>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)detours;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\AI\AI_Array.h" />
-    <ClInclude Include="src\compat.h" />
     <ClInclude Include="src\AGO\AGO.h" />
     <ClInclude Include="src\AI\AI_Const.h" />
     <ClInclude Include="src\AI\AI_DsgVar.h" />
@@ -172,11 +217,6 @@ cd .</Command>
     <ClInclude Include="src\ALW\ALW.h" />
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\GEO\GEO_Elem.h" />
-    <ClInclude Include="src\LOG\LOG.h" />
-    <ClInclude Include="src\LOG\LOG_Def.h" />
-    <ClInclude Include="src\LOG\private\LOG_Err.h" />
-    <ClInclude Include="src\LOG\private\LOG_IO.h" />
-    <ClInclude Include="src\LOG\private\LOG_Modules.h" />
     <ClInclude Include="src\DNM\DNM_Const.h" />
     <ClInclude Include="src\ERM\ERM.h" />
     <ClInclude Include="src\FIL\FIL.h" />
@@ -207,7 +247,6 @@ cd .</Command>
     <ClInclude Include="src\SND\SND_Resource.h" />
     <ClInclude Include="src\SND\SND_ResMem.h" />
     <ClInclude Include="src\SND\SND_Theme.h" />
-    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="src\AI\AI_Def.h" />
     <ClInclude Include="src\apidef.h" />
     <ClInclude Include="src\ACP_Ray2.h" />
@@ -226,8 +265,6 @@ cd .</Command>
     <ClInclude Include="src\HIE\HIE.h" />
     <ClInclude Include="src\AI\AI_Ext.h" />
     <ClInclude Include="src\HIE\HIE_Ext.h" />
-    <ClInclude Include="src\SPTXT\SPTXT.h" />
-    <ClInclude Include="src\SPTXT\SPTXT_Const.h" />
     <ClInclude Include="src\TMR\TMR.h" />
   </ItemGroup>
   <ItemGroup>
@@ -235,8 +272,6 @@ cd .</Command>
     <ClCompile Include="src\AI\AI.c" />
     <ClCompile Include="src\AI\AI_Ext.c" />
     <ClCompile Include="src\ALW\ALW.c" />
-    <ClCompile Include="src\LOG\LOG.c" />
-    <ClCompile Include="src\LOG\private\LOG_IO.c" />
     <ClCompile Include="src\dllmain.c" />
     <ClCompile Include="src\ERM\ERM.c" />
     <ClCompile Include="src\FIL\FIL.c" />
@@ -251,8 +286,6 @@ cd .</Command>
     <ClCompile Include="src\POS\POS.c" />
     <ClCompile Include="src\SND\SND.c" />
     <ClCompile Include="src\SND\SND_Ext.c" />
-    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c" />
-    <ClCompile Include="src\SPTXT\SPTXT.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

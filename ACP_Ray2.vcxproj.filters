@@ -78,12 +78,6 @@
     <ClInclude Include="src\GLI\GLI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SPTXT\SPTXT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SPTXT\private\SPTXT_Private.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\ERM\ERM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -150,24 +144,6 @@
     <ClInclude Include="src\HIE\HIE_Const.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SPTXT\SPTXT_Const.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LOG\LOG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LOG\private\LOG_IO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LOG\private\LOG_Modules.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LOG\LOG_Def.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LOG\private\LOG_Err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\DNM\DNM_Const.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -202,9 +178,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\SND\SND_Theme.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\compat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\IPT\IPT_Ext.h">
@@ -254,12 +227,6 @@
     <ClCompile Include="src\GLI\GLI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SPTXT\SPTXT.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SPTXT\private\SPTXT_Private.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ERM\ERM.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -270,12 +237,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\IPT\IPT.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LOG\LOG.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LOG\private\LOG_IO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\FON\FON.c">

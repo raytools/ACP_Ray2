@@ -49,8 +49,8 @@ extern "C" {
  ****************************************************************************/
 
 /* These headers contain extra types and functions that extend the CPA engine. */
-/* To disable extensions, define ACP_NO_EXT. */
-#ifndef ACP_NO_EXT
+/* To disable extensions, define ACP_NO_EXT */
+#if !defined(ACP_NO_EXT)
 
 #include "HIE/HIE_Ext.h"
 #include "AI/AI_Ext.h"
@@ -58,21 +58,19 @@ extern "C" {
 #include "IPT/IPT_Ext.h"
 #include "SND/SND_Ext.h"
 
-/* Spitfire's Text Helper Module */
-#include "SPTXT/SPTXT.h"
+#endif /* !ACP_NO_EXT */
 
-/* Spitfire's Log & Error Module */
-#include "LOG/LOG.h"
+/* Include the ACP_Ray2x helper DLL headers. */
+/* To disable, define ACP_NOX */
+#if !defined(ACP_NOX)
 
-#endif /* ACP_NO_EXT */
+#include "Ray2x/ACP_Ray2x.h"
 
+#if defined(_MSC_VER) && !defined(ACPRAY2_EXPORTS)
+#pragma comment(lib, "ACP_Ray2x.lib")
+#endif
 
-/* For compatibility with older mods */
-#ifdef ACP_COMPAT
-
-#include "compat.h"
-
-#endif /* ACP_COMPAT */
+#endif /* !ACP_NOX */
 
 
 #ifdef __cplusplus

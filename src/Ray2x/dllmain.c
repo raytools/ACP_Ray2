@@ -1,8 +1,5 @@
 #include "private/framework.h"
 
-
-#ifdef _USRDLL
-
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD dwReason, LPVOID lpReserved )
 {
 	switch ( dwReason )
@@ -16,5 +13,3 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD dwReason, LPVOID lpReserved )
 
 	return TRUE;
 }
-
-#endif

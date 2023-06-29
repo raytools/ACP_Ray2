@@ -7,6 +7,10 @@
 #pragma once
 
 
+/* This is now permanently defined. do not ask. if you #undef it you will go to jail */
+#define ACP_USE_STATIC
+
+
 #define CALLBACK __stdcall
 
 #ifndef ACP_USE_STATIC

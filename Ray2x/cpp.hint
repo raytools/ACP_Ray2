@@ -1,0 +1,2 @@
+#define ACPX_API __declspec(dllexport)
+#define ACPX_API __declspec(dllimport)

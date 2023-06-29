@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "SPTXT/SPTXT.h"
+#include "../SPTXT.h"
 #include "LST.h"
 
 

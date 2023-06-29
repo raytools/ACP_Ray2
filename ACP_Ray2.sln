@@ -5,19 +5,25 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACP_Ray2", "ACP_Ray2.vcxproj", "{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACP_Ray2x", "Ray2x\ACP_Ray2x.vcxproj", "{B831EA0D-52A3-44E5-B6D4-0BBAD4A668EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04} = {1489C536-DED5-4A81-A3B9-A3C6D9C57F04}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
-		Release Static|x86 = Release Static|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Debug|x86.ActiveCfg = Debug|Win32
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Debug|x86.Build.0 = Debug|Win32
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release Static|x86.ActiveCfg = Release Static|Win32
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release Static|x86.Build.0 = Release Static|Win32
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.ActiveCfg = Release|Win32
-		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.Build.0 = Release|Win32
+		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Debug|x86.ActiveCfg = Debug Static|Win32
+		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Debug|x86.Build.0 = Debug Static|Win32
+		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.ActiveCfg = Release Static|Win32
+		{1489C536-DED5-4A81-A3B9-A3C6D9C57F04}.Release|x86.Build.0 = Release Static|Win32
+		{B831EA0D-52A3-44E5-B6D4-0BBAD4A668EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{B831EA0D-52A3-44E5-B6D4-0BBAD4A668EA}.Debug|x86.Build.0 = Debug|Win32
+		{B831EA0D-52A3-44E5-B6D4-0BBAD4A668EA}.Release|x86.ActiveCfg = Release|Win32
+		{B831EA0D-52A3-44E5-B6D4-0BBAD4A668EA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

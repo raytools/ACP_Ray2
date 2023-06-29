@@ -8,27 +8,27 @@
 
 #include "LOG_Def.h"
 #include "basedef.h"
-#include "apidef.h"
+#include "Ray2x/apidefx.h"
 
 
-ACP_API void LOG_fn_vInit( void );
+ACPX_API void LOG_fn_vInit( void );
 
 /* Register the module. Recommended format for szCodeAndVersion is "XXX V1.2.3". */
-ACP_API LOG_tdxModuleId LOG_fn_xRegisterModule( char const *szCodeAndVersion, char const *szFullName, char const *szDate );
+ACPX_API LOG_tdxModuleId LOG_fn_xRegisterModule( char const *szCodeAndVersion, char const *szFullName, char const *szDate );
 
 /* Register error table for the module. The table should be structured as such:
    (0 <= n < uwIdStartOfWarning) are fatal errors
    (uwIdStartOfWarning <= n < uwIdStartOfInformation) are warnings
    (uwIdStartOfInformation <= n < ulNbError) are informations */
-ACP_API void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, unsigned long ulNbError,
+ACPX_API void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, unsigned long ulNbError,
 										unsigned short uwIdStartOfWarning, unsigned short uwIdStartOfInformation );
 
-ACP_API LOG_tdstErrorInfo * LOG_fn_p_stGetLastError( LOG_tdxModuleId xModuleId );
+ACPX_API LOG_tdstErrorInfo * LOG_fn_p_stGetLastError( LOG_tdxModuleId xModuleId );
 
 
 /* Note: Use the provided macros (LOG_M_vLogXXX) instead!
    To use module ID, define LOG_USE_MODULE or use LOG_M_vLog***Ex macros. */
-ACP_API void LOG_fn_vError(
+ACPX_API void LOG_fn_vError(
 	LOG_tdeErrorType eType,
 	LOG_tdxModuleId xModuleId,
 	char *szInFile,
@@ -38,7 +38,7 @@ ACP_API void LOG_fn_vError(
 );
 
 /* Note: Use the provided macros (LOG_M_vLogId and LOG_M_vLogIdEx) instead! */
-ACP_API void LOG_fn_vErrorFromId(
+ACPX_API void LOG_fn_vErrorFromId(
 	unsigned short uwErrorId,
 	LOG_tdxModuleId xModuleId,
 	char *szInFile,

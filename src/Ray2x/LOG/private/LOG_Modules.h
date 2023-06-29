@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "LOG/LOG_Def.h"
+#include "../LOG_Def.h"
 
 
 #define LOG_M_bIsValidModuleId(xId) ((xId) < LOG_C_MaxModules)
