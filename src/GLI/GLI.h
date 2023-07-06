@@ -211,8 +211,9 @@ GLI_tdstLight;
  * Variables
  */
 
-ACP_VAR MTH_tdxReal *const GLI_p_fZValueForSprite;
-ACP_VAR unsigned char *const GLI_p_bForceAAAColor;
+ACP_VAR MTH_tdxReal *const GLI_g_fZValueForSprite;
+ACP_VAR unsigned char *const GLI_g_bForceAAAColor;
+ACP_VAR unsigned char *const GLI_a3_ForcedAAAColor;
 
 ACP_VAR void **const GLI_g_hConcatTexturesFile;
 ACP_VAR void **const GLI_gs_p_ConvertBufferMipMapping;

@@ -11,8 +11,9 @@
  * Variables
  */
 
-MTH_tdxReal *const GLI_p_fZValueForSprite = OFFSET(0x4A07D4);
-unsigned char *const GLI_p_bForceAAAColor = OFFSET(0x4A72AC);
+MTH_tdxReal *const GLI_g_fZValueForSprite = OFFSET(0x4A07D4);
+unsigned char *const GLI_g_bForceAAAColor = OFFSET(0x4A72AC);
+unsigned char *const GLI_a3_ForcedAAAColor = OFFSET(0x503748);
 
 void **const GLI_g_hConcatTexturesFile = OFFSET(0x4A7280);
 void **const GLI_gs_p_ConvertBufferMipMapping = OFFSET(0x503D50);

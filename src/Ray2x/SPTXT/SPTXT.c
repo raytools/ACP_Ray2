@@ -88,13 +88,13 @@ void SPTXT_vDrawString( char *szText, SPTXT_tdstTextInfo *p_stInfo )
 		stTL.y += 1 - FRAME_MARGIN;
 		stBR.y = stTL.y + xHeight;
 
-		MTH_tdxReal xSaveZValue = *GLI_p_fZValueForSprite;
-		*GLI_p_fZValueForSprite = 0.998f;
-		*GLI_p_bForceAAAColor = 0;
+		MTH_tdxReal xSaveZValue = *GLI_g_fZValueForSprite;
+		*GLI_g_fZValueForSprite = 0.998f;
+		*GLI_g_bForceAAAColor = 0;
 
 		GLI_vDisplayFrame(&stTL, &stBR, stDummy.ucAlpha * 0.5f, g_pContext);
 
-		*GLI_p_fZValueForSprite = xSaveZValue;
+		*GLI_g_fZValueForSprite = xSaveZValue;
 	}
 
 	JFFTXT_vDrawString(g_pContext, &stDummy);
