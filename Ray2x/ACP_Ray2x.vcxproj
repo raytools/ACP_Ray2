@@ -236,6 +236,8 @@
     <ClInclude Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT_Const.h" />
+    <ClInclude Include="..\src\Ray2x\TXM\private\TXM_List.h" />
+    <ClInclude Include="..\src\Ray2x\TXM\TXM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Ray2x\dllmain.c" />
@@ -244,6 +246,7 @@
     <ClCompile Include="..\src\Ray2x\LOG\private\LOG_IO.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c" />
+    <ClCompile Include="..\src\Ray2x\TXM\TXM.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

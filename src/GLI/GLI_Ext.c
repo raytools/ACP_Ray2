@@ -39,6 +39,20 @@ GLI_tdstTexture * GLI_fn_pstFindTexture( char const *szName )
 	return NULL;
 }
 
+GLI_tdstTexture * GLI_fn_pstFindTextureWithChannel( char const *szName, unsigned long ulMemChannel )
+{
+	for ( int i = 0; i < GLI_C_lNBMaxOfTextures; ++i )
+	{
+		unsigned long ulChannel = GLI_gs_aDEFTableOfTextureMemoryChannels[i];
+		GLI_tdstTexture *pTexture = GLI_gs_aDEFTableOfTextureAlreadyRead[i];
+
+		if ( ulChannel == ulMemChannel && !_stricmp(pTexture->szFileName, szName) )
+			return pTexture;
+	}
+
+	return NULL;
+}
+
 BOOL GLI_fn_bReadTextureGF( GLI_tdstTexture *p_stTexture, char const *szGFName )
 {
 	/* set textures folder name */
@@ -115,7 +129,7 @@ BOOL GLI_fn_bReadTextureGF( GLI_tdstTexture *p_stTexture, char const *szGFName )
 	return TRUE;
 }
 
-void GLI_fn_vLoadTextureInTable( GLI_tdstTexture *p_stTexture )
+void GLI_fn_vLoadTextureInTableWithChannel( GLI_tdstTexture *p_stTexture, unsigned long ulChannel )
 {
 	/* TODO: may be necessary to use GLI_gs_lNumberOfTextureToCreate */
 	for ( int i = 0; i < GLI_C_lNBMaxOfTextures; ++i )
@@ -123,10 +137,15 @@ void GLI_fn_vLoadTextureInTable( GLI_tdstTexture *p_stTexture )
 		if ( GLI_gs_aDEFTableOfTextureMemoryChannels[i] == GLI_C_TEXIsUnallocated )
 		{
 			GLI_gs_aDEFTableOfTextureAlreadyRead[i] = p_stTexture;
-			GLI_gs_aDEFTableOfTextureMemoryChannels[i] = GLI_C_CustomMemoryChannel;
+			GLI_gs_aDEFTableOfTextureMemoryChannels[i] = ulChannel;
 			break;
 		}
 	}
+}
+
+void GLI_fn_vLoadTextureInTable( GLI_tdstTexture *p_stTexture )
+{
+	GLI_fn_vLoadTextureInTableWithChannel(p_stTexture, GLI_C_CustomMemoryChannel);
 }
 
 

@@ -23,6 +23,9 @@ extern "C" {
 /* Function Hook module */
 #include "FHK/FHK.h"
 
+/* Texture Manager module*/
+#include "TXM/TXM.h"
+
 
 #ifdef __cplusplus
 } /* extern "C" */

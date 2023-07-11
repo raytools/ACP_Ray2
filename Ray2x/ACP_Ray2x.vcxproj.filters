@@ -27,6 +27,12 @@
     <Filter Include="src\FHK">
       <UniqueIdentifier>{12e73c4e-cc0a-4420-8e0d-fd1c5df38a60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\TXM">
+      <UniqueIdentifier>{5950f81f-e968-4ac5-96fc-8802fba10cd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TXM\private">
+      <UniqueIdentifier>{75b3531a-d680-457e-8ecd-f42c67b58870}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -65,6 +71,12 @@
     <ClInclude Include="..\src\Ray2x\FHK\FHK.h">
       <Filter>src\FHK</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Ray2x\TXM\TXM.h">
+      <Filter>src\TXM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\TXM\private\TXM_List.h">
+      <Filter>src\TXM\private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Ray2x\LOG\LOG.c">
@@ -84,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Ray2x\FHK\FHK.c">
       <Filter>src\FHK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\TXM\TXM.c">
+      <Filter>src\TXM</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
