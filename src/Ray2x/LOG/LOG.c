@@ -17,9 +17,9 @@
 /****************************************************************************
  * LOG module info
  ****************************************************************************/
-#define LOG_C_szLOGModuleVersion	"LOG V1.1.0"
+#define LOG_C_szLOGModuleVersion	"LOG V1.2.0"
 #define LOG_C_szLOGModuleName		"Spitfire's Log & Error Module"
-#define LOG_C_szLOGModuleDate		"Mar 11 2023"
+#define LOG_C_szLOGModuleDate		"Jul 11 2023"
 
 /****************************************************************************
  * Private error tab for LOG
@@ -166,11 +166,15 @@ void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, 
 void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char *szExtraMsg )
 {
 	char *szErrHeader;
+	char cExtraLine = '\n';
 	BOOL bUnknownErr = FALSE;
 	BOOL bAboutToStop = FALSE;
 
 	if ( !szExtraMsg )
+	{
 		szExtraMsg = "";
+		cExtraLine = 0;
+	}
 
 	if ( p_stError->eType == LOG_E_Information )
 	{
@@ -180,11 +184,11 @@ void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char *szExtraMsg )
 		{
 			LOG_fn_vOutputErrorMsg(
 				LOG_g_hLogFile, FALSE,
-				"%s\nIn file '%s', line %d:\n    ->  %s\n        %s\n",
+				"%s\nIn file '%s', line %d:\n    ->  %s\n%s\n%c",
 				szErrHeader,
 				p_stError->szFileName, p_stError->uwLineNum,
 				p_stError->szErrorMsg,
-				szExtraMsg
+				szExtraMsg, cExtraLine
 			);
 		}
 		else
@@ -193,12 +197,12 @@ void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char *szExtraMsg )
 
 			LOG_fn_vOutputErrorMsg(
 				LOG_g_hLogFile, FALSE,
-				"%s\nFrom %s: '%s' of %s, in file '%s', line %d:\n    ->  %s\n        %s\n",
+				"%s\nFrom %s: '%s' of %s, in file '%s', line %d:\n    ->  %s\n%s\n%c",
 				szErrHeader,
 				p_stModule->szCodeVersion, p_stModule->szFullName, p_stModule->szDate,
 				p_stError->szFileName, p_stError->uwLineNum,
 				p_stError->szErrorMsg,
-				szExtraMsg
+				szExtraMsg, cExtraLine
 			);
 		}
 
@@ -206,7 +210,7 @@ void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char *szExtraMsg )
 		return;
 	}
 
-	LOG_fn_vPrintToFile("\n================================================================================\n",
+	LOG_fn_vPrintToFile("================================================================================\n",
 						LOG_g_hLogFile);
 
 	switch ( p_stError->eType )

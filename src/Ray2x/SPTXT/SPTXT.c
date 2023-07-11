@@ -126,7 +126,7 @@ ACP_API void SPTXT_vInit( void )
 	LST_M_DynamicInitAnchor(&g_stTextNodeList);
 
 	SPTXT_JFFTXT_vAffiche = JFFTXT_vAffiche;
-	FHK_fn_lCreateHook((void**)&SPTXT_JFFTXT_vAffiche, (void*)SPTXT_vAffiche);
+	FHK_M_lCreateHook(&SPTXT_JFFTXT_vAffiche, SPTXT_vAffiche);
 
 	g_bIsModuleInit = TRUE;
 }
@@ -136,7 +136,7 @@ ACP_API void SPTXT_vDeInit( void )
 	if ( !g_bIsModuleInit )
 		return;
 
-	FHK_fn_lDestroyHook((void**)&SPTXT_JFFTXT_vAffiche, (void*)SPTXT_vAffiche);
+	FHK_M_lDestroyHook(&SPTXT_JFFTXT_vAffiche, SPTXT_vAffiche);
 
 	SPTXT_JFFTXT_vAffiche = NULL;
 	g_bIsModuleInit = FALSE;

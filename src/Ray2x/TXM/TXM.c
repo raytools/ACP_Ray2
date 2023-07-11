@@ -100,7 +100,7 @@ GLI_tdstTexture * TXM_fn_hLoadTextureGF( char const *szGFName )
 	char szErr[256];
 	char szErr2[64];
 	sprintf(szErr, "Requested texture '%s'", szGFName);
-	sprintf(szErr2, "  Type: %u\n  RefCount: %u", pstEntry->ucType, pstEntry->uwRefCount);
+	sprintf(szErr2, "\tType: %u\n\tRefCount: %u", pstEntry->ucType, pstEntry->uwRefCount);
 	LOG_M_vLogInfoEx(TXM_g_xModuleId, szErr, szErr2);
 #endif
 
@@ -140,9 +140,9 @@ void TXM_fn_vComputeTextures( void )
 	char szErr[256];
 	sprintf(
 		szErr,
-		"  Total textures loaded:  %u\n"
-		"  TXM textures:           %d\n"
-		"  Memory used by TXM:     %u B",
+		"\tTotal textures loaded:  %u\n"
+		"\tTXM textures:           %d\n"
+		"\tMemory used by TXM:     %u B",
 		*GLI_g_ulNumberOfLoadedTexture,
 		LST_M_DynamicGetNbOfElements(&g_stTextureList),
 		g_ulTXMTotalMem

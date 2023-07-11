@@ -37,8 +37,12 @@ void LOG_fn_vPrintToInfoWindow( char *szText )
 	if ( LOG_g_bSuppressInfoWindow )
 		return;
 
+	HANDLE hWnd = GAM_fn_hGetWindowHandle();
+	if ( !IsWindow(hWnd) )
+		hWnd = NULL;
+
 	long lResult = MessageBox(
-		GAM_fn_hGetWindowHandle(),
+		hWnd,
 		szText,
 		"CPA Information Window",
 		MB_TOPMOST | MB_ICONEXCLAMATION | MB_OKCANCEL
