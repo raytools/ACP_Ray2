@@ -19,6 +19,7 @@ void **const GLI_g_hConcatTexturesFile = OFFSET(0x4A7280);
 void **const GLI_gs_p_ConvertBufferMipMapping = OFFSET(0x503D50);
 
 unsigned long *const GLI_g_ulNumberOfLoadedTexture = OFFSET(0x502660);
+long *const GLI_gs_lNumberOfTextureToCreate = OFFSET(0x501644);
 GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead = OFFSET(0x502680);
 unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels = OFFSET(0x501660);
 

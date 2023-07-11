@@ -55,6 +55,7 @@ extern "C" {
 #include "HIE/HIE_Ext.h"
 #include "AI/AI_Ext.h"
 #include "DNM/DNM_Ext.h"
+#include "GLI/GLI_Ext.h"
 #include "IPT/IPT_Ext.h"
 #include "SND/SND_Ext.h"
 

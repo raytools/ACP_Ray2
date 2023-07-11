@@ -219,6 +219,7 @@ ACP_VAR void **const GLI_g_hConcatTexturesFile;
 ACP_VAR void **const GLI_gs_p_ConvertBufferMipMapping;
 
 ACP_VAR unsigned long *const GLI_g_ulNumberOfLoadedTexture;
+ACP_VAR long *const GLI_gs_lNumberOfTextureToCreate;
 ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
 ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
