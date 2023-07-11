@@ -6,7 +6,7 @@
 
 
 #define LOG_C_MaxErrorMsg (256)
-#define LOG_C_MaxModules (128)
+#define LOG_C_MaxModules (64)
 #define LOG_C_DefaultModule (LOG_C_MaxModules)
 
 
