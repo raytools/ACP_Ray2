@@ -123,8 +123,9 @@ ACP_API void SPTXT_vInit( void )
 	if ( g_bIsModuleInit )
 		return;
 
-	SPTXT_JFFTXT_vAffiche = JFFTXT_vAffiche;
+	LST_M_DynamicInitAnchor(&g_stTextNodeList);
 
+	SPTXT_JFFTXT_vAffiche = JFFTXT_vAffiche;
 	FHK_fn_lCreateHook((void**)&SPTXT_JFFTXT_vAffiche, (void*)SPTXT_vAffiche);
 
 	g_bIsModuleInit = TRUE;
