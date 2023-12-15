@@ -120,7 +120,7 @@ LOG_tdxModuleId LOG_fn_xRegisterModule( char const *szCodeAndVersion, char const
 	return xModuleId;
 }
 
-void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, unsigned long ulNbError,
+void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char const **d_szErrorMsg, unsigned long ulNbError,
 								unsigned short uwIdStartOfWarning, unsigned short uwIdStartOfInformation )
 {
 	if ( !LOG_g_bIsLOGInit )
@@ -163,7 +163,7 @@ void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, 
  * Error management
  ****************************************************************************/
 
-void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char *szExtraMsg )
+void LOG_fn_vUpdateLastError( LOG_tdstErrorInfo *p_stError, char const *szExtraMsg )
 {
 	char *szErrHeader;
 	char cExtraLine = '\n';
@@ -287,10 +287,10 @@ LOG_tdstErrorInfo * LOG_fn_p_stGetLastError( LOG_tdxModuleId xModuleId )
 void LOG_fn_vError(
 	LOG_tdeErrorType eType,
 	LOG_tdxModuleId xModuleId,
-	char *szInFile,
+	char const *szInFile,
 	unsigned short uwAtLine,
-	char *szMsg,
-	char *szExtraMsg
+	char const *szMsg,
+	char const *szExtraMsg
 	)
 {
 	LOG_tdstErrorInfo stError = { 0 };
@@ -323,9 +323,9 @@ void LOG_fn_vError(
 void LOG_fn_vErrorFromId(
 	unsigned short uwErrorId,
 	LOG_tdxModuleId xModuleId,
-	char *szInFile,
+	char const *szInFile,
 	unsigned short uwAtLine,
-	char *szExtraMsg
+	char const *szExtraMsg
 	)
 {
 	LOG_tdstErrorInfo stError = { 0 };

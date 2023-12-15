@@ -20,7 +20,7 @@ ACPX_API LOG_tdxModuleId LOG_fn_xRegisterModule( char const *szCodeAndVersion, c
    (0 <= n < uwIdStartOfWarning) are fatal errors
    (uwIdStartOfWarning <= n < uwIdStartOfInformation) are warnings
    (uwIdStartOfInformation <= n < ulNbError) are informations */
-ACPX_API void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char **d_szErrorMsg, unsigned long ulNbError,
+ACPX_API void LOG_fn_vModuleUseErrorTab( LOG_tdxModuleId xModuleId, char const **d_szErrorMsg, unsigned long ulNbError,
 										unsigned short uwIdStartOfWarning, unsigned short uwIdStartOfInformation );
 
 ACPX_API LOG_tdstErrorInfo * LOG_fn_p_stGetLastError( LOG_tdxModuleId xModuleId );
@@ -31,19 +31,19 @@ ACPX_API LOG_tdstErrorInfo * LOG_fn_p_stGetLastError( LOG_tdxModuleId xModuleId 
 ACPX_API void LOG_fn_vError(
 	LOG_tdeErrorType eType,
 	LOG_tdxModuleId xModuleId,
-	char *szInFile,
+	char const *szInFile,
 	unsigned short uwAtLine,
-	char *szMsg,
-	char *szExtraMsg
+	char const *szMsg,
+	char const *szExtraMsg
 );
 
 /* Note: Use the provided macros (LOG_M_vLogId and LOG_M_vLogIdEx) instead! */
 ACPX_API void LOG_fn_vErrorFromId(
 	unsigned short uwErrorId,
 	LOG_tdxModuleId xModuleId,
-	char *szInFile,
+	char const *szInFile,
 	unsigned short uwAtLine,
-	char *szExtraMsg
+	char const *szExtraMsg
 );
 
 

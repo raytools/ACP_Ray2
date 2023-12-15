@@ -26,7 +26,7 @@ typedef struct LOG_tdstErrorInfo
 	LOG_tdeErrorType eType;
 	unsigned short uwErrorId;
 	LOG_tdxModuleId xModuleId;
-	char *szFileName;
+	char const *szFileName;
 	unsigned short uwLineNum;
 }
 LOG_tdstErrorInfo;
