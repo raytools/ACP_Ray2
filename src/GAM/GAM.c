@@ -19,6 +19,7 @@ HIE_tdstSuperObject **const GAM_g_p_stFatherSector = OFFSET(0x500FC0);
 GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void ) = OFFSET(0x404C60);
 void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode ) = OFFSET(0x404BF0);
 
+void (*GAM_fn_vInitEngineWhenInitApplication)( void ) = OFFSET(0x401000);
 void (*GAM_fn_vFirstInitEngine)( void ) = OFFSET(0x403430);
 void (*GAM_fn_vInitGameLoop)( void ) = OFFSET(0x4030C0);
 void (*GAM_fn_vEngine)( void ) = OFFSET(0x40ADA0);
