@@ -22,9 +22,18 @@ void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode ) = OFFSET(0x404BF0);
 void (*GAM_fn_vInitEngineWhenInitApplication)( void ) = OFFSET(0x401000);
 void (*GAM_fn_vFirstInitEngine)( void ) = OFFSET(0x403430);
 void (*GAM_fn_vInitGameLoop)( void ) = OFFSET(0x4030C0);
+void (*GAM_fn_vInitLevelLoop)( void ) = OFFSET(0x403730);
+void (*GAM_fn_vChooseTheGoodInit)( void ) = OFFSET(0x404700);
+void (*GAM_fn_vChooseTheGoodDesInit)( void ) = OFFSET(0x404940);
 void (*GAM_fn_vEngine)( void ) = OFFSET(0x40ADA0);
 
+void (*GAM_fn_vSetEngineInPaused)( void ) = OFFSET(0x405CC0);
+void (*GAM_fn_vResetEngineFromPaused)( void ) = OFFSET(0x405CE0);
+
 char * (*GAM_fn_p_szGetLevelName)( void ) = OFFSET(0x404DA0);
+void (*GAM_fn_vSetLevelName)( char const *szName ) = OFFSET(0x404D00);
+char * (*GAM_fn_p_szGetNextLevelName)( void ) = OFFSET(0x404DF0);
+void (*GAM_fn_vSetNextLevelName)( char const *szName ) = OFFSET(0x404DC0);
 void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
 
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);

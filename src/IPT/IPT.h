@@ -323,3 +323,10 @@ IPT_tdstInput;
  */
 
 ACP_VAR IPT_tdstInput *const IPT_g_stInputStructure;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*IPT_fn_vResetInputEntry)( void );

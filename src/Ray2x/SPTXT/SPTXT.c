@@ -56,7 +56,7 @@ void SPTXT_vDrawString( char *szText, SPTXT_tdstTextInfo *p_stInfo )
 		p_stInfo->Y,
 		p_stInfo->xSize,
 		p_stInfo->ucAlpha,
-		.bHighlight = p_stInfo->bSelected
+		.bWaveEffect = p_stInfo->bSelected
 	};
 	MTH2D_tdstVector stTL = { 0 };
 	MTH2D_tdstVector stBR = { 0 };
@@ -92,7 +92,7 @@ void SPTXT_vDrawString( char *szText, SPTXT_tdstTextInfo *p_stInfo )
 		*GLI_g_fZValueForSprite = 0.998f;
 		*GLI_g_bForceAAAColor = 0;
 
-		GLI_vDisplayFrame(&stTL, &stBR, stDummy.ucAlpha * 0.5f, g_pContext);
+		GLI_vDisplayFrame(&stTL, &stBR, stDummy.ucTransparency * 0.5f, g_pContext);
 
 		*GLI_g_fZValueForSprite = xSaveZValue;
 	}

@@ -149,9 +149,18 @@ ACP_FUNC void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode );
 ACP_FUNC void (*GAM_fn_vInitEngineWhenInitApplication)( void );
 ACP_FUNC void (*GAM_fn_vFirstInitEngine)( void );
 ACP_FUNC void (*GAM_fn_vInitGameLoop)( void );
+ACP_FUNC void (*GAM_fn_vInitLevelLoop)( void );
+ACP_FUNC void (*GAM_fn_vChooseTheGoodInit)( void );
+ACP_FUNC void (*GAM_fn_vChooseTheGoodDesInit)( void );
 ACP_FUNC void (*GAM_fn_vEngine)( void );
 
+ACP_FUNC void (*GAM_fn_vSetEngineInPaused)( void );
+ACP_FUNC void (*GAM_fn_vResetEngineFromPaused)( void );
+
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
+ACP_FUNC void (*GAM_fn_vSetLevelName)( char const *szName );
+ACP_FUNC char * (*GAM_fn_p_szGetNextLevelName)( void );
+ACP_FUNC void (*GAM_fn_vSetNextLevelName)( char const *szName );
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
 ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );

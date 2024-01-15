@@ -16,36 +16,33 @@ typedef struct JFFTXT_tdstString
 	MTH_tdxReal X;
 	MTH_tdxReal Y;
 	MTH_tdxReal xSize;
-	unsigned char ucAlpha;
+	unsigned char ucTransparency;
 
-	unsigned char _field_11;
-	unsigned char bHighlight;
-	unsigned char eOptions;
-	unsigned long ulHighlightedChar;
-	unsigned char ucHighlightColor;
+	unsigned char bFrozenDisplay_unused;
+	unsigned char bWaveEffect;
+	unsigned char eOther;
+	long lEffectParameter;
+	unsigned char ucForcedColor;
 }
 JFFTXT_tdstString;
 
-typedef enum JFFTXT_tdeOptions
-{
-	JTO_FADE_IN = 1 << 0,
-	JTO_FADE_OUT = 1 << 1,
-	JTO_CHAR_HIGHLIGHT = 1 << 2,
-	JTO_BG_FRAME = 1 << 3,
-	JTO_HIGHLIGHT_COLOR = 1 << 4
-}
-JFFTXT_tdeOptions;
+
+#define JFFTXT_C_FadeIn			0x01
+#define JFFTXT_C_FadeOut		0x02
+#define JFFTXT_C_SelectChar		0x04
+#define JFFTXT_C_AutoFrame		0x08
+#define JFFTXT_C_ForcedColor	0x10
 
 typedef enum JFFTXT_tdeExtendParam
 {
-	JTE_ALPHA,
-	JTE_HIGHLIGHT,
-	JTE_FADE_IN,
-	JTE_FADE_OUT,
-	JTE_SIZE,
-	JTE_CHAR_HIGHLIGHT,
-	JTE_BG_FRAME,
-	JTE_HIGHLIGHT_COLOR
+	JFFTXT_E_Transparency,
+	JFFTXT_E_WaveEffect,
+	JFFTXT_E_FadeIn,
+	JFFTXT_E_FadeOut,
+	JFFTXT_E_Size,
+	JFFTXT_E_SelectChar,
+	JFFTXT_E_AutoFrame,
+	JFFTXT_E_ForcedColor
 }
 JFFTXT_tdeExtendParam;
 
