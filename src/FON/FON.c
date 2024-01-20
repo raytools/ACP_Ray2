@@ -7,4 +7,4 @@
 #include "FON.h"
 
 
-FON_tdstGeneral *FON_g_stGeneral = OFFSET(0x500260);
+FON_tdstGeneral *const FON_g_stGeneral = OFFSET(0x500260);

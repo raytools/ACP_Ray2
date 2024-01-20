@@ -35,6 +35,7 @@ extern "C" {
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"
 #include "IPT/IPT.h"
+#include "INO/INO.h"
 #include "SND/SND.h"
 #include "ERM/ERM.h"
 #include "TMR/TMR.h"

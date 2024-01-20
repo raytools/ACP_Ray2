@@ -30,4 +30,4 @@ typedef struct FON_tdstGeneral
 FON_tdstGeneral;
 
 
-ACP_VAR FON_tdstGeneral *FON_g_stGeneral;
+ACP_VAR FON_tdstGeneral *const FON_g_stGeneral;
