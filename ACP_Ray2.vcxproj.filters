@@ -198,6 +198,9 @@
     <ClInclude Include="src\GLI\GLI_Ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\INO\INO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -255,6 +258,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GLI\GLI_Ext.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TMR\TMR.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GLI\GLD.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DNM\DNM.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\INO\INO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

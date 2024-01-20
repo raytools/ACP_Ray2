@@ -208,3 +208,10 @@ typedef struct DNM_tdstMecMatCharacteristics
 	MTH_tdxReal xRebound;
 }
 DNM_tdstMecMatCharacteristics;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC MTH_tdxReal (*DNM_fn_xComputeAngleOfPerso)( HIE_tdstSuperObject *pSuperObjPerso );

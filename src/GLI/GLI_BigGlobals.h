@@ -56,7 +56,7 @@ typedef struct GLI_tdstInternalGlobalValuesFor3dEngine
 	GLI_tdstTexture *p_stCurrentTexture;
 	GLI_tdstMaterial *hCurrentMaterial;
 
-	struct GLI_tdstCamera_ *p_stCurrentCamera;
+	GLI_tdstCamera *p_stCurrentCamera;
 	MTH_tdxReal xWaterPlaneDistance;
 	GLI_tdstAligned3DVector stWaterPlanNormale;
 	unsigned long ulColorInitForSprite;

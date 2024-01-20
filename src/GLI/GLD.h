@@ -53,3 +53,10 @@ typedef struct GLD_tdstViewportAttributes
 	GLD_tdhViewport hViewport;
 }
 GLD_tdstViewportAttributes;
+
+
+/*
+ * Variables
+ */
+
+ACP_VAR char *const GLD_g_cEraseBackground;

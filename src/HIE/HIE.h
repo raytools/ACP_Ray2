@@ -89,6 +89,13 @@ LST_M_DynamicListDecl(HIE_tdstAlwaysActiveCharacter);
 
 
 /*
+ * Variables
+ */
+
+ACP_VAR int *const HIE_gs_lCurrentFrame;
+
+
+/*
  * Functions
  */
 

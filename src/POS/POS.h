@@ -36,3 +36,13 @@ POS_tdstCompletePosition;
  */
 
 ACP_FUNC void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );
+ACP_FUNC void (*POS_fn_vSetRotationMatrix)( POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stI, MTH3D_tdstVector *p_stJ, MTH3D_tdstVector *p_stK );
+
+ACP_FUNC void (*POS_fn_vTurnMatrixX)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle );
+ACP_FUNC void (*POS_fn_vTurnMatrixY)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle );
+ACP_FUNC void (*POS_fn_vTurnMatrixZ)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle );
+
+ACP_FUNC void (*POS_fn_vRotatePositionAroundAxis)( POS_tdstCompletePosition *hPos, MTH3D_tdstVector *p_stAxisVector, MTH_tdxReal xAngle );
+ACP_FUNC void (*POS_fn_vRotatePositionAroundAxisNoTranslation)( POS_tdstCompletePosition *hPos, MTH3D_tdstVector *p_stAxisVector, MTH_tdxReal xAngle );
+
+ACP_FUNC void (*POS_fn_vMulMatrixVector)( MTH3D_tdstVector *p_stDest, POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stSource );

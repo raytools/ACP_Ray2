@@ -15,3 +15,5 @@ AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)(
 	AI_tdstNodeInterpret *p_stNode,
 	AI_tdstGetSetParam *p_stParam
 ) = OFFSET(0x480B90);
+
+void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind ) = OFFSET(0x466D00);

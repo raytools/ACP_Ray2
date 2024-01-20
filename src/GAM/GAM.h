@@ -138,6 +138,7 @@ ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stDynamicWorld;
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld;
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stFatherSector;
 
+ACP_VAR unsigned char *const GAM_g_ucIsEdInGhostMode;
 
 /*
  * Functions
@@ -156,6 +157,9 @@ ACP_FUNC void (*GAM_fn_vEngine)( void );
 
 ACP_FUNC void (*GAM_fn_vSetEngineInPaused)( void );
 ACP_FUNC void (*GAM_fn_vResetEngineFromPaused)( void );
+ACP_FUNC void (*GAM_fn_vSaveEngineClock)( void );
+ACP_FUNC void (*GAM_fn_vLoadEngineClock)( void );
+ACP_FUNC void (*GAM_fn_vActualizeEngineClock)( void );
 
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
 ACP_FUNC void (*GAM_fn_vSetLevelName)( char const *szName );
@@ -164,4 +168,5 @@ ACP_FUNC void (*GAM_fn_vSetNextLevelName)( char const *szName );
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
 ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );
+ACP_FUNC BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd );
 ACP_FUNC long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam );
