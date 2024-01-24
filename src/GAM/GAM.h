@@ -139,6 +139,7 @@ ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld;
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stFatherSector;
 
 ACP_VAR unsigned char *const GAM_g_ucIsEdInGhostMode;
+ACP_VAR char *const GAM_g_cIsLevelOk;
 
 /*
  * Functions
@@ -165,6 +166,8 @@ ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );
 ACP_FUNC void (*GAM_fn_vSetLevelName)( char const *szName );
 ACP_FUNC char * (*GAM_fn_p_szGetNextLevelName)( void );
 ACP_FUNC void (*GAM_fn_vSetNextLevelName)( char const *szName );
+ACP_FUNC char * (*GAM_fn_p_szGetFirstLevelName)( void );
+ACP_FUNC void (*GAM_fn_vSetFirstLevelName)( char const *szName );
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
 ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );

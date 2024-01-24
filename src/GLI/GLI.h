@@ -215,6 +215,10 @@ ACP_VAR MTH_tdxReal *const GLI_g_fZValueForSprite;
 ACP_VAR unsigned char *const GLI_g_bForceAAAColor;
 ACP_VAR unsigned char *const GLI_a3_ForcedAAAColor;
 
+ACP_VAR char *const GLI_g_cGlobalFogIsOn;
+
+ACP_VAR MTH_tdxReal *const GLI_g_xBrightness;
+
 ACP_VAR void **const GLI_g_hConcatTexturesFile;
 ACP_VAR void **const GLI_gs_p_ConvertBufferMipMapping;
 
@@ -231,12 +235,17 @@ ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 ACP_FUNC void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
 ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
 
+ACP_FUNC void (*GLI_fn_vSetBrightness)( long lValue );
+ACP_FUNC long (*GLI_fn_lGetBrightness)( void );
+
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 
 ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, GLI_tdstMaterial *hMaterial );
 ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
+
+ACP_FUNC void (*GLI_vDrawWorldSprite)( MTH_tdxReal *a3_xPosition, GLI_tdstMaterial *hMaterial, MTH_tdxReal xScaleX, MTH_tdxReal xScaleY, GLD_tdstViewportAttributes *p_stViewport, unsigned long ulAnimTime );
 
 ACP_FUNC void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress );
 ACP_FUNC char * (*GLI_fn_szGetPathOfTexture)( void );

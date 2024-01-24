@@ -16,6 +16,8 @@ void (*POS_fn_vSetRotationMatrix)(
 	MTH3D_tdstVector *p_stK
 	) = OFFSET(0x445D00);
 
+void (*POS_fn_vInvertMatrix)( POS_tdstCompletePosition *hDst, POS_tdstCompletePosition *hSrc ) = OFFSET(0x444D60);
+
 void (*POS_fn_vTurnMatrixX)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle ) = OFFSET(0x41B1B0);
 void (*POS_fn_vTurnMatrixY)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle ) = OFFSET(0x41B2C0);
 void (*POS_fn_vTurnMatrixZ)( POS_tdstCompletePosition *p_stMatrix, MTH_tdxReal xAngle ) = OFFSET(0x41B3D0);
@@ -37,3 +39,9 @@ void (*POS_fn_vMulMatrixVector)(
 	POS_tdstCompletePosition *hMatrix,
 	MTH3D_tdstVector *p_stSource
 	) = OFFSET(0x4449A0);
+
+void (*POS_fn_vMulMatrixVertex)(
+	MTH3D_tdstVector *p_stDest,
+	POS_tdstCompletePosition *hMatrix,
+	MTH3D_tdstVector *p_stSource
+	) = OFFSET(0x444800);

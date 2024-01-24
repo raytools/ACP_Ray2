@@ -15,6 +15,10 @@ MTH_tdxReal *const GLI_g_fZValueForSprite = OFFSET(0x4A07D4);
 unsigned char *const GLI_g_bForceAAAColor = OFFSET(0x4A72AC);
 unsigned char *const GLI_a3_ForcedAAAColor = OFFSET(0x503748);
 
+char *const GLI_g_cGlobalFogIsOn = OFFSET(0x4A7248);
+
+MTH_tdxReal *const GLI_g_xBrightness = OFFSET(0x4A0488);
+
 void **const GLI_g_hConcatTexturesFile = OFFSET(0x4A7280);
 void **const GLI_gs_p_ConvertBufferMipMapping = OFFSET(0x503D50);
 
@@ -34,6 +38,9 @@ GLI_tdstInternalGlobalValuesFor3dEngine **const GLI_BIG_GLOBALS = OFFSET(0x5036A
 
 void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha ) = OFFSET(0x42A300);
 MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void ) = OFFSET(0x42A360);
+
+void (*GLI_fn_vSetBrightness)( long lValue ) = OFFSET(0x422570);
+long (*GLI_fn_lGetBrightness)( void ) = OFFSET(0x4225B0);
 
 
 void (**GLI_DRV_vSendSpriteToClip)(
@@ -67,6 +74,15 @@ void (*GLI_vDisplayFrame)(
 	MTH_tdxReal xAlpha,
 	GLD_tdstViewportAttributes *p_stViewport
 ) = OFFSET(0x429820);
+
+void (*GLI_vDrawWorldSprite)(
+	MTH_tdxReal *a3_xPosition,
+	GLI_tdstMaterial *hMaterial,
+	MTH_tdxReal xScaleX,
+	MTH_tdxReal xScaleY,
+	GLD_tdstViewportAttributes *p_stViewport,
+	unsigned long ulAnimTime
+) = OFFSET(0x429890);
 
 
 void (*GLI_xLoadTextureInTexelField)( GLI_tdstTexture *p_stTexture, void *pBuffer, BOOL bHideProgress )

@@ -16,6 +16,7 @@ HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld = OFFSET(0x500FC4);
 HIE_tdstSuperObject **const GAM_g_p_stFatherSector = OFFSET(0x500FC0);
 
 unsigned char *const GAM_g_ucIsEdInGhostMode = OFFSET(0x500370);
+char *const GAM_g_cIsLevelOk = OFFSET(0x500371);
 
 
 GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void ) = OFFSET(0x404C60);
@@ -39,6 +40,8 @@ char * (*GAM_fn_p_szGetLevelName)( void ) = OFFSET(0x404DA0);
 void (*GAM_fn_vSetLevelName)( char const *szName ) = OFFSET(0x404D00);
 char * (*GAM_fn_p_szGetNextLevelName)( void ) = OFFSET(0x404DF0);
 void (*GAM_fn_vSetNextLevelName)( char const *szName ) = OFFSET(0x404DC0);
+char * (*GAM_fn_p_szGetFirstLevelName)( void ) = OFFSET(0x404CF0);
+void (*GAM_fn_vSetFirstLevelName)( char const *szName ) = OFFSET(0x404CC0);
 void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
 
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
