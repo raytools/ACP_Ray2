@@ -45,3 +45,9 @@ void (*POS_fn_vMulMatrixVertex)(
 	POS_tdstCompletePosition *hMatrix,
 	MTH3D_tdstVector *p_stSource
 	) = OFFSET(0x444800);
+
+void (*POS_fn_vMulMatrixMatrix)(
+	POS_tdstCompletePosition *hDest,
+	POS_tdstCompletePosition *hA,
+	POS_tdstCompletePosition *hB
+	) = OFFSET(0x445130);

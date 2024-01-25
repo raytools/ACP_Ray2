@@ -94,3 +94,10 @@ void (*GLI_vReloadTextures)( void ) = OFFSET(0x426A40);
 
 void (*GLI_xCreateMaterial)( GLI_tdstMaterial **p_hMaterial ) = OFFSET(0x4245F0);
 void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstTexture *p_stTexture ) = OFFSET(0x424A00);
+
+
+void (*GLI_xSendObjectToViewportWithLights)(
+	GLD_tdstViewportAttributes *p_stVpt,
+	GEO_tdstGeometricObject *p_stObj,
+	long lDrawModeMask
+) = OFFSET(0x42AAE0);

@@ -9,6 +9,7 @@
 #include "GEO_Def.h"
 #include "GEO_Elem.h"
 #include "GMT/GMT_Def.h"
+#include "GLI/GLI_Def.h"
 #include "MTH.h"
 #include "apidef.h"
 
@@ -81,3 +82,18 @@ typedef struct GEO_tdstVisualSet
 	long lNbOfRLI;
 }
 GEO_tdstVisualSet;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*GEO_vCreateGeometricObject)( GEO_tdstGeometricObject **p_hObject, ACP_tdxIndex xNbPoints, ACP_tdxIndex xNbElements );
+ACP_FUNC void (*GEO_vCreateElementSpheres)( GEO_tdstGeometricObject *hObject, ACP_tdxIndex *p_hElement, ACP_tdxIndex xNbSpheres );
+
+ACP_FUNC void (*GEO_vSetPointOfObject)( GEO_tdstGeometricObject *hObject, MTH3D_tdstVector *p_stPoint, ACP_tdxIndex xIndexOfPoint );
+
+ACP_FUNC void (*GEO_vSetCenterPointOfIndexedSphere)( GEO_tdstGeometricObject *hObject, ACP_tdxIndex hElement, ACP_tdxIndex xNumberOfSphere, ACP_tdxIndex xIndexOfPoint );
+ACP_FUNC void (*GEO_vSetRadiusOfIndexedSphere)( GEO_tdstGeometricObject *hObject, ACP_tdxIndex hElement, ACP_tdxIndex xNumberOfSphere, MTH_tdxReal xRadius );
+ACP_FUNC void (*GEO_vSetGameMaterialOfIndexedSphere)( GEO_tdstGeometricObject *hObject, ACP_tdxIndex hElement, ACP_tdxIndex xNumberOfSphere, GMT_tdstGameMaterial *hMaterial );
+ACP_FUNC void (*GEO_vSetMaterialOfIndexedSphere)( GEO_tdstGeometricObject *hObject, ACP_tdxIndex hElement, ACP_tdxIndex xNumberOfSphere, GLI_tdstMaterial *hMaterial );

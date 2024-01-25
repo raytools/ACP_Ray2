@@ -254,3 +254,5 @@ ACP_FUNC void (*GLI_vReloadTextures)( void );
 
 ACP_FUNC void (*GLI_xCreateMaterial)( GLI_tdstMaterial **p_hMaterial );
 ACP_FUNC void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstTexture *p_stTexture );
+
+ACP_FUNC void (*GLI_xSendObjectToViewportWithLights)( GLD_tdstViewportAttributes *p_stVpt, GEO_tdstGeometricObject *p_stObj, long lDrawModeMask );

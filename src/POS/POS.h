@@ -49,3 +49,4 @@ ACP_FUNC void (*POS_fn_vRotatePositionAroundAxisNoTranslation)( POS_tdstComplete
 
 ACP_FUNC void (*POS_fn_vMulMatrixVector)( MTH3D_tdstVector *p_stDest, POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stSource );
 ACP_FUNC void (*POS_fn_vMulMatrixVertex)( MTH3D_tdstVector *p_stDest, POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stSource );
+ACP_FUNC void (*POS_fn_vMulMatrixMatrix)( POS_tdstCompletePosition *hDest, POS_tdstCompletePosition *hA, POS_tdstCompletePosition *hB );

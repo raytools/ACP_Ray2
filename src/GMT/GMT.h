@@ -34,3 +34,11 @@ typedef struct GMT_tdstGameMaterial
 	GMT_tdstCollideMaterial *hCollideMaterial;
 }
 GMT_tdstGameMaterial;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC GMT_tdstGameMaterial * (*GMT_fn_hCreateGameMaterial)( void );
+ACP_FUNC void (*GMT_fn_vSetVisualMaterial)( GMT_tdstGameMaterial *hGameMat, GLI_tdstMaterial *hVisualMat );

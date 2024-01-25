@@ -281,9 +281,11 @@ cd .</Command>
     <ClCompile Include="src\FIL\FIL.c" />
     <ClCompile Include="src\FON\FON.c" />
     <ClCompile Include="src\GAM\GAM.c" />
+    <ClCompile Include="src\GEO\GEO.c" />
     <ClCompile Include="src\GLI\GLD.c" />
     <ClCompile Include="src\GLI\GLI.c" />
     <ClCompile Include="src\GLI\GLI_Ext.c" />
+    <ClCompile Include="src\GMT\GMT.c" />
     <ClCompile Include="src\HIE\HIE.c" />
     <ClCompile Include="src\HIE\HIE_Ext.c" />
     <ClCompile Include="src\INO\INO.c" />

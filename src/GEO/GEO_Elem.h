@@ -43,3 +43,19 @@ typedef struct GEO_tdstElementIndexedTriangles
 	ACP_tdxIndex xIndexOfParallelBox;
 }
 GEO_tdstElementIndexedTriangles;
+
+typedef struct GEO_tdstIndexedSphere
+{
+	MTH_tdxReal xRadius;
+	GMT_tdstGameMaterial *hMaterial;
+	ACP_tdxIndex xCenterPoint;
+}
+GEO_tdstIndexedSphere;
+
+typedef struct GEO_tdstElementSpheres
+{
+	GEO_tdstIndexedSphere *d_stListOfSpheres;
+	ACP_tdxIndex xNbSpheres;
+	ACP_tdxIndex xIndexOfParallelBox;
+}
+GEO_tdstElementSpheres;

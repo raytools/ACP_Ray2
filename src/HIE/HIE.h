@@ -15,6 +15,7 @@
 #include "DNM/DNM_Def.h"
 #include "GEO/GEO_Def.h"
 #include "GLI/GLI_Def.h"
+#include "GLI/GLD.h"
 #include "PO/PO.h"
 #include "SCT/SCT.h"
 #include "POS/POS.h"
@@ -100,3 +101,9 @@ ACP_VAR int *const HIE_gs_lCurrentFrame;
  */
 
 ACP_FUNC void (*HIE_fn_vChangeFather)( HIE_tdstSuperObject *p_stSpo, HIE_tdstSuperObject *p_stNewFather, unsigned char bFirstChild );
+
+ACP_FUNC void (*HIE_fn_vInitMatrixStack)( void );
+ACP_FUNC ACP_tdxBool (*HIE_fn_bInitCameraMatrixStack)( GLD_tdstViewportAttributes *hVpt );
+ACP_FUNC ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix );
+ACP_FUNC void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj );
+ACP_FUNC ACP_tdxBool (*HIE_fn_bPopMatrix)( void );

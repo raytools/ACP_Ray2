@@ -272,6 +272,12 @@
     <ClCompile Include="src\INO\INO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GEO\GEO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GMT\GMT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
