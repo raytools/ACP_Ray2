@@ -201,6 +201,12 @@
     <ClInclude Include="src\INO\INO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\CAM\CAM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CAM\CAM_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

@@ -6,9 +6,20 @@
 #define ACP_PTR ACP_API extern
 #define ACP_FUNC ACP_PTR
 #define ACP_VAR ACP_PTR
+#define M_DefineError(name, msg) 
 #define LST_M_AnchorTo(Type, x) struct LST_tdstAnchorTo_##Type##_##x
 #define LST_M_DynamicAnchorTo(Type) LST_M_AnchorTo(Type, Dyn)
-#define LST_M_StaticAnchorTo(Type) LST_M_AnchorTo(Type, Sta)
 #define LST_M_DynamicElementDecl(Type) Type * hNextBrother; Type * hPrevBrother; LST_M_AnchorTo(Type) * hFather;
+#define LST_M_DynamicChildDecl(Type, ParentType) Type * hNextBrotherDyn; Type * hPrevBrotherDyn; ParentType * hFatherDyn;
+#define LST_M_DynamicParentDecl(Type) Type * hFirstElementDyn; Type * hLastElementDyn; long lNbOfElementsDyn;
+#define LST_M_DynamicListDecl(Type) LST_M_DynamicAnchorTo(Type) { LST_M_DynamicParentDecl(Type) }
+#define LST_M_StaticAnchorTo(Type) LST_M_AnchorTo(Type, Sta)
 #define LST_M_StaticElementDecl(Type) Type * hNextBrotherSta;
-#define M_DefineError(name, msg) 
+#define LST_M_StaticChildDecl(Type, ParentType) Type * hNextBrotherSta;
+#define LST_M_StaticParentDecl(Type) Type * hFirstElementSta; Type * hLastElementSta; long lNbOfElementsSta;
+#define LST_M_StaticListDecl(Type) LST_M_StaticAnchorTo(Type) { LST_M_StaticParentDecl(Type) }
+#define LST_M_OptAnchorTo(Type) LST_M_AnchorTo(Type, Opt)
+#define LST_M_OptElementDecl(Type)
+#define LST_M_OptChildDecl(Type, ParentType)
+#define LST_M_OptParentDecl(Type) Type * hFirstElementOpt; long lNbOfElementsOpt;
+#define LST_M_OptListDecl(Type) LST_M_OptAnchorTo(Type) { LST_M_OptParentDecl(Type) }

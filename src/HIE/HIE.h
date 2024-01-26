@@ -13,6 +13,7 @@
 
 #include "AI/AI_Def.h"
 #include "DNM/DNM_Def.h"
+#include "CAM/CAM_Def.h"
 #include "GEO/GEO_Def.h"
 #include "GLI/GLI_Def.h"
 #include "GLI/GLD.h"
@@ -65,7 +66,7 @@ typedef struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 	HIE_tdstStandardGame *hStandardGame;
 	DNM_tdstDynam *hDynam;
 	AI_tdstBrain *hBrain;
-	void *hCineInfo;
+	CAM_tdstCineinfo *hCineInfo;
 	void *hCollSet;
 	void *hMSWay;
 	void *hMSLight;

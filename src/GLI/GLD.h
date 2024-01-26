@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "GLI_Def.h"
 #include "basedef.h"
 #include "apidef.h"
 
@@ -60,3 +61,6 @@ GLD_tdstViewportAttributes;
  */
 
 ACP_VAR char *const GLD_g_cEraseBackground;
+
+
+#define GLD_M_hGetSpecificTo3D(p_stVpt) ((GLI_tdstSpecificAttributesFor3D *)(p_stVpt)->p_vSpecificToXD)
