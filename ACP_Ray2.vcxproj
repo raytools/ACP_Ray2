@@ -277,6 +277,7 @@ cd .</Command>
     <ClCompile Include="src\AI\AI.c" />
     <ClCompile Include="src\AI\AI_Ext.c" />
     <ClCompile Include="src\ALW\ALW.c" />
+    <ClCompile Include="src\CAM\CAM.c" />
     <ClCompile Include="src\dllmain.c" />
     <ClCompile Include="src\DNM\DNM.c" />
     <ClCompile Include="src\ERM\ERM.c" />

@@ -24,6 +24,7 @@ extern "C" {
 #include "POS/POS.h"
 #include "MMG/MMG.h"
 #include "GAM/GAM.h"
+#include "CAM/CAM.h"
 #include "HIE/HIE.h"
 #include "AI/AI.h"
 #include "ALW/ALW.h"

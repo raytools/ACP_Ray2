@@ -81,6 +81,69 @@ struct MTH_tdstMove
 };
 
 
+#define MTH3D_M_vAddVector( VectDest, VectA, VectB )	\
+{														\
+	(VectDest)->x = (VectA)->x + (VectB)->x;			\
+	(VectDest)->y = (VectA)->y + (VectB)->y;			\
+	(VectDest)->z = (VectA)->z + (VectB)->z;			\
+}
+
+#define MTH3D_M_vSubVector( VectDest, VectA, VectB )	\
+{														\
+	(VectDest)->x = (VectA)->x - (VectB)->x;			\
+	(VectDest)->y = (VectA)->y - (VectB)->y;			\
+	(VectDest)->z = (VectA)->z - (VectB)->z;			\
+}
+
+#define MTH3D_M_vMulVectorScalar( VectDest, VectA, xB )	\
+{														\
+	(VectDest)->x = (VectA)->x * ((MTH_tdxReal)xB);		\
+	(VectDest)->y = (VectA)->y * ((MTH_tdxReal)xB);		\
+	(VectDest)->z = (VectA)->z * ((MTH_tdxReal)xB);		\
+}
+
+#define MTH3D_M_vDivVectorScalar( VectDest, VectA, xB )	\
+{														\
+	(VectDest)->x = (VectA)->x / ((MTH_tdxReal)xB);		\
+	(VectDest)->y = (VectA)->y / ((MTH_tdxReal)xB);		\
+	(VectDest)->z = (VectA)->z / ((MTH_tdxReal)xB);		\
+}
+
+#define MTH3D_M_vScaleVector( VectDest, VectA, VectB )	\
+{														\
+	(VectDest)->x = (VectA)->x * (VectB)->x;			\
+	(VectDest)->y = (VectA)->y * (VectB)->y;			\
+	(VectDest)->z = (VectA)->z * (VectB)->z;			\
+}
+
+#define MTH3D_M_vInvVector( VectDest, VectA )			\
+{														\
+	(VectDest)->x = -(VectA)->x;						\
+	(VectDest)->y = -(VectA)->y;						\
+	(VectDest)->z = -(VectA)->z;						\
+}
+
+#define MTH3D_M_xDotProductVector( VectA, VectB )		\
+	( ((VectA)->x * (VectB)->x)							\
+	+ ((VectA)->y * (VectB)->y)							\
+	+ ((VectA)->z * (VectB)->z) )
+
+#define MTH3D_M_xSqrNormVector( VectA )					\
+	MTH3D_M_xDotProductVector(VectA, VectA)
+
+#define MTH3D_M_xNormVector( VectA )					\
+	sqrtf(MTH3D_M_xSqrNormVector(VectA))
+
+#define MTH3D_M_xInvNormVector( VectA )					\
+	(1.0f/MTH3D_M_xNormVector(VectA))
+
+#define MTH3D_M_vNormalizeVector( VectDest, VectA )				\
+{																\
+	MTH_tdxReal __xInvNorm = MTH3D_M_xInvNormVector(VectA);		\
+	MTH3D_M_vMulVectorScalar(VectDest, VectA, __xInvNorm);		\
+}
+
+
 /****************************************************************************
  * 4D math
  ****************************************************************************/
