@@ -7,14 +7,6 @@
 #include "basedef.h"
 
 
-/* Constant for no element parallel boxes */
-#define GEO_C_xNoParallelBox ((ACP_tdxIndex)-1)
-
-/* memory channels */
-#define GEO_C_FixMemoryChannel 1
-#define GEO_C_LevelMemoryChannel 2
-
-
 typedef float GEO_tdxColorValue;
 typedef void *GEO_tdxHandleToRadiosity;
 

@@ -101,3 +101,5 @@ void (*GLI_xSendObjectToViewportWithLights)(
 	GEO_tdstGeometricObject *p_stObj,
 	long lDrawModeMask
 ) = OFFSET(0x42AAE0);
+
+void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A990);

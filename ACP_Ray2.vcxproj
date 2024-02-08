@@ -219,6 +219,7 @@ cd .</Command>
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\CAM\CAM.h" />
     <ClInclude Include="src\CAM\CAM_Def.h" />
+    <ClInclude Include="src\GEO\GEO_Const.h" />
     <ClInclude Include="src\GEO\GEO_Elem.h" />
     <ClInclude Include="src\DNM\DNM_Const.h" />
     <ClInclude Include="src\ERM\ERM.h" />
