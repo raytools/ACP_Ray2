@@ -1,29 +1,29 @@
 ﻿/****************************************************************************
  *
- * LOG - I/O functions
+ * CLG - I/O functions
  *
  ****************************************************************************/
 
-#include "LOG_IO.h"
+#include "CLG_IO.h"
 #include "GAM/GAM.h"
 #include "private/framework.h"
 
 
-BOOL LOG_g_bSuppressInfoWindow = FALSE;
+BOOL CLG_g_bSuppressInfoWindow = FALSE;
 
 
-FILE * LOG_fn_hOpenFileForWrite( char *szFilePath )
+FILE * CLG_fn_hOpenFileForWrite( char *szFilePath )
 {
 	FILE *hFile = fopen(szFilePath, "w");
 	return hFile;
 }
 
-void LOG_fn_vCloseFile( FILE *hFile )
+void CLG_fn_vCloseFile( FILE *hFile )
 {
 	fclose(hFile);
 }
 
-void LOG_fn_vPrintToFile( char *szText, FILE *hFile )
+void CLG_fn_vPrintToFile( char *szText, FILE *hFile )
 {
 	if ( !hFile )
 		return;
@@ -32,9 +32,9 @@ void LOG_fn_vPrintToFile( char *szText, FILE *hFile )
 	fflush(hFile);
 }
 
-void LOG_fn_vPrintToInfoWindow( char *szText )
+void CLG_fn_vPrintToInfoWindow( char *szText )
 {
-	if ( LOG_g_bSuppressInfoWindow )
+	if ( CLG_g_bSuppressInfoWindow )
 		return;
 
 	HANDLE hWnd = GAM_fn_hGetWindowHandle();
@@ -49,10 +49,10 @@ void LOG_fn_vPrintToInfoWindow( char *szText )
 	);
 
 	if ( lResult == IDCANCEL )
-		LOG_g_bSuppressInfoWindow = TRUE;
+		CLG_g_bSuppressInfoWindow = TRUE;
 }
 
-BOOL LOG_fn_bAskForDebug( void )
+BOOL CLG_fn_bAskForDebug( void )
 {
 	long lResult = MessageBox(
 		GAM_fn_hGetWindowHandle(),
@@ -64,7 +64,7 @@ BOOL LOG_fn_bAskForDebug( void )
 	return (lResult == IDYES);
 }
 
-void LOG_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )
+void CLG_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat, ... )
 {
 	va_list args;
 	va_start(args, szFormat);
@@ -77,9 +77,9 @@ void LOG_fn_vOutputErrorMsg( FILE *hFile, BOOL bInfoWindow, char const *szFormat
 
 	vsprintf(szBuffer, szFormat, args);
 
-	LOG_fn_vPrintToFile(szBuffer, hFile);
+	CLG_fn_vPrintToFile(szBuffer, hFile);
 	if ( bInfoWindow )
-		LOG_fn_vPrintToInfoWindow(szBuffer);
+		CLG_fn_vPrintToInfoWindow(szBuffer);
 
 	va_end(args);
 }

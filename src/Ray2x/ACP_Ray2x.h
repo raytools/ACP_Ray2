@@ -17,8 +17,8 @@ extern "C" {
 /* Spitfire's Text Helper Module */
 #include "SPTXT/SPTXT.h"
 
-/* Spitfire's Log & Error Module */
-#include "LOG/LOG.h"
+/* Compatible Log & Error Module */
+#include "CLG/CLG.h"
 
 /* Function Hook module */
 #include "FHK/FHK.h"
