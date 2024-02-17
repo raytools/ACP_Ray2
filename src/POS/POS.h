@@ -23,7 +23,10 @@ typedef struct POS_tdstCompletePosition
 {
 	MTH_tdeMatrixType eType;
 
-	MTH3D_tdstVector stPos;
+	union {
+		MTH3D_tdstVector stPos;
+		MTH3D_tdstVector stTranslationVector; /* original name for convenience */
+	};
 
 	MTH3D_tdstMatrix stRotationMatrix;
 	MTH3D_tdstMatrix stTransformMatrix;
