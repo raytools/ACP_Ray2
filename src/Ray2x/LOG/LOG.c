@@ -9,6 +9,13 @@
 #include "private/framework.h"
 
 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#define C_szModuleVersion	"LOG V2.0.0"
+#define C_szModuleName		"Spitfire's Log Module"
+#define C_szModuleDate		"Feb 18 2024"
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
 #define LOG_C_szFilePath "CPALog.txt"
 
 static FILE *LOG_gs_hFile;
@@ -144,8 +151,11 @@ void LOG_fn_vInit( void )
 	fn_vOpenFile();
 	InitializeCriticalSection(&LOG_gs_stErrorOperation);
 
-	if ( !LOG_gs_hFile )
+	if ( LOG_gs_hFile )
 	{
+		LOG_fn_vInfo("Initialized module %s : %s (%s)", C_szModuleVersion, C_szModuleName, C_szModuleDate);
+	}
+	else {
 		char szMsg[256];
 		sprintf(szMsg, "%s : Could not open '%s'.\nLog entries will not be written during this session.", __func__, LOG_C_szFilePath);
 		MessageBox(NULL, szMsg, "CPA Error", MB_OK | MB_ICONWARNING);

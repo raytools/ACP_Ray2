@@ -13,11 +13,9 @@
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-#define TXM_C_szModuleVersion	"TXM V1.0.1"
-#define TXM_C_szModuleName		"Texture Manager"
-#define TXM_C_szModuleDate		"Feb 17 2024"
-
+#define C_szModuleVersion	"TXM V1.0.1"
+#define C_szModuleName		"Texture Manager"
+#define C_szModuleDate		"Feb 18 2024"
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 #ifdef _DEBUG
@@ -161,4 +159,5 @@ void TXM_fn_vInit( void )
 	FHK_M_lCreateHook(&TXM_GLI_vComputeTextures, TXM_fn_vComputeTextures);
 
 	g_bTXMModuleInit = TRUE;
+	LOG_fn_vInfo("Initialized module %s : %s (%s)", C_szModuleVersion, C_szModuleName, C_szModuleDate);
 }
