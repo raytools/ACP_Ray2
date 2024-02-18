@@ -33,6 +33,9 @@
     <Filter Include="src\CLG\private">
       <UniqueIdentifier>{645b8558-85c4-4412-a672-9257c3570969}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\LOG">
+      <UniqueIdentifier>{d6cefeb8-aa0b-414d-ae19-9914e0150eed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -74,6 +77,9 @@
     <ClInclude Include="..\src\Ray2x\CLG\private\CLG_Modules.h">
       <Filter>src\CLG\private</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\LOG.h">
+      <Filter>src\LOG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c">
@@ -96,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Ray2x\CLG\private\CLG_IO.c">
       <Filter>src\CLG\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\LOG\LOG.c">
+      <Filter>src\LOG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

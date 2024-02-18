@@ -23,3 +23,5 @@
 #define LST_M_OptChildDecl(Type, ParentType)
 #define LST_M_OptParentDecl(Type) Type * hFirstElementOpt; long lNbOfElementsOpt;
 #define LST_M_OptListDecl(Type) LST_M_OptAnchorTo(Type) { LST_M_OptParentDecl(Type) }
+#define ACPX_API __declspec(dllexport)
+#define ACPX_API __declspec(dllimport)

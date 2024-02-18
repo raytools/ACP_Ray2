@@ -7,25 +7,22 @@
 #include "TXM.h"
 #include "private/TXM_List.h"
 #include "GLI/GLI_Ext.h"
+#include "Ray2x/LOG/LOG.h"
 #include "Ray2x/FHK/FHK.h"
 #include "private/framework.h"
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-#define LOG_USE_MODULE
-#include "Ray2x/LOG/LOG.h"
 
-#define TXM_C_szModuleVersion	"TXM V1.0.0"
+#define TXM_C_szModuleVersion	"TXM V1.0.1"
 #define TXM_C_szModuleName		"Texture Manager"
-#define TXM_C_szModuleDate		__DATE__
+#define TXM_C_szModuleDate		"Feb 17 2024"
 
-LOG_tdxModuleId TXM_g_xModuleId;
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 #ifdef _DEBUG
 unsigned long g_ulTXMTotalMem = 0;
 #endif
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
 
 BOOL g_bTXMModuleInit = FALSE;
 LST_M_DynamicAnchorTo(TXM_tdstTextureEntry) g_stTextureList;
@@ -88,7 +85,7 @@ GLI_tdstTexture * TXM_fn_hLoadTextureGF( char const *szGFName )
 
 		if ( !GLI_fn_bReadTextureGF(&pstEntry->stTexture, szGFName) )  /* could not read GF file? */
 		{
-			LOG_M_vLogWarningEx(TXM_g_xModuleId, "Could not load GF texture", szGFName);
+			LOG_M_vWarnInFunc("Could not load GF texture '%s'", szGFName);
 			TXM_fn_vDeleteTextureEntry(pstEntry);
 			return NULL;
 		}
@@ -97,11 +94,10 @@ GLI_tdstTexture * TXM_fn_hLoadTextureGF( char const *szGFName )
 	pstEntry->uwRefCount++;
 
 #ifdef _DEBUG
-	char szErr[256];
-	char szErr2[64];
-	sprintf(szErr, "Requested texture '%s'", szGFName);
-	sprintf(szErr2, "\tType: %u\n\tRefCount: %u", pstEntry->ucType, pstEntry->uwRefCount);
-	LOG_M_vLogInfoEx(TXM_g_xModuleId, szErr, szErr2);
+	LOG_M_vInfoInFunc(
+		"Requested texture '%s', Type: %u, RefCount: %u",
+		szGFName, pstEntry->ucType, pstEntry->uwRefCount
+	);
 #endif
 
 	return &pstEntry->stTexture;
@@ -137,9 +133,8 @@ void TXM_fn_vComputeTextures( void )
 	TXM_GLI_vComputeTextures();
 
 #ifdef _DEBUG
-	char szErr[256];
-	sprintf(
-		szErr,
+	LOG_M_vInfoInFunc(
+		"TXM memory debug:\n"
 		"\tTotal textures loaded:  %u\n"
 		"\tTXM textures:           %d\n"
 		"\tMemory used by TXM:     %u B",
@@ -147,7 +142,6 @@ void TXM_fn_vComputeTextures( void )
 		LST_M_DynamicGetNbOfElements(&g_stTextureList),
 		g_ulTXMTotalMem
 	);
-	LOG_M_vLogInfoEx(TXM_g_xModuleId, "TXM memory debug:", szErr);
 #endif
 }
 
@@ -157,16 +151,14 @@ void TXM_fn_vInit( void )
 		return;
 
 	LOG_fn_vInit();
-	TXM_g_xModuleId = LOG_fn_xRegisterModule(TXM_C_szModuleVersion, TXM_C_szModuleName, TXM_C_szModuleDate);
 
 	LST_M_DynamicInitAnchor(&g_stTextureList);
-
-	TXM_GLI_vComputeTextures = GLI_vComputeTextures;
-	FHK_M_lCreateHook(&TXM_GLI_vComputeTextures, TXM_fn_vComputeTextures);
-
 #ifdef _DEBUG
 	g_ulTXMTotalMem += sizeof(g_stTextureList);
 #endif
+
+	TXM_GLI_vComputeTextures = GLI_vComputeTextures;
+	FHK_M_lCreateHook(&TXM_GLI_vComputeTextures, TXM_fn_vComputeTextures);
 
 	g_bTXMModuleInit = TRUE;
 }

@@ -233,6 +233,7 @@
     <ClInclude Include="..\src\Ray2x\CLG\private\CLG_IO.h" />
     <ClInclude Include="..\src\Ray2x\CLG\private\CLG_Modules.h" />
     <ClInclude Include="..\src\Ray2x\FHK\FHK.h" />
+    <ClInclude Include="..\src\Ray2x\LOG\LOG.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT_Const.h" />
@@ -244,6 +245,7 @@
     <ClCompile Include="..\src\Ray2x\CLG\private\CLG_IO.c" />
     <ClCompile Include="..\src\Ray2x\dllmain.c" />
     <ClCompile Include="..\src\Ray2x\FHK\FHK.c" />
+    <ClCompile Include="..\src\Ray2x\LOG\LOG.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c" />
     <ClCompile Include="..\src\Ray2x\TXM\TXM.c" />
