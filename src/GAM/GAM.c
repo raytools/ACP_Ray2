@@ -5,7 +5,12 @@
  ****************************************************************************/
 
 #include "GAM.h"
+#include "GAM_ObjType.h"
 
+
+/****************************************************************************
+ * GAM.h
+ ****************************************************************************/
 
 /* Engine structure */
 GAM_tdstEngineStructure *const GAM_g_stEngineStructure = OFFSET(0x500380);
@@ -47,3 +52,10 @@ void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
 BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd ) = OFFSET(0x402020);
 long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);
+
+
+/****************************************************************************
+ * GAM_ObjType.h
+ ****************************************************************************/
+
+GAM_tdstObjectType *const GAM_g_stObjectTypes = OFFSET(0x5013E0);

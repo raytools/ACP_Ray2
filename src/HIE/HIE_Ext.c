@@ -15,9 +15,9 @@
  * Name -> Object Type
  ****************************************************************************/
 
-HIE_tdxObjectType HIE_fn_lFindObjectTypeByName( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+GAM_tdxObjectType HIE_fn_lFindObjectTypeByName( char const *szName, LST_M_DynamicAnchorTo(GAM_tdstObjectTypeElement) *hTypeElem )
 {
-	HIE_tdstObjectTypeElement *p_stType;
+	GAM_tdstObjectTypeElement *p_stType;
 	long i;
 	LST_M_DynamicForEachIndex(hTypeElem, p_stType, i)
 	{
@@ -25,22 +25,22 @@ HIE_tdxObjectType HIE_fn_lFindObjectTypeByName( char const *szName, LST_M_Dynami
 			return i;
 	}
 
-	return Std_C_InvalidObjectType;
+	return GAM_C_InvalidObjectType;
 }
 
-HIE_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName )
+GAM_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName )
 {
-	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stFamilyType);
+	return HIE_fn_lFindObjectTypeByName(szName, &GAM_g_stObjectTypes->stFamilyType);
 }
 
-HIE_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName )
+GAM_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName )
 {
-	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stModelType);
+	return HIE_fn_lFindObjectTypeByName(szName, &GAM_g_stObjectTypes->stModelType);
 }
 
-HIE_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName )
+GAM_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName )
 {
-	return HIE_fn_lFindObjectTypeByName(szName, &HIE_g_stObjectTypes->stPersonalType);
+	return HIE_fn_lFindObjectTypeByName(szName, &GAM_g_stObjectTypes->stPersonalType);
 }
 
 
@@ -48,7 +48,7 @@ HIE_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName )
  * Object Type -> SuperObject
  ****************************************************************************/
 
-HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( HIE_tdxObjectType lType, HIE_tdstSuperObject *p_stParent )
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( GAM_tdxObjectType lType, HIE_tdstSuperObject *p_stParent )
 {
 	HIE_tdstSuperObject *p_stSuperObj;
 	LST_M_DynamicForEach(p_stParent, p_stSuperObj)
@@ -65,7 +65,7 @@ HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( HIE_tdxObjectTyp
 	return NULL;
 }
 
-HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( HIE_tdxObjectType lType )
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( GAM_tdxObjectType lType )
 {
 	HIE_tdstSuperObject *p_stSuperObj = NULL;
 
@@ -84,9 +84,9 @@ HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( HIE_tdxObjectType lTy
 
 HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByName( char const *szName, HIE_tdstSuperObject *p_stParent )
 {
-	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+	GAM_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
 
-	if ( lType == Std_C_InvalidObjectType )
+	if ( lType == GAM_C_InvalidObjectType )
 		return NULL;
 
 	return HIE_fn_p_stFindObjectChildByPersonalType(lType, p_stParent);
@@ -94,9 +94,9 @@ HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByName( char const *szName, HIE_
 
 HIE_tdstSuperObject * HIE_fn_p_stFindObjectByName( char const *szName )
 {
-	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+	GAM_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
 
-	if ( lType == Std_C_InvalidObjectType )
+	if ( lType == GAM_C_InvalidObjectType )
 		return NULL;
 
 	return HIE_fn_p_stFindObjectByPersonalType(lType);
@@ -107,31 +107,31 @@ HIE_tdstSuperObject * HIE_fn_p_stFindObjectByName( char const *szName )
  * Object Type -> Name
  ****************************************************************************/
 
-char * HIE_fn_szGetObjectTypeName( HIE_tdxObjectType lType, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+char * HIE_fn_szGetObjectTypeName( GAM_tdxObjectType lType, LST_M_DynamicAnchorTo(GAM_tdstObjectTypeElement) *hTypeElem )
 {
-	if ( lType <= Std_C_InvalidObjectType || lType >= LST_M_DynamicGetNbOfElements(hTypeElem) )
+	if ( lType <= GAM_C_InvalidObjectType || lType >= LST_M_DynamicGetNbOfElements(hTypeElem) )
 		return NULL;
 
-	HIE_tdstObjectTypeElement *pItem;
+	GAM_tdstObjectTypeElement *pItem;
 	long i;
 	LST_M_DynamicGetNthElement(hTypeElem, lType, pItem, i);
 
 	return (pItem) ? pItem->szName : NULL;
 }
 
-char * HIE_fn_szGetFamilyTypeName( HIE_tdxObjectType lType )
+char * HIE_fn_szGetFamilyTypeName( GAM_tdxObjectType lType )
 {
-	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stFamilyType);
+	return HIE_fn_szGetObjectTypeName(lType, &GAM_g_stObjectTypes->stFamilyType);
 }
 
-char * HIE_fn_szGetModelTypeName( HIE_tdxObjectType lType )
+char * HIE_fn_szGetModelTypeName( GAM_tdxObjectType lType )
 {
-	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stModelType);
+	return HIE_fn_szGetObjectTypeName(lType, &GAM_g_stObjectTypes->stModelType);
 }
 
-char * HIE_fn_szGetPersonalTypeName( HIE_tdxObjectType lType )
+char * HIE_fn_szGetPersonalTypeName( GAM_tdxObjectType lType )
 {
-	return HIE_fn_szGetObjectTypeName(lType, &HIE_g_stObjectTypes->stPersonalType);
+	return HIE_fn_szGetObjectTypeName(lType, &GAM_g_stObjectTypes->stPersonalType);
 }
 
 
@@ -170,9 +170,9 @@ char * HIE_fn_szGetObjectPersonalName( HIE_tdstSuperObject *p_stSuperObj )
 
 HIE_tdstEngineObject * HIE_fn_p_stFindAlwaysObjectByName( char const *szName )
 {
-	HIE_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
+	GAM_tdxObjectType lType = HIE_fn_lFindPersonalTypeByName(szName);
 
-	if ( lType == Std_C_InvalidObjectType )
+	if ( lType == GAM_C_InvalidObjectType )
 		return NULL;
 
 	ALW_tdstAlwaysModelList *pItem;
@@ -187,24 +187,24 @@ HIE_tdstEngineObject * HIE_fn_p_stFindAlwaysObjectByName( char const *szName )
 	return NULL;
 }
 
-HIE_tdxObjectType HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem )
+GAM_tdxObjectType HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(GAM_tdstObjectTypeElement) *hTypeElem )
 {
 	long lStrLen = strlen(szName) + 1;
 
 	char *hName = fn_p_vDynAlloc(lStrLen);
 	if ( !hName )
-		return Std_C_InvalidObjectType;
+		return GAM_C_InvalidObjectType;
 
 	memcpy(hName, szName, lStrLen);
 	
-	HIE_tdstObjectTypeElement *hNew = fn_p_vDynAlloc(sizeof(HIE_tdstObjectTypeElement));
+	GAM_tdstObjectTypeElement *hNew = fn_p_vDynAlloc(sizeof(GAM_tdstObjectTypeElement));
 	if ( !hNew )
-		return Std_C_InvalidObjectType;
+		return GAM_C_InvalidObjectType;
 
 	hNew->szName = hName;
 
 	LST_M_DynamicAddTail(hTypeElem, hNew);
-	HIE_tdxObjectType lNewType = HIE_fn_lFindObjectTypeByName(szName, hTypeElem);
+	GAM_tdxObjectType lNewType = HIE_fn_lFindObjectTypeByName(szName, hTypeElem);
 
 	return lNewType;
 }

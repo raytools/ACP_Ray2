@@ -40,7 +40,7 @@ POS_tdstCompletePosition;
 
 ACP_FUNC void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );
 ACP_FUNC void (*POS_fn_vSetRotationMatrix)( POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stI, MTH3D_tdstVector *p_stJ, MTH3D_tdstVector *p_stK );
-ACP_FUNC void (*POS_fn_vSetTranslationVector)(POS_tdstCompletePosition* p_stMatrix, MTH3D_tdstVector* _p_stTrs);
+ACP_FUNC void (*POS_fn_vSetTranslationVector)( POS_tdstCompletePosition *p_stMatrix, MTH3D_tdstVector *p_stTrs );
 
 ACP_FUNC void (*POS_fn_vInvertMatrix)( POS_tdstCompletePosition *hDst, POS_tdstCompletePosition *hSrc );
 

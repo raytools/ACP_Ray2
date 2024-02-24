@@ -6,6 +6,10 @@
 
 #pragma once
 
+#include "GAM_Def.h"
+#include "GAM_StdGame.h"
+#include "GAM_ZDx.h"
+
 #include "HIE/HIE.h"
 #include "GLI/GLI.h"
 #include "GLI/GLD.h"

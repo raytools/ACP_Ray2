@@ -5,7 +5,6 @@
  ****************************************************************************/
 
 #include "HIE.h"
-#include "HIE_StdGame.h"
 #include "HIE_Family.h"
 
 
@@ -22,11 +21,3 @@ ACP_tdxBool (*HIE_fn_bInitCameraMatrixStack)( GLD_tdstViewportAttributes *hVpt )
 ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix ) = OFFSET(0x45B810);
 void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj ) = OFFSET(0x45BF80);
 ACP_tdxBool (*HIE_fn_bPopMatrix)( void ) = OFFSET(0x45B7E0);
-
-
-
-/****************************************************************************
- * HIE_StdGame.h
- ****************************************************************************/
-
-HIE_tdstObjectType *const HIE_g_stObjectTypes = OFFSET(0x5013E0);

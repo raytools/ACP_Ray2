@@ -8,6 +8,7 @@
 
 #include "HIE_Def.h"
 #include "HIE_Const.h"
+#include "GAM/GAM_ObjType.h"
 #include "LST.h"
 #include "basedef.h"
 #include "apidef.h"
@@ -34,22 +35,22 @@
 #define HIE_M_lActorGetPersonalType( hActor ) ((hActor)->hStandardGame->lObjectPersonalType)
 
 /* Name -> Object Type */
-ACP_API HIE_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName );
-ACP_API HIE_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName );
-ACP_API HIE_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName );
+ACP_API GAM_tdxObjectType HIE_fn_lFindFamilyTypeByName( char const *szName );
+ACP_API GAM_tdxObjectType HIE_fn_lFindModelTypeByName( char const *szName );
+ACP_API GAM_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName );
 
 /* Object Type -> SuperObject */
-ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( HIE_tdxObjectType lType, HIE_tdstSuperObject *p_stParent );
-ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( HIE_tdxObjectType lType );
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( GAM_tdxObjectType lType, HIE_tdstSuperObject *p_stParent );
+ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( GAM_tdxObjectType lType );
 
 /* Name -> SuperObject */
 ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByName( char const *szName, HIE_tdstSuperObject *p_stParent );
 ACP_API HIE_tdstSuperObject * HIE_fn_p_stFindObjectByName( char const *szName );
 
 /* Object Type -> Name */
-ACP_API char * HIE_fn_szGetFamilyTypeName( HIE_tdxObjectType lType );
-ACP_API char * HIE_fn_szGetModelTypeName( HIE_tdxObjectType lType );
-ACP_API char * HIE_fn_szGetPersonalTypeName( HIE_tdxObjectType lType );
+ACP_API char * HIE_fn_szGetFamilyTypeName( GAM_tdxObjectType lType );
+ACP_API char * HIE_fn_szGetModelTypeName( GAM_tdxObjectType lType );
+ACP_API char * HIE_fn_szGetPersonalTypeName( GAM_tdxObjectType lType );
 
 /* SuperObject -> Name */
 ACP_API char * HIE_fn_szGetObjectFamilyName( HIE_tdstSuperObject *p_stSuperObj );
@@ -58,4 +59,4 @@ ACP_API char * HIE_fn_szGetObjectPersonalName( HIE_tdstSuperObject *p_stSuperObj
 
 
 ACP_API HIE_tdstEngineObject * HIE_fn_p_stFindAlwaysObjectByName( char const *szName );
-ACP_API long HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(HIE_tdstObjectTypeElement) *hTypeElem );
+ACP_API long HIE_fn_lNewObjectType( char const *szName, LST_M_DynamicAnchorTo(GAM_tdstObjectTypeElement) *hTypeElem );

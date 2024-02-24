@@ -8,9 +8,10 @@
 
 #include "HIE_Def.h"
 #include "HIE_Const.h"
-#include "HIE_StdGame.h"
 #include "HIE_Family.h"
 
+#include "GAM/GAM_StdGame.h"
+#include "GAM/GAM_ZDx.h"
 #include "AI/AI_Def.h"
 #include "DNM/DNM_Def.h"
 #include "CAM/CAM_Def.h"
@@ -63,11 +64,11 @@ typedef struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 {
 	// TODO: replace void pointers
 	void *h3dData;
-	HIE_tdstStandardGame *hStandardGame;
+	GAM_tdstStandardGame *hStandardGame;
 	DNM_tdstDynam *hDynam;
 	AI_tdstBrain *hBrain;
 	CAM_tdstCineinfo *hCineInfo;
-	HIE_tdstCollSet* hCollSet;
+	ZDX_tdstCollSet *hCollSet;
 	void *hMSWay;
 	void *hMSLight;
 	SCT_tdstSectInfo *hSectInfo;

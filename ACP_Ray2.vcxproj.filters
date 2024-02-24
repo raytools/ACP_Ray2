@@ -90,9 +90,6 @@
     <ClInclude Include="src\FIL\FIL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\HIE\HIE_StdGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\basedef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -214,6 +211,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GEO\GEO_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GAM\GAM_ZDx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GAM\GAM_StdGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GAM\GAM_ObjType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GAM\GAM_Def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HIE\HIE_StdCompat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
