@@ -23,7 +23,10 @@ typedef struct POS_tdstCompletePosition
 {
 	MTH_tdeMatrixType eType;
 
-	MTH3D_tdstVector stPos;
+	union {
+		MTH3D_tdstVector stPos;
+		MTH3D_tdstVector stTranslationVector;
+	};
 
 	MTH3D_tdstMatrix stRotationMatrix;
 	MTH3D_tdstMatrix stTransformMatrix;
@@ -37,6 +40,7 @@ POS_tdstCompletePosition;
 
 ACP_FUNC void (*POS_fn_vSetIdentityMatrix)( POS_tdstCompletePosition *p_stMatrix );
 ACP_FUNC void (*POS_fn_vSetRotationMatrix)( POS_tdstCompletePosition *hMatrix, MTH3D_tdstVector *p_stI, MTH3D_tdstVector *p_stJ, MTH3D_tdstVector *p_stK );
+ACP_FUNC void (*POS_fn_vSetTranslationVector)(POS_tdstCompletePosition* p_stMatrix, MTH3D_tdstVector* _p_stTrs);
 
 ACP_FUNC void (*POS_fn_vInvertMatrix)( POS_tdstCompletePosition *hDst, POS_tdstCompletePosition *hSrc );
 

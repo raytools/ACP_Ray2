@@ -67,7 +67,7 @@ typedef struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 	DNM_tdstDynam *hDynam;
 	AI_tdstBrain *hBrain;
 	CAM_tdstCineinfo *hCineInfo;
-	void *hCollSet;
+	HIE_tdstCollSet* hCollSet;
 	void *hMSWay;
 	void *hMSLight;
 	SCT_tdstSectInfo *hSectInfo;

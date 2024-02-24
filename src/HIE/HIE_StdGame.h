@@ -8,6 +8,7 @@
 #include "LST.h"
 #include "MTH.h"
 #include "apidef.h"
+#include "GEO/GEO.h"
 
 
 #define Std_C_InvalidObjectType (-1)
@@ -123,6 +124,80 @@ typedef struct HIE_tdstStandardGame
 }
 HIE_tdstStandardGame;
 
+// TODO: move the following to its own files
+
+#define C_wCollsetNbCollisionVectors 2
+#define C_wCollsetNbCollisionReals	2
+
+typedef struct tdstGeometricZdxList_* ZDX_tdxHandleToGeoZdxList;
+
+typedef struct tdstGeometricZdxList_
+{
+	LST_M_StaticElementDecl(ZDX_tdxHandleToGeoZdxList)
+		GEO_tdstGeometricObject hGeoObj;
+
+} tdstGeometricZdxList;
+
+typedef struct tdstZdxIndexList_* ZDX_tdxHandleToZdxIndexList;
+typedef struct tdstZoneSetEncapsulation_* ZDX_tdxHandleToZoneSetEncapsulation;
+
+LST_M_StaticListDecl(ZDX_tdxHandleToGeoZdxList);
+LST_M_StaticListDecl(ZDX_tdxHandleToZoneSetEncapsulation);
+
+typedef struct tdstZdxList_
+{
+	LST_M_StaticAnchorTo(ZDX_tdxHandleToGeoZdxList) hGeoZdxList;
+	unsigned short uwNumberOfZdx;
+
+} tdstZdxList;
+
+typedef struct tdstCsaList_
+{
+	LST_M_StaticAnchorTo(ZDX_tdxHandleToZoneSetEncapsulation) hZoneSetEncapsulationList;
+
+} tdstCsaList;
+
+typedef struct tdstCsaList_* ZDX_tdxHandleToCsaList;
+typedef struct tdstZdxList_* ZDX_tdxHandleToZdxList;
+typedef struct tdstZoneSetList_* ZDX_tdxHandleToZoneSetList;
+
+typedef struct HIE_tdstCollSet // TODO: More like GAM than HIE? -RTS
+{
+	ZDX_tdxHandleToZdxList  hZddList;
+	ZDX_tdxHandleToZdxList  hZdeList;
+	ZDX_tdxHandleToZdxList  hZdmList;
+	ZDX_tdxHandleToZdxList  hZdrList;
+	ZDX_tdxHandleToCsaList  hZddActivationList;
+	ZDX_tdxHandleToCsaList  hZdeActivationList;
+	ZDX_tdxHandleToCsaList  hZdmActivationList;
+	ZDX_tdxHandleToCsaList  hZdrActivationList;
+
+	ZDX_tdxHandleToZoneSetList    hZddCurrentActivation;
+	ZDX_tdxHandleToZoneSetList    hZdeCurrentActivation;
+	ZDX_tdxHandleToZoneSetList    hZdrCurrentActivation;
+	ZDX_tdxHandleToZoneSetList    hZdmCurrentActivation;
+
+	unsigned long ulFBZddPriviligedZones;
+	unsigned long ulFBZdePriviligedZones;
+	unsigned long ulFBZdmPriviligedZones;
+	unsigned long ulFBZdrPriviligedZones;
+	unsigned char ucCollComputeFrequency;
+
+	unsigned char ucCharacterPriority;
+	unsigned char ucCollisionFlag;
+
+	struct stColliderInfo_
+	{
+		MTH3D_tdstVector	a_stColliderVectors[C_wCollsetNbCollisionVectors];
+		MTH_tdxReal			a_xColliderReals[C_wCollsetNbCollisionReals];
+		unsigned char		ucColliderType;
+		unsigned char		ucColliderPriority;
+		unsigned char		a2_ucUnused[2];	// Alignment
+	} stColliderInfo;
+}
+HIE_tdstCollSet;
+
+// END TODO
 
 /*
  * Object Type
