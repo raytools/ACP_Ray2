@@ -15,12 +15,6 @@
     <Filter Include="src\SPTXT">
       <UniqueIdentifier>{6ad5f9aa-9f9f-464c-83cd-8494bf4e74a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\LOG">
-      <UniqueIdentifier>{f6673c26-2701-4b9c-8967-3c5e95356069}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\LOG\private">
-      <UniqueIdentifier>{645b8558-85c4-4412-a672-9257c3570969}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\SPTXT\private">
       <UniqueIdentifier>{1f8d4911-553f-4921-88ad-b3af307da6a0}</UniqueIdentifier>
     </Filter>
@@ -33,17 +27,20 @@
     <Filter Include="src\TXM\private">
       <UniqueIdentifier>{75b3531a-d680-457e-8ecd-f42c67b58870}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\CLG">
+      <UniqueIdentifier>{f6673c26-2701-4b9c-8967-3c5e95356069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CLG\private">
+      <UniqueIdentifier>{645b8558-85c4-4412-a672-9257c3570969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LOG">
+      <UniqueIdentifier>{d6cefeb8-aa0b-414d-ae19-9914e0150eed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Ray2x\LOG\LOG.h">
-      <Filter>src\LOG</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Ray2x\LOG\LOG_Def.h">
-      <Filter>src\LOG</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT.h">
       <Filter>src\SPTXT</Filter>
     </ClInclude>
@@ -59,15 +56,6 @@
     <ClInclude Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.h">
       <Filter>src\SPTXT\private</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Modules.h">
-      <Filter>src\LOG\private</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Err.h">
-      <Filter>src\LOG\private</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_IO.h">
-      <Filter>src\LOG\private</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Ray2x\FHK\FHK.h">
       <Filter>src\FHK</Filter>
     </ClInclude>
@@ -77,11 +65,23 @@
     <ClInclude Include="..\src\Ray2x\TXM\private\TXM_List.h">
       <Filter>src\TXM\private</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Ray2x\CLG\CLG.h">
+      <Filter>src\CLG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\CLG\CLG_Def.h">
+      <Filter>src\CLG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\CLG\private\CLG_IO.h">
+      <Filter>src\CLG\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\CLG\private\CLG_Modules.h">
+      <Filter>src\CLG\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Ray2x\LOG\LOG.h">
+      <Filter>src\LOG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Ray2x\LOG\LOG.c">
-      <Filter>src\LOG</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c">
       <Filter>src\SPTXT</Filter>
     </ClCompile>
@@ -91,14 +91,20 @@
     <ClCompile Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.c">
       <Filter>src\SPTXT\private</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Ray2x\LOG\private\LOG_IO.c">
-      <Filter>src\LOG\private</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Ray2x\FHK\FHK.c">
       <Filter>src\FHK</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Ray2x\TXM\TXM.c">
       <Filter>src\TXM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\CLG\CLG.c">
+      <Filter>src\CLG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\CLG\private\CLG_IO.c">
+      <Filter>src\CLG\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Ray2x\LOG\LOG.c">
+      <Filter>src\LOG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

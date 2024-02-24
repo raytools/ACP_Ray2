@@ -228,12 +228,12 @@
   <ItemGroup>
     <ClInclude Include="..\src\Ray2x\ACP_Ray2x.h" />
     <ClInclude Include="..\src\Ray2x\apidefx.h" />
+    <ClInclude Include="..\src\Ray2x\CLG\CLG.h" />
+    <ClInclude Include="..\src\Ray2x\CLG\CLG_Def.h" />
+    <ClInclude Include="..\src\Ray2x\CLG\private\CLG_IO.h" />
+    <ClInclude Include="..\src\Ray2x\CLG\private\CLG_Modules.h" />
     <ClInclude Include="..\src\Ray2x\FHK\FHK.h" />
     <ClInclude Include="..\src\Ray2x\LOG\LOG.h" />
-    <ClInclude Include="..\src\Ray2x\LOG\LOG_Def.h" />
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Err.h" />
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_IO.h" />
-    <ClInclude Include="..\src\Ray2x\LOG\private\LOG_Modules.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT.h" />
     <ClInclude Include="..\src\Ray2x\SPTXT\SPTXT_Const.h" />
@@ -241,10 +241,11 @@
     <ClInclude Include="..\src\Ray2x\TXM\TXM.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Ray2x\CLG\CLG.c" />
+    <ClCompile Include="..\src\Ray2x\CLG\private\CLG_IO.c" />
     <ClCompile Include="..\src\Ray2x\dllmain.c" />
     <ClCompile Include="..\src\Ray2x\FHK\FHK.c" />
     <ClCompile Include="..\src\Ray2x\LOG\LOG.c" />
-    <ClCompile Include="..\src\Ray2x\LOG\private\LOG_IO.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\private\SPTXT_Private.c" />
     <ClCompile Include="..\src\Ray2x\SPTXT\SPTXT.c" />
     <ClCompile Include="..\src\Ray2x\TXM\TXM.c" />
