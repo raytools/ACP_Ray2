@@ -120,3 +120,9 @@ typedef struct GAM_tdstStandardGame
 	unsigned char ucTooFarLimit;
 }
 GAM_tdstStandardGame;
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*GAM_fn_vStdGameAlloc)(HIE_tdstEngineObject *p_stObject);

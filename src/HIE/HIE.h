@@ -10,6 +10,7 @@
 #include "HIE_Const.h"
 #include "HIE_Family.h"
 
+#include "GAM/GAM_3dData.h"
 #include "GAM/GAM_StdGame.h"
 #include "GAM/GAM_ZDx.h"
 #include "AI/AI_Def.h"
@@ -63,7 +64,7 @@ HIE_tdstSuperObject;
 typedef struct HIE_tdstEngineObject /* aka: Perso, Actor, Character */
 {
 	// TODO: replace void pointers
-	void *h3dData;
+	GAM_tdst3dData *h3dData;
 	GAM_tdstStandardGame *hStandardGame;
 	DNM_tdstDynam *hDynam;
 	AI_tdstBrain *hBrain;

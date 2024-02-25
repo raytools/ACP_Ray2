@@ -228,6 +228,9 @@
     <ClInclude Include="src\HIE\HIE_StdCompat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GAM\GAM_3dData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

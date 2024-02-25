@@ -219,6 +219,7 @@ cd .</Command>
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\CAM\CAM.h" />
     <ClInclude Include="src\CAM\CAM_Def.h" />
+    <ClInclude Include="src\GAM\GAM_3dData.h" />
     <ClInclude Include="src\GAM\GAM_Def.h" />
     <ClInclude Include="src\GAM\GAM_ObjType.h" />
     <ClInclude Include="src\GAM\GAM_StdGame.h" />

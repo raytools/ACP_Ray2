@@ -78,3 +78,5 @@ ACP_VAR ACP_tdxBool *const AI_g_bInGameMenu;
 ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode, AI_tdstGetSetParam *p_stParam );
 
 ACP_FUNC void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind );
+
+ACP_FUNC void (*AI_fn_vBrainAlloc)(HIE_tdstEngineObject *p_stObject);

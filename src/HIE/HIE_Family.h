@@ -35,6 +35,10 @@ typedef struct HIE_tdstFamilyList
 	LST_M_StaticAnchorTo(HIE_tdstObjectsTablesList) stForObjectsTablesList; 
 
 	GEO_tdstBoundingSphere *hBoundingSphere;
+
+	unsigned long ulNumberOfChannels;
+	unsigned char ucPriority;
+	unsigned char ucOptimized;
 }
 HIE_tdstFamilyList;
 
