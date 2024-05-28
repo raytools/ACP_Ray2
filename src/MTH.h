@@ -12,6 +12,7 @@
 #define MTH_C_Pi			(float)3.141592653589793
 #define MTH_C_2Pi			(float)6.283185307179586
 #define MTH_C_PiBy2			(float)1.570796326794896
+#define MTH3D_C_ZeroVector	(MTH3D_tdstVector){0.0, 0.0, 0.0}
 
 
 typedef float MTH_tdxReal;
