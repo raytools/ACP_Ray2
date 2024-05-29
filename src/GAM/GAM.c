@@ -6,6 +6,8 @@
 
 #include "GAM.h"
 #include "GAM_ObjType.h"
+#include "GAM_StdGame.h"
+#include "GAM_3dData.h"
 
 
 /****************************************************************************
@@ -49,9 +51,6 @@ char * (*GAM_fn_p_szGetFirstLevelName)( void ) = OFFSET(0x404CF0);
 void (*GAM_fn_vSetFirstLevelName)( char const *szName ) = OFFSET(0x404CC0);
 void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
 
-void (*GAM_fn_vStdGameAlloc)(HIE_tdstEngineObject* p_stObject) = OFFSET(0x413140);
-void (*GAM_fn_v3dDataAlloc)(HIE_tdstEngineObject* p_stObject) = OFFSET(0x4180F0);
-
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
 BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd ) = OFFSET(0x402020);
 long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);
@@ -62,3 +61,17 @@ long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wP
  ****************************************************************************/
 
 GAM_tdstObjectType *const GAM_g_stObjectTypes = OFFSET(0x5013E0);
+
+
+/****************************************************************************
+ * GAM_StdGame.h
+ ****************************************************************************/
+
+void (*GAM_fn_vStdGameAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x413140);
+
+
+/****************************************************************************
+ * GAM_3dData.h
+ ****************************************************************************/
+
+void (*GAM_fn_v3dDataAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x4180F0);

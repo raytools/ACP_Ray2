@@ -18,4 +18,4 @@ AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)(
 
 void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind ) = OFFSET(0x466D00);
 
-void (*AI_fn_vBrainAlloc)(HIE_tdstEngineObject* p_stObject) = OFFSET(0x417E10);
+void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x417E10);
