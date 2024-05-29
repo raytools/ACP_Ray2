@@ -227,7 +227,8 @@ ACP_VAR long *const GLI_gs_lNumberOfTextureToCreate;
 ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
 ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
-ACP_VAR POS_tdstCompletePosition **const g_p_stCurrentMatrix;
+ACP_VAR POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix;
+
 
 /*
  * Functions
@@ -241,7 +242,9 @@ ACP_FUNC long (*GLI_fn_lGetBrightness)( void );
 
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
-ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstInternalGlobalValuesFor3dEngine *, long, GEO_tdstColor *);
+ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)( GLD_tdstViewportAttributes *p_stVpt,
+	GLI_tdstAligned3DVector *p_stVertex1, GLI_tdstAligned2DVector *p_st2DVertex1, GLI_tdstAligned3DVector *p_stVertex2, GLI_tdstAligned2DVector *p_st2DVertex2,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals, long lDrawModeMask, GEO_tdstColor *p_stColor );
 
 
 ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
@@ -261,4 +264,4 @@ ACP_FUNC void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstT
 ACP_FUNC void (*GLI_xSendObjectToViewportWithLights)( GLD_tdstViewportAttributes *p_stVpt, GEO_tdstGeometricObject *p_stObj, long lDrawModeMask );
 ACP_FUNC void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 
-ACP_FUNC void (*GLI_xSerialProjection)(struct GLI_tdstCamera_ *p_stCam, long lNbOfVertex, struct GLI_tdstAligned3DVector_ *p_stSource, struct GLI_tdstAligned2DVector_ *p_stDest);
+ACP_FUNC void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest );

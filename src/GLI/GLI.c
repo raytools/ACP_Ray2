@@ -27,11 +27,11 @@ long *const GLI_gs_lNumberOfTextureToCreate = OFFSET(0x501644);
 GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead = OFFSET(0x502680);
 unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels = OFFSET(0x501660);
 
+POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix = OFFSET(0x506B00);
 
 /* Big Globals */
 GLI_tdstInternalGlobalValuesFor3dEngine **const GLI_BIG_GLOBALS = OFFSET(0x5036AC);
 
-POS_tdstCompletePosition** const g_p_stCurrentMatrix = OFFSET(0x506B00);
 
 /*
  * Functions
@@ -58,15 +58,16 @@ void (**GLI_DRV_vSendSpriteToClipWithUV)(
 ) = OFFSET(0x504524);
 
 
-void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes*,
-	GLI_tdstAligned3DVector*,
-	GLI_tdstAligned2DVector*,
-	GLI_tdstAligned3DVector*,
-	GLI_tdstAligned2DVector*,
-	GLI_tdstInternalGlobalValuesFor3dEngine*,
-	long,
-	GEO_tdstColor*)
-= OFFSET(0x504834);
+void (**GLI_DRV_vSendSingleLineToClip)(
+	GLD_tdstViewportAttributes *p_stVpt,
+	GLI_tdstAligned3DVector *p_stVertex1,
+	GLI_tdstAligned2DVector *p_st2DVertex1,
+	GLI_tdstAligned3DVector *p_stVertex2,
+	GLI_tdstAligned2DVector *p_st2DVertex2,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals,
+	long lDrawModeMask,
+	GEO_tdstColor *p_stColor
+) = OFFSET(0x504834);
 
 
 void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A410);
@@ -116,5 +117,4 @@ void (*GLI_xSendObjectToViewportWithLights)(
 
 void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A990);
 
-void (*GLI_xSerialProjection)(struct GLI_tdstCamera_* p_stCam, long lNbOfVertex, struct GLI_tdstAligned3DVector_* p_stSource, struct GLI_tdstAligned2DVector_* p_stDest
-) = OFFSET(0x42C8A0);
+void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest ) = OFFSET(0x42C8A0);
