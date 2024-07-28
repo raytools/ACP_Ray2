@@ -240,13 +240,6 @@ ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
 ACP_FUNC void (*GLI_fn_vSetBrightness)( long lValue );
 ACP_FUNC long (*GLI_fn_lGetBrightness)( void );
 
-ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
-ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
-ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)( GLD_tdstViewportAttributes *p_stVpt,
-	GLI_tdstAligned3DVector *p_stVertex1, GLI_tdstAligned2DVector *p_st2DVertex1, GLI_tdstAligned3DVector *p_stVertex2, GLI_tdstAligned2DVector *p_st2DVertex2,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals, long lDrawModeMask, GEO_tdstColor *p_stColor );
-
-
 ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, GLI_tdstMaterial *hMaterial );
 ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );

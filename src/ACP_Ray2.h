@@ -45,6 +45,12 @@ extern "C" {
 #include "AGO/AGO.h"
 #include "JFFTXT/JFFTXT.h"
 
+/* Include the GLI driver DLL functions */
+/* To disable, define ACP_NO_DRV */
+#if !defined(ACP_NO_DRV)
+#include "GLI/GLI_Drv.h"
+#endif
+
 
 /****************************************************************************
  * Extensions

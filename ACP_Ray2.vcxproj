@@ -236,6 +236,7 @@ cd .</Command>
     <ClInclude Include="src\GLI\GLI_BigGlobals.h" />
     <ClInclude Include="src\GLI\GLI_Const.h" />
     <ClInclude Include="src\GLI\GLI_Def.h" />
+    <ClInclude Include="src\GLI\GLI_Drv.h" />
     <ClInclude Include="src\GLI\GLI_Ext.h" />
     <ClInclude Include="src\GLI\GLI_Misc.h" />
     <ClInclude Include="src\GMT\GMT.h" />

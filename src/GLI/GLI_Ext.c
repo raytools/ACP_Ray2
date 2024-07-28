@@ -5,6 +5,7 @@
  ****************************************************************************/
 
 #include "GLI_Ext.h"
+#include "GLI_Drv.h"
 #include "GEO/GEO_Def.h"
 #include "FIL/FIL.h"
 #include "GAM/GAM.h"
@@ -234,7 +235,7 @@ void GLI_fn_vDraw2DSpriteWithUV(
 	}
 
 	//GLI_DRV_vSendSpriteToClipWithUV(a4_st2DVertex, a4_stUVVertex, 1.0f / GLI_C_xZClippingNear, GLI_BIG_GLOBALS);
-	(*GLI_DRV_vSendSpriteToClipWithUV)(a4_st2DVertex, (MTH_tdxReal*)a4_stUVVertex, *GLI_g_fZValueForSprite, *GLI_BIG_GLOBALS);
+	(*GLI_DRV_vSendSpriteToClipWithUV_)(a4_st2DVertex, (MTH_tdxReal*)a4_stUVVertex, *GLI_g_fZValueForSprite, *GLI_BIG_GLOBALS);
 }
 
 void GLI_fn_vDraw2DSpriteWithZValueAndAlpha(

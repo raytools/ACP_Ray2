@@ -43,33 +43,6 @@ MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void ) = OFFSET(0x42A360);
 void (*GLI_fn_vSetBrightness)( long lValue ) = OFFSET(0x422570);
 long (*GLI_fn_lGetBrightness)( void ) = OFFSET(0x4225B0);
 
-
-void (**GLI_DRV_vSendSpriteToClip)(
-	GLI_tdstAligned2DVector *a4_st2DVertex,
-	MTH_tdxReal xZ,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
-) = OFFSET(0x504530);
-
-void (**GLI_DRV_vSendSpriteToClipWithUV)(
-	GLI_tdstAligned2DVector *a4_st2DVertex,
-	MTH_tdxReal *a8_stUVVertex,
-	MTH_tdxReal xZ,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
-) = OFFSET(0x504524);
-
-
-void (**GLI_DRV_vSendSingleLineToClip)(
-	GLD_tdstViewportAttributes *p_stVpt,
-	GLI_tdstAligned3DVector *p_stVertex1,
-	GLI_tdstAligned2DVector *p_st2DVertex1,
-	GLI_tdstAligned3DVector *p_stVertex2,
-	GLI_tdstAligned2DVector *p_st2DVertex2,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals,
-	long lDrawModeMask,
-	GEO_tdstColor *p_stColor
-) = OFFSET(0x504834);
-
-
 void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A410);
 
 void (*GLI_vDraw2DSpriteWithPercent)(
@@ -118,3 +91,33 @@ void (*GLI_xSendObjectToViewportWithLights)(
 void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A990);
 
 void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest ) = OFFSET(0x42C8A0);
+
+
+/*
+ * Driver DLL functions
+ */
+
+void (**GLI_DRV_vSendSpriteToClip_)(
+	GLI_tdstAligned2DVector *a4_st2DVertex,
+	MTH_tdxReal xZ,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
+	) = OFFSET(0x504530);
+
+void (**GLI_DRV_vSendSpriteToClipWithUV_)(
+	GLI_tdstAligned2DVector *a4_st2DVertex,
+	MTH_tdxReal *a8_stUVVertex,
+	MTH_tdxReal xZ,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
+	) = OFFSET(0x504524);
+
+
+void (**GLI_DRV_vSendSingleLineToClip_)(
+	GLD_tdstViewportAttributes *p_stVpt,
+	GLI_tdstAligned3DVector *p_stVertex1,
+	GLI_tdstAligned2DVector *p_st2DVertex1,
+	GLI_tdstAligned3DVector *p_stVertex2,
+	GLI_tdstAligned2DVector *p_st2DVertex2,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals,
+	long lDrawModeMask,
+	GEO_tdstColor *p_stColor
+	) = OFFSET(0x504834);

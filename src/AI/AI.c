@@ -19,3 +19,14 @@ AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)(
 void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind ) = OFFSET(0x466D00);
 
 void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x417E10);
+
+
+/* ultra operator */
+
+void (*AI_fn_vGetUltraOperatorPerso)(
+	unsigned char bYouHaveRightToUseThisFunction,
+	HIE_tdstSuperObject *hCurrentSuperObjPerso,
+	HIE_tdstSuperObject **hNewSuperObjPerso
+) = OFFSET(0x4825B0);
+
+unsigned char (*AI_fn_ucGetProcedureUltraOperator)( AI_tdeProcedureId eProcId ) = OFFSET(0x482680);
