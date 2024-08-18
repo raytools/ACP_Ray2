@@ -110,3 +110,6 @@ ACP_FUNC ACP_tdxBool (*HIE_fn_bInitCameraMatrixStack)( GLD_tdstViewportAttribute
 ACP_FUNC ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix );
 ACP_FUNC void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj );
 ACP_FUNC ACP_tdxBool (*HIE_fn_bPopMatrix)( void );
+ACP_FUNC void (*HIE_fn_vComputeNewRelativeMatrix)( HIE_tdstSuperObject *hSprObj );
+
+ACP_FUNC void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO );

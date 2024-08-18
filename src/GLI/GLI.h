@@ -258,3 +258,6 @@ ACP_FUNC void (*GLI_xSendObjectToViewportWithLights)( GLD_tdstViewportAttributes
 ACP_FUNC void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 
 ACP_FUNC void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest );
+
+ACP_FUNC void (*GLI_vGet3DVertexFromScreenPos)( GLD_tdstViewportAttributes *p_stVpt, MTH3D_tdstVector *p_stPos3D, MTH_tdxReal xRatioX, MTH_tdxReal xRatioY, MTH_tdxReal xSize );
+ACP_FUNC void (*GLI_xAdjustCameraToViewport2)(GLD_tdstDeviceAttributes *p_stDev, GLD_tdstViewportAttributes *p_stVpt, GLI_tdstCamera *p_stCam );

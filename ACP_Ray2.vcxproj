@@ -219,6 +219,7 @@ cd .</Command>
     <ClInclude Include="src\basedef.h" />
     <ClInclude Include="src\CAM\CAM.h" />
     <ClInclude Include="src\CAM\CAM_Def.h" />
+    <ClInclude Include="src\DNM\MEC.h" />
     <ClInclude Include="src\GAM\GAM_3dData.h" />
     <ClInclude Include="src\GAM\GAM_Def.h" />
     <ClInclude Include="src\GAM\GAM_ObjType.h" />
@@ -289,6 +290,7 @@ cd .</Command>
     <ClCompile Include="src\CAM\CAM.c" />
     <ClCompile Include="src\dllmain.c" />
     <ClCompile Include="src\DNM\DNM.c" />
+    <ClCompile Include="src\DNM\MEC.c" />
     <ClCompile Include="src\ERM\ERM.c" />
     <ClCompile Include="src\FIL\FIL.c" />
     <ClCompile Include="src\FON\FON.c" />
@@ -305,6 +307,7 @@ cd .</Command>
     <ClCompile Include="src\JFFTXT\JFFTXT.c" />
     <ClCompile Include="src\MMG\MMG.c" />
     <ClCompile Include="src\POS\POS.c" />
+    <ClCompile Include="src\SCT\SCT.c" />
     <ClCompile Include="src\SND\SND.c" />
     <ClCompile Include="src\SND\SND_Ext.c" />
     <ClCompile Include="src\TMR\TMR.c" />

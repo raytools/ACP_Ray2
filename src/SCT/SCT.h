@@ -109,3 +109,10 @@ typedef struct SCT_tdstSectInfo
 	MTH3D_tdstVector stPreviousPosition;
 }
 SCT_tdstSectInfo;
+
+
+/*
+ * Functions
+ */
+
+ACP_FUNC void (*SCT_fn_vRemoveObjectInSectorList)( HIE_tdstSuperObject *hCharacter );

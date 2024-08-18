@@ -29,6 +29,7 @@ extern "C" {
 #include "AI/AI.h"
 #include "ALW/ALW.h"
 #include "DNM/DNM.h"
+#include "DNM/MEC.h"
 #include "GMT/GMT.h"
 #include "GEO/GEO.h"
 #include "PO/PO.h"

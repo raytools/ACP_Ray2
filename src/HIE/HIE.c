@@ -21,3 +21,6 @@ ACP_tdxBool (*HIE_fn_bInitCameraMatrixStack)( GLD_tdstViewportAttributes *hVpt )
 ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix ) = OFFSET(0x45B810);
 void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj ) = OFFSET(0x45BF80);
 ACP_tdxBool (*HIE_fn_bPopMatrix)( void ) = OFFSET(0x45B7E0);
+void (*HIE_fn_vComputeNewRelativeMatrix)( HIE_tdstSuperObject *hSprObj ) = OFFSET(0x45C030);
+
+void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO ) = OFFSET(0x45B9B0);

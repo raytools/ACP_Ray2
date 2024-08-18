@@ -92,6 +92,15 @@ void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlo
 
 void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest ) = OFFSET(0x42C8A0);
 
+void (*GLI_vGet3DVertexFromScreenPos)(
+	GLD_tdstViewportAttributes *p_stVpt,
+	MTH3D_tdstVector *p_stPos3D,
+	MTH_tdxReal xRatioX,
+	MTH_tdxReal xRatioY,
+	MTH_tdxReal xSize
+) = OFFSET(0x422940);
+void (*GLI_xAdjustCameraToViewport2)(GLD_tdstDeviceAttributes *p_stDev, GLD_tdstViewportAttributes *p_stVpt, GLI_tdstCamera *p_stCam ) = OFFSET(0x422AB0);
+
 
 /*
  * Driver DLL functions
