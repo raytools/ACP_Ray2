@@ -27,6 +27,9 @@ long *const GLI_gs_lNumberOfTextureToCreate = OFFSET(0x501644);
 GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead = OFFSET(0x502680);
 unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels = OFFSET(0x501660);
 
+long* const g_lNbMatrixInStack = OFFSET(0x4b98d4);
+POS_tdstCompletePosition** const g_aDEF_stMatrixStack = OFFSET(0x51607c);
+
 
 /* Big Globals */
 GLI_tdstInternalGlobalValuesFor3dEngine **const GLI_BIG_GLOBALS = OFFSET(0x5036AC);
@@ -68,6 +71,12 @@ void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes*,
 	GEO_tdstColor*)
 = OFFSET(0x504834);
 
+void (**GLI_DRV_vSendSingleTrianglesToClip)(GLI_tdstAligned2DVector*,
+	GLI_tdst2DUVValues* a3_stUV,
+	GLI_tdstInternalGlobalValuesFor3dEngine* p_stGlobaleMT)
+	= OFFSET(0x504828);
+
+void (*GLI_xGetCameraMatrix)(GLI_tdstCamera *p_stCam, POS_tdstCompletePosition *p_stMatrix) = OFFSET(0x422620);
 
 void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals ) = OFFSET(0x42A410);
 

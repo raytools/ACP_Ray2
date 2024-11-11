@@ -229,6 +229,10 @@ ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
 ACP_VAR POS_tdstCompletePosition **const g_p_stCurrentMatrix;
 
+ACP_VAR long *const g_lNbMatrixInStack;
+
+ACP_VAR POS_tdstCompletePosition **const g_aDEF_stMatrixStack;
+
 /*
  * Functions
  */
@@ -242,8 +246,11 @@ ACP_FUNC long (*GLI_fn_lGetBrightness)( void );
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstInternalGlobalValuesFor3dEngine *, long, GEO_tdstColor *);
+ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstInternalGlobalValuesFor3dEngine *, long, GEO_tdstColor *);
 
+ACP_FUNC void (**GLI_DRV_vSendSingleTrianglesToClip)(GLI_tdstAligned2DVector *, GLI_tdst2DUVValues *a3_stUV, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT);
 
+ACP_FUNC void (*GLI_xGetCameraMatrix)(GLI_tdstCamera *p_stCam, POS_tdstCompletePosition *p_stMatrix);
 ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 ACP_FUNC void (*GLI_vDraw2DSpriteWithPercent)( GLD_tdstViewportAttributes *p_stViewport, MTH_tdxReal XMin, MTH_tdxReal YMin, MTH_tdxReal XMax, MTH_tdxReal YMax, GLI_tdstMaterial *hMaterial );
 ACP_FUNC void (*GLI_vDisplayFrame)( MTH2D_tdstVector *p_stTopLeft, MTH2D_tdstVector *p_stBottomRight, MTH_tdxReal xAlpha, GLD_tdstViewportAttributes *p_stViewport );
