@@ -9,6 +9,7 @@
 #include "GAM_Def.h"
 #include "GAM_StdGame.h"
 #include "GAM_ZDx.h"
+#include "GAM_3dData.h"
 
 #include "HIE/HIE.h"
 #include "GLI/GLI.h"

@@ -231,6 +231,12 @@
     <ClInclude Include="src\GAM\GAM_3dData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GLI\GLI_Drv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DNM\MEC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -309,6 +315,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\CAM\CAM.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SCT\SCT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DNM\MEC.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

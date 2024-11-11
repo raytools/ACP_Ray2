@@ -227,7 +227,7 @@ ACP_VAR long *const GLI_gs_lNumberOfTextureToCreate;
 ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
 ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
-ACP_VAR POS_tdstCompletePosition **const g_p_stCurrentMatrix;
+ACP_VAR POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix;
 
 ACP_VAR long *const g_lNbMatrixInStack;
 
@@ -268,4 +268,7 @@ ACP_FUNC void (*GLI_xSetMaterialTexture)( GLI_tdstMaterial *hMaterial, GLI_tdstT
 ACP_FUNC void (*GLI_xSendObjectToViewportWithLights)( GLD_tdstViewportAttributes *p_stVpt, GEO_tdstGeometricObject *p_stObj, long lDrawModeMask );
 ACP_FUNC void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
 
-ACP_FUNC void (*GLI_xSerialProjection)(struct GLI_tdstCamera_ *p_stCam, long lNbOfVertex, struct GLI_tdstAligned3DVector_ *p_stSource, struct GLI_tdstAligned2DVector_ *p_stDest);
+ACP_FUNC void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest );
+
+ACP_FUNC void (*GLI_vGet3DVertexFromScreenPos)( GLD_tdstViewportAttributes *p_stVpt, MTH3D_tdstVector *p_stPos3D, MTH_tdxReal xRatioX, MTH_tdxReal xRatioY, MTH_tdxReal xSize );
+ACP_FUNC void (*GLI_xAdjustCameraToViewport2)(GLD_tdstDeviceAttributes *p_stDev, GLD_tdstViewportAttributes *p_stVpt, GLI_tdstCamera *p_stCam );

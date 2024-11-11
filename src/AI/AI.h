@@ -79,4 +79,15 @@ ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stS
 
 ACP_FUNC void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind );
 
-ACP_FUNC void (*AI_fn_vBrainAlloc)(HIE_tdstEngineObject *p_stObject);
+ACP_FUNC void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject );
+
+
+/* ultra operator */
+
+ACP_FUNC void (*AI_fn_vGetUltraOperatorPerso)(
+	unsigned char bYouHaveRightToUseThisFunction,
+	HIE_tdstSuperObject *hCurrentSuperObjPerso,
+	HIE_tdstSuperObject **hNewSuperObjPerso
+);
+
+ACP_FUNC unsigned char (*AI_fn_ucGetProcedureUltraOperator)( AI_tdeProcedureId eProcId );

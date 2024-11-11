@@ -24,3 +24,20 @@ typedef signed short ACP_tdxIndex;
 typedef unsigned long ACP_tdxAddress;
 
 typedef void *HANDLE;
+typedef HANDLE W32_HWND;
+
+typedef struct W32_RECT
+{
+	long left;
+	long top;
+	long right;
+	long bottom;
+}
+W32_RECT;
+
+typedef struct W32_POINT
+{
+	long x;
+	long y;
+}
+W32_POINT;

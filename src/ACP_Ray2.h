@@ -29,6 +29,7 @@ extern "C" {
 #include "AI/AI.h"
 #include "ALW/ALW.h"
 #include "DNM/DNM.h"
+#include "DNM/MEC.h"
 #include "GMT/GMT.h"
 #include "GEO/GEO.h"
 #include "PO/PO.h"
@@ -44,6 +45,12 @@ extern "C" {
 #include "FON/FON.h"
 #include "AGO/AGO.h"
 #include "JFFTXT/JFFTXT.h"
+
+/* Include the GLI driver DLL functions */
+/* To disable, define ACP_NO_DRV */
+#if !defined(ACP_NO_DRV)
+#include "GLI/GLI_Drv.h"
+#endif
 
 
 /****************************************************************************

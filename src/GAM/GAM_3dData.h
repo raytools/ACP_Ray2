@@ -3,21 +3,26 @@
  ****************************************************************************/
 
 #pragma once
+
 #include "GLI/GLI.h"
 #include "GMT/GMT.h"
 #include "HIE/HIE_Family.h"
 #include "POS/POS.h"
 
+
 typedef struct GAM_tdstCouple
 {
-	unsigned short wChild, wFather;
-} GAM_tdstCouple;
+	unsigned short wChild;
+	unsigned short wFather;
+}
+GAM_tdstCouple;
 
 typedef struct GAM_tdstPLA_Hierarchy
 {
 	unsigned long ulNbOfCouples;
 	GAM_tdstCouple *d_stCouples;
-} GAM_tdstPLA_Hierarchy;
+}
+GAM_tdstPLA_Hierarchy;
 
 typedef struct GAM_tdstFrame3d
 {
@@ -31,7 +36,8 @@ typedef struct GAM_tdstFrame3d
 	unsigned short uwFrameNumber;
 	unsigned char ucMatrixUpdated;
 	unsigned char ucCacheEntry;
-} GAM_tdstFrame3d;
+}
+GAM_tdstFrame3d;
 
 typedef struct GAM_tdst3dData
 {
@@ -47,28 +53,28 @@ typedef struct GAM_tdst3dData
 	POS_tdstCompletePosition stGLIObjectMatrix;
 	POS_tdstCompletePosition *p_stGLIObjectAbsoluteMatrix;
 
-	// Information about the current animation
+	/* Information about the current animation */
 	unsigned short uwCurrentFrame;
 	unsigned char  ucRepeatAnimation;
 	unsigned char  ucNextEvent;
 	unsigned char *d_ucEventActivation; // Cpt used to launch events
 
-	GAM_tdstCouple * p_stCurrentHieCouples;
+	GAM_tdstCouple *p_stCurrentHieCouples;
 	unsigned short wCurrentHieNbCouples;
 	unsigned short wSizeOfArrayOfElts3d;
 
-	HIE_tdstState * h_StateInLastFrame; // For AI
-	HIE_tdstState * h_WantedState;
+	HIE_tdstState *h_StateInLastFrame; // For AI
+	HIE_tdstState *h_WantedState;
 	unsigned short uwForcedFrame;
 	unsigned char ucFlagEndState;
 	unsigned char ucFlagEndOfAnim;
 
-	/*CHN_tdxHandleToChannelArray*/ void * hArrayOfChannels;
+	/* CHN_tdxHandleToChannelArray */ void *hArrayOfChannels;
 	unsigned long ulNumberOfChannels;
-	/*CHN_tdxHandleToChannel */ void * hFirstActiveChannel;
+	/* CHN_tdxHandleToChannel */ void *hFirstActiveChannel;
 	GAM_tdstFrame3d stFrame3d;
 
-	/* CHN_tdxHandleToMorphList */ void * hMorphChannelList;
+	/* CHN_tdxHandleToMorphList */ void *hMorphChannelList;
 	unsigned long ulStartTime; // Start time for this animation (used to compute next frame number)
 
 	unsigned long ulTimeDelay; // Extra time beyond the current animation == time delay between (end of animation time) and (next computed frame time)
@@ -81,7 +87,8 @@ typedef struct GAM_tdst3dData
 	GMT_tdstGameMaterial *p_stShadowMaterial;
 	GLI_tdstTexture *p_stShadowTexture;
 
-	MTH_tdxReal xShadowScaleX, xShadowScaleY;
+	MTH_tdxReal xShadowScaleX;
+	MTH_tdxReal xShadowScaleY;
 	short xShadowQuality;
 
 	unsigned short uwNbEngineFrameSinceLastMechEvent;
@@ -110,8 +117,9 @@ typedef struct GAM_tdst3dData
 }
 GAM_tdst3dData;
 
+
 /*
  * Functions
  */
 
-ACP_FUNC void (*GAM_fn_v3dDataAlloc)(HIE_tdstEngineObject *p_stObject);
+ACP_FUNC void (*GAM_fn_v3dDataAlloc)( HIE_tdstEngineObject *p_stObject );

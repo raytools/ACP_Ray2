@@ -121,8 +121,9 @@ typedef struct GAM_tdstStandardGame
 }
 GAM_tdstStandardGame;
 
+
 /*
  * Functions
  */
 
-ACP_FUNC void (*GAM_fn_vStdGameAlloc)(HIE_tdstEngineObject *p_stObject);
+ACP_FUNC void (*GAM_fn_vStdGameAlloc)( HIE_tdstEngineObject *p_stObject );

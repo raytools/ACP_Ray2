@@ -7,6 +7,7 @@
 #pragma once
 
 #include "GLI_Def.h"
+#include "MTH.h"
 #include "basedef.h"
 #include "apidef.h"
 
@@ -54,6 +55,34 @@ typedef struct GLD_tdstViewportAttributes
 	GLD_tdhViewport hViewport;
 }
 GLD_tdstViewportAttributes;
+
+typedef struct GLD_tdstDeviceAttributes
+{
+	unsigned long dwHeight;
+	unsigned long dwWidth;
+
+	MTH_tdxReal xPixelDimensionX;
+	MTH_tdxReal xPixelDimensionY;
+
+	char *p_cVirtualScreen;
+	long lPitch;
+	short *p_sZBuffer;
+
+	unsigned long dwFullScreenModeX;
+	unsigned long dwFullScreenModeY;
+	unsigned long dwFullScreenModeBpp;
+
+	HANDLE hFullScreenModeWnd;
+	HANDLE hNormalModeWnd;
+
+	BOOL bFullScreen;
+	unsigned int uiTypeDriver;
+
+	W32_POINT pClientOnPrimary;
+	W32_RECT rtClientRect;
+	W32_RECT rtWindowRect;
+}
+GLD_tdstDeviceAttributes;
 
 
 /*

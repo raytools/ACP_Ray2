@@ -16,3 +16,7 @@ typedef union AI_tduGetSetParamForNode AI_tduGetSetParamForNode;
 typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
 typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
 typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
+
+
+/* not yet defined */
+typedef enum AI_tdeProcedureId AI_tdeProcedureId;
