@@ -227,11 +227,10 @@ ACP_VAR long *const GLI_gs_lNumberOfTextureToCreate;
 ACP_VAR GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead;
 ACP_VAR unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels;
 
+ACP_VAR long *const GLI_g_lNbMatrixInStack;
+ACP_VAR POS_tdstCompletePosition **const GLI_g_aDEF_stMatrixStack;
 ACP_VAR POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix;
 
-ACP_VAR long *const g_lNbMatrixInStack;
-
-ACP_VAR POS_tdstCompletePosition **const g_aDEF_stMatrixStack;
 
 /*
  * Functions
@@ -242,13 +241,6 @@ ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
 
 ACP_FUNC void (*GLI_fn_vSetBrightness)( long lValue );
 ACP_FUNC long (*GLI_fn_lGetBrightness)( void );
-
-ACP_FUNC void (**GLI_DRV_vSendSpriteToClip)( GLI_tdstAligned2DVector *a4_st2DVertex ,MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
-ACP_FUNC void (**GLI_DRV_vSendSpriteToClipWithUV)( GLI_tdstAligned2DVector *a4_st2DVertex, MTH_tdxReal *a8_stUVVertex, MTH_tdxReal xZ, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
-ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstInternalGlobalValuesFor3dEngine *, long, GEO_tdstColor *);
-ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstAligned3DVector *, GLI_tdstAligned2DVector *, GLI_tdstInternalGlobalValuesFor3dEngine *, long, GEO_tdstColor *);
-
-ACP_FUNC void (**GLI_DRV_vSendSingleTrianglesToClip)(GLI_tdstAligned2DVector *, GLI_tdst2DUVValues *a3_stUV, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT);
 
 ACP_FUNC void (*GLI_xGetCameraMatrix)(GLI_tdstCamera *p_stCam, POS_tdstCompletePosition *p_stMatrix);
 ACP_FUNC void (*GLI_vDoMaterialSelection)( GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals );
@@ -271,4 +263,4 @@ ACP_FUNC void (*GLI_xSendObjectElement)( GLI_tdstInternalGlobalValuesFor3dEngine
 ACP_FUNC void (*GLI_xSerialProjection)( GLI_tdstCamera *p_stCam, long lNbOfVertex, GLI_tdstAligned3DVector *p_stSource, GLI_tdstAligned2DVector *p_stDest );
 
 ACP_FUNC void (*GLI_vGet3DVertexFromScreenPos)( GLD_tdstViewportAttributes *p_stVpt, MTH3D_tdstVector *p_stPos3D, MTH_tdxReal xRatioX, MTH_tdxReal xRatioY, MTH_tdxReal xSize );
-ACP_FUNC void (*GLI_xAdjustCameraToViewport2)(GLD_tdstDeviceAttributes *p_stDev, GLD_tdstViewportAttributes *p_stVpt, GLI_tdstCamera *p_stCam );
+ACP_FUNC void (*GLI_xAdjustCameraToViewport2)( GLD_tdstDeviceAttributes *p_stDev, GLD_tdstViewportAttributes *p_stVpt, GLI_tdstCamera *p_stCam );

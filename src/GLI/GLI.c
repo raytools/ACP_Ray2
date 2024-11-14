@@ -27,9 +27,8 @@ long *const GLI_gs_lNumberOfTextureToCreate = OFFSET(0x501644);
 GLI_tdstTexture **const GLI_gs_aDEFTableOfTextureAlreadyRead = OFFSET(0x502680);
 unsigned long *const GLI_gs_aDEFTableOfTextureMemoryChannels = OFFSET(0x501660);
 
-long* const g_lNbMatrixInStack = OFFSET(0x4b98d4);
-POS_tdstCompletePosition** const g_aDEF_stMatrixStack = OFFSET(0x51607c);
-
+long *const GLI_g_lNbMatrixInStack = OFFSET(0x4b98d4);
+POS_tdstCompletePosition **const GLI_g_aDEF_stMatrixStack = OFFSET(0x51607C);
 POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix = OFFSET(0x506B00);
 
 /* Big Globals */
@@ -47,35 +46,6 @@ MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void ) = OFFSET(0x42A360);
 void (*GLI_fn_vSetBrightness)( long lValue ) = OFFSET(0x422570);
 long (*GLI_fn_lGetBrightness)( void ) = OFFSET(0x4225B0);
 
-
-void (**GLI_DRV_vSendSpriteToClip)(
-	GLI_tdstAligned2DVector *a4_st2DVertex,
-	MTH_tdxReal xZ,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
-) = OFFSET(0x504530);
-
-void (**GLI_DRV_vSendSpriteToClipWithUV)(
-	GLI_tdstAligned2DVector *a4_st2DVertex,
-	MTH_tdxReal *a8_stUVVertex,
-	MTH_tdxReal xZ,
-	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals
-) = OFFSET(0x504524);
-
-
-void (**GLI_DRV_vSendSingleLineToClip)(GLD_tdstViewportAttributes*,
-	GLI_tdstAligned3DVector*,
-	GLI_tdstAligned2DVector*,
-	GLI_tdstAligned3DVector*,
-	GLI_tdstAligned2DVector*,
-	GLI_tdstInternalGlobalValuesFor3dEngine*,
-	long,
-	GEO_tdstColor*)
-= OFFSET(0x504834);
-
-void (**GLI_DRV_vSendSingleTrianglesToClip)(GLI_tdstAligned2DVector*,
-	GLI_tdst2DUVValues* a3_stUV,
-	GLI_tdstInternalGlobalValuesFor3dEngine* p_stGlobaleMT)
-	= OFFSET(0x504828);
 
 void (*GLI_xGetCameraMatrix)(GLI_tdstCamera *p_stCam, POS_tdstCompletePosition *p_stMatrix) = OFFSET(0x422620);
 
@@ -166,3 +136,9 @@ void (**GLI_DRV_vSendSingleLineToClip_)(
 	long lDrawModeMask,
 	GEO_tdstColor *p_stColor
 	) = OFFSET(0x504834);
+
+void (**GLI_DRV_vSendSingleTrianglesToClip_)(
+	GLI_tdstAligned2DVector *a3_st2DVertex,
+	GLI_tdst2DUVValues *a3_stUV,
+	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT
+	) = OFFSET(0x504828);
