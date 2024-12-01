@@ -160,12 +160,7 @@ char * HIE_fn_szGetObjectPersonalName( HIE_tdstSuperObject *p_stSuperObj )
 	if ( p_stSuperObj->ulType != HIE_C_Type_Actor )
 		return NULL;
 
-	GAM_tdxObjectType lPersonalType = HIE_M_lActorGetPersonalType(HIE_M_hSuperObjectGetActor(p_stSuperObj));
-	if (lPersonalType == GAM_C_InvalidObjectType || lPersonalType >= GAM_C_AlwaysObjectType) {
-		return NULL;
-	}
-
-	return HIE_fn_szGetPersonalTypeName(lPersonalType);
+	return HIE_fn_szGetPersonalTypeName(HIE_M_lActorGetPersonalType(HIE_M_hSuperObjectGetActor(p_stSuperObj)));
 }
 
 
