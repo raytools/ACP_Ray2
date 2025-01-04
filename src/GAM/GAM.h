@@ -23,6 +23,14 @@
 
 #define MAX_NAME_LEVEL 30
 
+/**
+ * Engine modes specify if the game is running, or if some other initialization
+ * or deinitialization step is taking place.
+ * 
+ * Note: Odd values are init steps, handled by GAM_fn_vChooseTheGoodInit()
+ * Even values are handled by GAM_fn_vChooseTheGoodDesInit()
+ */
+typedef unsigned char GAM_tdeEngineMode;
 enum GAM_tdeEngineMode_
 {
 	E_EM_ModeInvalid = 0,
@@ -37,16 +45,16 @@ enum GAM_tdeEngineMode_
 	E_EM_ModePlaying,
 	E_EM_NbTotalEngineMode
 };
-typedef unsigned char GAM_tdeEngineMode;
 
+typedef unsigned char GAM_tdeInputMode;
 enum GAM_tdeInputMode_
 {
 	E_IM_Normal,
 	E_IM_Commands,
 	E_IM_NbOfMode
 };
-typedef unsigned char GAM_tdeInputMode;
 
+typedef unsigned char GAM_tdeDisplayFixMode;
 enum GAM_tdeDisplayFixMode_
 {
 	E_DFM_DisplayAll			= 0xFF,
@@ -54,8 +62,11 @@ enum GAM_tdeDisplayFixMode_
 	E_DFM_DisplayGameSave		= 0x02,
 	E_DFM_DisplayNothing		= 0x00
 };
-typedef unsigned char GAM_tdeDisplayFixMode;
 
+/**
+ * Defines a list of languages used by the game.
+ * For actual localized strings, see FON_tdstLanguage in FON.h
+ */
 typedef struct GAM_tdstLanguageStructure
 {
 	char szLanguageCode[20];
@@ -63,6 +74,9 @@ typedef struct GAM_tdstLanguageStructure
 }
 GAM_tdstLanguageStructure;
 
+/**
+ * Contains fundamental information about the engine and its current state.
+ */
 typedef struct GAM_tdstEngineStructure
 {
 	GAM_tdeEngineMode eEngineMode;
@@ -135,12 +149,17 @@ GAM_tdstEngineStructure;
  * Variables
  */
 
-/* Engine structure */
+/** The engine structure */
 ACP_VAR GAM_tdstEngineStructure *const GAM_g_stEngineStructure;
+
+/** Commandline args passed to the game on startup */
 ACP_VAR char const *const GAM_g_szCmdLine;
 
+/** All currently active objects (within the active sectors) */
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stDynamicWorld;
+/** All inactive objects (within inactive sectors of the map) */
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld;
+/** Static models, map geometry and collision */
 ACP_VAR HIE_tdstSuperObject **const GAM_g_p_stFatherSector;
 
 ACP_VAR unsigned char *const GAM_g_ucIsEdInGhostMode;
@@ -153,16 +172,43 @@ ACP_VAR char *const GAM_g_cIsLevelOk;
 ACP_FUNC GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void );
 ACP_FUNC void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode );
 
+/** App init - reads config files and initializes all modules */
 ACP_FUNC void (*GAM_fn_vInitEngineWhenInitApplication)( void );
+
+/**
+ * Called on E_EM_ModeStartingProgram. Initializes the engine structure,
+ * graphics library, reads Game.dsb, loads Fix, etc.
+ */
 ACP_FUNC void (*GAM_fn_vFirstInitEngine)( void );
+/** Called on E_EM_ModeEnterGame, initializes the first map. */
 ACP_FUNC void (*GAM_fn_vInitGameLoop)( void );
+/** Called on E_EM_ModeEnterLevel, loads the current map. */
 ACP_FUNC void (*GAM_fn_vInitLevelLoop)( void );
+
+/**
+ * Handles all initialization modes.
+ * Always executed at the beginning of the engine loop.
+ */
 ACP_FUNC void (*GAM_fn_vChooseTheGoodInit)( void );
+/**
+ * Handles all deinitialization modes.
+ * Always executed at the end of the engine loop.
+ */
 ACP_FUNC void (*GAM_fn_vChooseTheGoodDesInit)( void );
+
+/**
+ * One step of the engine. Handles object hierarchy, AI scripts, etc.
+ * Use this for any logic that needs to run on each frame.
+ * 
+ * Note: For the purpose of drawing overlays, use AGO_vDisplayGAUGES() instead
+ */
 ACP_FUNC void (*GAM_fn_vEngine)( void );
 
+/** Pauses the engine. (also saves the engine timer and frame count) */
 ACP_FUNC void (*GAM_fn_vSetEngineInPaused)( void );
+/** Unpauses the engine. (also restores the engine timer and frame count) */
 ACP_FUNC void (*GAM_fn_vResetEngineFromPaused)( void );
+
 ACP_FUNC void (*GAM_fn_vSaveEngineClock)( void );
 ACP_FUNC void (*GAM_fn_vLoadEngineClock)( void );
 ACP_FUNC void (*GAM_fn_vActualizeEngineClock)( void );
@@ -173,6 +219,13 @@ ACP_FUNC char * (*GAM_fn_p_szGetNextLevelName)( void );
 ACP_FUNC void (*GAM_fn_vSetNextLevelName)( char const *szName );
 ACP_FUNC char * (*GAM_fn_p_szGetFirstLevelName)( void );
 ACP_FUNC void (*GAM_fn_vSetFirstLevelName)( char const *szName );
+
+/**
+ * Changes the current map.
+ * 
+ * @param szLevelName Name of the map (will parse section IDs)
+ * @param bSaveGame Show the yes/no save prompt
+ */
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
 
 ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );
