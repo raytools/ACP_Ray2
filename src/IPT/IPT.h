@@ -107,6 +107,7 @@ ACP_VAR IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine;
  */
 
 ACP_FUNC void (*IPT_fn_vResetInputEntry)( void );
+ACP_FUNC void (*IPT_fn_vActualizeHistoric)(void);
 
 ACP_FUNC ACP_tdxBool (*IPT_fn_bIsJustValidated)( IPT_tdstEntryElement *hEntryElement );
 ACP_FUNC ACP_tdxBool (*IPT_fn_bIsJustInvalidated)( IPT_tdstEntryElement *hEntryElement );
