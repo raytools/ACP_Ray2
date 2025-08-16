@@ -13,15 +13,38 @@
 #include "POS/POS.h"
 #include "MTH.h"
 
+typedef enum {
+	DNM_eMIC_Error = -1,
+	DNM_eCamera,
+	DNM_eBase,
+} DNM_tdeMechanicsID;
 
 /*
  * Dynamics Blocks
  */
+typedef struct DNM_stMecBaseIdCard
+{
+	/* Identity */
+	DNM_tdeMechanicsID	m_eIdentity;
+	unsigned long		ulFlags;		/* Bit field */
+
+	MTH_tdxReal m_xGravity;				/* gravity factor */
+	MTH_tdxReal m_xSlide;				/* slide parameter for collision control */
+	MTH_tdxReal m_xRebound;				/* rebound parameter for collision control */
+	MTH_tdxReal m_xSlopeLimit;			/* slope limit */
+	MTH_tdxReal m_xInertiaX;			/* x inertia */
+	MTH_tdxReal m_xInertiaY;			/* y inertia */
+	MTH_tdxReal m_xInertiaZ;			/* z inertia */
+	MTH_tdxReal m_xTiltIntensity;		/* tilt intensity */
+	MTH_tdxReal m_xTiltInertia;			/* tilt inertia   ( 0-1 ) */
+	MTH_tdxReal m_xTiltOrigin;			/* tilt rotation origin on Z axis */
+	MTH3D_tdstVector m_stMaxSpeed;		/* max speed limit */
+} DNM_tdstMecBaseIdCard;
 
 typedef struct DNM_tdstDynamicsBaseBlock
 {
 	long lObjectType;
-	void *pCurrentIdCard;
+	DNM_tdstMecBaseIdCard *pCurrentIdCard;
 
 	unsigned long ulFlags;
 	unsigned long ulEndFlags;

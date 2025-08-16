@@ -67,6 +67,12 @@ typedef struct ZDX_tdstZoneSetEncapsulation
 }
 ZDX_tdstZoneSetEncapsulation;
 
+typedef enum {
+	edmPriviligedDefault = 0x00,
+	edmPriviligedActivated = 0x01,
+	edmPriviligedDisactivated = 0x02,
+	edmNumberOfPrivilegedActivation
+} ZDX_tdeCollSetPrivilegedActivation;
 
 typedef struct ZDX_tdstCollSet
 {

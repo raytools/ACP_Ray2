@@ -104,6 +104,43 @@ typedef enum AI_tdeVariableType
 }
 AI_tdeVariableType;
 
+typedef enum AI_tdeKeyWordId
+{
+	AI_E_kw_If,
+	AI_E_kw_IfNot,
+	AI_E_kw_If2,
+	AI_E_kw_If4,
+	AI_E_kw_If8,
+	AI_E_kw_If16,
+	AI_E_kw_IfDebug,
+	AI_E_kw_IfNotU64,
+	AI_E_kw_Then,
+	AI_E_kw_Else,
+	AI_E_kw_EngineGoto,
+	AI_E_kw_Me,
+	AI_E_kw_MainActor,
+	AI_E_kw_Nobody,
+	AI_E_kw_NoSuperObject,
+	AI_E_kw_Nowhere,
+	AI_E_kw_EmptyText,
+	AI_E_kw_CapsNull,
+	AI_E_kw_NoGraph,
+	AI_E_kw_NoAction,
+	AI_E_kw_NoComport,
+	AI_E_kw_Schedule,
+	AI_E_kw_InterruptRule,
+	AI_E_kw_Vector,
+	AI_E_kw_ConstVector,
+	AI_E_kw_Endif,
+	AI_E_kw_Macro,
+	AI_E_kw_True,
+	AI_E_kw_False,
+	AI_E_kw_StopEngine,
+	AI_E_kw_StopRule,
+	AI_E_kw_NonStop,
+	AI_E_Nb_kw
+} AI_tdeKeyWordId;
+
 typedef enum AI_tdeObjectTreeInit
 {
 	AI_E_OTI_WhenGameStart = 0,
