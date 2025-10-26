@@ -75,3 +75,9 @@ void (*GAM_fn_vStdGameAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x4131
  ****************************************************************************/
 
 void (*GAM_fn_v3dDataAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x4180F0);
+
+/****************************************************************************
+ * ZdxStuff.h
+ ****************************************************************************/
+
+BOOL (*GAM_fn_hIsThisZoneActive)(HIE_tdstSuperObject* _hCharacter, unsigned char _ucZoneType, unsigned char _ucZoneNumber) = OFFSET(0x40c700);

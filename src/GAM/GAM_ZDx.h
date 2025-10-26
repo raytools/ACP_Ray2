@@ -15,6 +15,10 @@
 #define ZDX_C_wCollsetNbCollisionVectors	2
 #define ZDX_C_wCollsetNbCollisionReals		2
 
+#define ZDX_C_ucTypeZdd                          (unsigned char)0
+#define ZDX_C_ucTypeZdm                          (unsigned char)1
+#define ZDX_C_ucTypeZde                          (unsigned char)2
+#define ZDX_C_ucTypeZdr                          (unsigned char)3
 
 /* forward type definitions */
 typedef struct ZDX_tdstGeometricZdxList ZDX_tdstGeometricZdxList;
@@ -67,11 +71,12 @@ typedef struct ZDX_tdstZoneSetEncapsulation
 }
 ZDX_tdstZoneSetEncapsulation;
 
-typedef enum {
-	edmPriviligedDefault = 0x00,
-	edmPriviligedActivated = 0x01,
-	edmPriviligedDisactivated = 0x02,
-	edmNumberOfPrivilegedActivation
+typedef enum ZDX_tdeCollSetPrivilegedActivation
+{
+	ZDX_E_edmPriviligedDefault = 0x00,
+	ZDX_E_edmPriviligedActivated = 0x01,
+	ZDX_E_edmPriviligedDisactivated = 0x02,
+	ZDX_E_edmNumberOfPrivilegedActivation
 } ZDX_tdeCollSetPrivilegedActivation;
 
 typedef struct ZDX_tdstCollSet
@@ -109,3 +114,9 @@ typedef struct ZDX_tdstCollSet
 	} stColliderInfo;
 }
 ZDX_tdstCollSet;
+
+/*
+ * Functions
+ */
+
+ACP_FUNC BOOL(*GAM_fn_hIsThisZoneActive)(HIE_tdstSuperObject *_hCharacter, unsigned char _ucZoneType, unsigned char _ucZoneNumber);

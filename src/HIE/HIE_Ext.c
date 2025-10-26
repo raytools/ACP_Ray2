@@ -45,10 +45,10 @@ GAM_tdxObjectType HIE_fn_lFindPersonalTypeByName( char const *szName )
 
 
 /****************************************************************************
- * Object Type -> SuperObject
+ * Model Type -> SuperObject
  ****************************************************************************/
 
-HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( GAM_tdxObjectType lType, HIE_tdstSuperObject *p_stParent )
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByModelType( GAM_tdxObjectType lType, HIE_tdstSuperObject *p_stParent )
 {
 	HIE_tdstSuperObject *p_stSuperObj;
 	LST_M_DynamicForEach(p_stParent, p_stSuperObj)
@@ -58,20 +58,54 @@ HIE_tdstSuperObject * HIE_fn_p_stFindObjectChildByPersonalType( GAM_tdxObjectTyp
 
 		HIE_tdstEngineObject *p_stActor = HIE_M_hSuperObjectGetActor(p_stSuperObj);
 
-		if ( p_stActor->hStandardGame->lObjectPersonalType == lType )
+		if ( p_stActor->hStandardGame->lObjectModelType == lType )
 			return p_stSuperObj;
 	}
 
 	return NULL;
 }
 
-HIE_tdstSuperObject * HIE_fn_p_stFindObjectByPersonalType( GAM_tdxObjectType lType )
+HIE_tdstSuperObject * HIE_fn_p_stFindObjectByModelType( GAM_tdxObjectType lType )
 {
 	HIE_tdstSuperObject *p_stSuperObj = NULL;
 
-	p_stSuperObj = HIE_fn_p_stFindObjectChildByPersonalType(lType, *GAM_g_p_stDynamicWorld);
+	p_stSuperObj = HIE_fn_p_stFindObjectChildByModelType(lType, *GAM_g_p_stDynamicWorld);
 
 	if ( !p_stSuperObj )
+		p_stSuperObj = HIE_fn_p_stFindObjectChildByModelType(lType, *GAM_g_p_stInactiveDynamicWorld);
+
+	return p_stSuperObj;
+}
+
+
+/****************************************************************************
+ * Object Type -> SuperObject
+ ****************************************************************************/
+
+HIE_tdstSuperObject* HIE_fn_p_stFindObjectChildByPersonalType(GAM_tdxObjectType lType, HIE_tdstSuperObject* p_stParent)
+{
+	HIE_tdstSuperObject* p_stSuperObj;
+	LST_M_DynamicForEach(p_stParent, p_stSuperObj)
+	{
+		if (p_stSuperObj->ulType != HIE_C_Type_Actor)
+			continue;
+
+		HIE_tdstEngineObject* p_stActor = HIE_M_hSuperObjectGetActor(p_stSuperObj);
+
+		if (p_stActor->hStandardGame->lObjectPersonalType == lType)
+			return p_stSuperObj;
+	}
+
+	return NULL;
+}
+
+HIE_tdstSuperObject* HIE_fn_p_stFindObjectByPersonalType(GAM_tdxObjectType lType)
+{
+	HIE_tdstSuperObject* p_stSuperObj = NULL;
+
+	p_stSuperObj = HIE_fn_p_stFindObjectChildByPersonalType(lType, *GAM_g_p_stDynamicWorld);
+
+	if (!p_stSuperObj)
 		p_stSuperObj = HIE_fn_p_stFindObjectChildByPersonalType(lType, *GAM_g_p_stInactiveDynamicWorld);
 
 	return p_stSuperObj;
