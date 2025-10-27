@@ -59,3 +59,18 @@ typedef struct GEO_tdstElementSpheres
 	ACP_tdxIndex xIndexOfParallelBox;
 }
 GEO_tdstElementSpheres;
+
+typedef struct GEO_tdstIndexedAlignedBox_
+{
+	ACP_tdxIndex xMinPoint;
+	ACP_tdxIndex xMaxPoint;
+	GMT_tdstGameMaterial *hMaterial;
+} GEO_tdstIndexedAlignedBox;
+
+typedef struct GEO_tdstElementAlignedBoxes
+{
+	GEO_tdstIndexedAlignedBox *d_stListOfAlignedBoxes;
+	ACP_tdxIndex xNbAlignedBoxes;
+	ACP_tdxIndex xIndexOfParallelBox;
+}
+GEO_tdstElementAlignedBoxes;
