@@ -10,6 +10,7 @@
 #include "AI_Const.h"
 #include "AI_DsgVar.h"
 #include "AI_Scr.h"
+#include "AI_Way.h"
 
 #include "HIE/HIE_Def.h"
 #include "GMT/GMT.h"
@@ -81,6 +82,7 @@ ACP_FUNC void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind );
 
 ACP_FUNC void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject );
 
+ACP_FUNC unsigned char (*AI_fn_ucChangeComportIntell)( AI_tdstIntelligence *p_stIntelligence, AI_tdstComport *p_stComport);
 
 /* ultra operator */
 

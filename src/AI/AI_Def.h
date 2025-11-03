@@ -17,6 +17,12 @@ typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
 typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
 typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
 
+// AI_Way.h
+typedef struct WP_tdstWayPoint WP_tdstWayPoint;
+typedef struct WP_tdstGraphNode WP_tdstGraphNode;
+typedef struct WP_tdstGraph WP_tdstGraph;
+typedef struct WP_tdstArc WP_tdstArc;
+typedef struct WP_tdstListOfArc WP_tdstListOfArc;
 
 /* not yet defined */
 typedef enum AI_tdeProcedureId AI_tdeProcedureId;

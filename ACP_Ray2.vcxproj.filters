@@ -237,6 +237,9 @@
     <ClInclude Include="src\DNM\MEC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\AI\AI_Way.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

@@ -30,3 +30,5 @@ void (*AI_fn_vGetUltraOperatorPerso)(
 ) = OFFSET(0x4825B0);
 
 unsigned char (*AI_fn_ucGetProcedureUltraOperator)( AI_tdeProcedureId eProcId ) = OFFSET(0x482680);
+
+unsigned char (*AI_fn_ucChangeComportIntell)(AI_tdstIntelligence* p_stIntelligence, AI_tdstComport* p_stComport) = OFFSET(0x481080);
