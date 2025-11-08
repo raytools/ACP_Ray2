@@ -33,7 +33,8 @@ typedef enum AI_tdeDsgVarType
 	AI_E_dvt_IntegerArray,
 	AI_E_dvt_WayPointArray,
 	AI_E_dvt_TextArray,
-	AI_E_dvt_SuperObject
+	AI_E_dvt_SuperObject,
+	AI_E_Nb_dvt
 }
 AI_tdeDsgVarType;
 

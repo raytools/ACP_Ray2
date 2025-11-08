@@ -240,6 +240,9 @@
     <ClInclude Include="src\AI\AI_Way.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\DNM\MEC_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">

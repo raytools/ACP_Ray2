@@ -232,6 +232,46 @@ typedef struct DNM_tdstMecMatCharacteristics
 }
 DNM_tdstMecMatCharacteristics;
 
+typedef enum {
+	DNM_ObsType_Nothing = 0,
+	DNM_ObsType_Scenery = 0x1,
+	DNM_ObsType_Mobile = 0x2,
+	DNM_ObsType_DoubleEdge = 0x4,
+	DNM_ObsType_MobileWall = 0x9
+} DNM_tdeObstacleType;
+
+typedef struct DNM_tdstMecObstacle
+{
+	MTH_tdxReal m_xRate;
+	MTH3D_tdstVector m_stNorm;
+	MTH3D_tdstVector m_stContact;
+	GMT_tdstGameMaterial* hMyMaterial;
+	GMT_tdstGameMaterial *hCollidedMaterial;
+	HIE_tdstSuperObject* mp_stSupObj; /* Collided object */
+
+	DNM_tdeObstacleType m_eType;
+	ACP_tdxIndex m_xMyEntity; /* type of element : segment, point, edge, ... */
+	ACP_tdxIndex m_xCollidedEntity; /* type of element : segment, point, edge, ... */
+	MTH3D_tdstVector m_stTranslation; /* translation to get the actor out of the obstacle */
+	MTH3D_tdstVector m_stZoneMove; /* zone movement */
+	MTH3D_tdstVector m_stZonePosition; /* zone position when collide */
+	MTH_tdxReal m_xZoneRadius; /* radius of the collide zone */
+	DNM_tdstMecMatCharacteristics m_stProperties; /* Material properties */
+	DNM_tdstMecMatCharacteristics m_stMyProperties; /* Material properties of mine */
+} DNM_tdstMecObstacle;
+
+typedef struct DNM_tdstMecReport
+{
+	unsigned long m_ulCurrSurfaceState;
+
+	DNM_tdstMecObstacle m_stObstacle;
+	DNM_tdstMecObstacle m_stGround;
+	DNM_tdstMecObstacle m_stWall;
+	DNM_tdstMecObstacle m_stCharacter;
+	DNM_tdstMecObstacle m_stWater;
+	DNM_tdstMecObstacle m_stCeil;
+} DNM_tdstMecReport;
+
 
 /*
  * Functions

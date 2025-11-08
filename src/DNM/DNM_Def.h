@@ -8,6 +8,8 @@
 typedef struct DNM_tdstDynam DNM_tdstDynam;
 typedef struct DNM_tdstObstacle DNM_tdstObstacle;
 typedef struct DNM_tdstReport DNM_tdstReport;
+typedef struct DNM_tdstMecObstacle DNM_tdstMecObstacle;
+typedef struct DNM_tdstMecReport DNM_tdstMecReport;
 
 typedef struct DNM_tdstBaseDynamics DNM_tdstBaseDynamics;
 typedef struct DNM_tdstAdvancedDynamics DNM_tdstAdvancedDynamics;

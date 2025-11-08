@@ -12,3 +12,5 @@ void (*MEC_vInitTranslation)(
 	HIE_tdstSuperObject *hSupObj,
 	MTH3D_tdstVector *p_stVector
 ) = OFFSET(0x432DA0);
+
+DNM_tdstMecReport* const MEC_g_stReport = OFFSET(0x050a9a0);
