@@ -39,6 +39,22 @@ typedef struct GAM_tdstFrame3d
 }
 GAM_tdstFrame3d;
 
+typedef struct GAM_tdstAnim3d
+{
+	unsigned short		uwNumberOfFrames;
+	unsigned char		ucFrameRate;
+	unsigned char		ucMaxNumberOfElements;
+
+	struct tdstEvent_ *d_stAnimEvent;
+
+	MTH3D_tdstVector stOffsetMatrix;
+
+	/*tdstMorphData*/ void *d_stMorphDataArray;
+	unsigned short		uwNumOfA3dGENERAL;
+	unsigned char		ucNumberOfEvents;
+	unsigned char		ucUnused;		/* alignment*/
+} GAM_tdstAnim3d;
+
 typedef struct GAM_tdst3dData
 {
 	HIE_tdstState *h_InitialState;

@@ -6,6 +6,7 @@
 
 #include "HIE_Def.h"
 #include "GEO/GEO_Def.h"
+#include "GAM/GAM_Def.h"
 #include "LST.h"
 #include "MTH.h"
 #include "apidef.h"
@@ -76,7 +77,7 @@ typedef struct HIE_tdstState
 {
 	LST_M_StaticElementDecl(HIE_tdstState)
 
-	/* tdstAnim3d * */ void *p_stAnim;
+	GAM_tdstAnim3d *p_stAnim;
 
 	LST_M_StaticAnchorTo(HIE_tdstTransition) hForTransitionArray;
 	LST_M_StaticAnchorTo(HIE_tdstProhibit) hForProhibitArray;
