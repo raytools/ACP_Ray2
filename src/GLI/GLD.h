@@ -56,10 +56,21 @@ typedef struct GLD_tdstViewportAttributes
 }
 GLD_tdstViewportAttributes;
 
+typedef struct GLD_stViewport
+{
+	GLD_tdstViewportAttributes stViewAttrib;
+	BOOL bIsLocked;
+} GLD_tdstViewport;
+
 typedef struct GLD_tdstDeviceAttributes
 {
 	unsigned long dwHeight;
 	unsigned long dwWidth;
+
+	unsigned long dwBitsPerPixel;
+	unsigned long dwBytesPerPixel;
+
+	unsigned long unknownPadding;
 
 	MTH_tdxReal xPixelDimensionX;
 	MTH_tdxReal xPixelDimensionY;
@@ -72,8 +83,8 @@ typedef struct GLD_tdstDeviceAttributes
 	unsigned long dwFullScreenModeY;
 	unsigned long dwFullScreenModeBpp;
 
-	HANDLE hFullScreenModeWnd;
-	HANDLE hNormalModeWnd;
+	HANDLE hFullScreenModeWnd; // 640
+	HANDLE hNormalModeWnd; // 480
 
 	BOOL bFullScreen;
 	unsigned int uiTypeDriver;
@@ -98,4 +109,22 @@ ACP_VAR char *const GLD_g_cEraseBackground;
  * Functions
  */
 
-ACP_FUNC void (*GLD_bFlipDeviceWithSynchro)(void);
+
+ACP_FUNC BOOL (*GLD_bCreateDevice)(GLD_tdstDeviceAttributes pstDevAttrib, GLD_tdhDevice *phDev);
+ACP_FUNC GLD_tdstViewport* (*GLD_pGetViewport)(GLD_tdhDevice hDev, GLD_tdhViewport hOldVP);
+ACP_FUNC BOOL (*GLD_bSwapDeviceMode)(GLD_tdhDevice hDev, BOOL _bCanBeWindowed);
+ACP_FUNC BOOL (*GLD_bFlipDeviceWithSynchro)(void);
+ACP_FUNC void (*GLD_vGetFrontBufferIn24BitsAA)(GLD_tdhDevice _hGLDDevice, GLD_tdhViewport _hGLDViewport, unsigned long _lWidth, unsigned long _lHeight, unsigned char *p_lBufferDst);
+ACP_FUNC BOOL (*GLD_bRequestWriteToViewport2D)(GLD_tdhDevice hNotUsed, GLD_tdhViewport hVP, GLD_tdstViewportAttributes *pstViewAttrib, BOOL *pbCanWrite);
+ACP_FUNC BOOL(*GLD_bWriteToViewportFinished2D)(GLD_tdhDevice hNotUsed, GLD_tdhViewport hVP);
+ACP_FUNC void (*fn_vChangeViewPortPercent)(unsigned long	_ulMode,
+	unsigned long	_ulWhat,
+	unsigned long	_ulWidth,
+	unsigned long	_ulHeight,
+	unsigned long	_ulClipTop,
+	unsigned long	_ulClipLeft,
+	unsigned long	_ulClipBottom,
+	unsigned long	_ulClipRight,
+	int				_iPosX,
+	int				_iPosY
+);

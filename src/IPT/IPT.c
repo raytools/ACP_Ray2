@@ -21,3 +21,5 @@ long (*IPT_fn_lGetAnalogicValue)( IPT_tdstEntryElement *hEntryElement ) = OFFSET
 
 ACP_tdxBool (*IPT_fn_bIsEntryActionValid)( IPT_tdstEntryElement *hEntryElement ) = OFFSET(0x42EAC0);
 ACP_tdxBool (*IPT_fn_bIsKeyWordValid)( IPT_tdstKeyWordElement *hEntryElement ) = OFFSET(0x42EAF0);
+
+ACP_FUNC void (*IPT_fn_vEngineReadInput)(void) = OFFSET(0x413890);

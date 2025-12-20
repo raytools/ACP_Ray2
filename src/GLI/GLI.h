@@ -236,6 +236,7 @@ ACP_VAR POS_tdstCompletePosition **const GLI_g_p_stCurrentMatrix;
  * Functions
  */
 
+ACP_FUNC void (*GLI_xInitGli)(void);
 ACP_FUNC void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha );
 ACP_FUNC MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void );
 

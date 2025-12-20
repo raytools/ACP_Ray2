@@ -40,6 +40,7 @@ POS_tdstCompletePosition** const g_p_stCurrentMatrix = OFFSET(0x506B00);
  * Functions
  */
 
+void (*GLI_xInitGli)(void) = OFFSET(0x421670);
 void (*GLI_vSetGlobalAlpha)( MTH_tdxReal xAlpha ) = OFFSET(0x42A300);
 MTH_tdxReal (*GLI_fn_xGetGlobalAlpha)( void ) = OFFSET(0x42A360);
 
@@ -142,3 +143,6 @@ void (**GLI_DRV_vSendSingleTrianglesToClip_)(
 	GLI_tdst2DUVValues *a3_stUV,
 	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT
 	) = OFFSET(0x504828);
+
+void(**GLI_DRV_vFlipDeviceWithSyncro)(void) = OFFSET(0x504538);
+void(**GLI_DRV_vReadaptDisplay)(void) = OFFSET(0x504878);

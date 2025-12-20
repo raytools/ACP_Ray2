@@ -9,7 +9,6 @@
 #include "GAM_StdGame.h"
 #include "GAM_3dData.h"
 
-
 /****************************************************************************
  * GAM.h
  ****************************************************************************/
@@ -21,6 +20,8 @@ char const *const GAM_g_szCmdLine = OFFSET(0x4E0DA0);
 HIE_tdstSuperObject **const GAM_g_p_stDynamicWorld = OFFSET(0x0500FD0);
 HIE_tdstSuperObject **const GAM_g_p_stInactiveDynamicWorld = OFFSET(0x500FC4);
 HIE_tdstSuperObject **const GAM_g_p_stFatherSector = OFFSET(0x500FC0);
+
+HANDLE* g_hWnd = OFFSET(0x49F080);
 
 unsigned char *const GAM_g_ucIsEdInGhostMode = OFFSET(0x500370);
 char *const GAM_g_cIsLevelOk = OFFSET(0x500371);
@@ -53,6 +54,7 @@ void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame
 
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
 BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd ) = OFFSET(0x402020);
+BOOL(*GAM_fn_bCreateMainDisplayScreen)(void) = OFFSET(0x402150);
 long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);
 
 
