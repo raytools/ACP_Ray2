@@ -38,6 +38,9 @@ void (*GAM_fn_vChooseTheGoodInit)( void ) = OFFSET(0x404700);
 void (*GAM_fn_vChooseTheGoodDesInit)( void ) = OFFSET(0x404940);
 void (*GAM_fn_vEngine)( void ) = OFFSET(0x40ADA0);
 
+void (*GAM_fn_vDisplayAll)( void ) = OFFSET(0x40B150);
+void (*GAM_fn_vDisplayFix)( void ) = OFFSET(0x419A30);
+
 void (*GAM_fn_vSetEngineInPaused)( void ) = OFFSET(0x405CC0);
 void (*GAM_fn_vResetEngineFromPaused)( void ) = OFFSET(0x405CE0);
 void (*GAM_fn_vSaveEngineClock)( void ) = OFFSET(0x409E90);

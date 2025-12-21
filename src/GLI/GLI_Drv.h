@@ -20,5 +20,7 @@ ACP_FUNC void (**GLI_DRV_vSendSingleLineToClip_)( GLD_tdstViewportAttributes *p_
 	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobals, long lDrawModeMask, GEO_tdstColor *p_stColor );
 
 ACP_FUNC void (**GLI_DRV_vSendSingleTrianglesToClip_)( GLI_tdstAligned2DVector *a3_st2DVertex, GLI_tdst2DUVValues *a3_stUV, GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT );
-ACP_FUNC void (**GLI_DRV_vFlipDeviceWithSyncro)(void);
-ACP_FUNC void (**GLI_DRV_vReadaptDisplay)(void);
+ACP_FUNC void (**GLI_DRV_vFlipDeviceWithSyncro_)( void );
+ACP_FUNC void (**GLI_DRV_vReadaptDisplay_)( void );
+ACP_FUNC BOOL (**GLI_DRV_bEndScene_)( void );
+ACP_FUNC void (**GLI_DRV_xSendListToViewport_)( GLD_tdstViewportAttributes *p_stVpt );

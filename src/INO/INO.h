@@ -101,4 +101,5 @@ ACP_VAR unsigned short *const INO_g_a_wActiveKey;
  * Functions
  */
 
+ACP_FUNC short (*INO_fn_wInit)( HANDLE hInstance, HANDLE hWnd );
 ACP_FUNC short (*INO_fn_wReadKeyboard)( INO_tdstDevice *hDevice );

@@ -207,6 +207,9 @@ ACP_FUNC void (*GAM_fn_vChooseTheGoodDesInit)( void );
  */
 ACP_FUNC void (*GAM_fn_vEngine)( void );
 
+ACP_FUNC void (*GAM_fn_vDisplayAll)( void );
+ACP_FUNC void (*GAM_fn_vDisplayFix)( void );
+
 /** Pauses the engine. (also saves the engine timer and frame count) */
 ACP_FUNC void (*GAM_fn_vSetEngineInPaused)( void );
 /** Unpauses the engine. (also restores the engine timer and frame count) */
