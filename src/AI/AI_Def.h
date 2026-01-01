@@ -17,6 +17,8 @@ typedef struct AI_tdstGetSetParam AI_tdstGetSetParam;
 typedef struct AI_tdstNodeInterpret AI_tdstNodeInterpret;
 typedef struct AI_tdstTreeInterpret AI_tdstTreeInterpret;
 
+typedef struct AI_tdstExtendDatas4Ray AI_tdstExtendDatas4Ray;
+
 // AI_Way.h
 typedef struct WP_tdstWayPoint WP_tdstWayPoint;
 typedef struct WP_tdstGraphNode WP_tdstGraphNode;

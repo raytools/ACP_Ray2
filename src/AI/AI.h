@@ -65,11 +65,22 @@ typedef struct AI_tdstAIModel
 AI_tdstAIModel;
 
 
+// Some extra globals for Rayman
+typedef struct AI_tdstExtendDatas4Ray
+{
+	int			iMagicPoints4Ray;
+	int			iMagicPointsMax4Ray;
+	MTH_tdxReal	xAirPoints4Ray;
+	MTH_tdxReal	xAirPointsMax4Ray;
+} AI_tdstExtendDatas4Ray;
+
+
 /*
  * Variables
  */
 
 ACP_VAR ACP_tdxBool *const AI_g_bInGameMenu;
+ACP_VAR AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray;
 
 
 /*

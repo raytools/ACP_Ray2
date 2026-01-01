@@ -8,6 +8,7 @@
 
 
 ACP_tdxBool *const AI_g_bInGameMenu = OFFSET(0x4B9BC8);
+AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray = OFFSET(0x4E9300);
 
 AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)(
 	HIE_tdstSuperObject *p_stSpo,
