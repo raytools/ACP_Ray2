@@ -140,3 +140,4 @@ GAM_tdst3dData;
 
 ACP_FUNC void (*GAM_fn_v3dDataAlloc)( HIE_tdstEngineObject *p_stObject );
 ACP_FUNC ACP_tdxBool(*PLA_fn_bSetNewState)(HIE_tdstSuperObject *p_stSuperObject, HIE_tdstState *h_WantedState, ACP_tdxBool _bForce, ACP_tdxBool _bHandleSkippedEventsIfRelevant);
+ACP_FUNC ACP_tdxBool(*GAM_fn_b3dDataCanComputeBrain)(HIE_tdstSuperObject *p_stSuperObject);

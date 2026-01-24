@@ -81,6 +81,7 @@ void (*GAM_fn_vStdGameAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x4131
 
 void (*GAM_fn_v3dDataAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x4180F0);
 ACP_tdxBool(*PLA_fn_bSetNewState)(HIE_tdstSuperObject* p_stSuperObject, HIE_tdstState* h_WantedState, ACP_tdxBool _bForce, ACP_tdxBool _bHandleSkippedEventsIfRelevant) = OFFSET(0x40faa0);
+ACP_tdxBool(*GAM_fn_b3dDataCanComputeBrain)(HIE_tdstSuperObject* p_stSuperObject) = OFFSET(0x4188c0);
 
 /****************************************************************************
  * ZdxStuff.h

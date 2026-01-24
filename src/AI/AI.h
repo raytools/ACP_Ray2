@@ -89,12 +89,16 @@ ACP_VAR AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray;
 
 ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode, AI_tdstGetSetParam *p_stParam );
 ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalCondition)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode, AI_tdstGetSetParam *p_stParam );
+ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalKeyWord)( HIE_tdstSuperObject *p_stSpo, AI_tdstNodeInterpret *p_stNode, AI_tdstGetSetParam *p_stParam );
 
 ACP_FUNC void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind );
 
 ACP_FUNC void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject );
 
 ACP_FUNC unsigned char (*AI_fn_ucChangeComportIntell)( AI_tdstIntelligence *p_stIntelligence, AI_tdstComport *p_stComport);
+
+/* function tables */
+
 
 /* ultra operator */
 

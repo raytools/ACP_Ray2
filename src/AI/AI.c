@@ -21,6 +21,11 @@ AI_tdstNodeInterpret* (*AI_fn_p_stEvalCondition)(HIE_tdstSuperObject* p_stSpo,
 	AI_tdstGetSetParam* p_stParam
 	) = OFFSET(0x480830);
 
+AI_tdstNodeInterpret* (*AI_fn_p_stEvalKeyWord)(HIE_tdstSuperObject* p_stSpo,
+	AI_tdstNodeInterpret* p_stNode,
+	AI_tdstGetSetParam* p_stParam
+	) = OFFSET(0x480800);
+
 void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind ) = OFFSET(0x466D00);
 
 void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x417E10);
