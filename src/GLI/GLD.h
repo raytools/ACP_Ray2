@@ -68,11 +68,6 @@ typedef struct GLD_tdstDeviceAttributes
 	unsigned long dwHeight;
 	unsigned long dwWidth;
 
-	unsigned long dwBitsPerPixel;
-	unsigned long dwBytesPerPixel;
-
-	unsigned long unknownPadding;
-
 	MTH_tdxReal xPixelDimensionX;
 	MTH_tdxReal xPixelDimensionY;
 
