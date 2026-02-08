@@ -101,6 +101,15 @@ IPT_tdstInput;
 ACP_VAR IPT_tdstInput *const IPT_g_stInputStructure;
 ACP_VAR IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine;
 
+ACP_VAR float *const IPT_g_FieldPadGlobalVectorX;
+ACP_VAR float *const IPT_g_FieldPadGlobalVectorY;
+ACP_VAR float *const IPT_g_FieldPadGlobalVectorZ;
+ACP_VAR float *const IPT_g_FieldPadHorizontalAxis;
+ACP_VAR float *const IPT_g_FieldPadVerticalAxis;
+ACP_VAR float *const IPT_g_FieldPadAnalogForce;
+ACP_VAR float *const IPT_g_FieldPadTrueAnalogForce;
+ACP_VAR float *const IPT_g_FieldPadRotationAngle;
+ACP_VAR int		*const IPT_g_FieldPadSector;
 
 /*
  * Functions

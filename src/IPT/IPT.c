@@ -7,9 +7,21 @@
 #include "IPT.h"
 
 
+/* Variables */
 IPT_tdstInput *const IPT_g_stInputStructure = OFFSET(0x509E60);
 IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine = OFFSET(0x50A980);
 
+float *const IPT_g_FieldPadGlobalVectorX = OFFSET(0x4b9b68);
+float *const IPT_g_FieldPadGlobalVectorY = OFFSET(0x4b9b6c);
+float *const IPT_g_FieldPadGlobalVectorZ = OFFSET(0x4b9b70);
+float *const IPT_g_FieldPadHorizontalAxis = OFFSET(0x4b9b74);
+float *const IPT_g_FieldPadVerticalAxis = OFFSET(0x4b9b76);
+float *const IPT_g_FieldPadAnalogForce = OFFSET(0x4b9b78);
+float *const IPT_g_FieldPadTrueAnalogForce = OFFSET(0x4b9b7c);
+float *const IPT_g_FieldPadRotationAngle = OFFSET(0x4b9b80);
+int   *const IPT_g_FieldPadSector = OFFSET(0x4b9b84);
+
+/* Functions */
 void (*IPT_fn_vResetInputEntry)( void ) = OFFSET(0x42E090);
 void (*IPT_fn_vActualizeHistoric)(void) = OFFSET(0x430880);
 

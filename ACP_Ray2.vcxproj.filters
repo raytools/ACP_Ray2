@@ -243,6 +243,9 @@
     <ClInclude Include="src\DNM\MEC_Const.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\RND\RND.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AI\AI.c">
@@ -327,6 +330,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\DNM\MEC.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RND\RND.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

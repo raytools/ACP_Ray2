@@ -44,6 +44,7 @@ extern "C" {
 #include "FIL/FIL.h"
 #include "FON/FON.h"
 #include "AGO/AGO.h"
+#include "RND/RND.h"
 #include "JFFTXT/JFFTXT.h"
 
 /* Include the GLI driver DLL functions */

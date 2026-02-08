@@ -254,6 +254,7 @@ cd .</Command>
     <ClInclude Include="src\IPT\IPT_Ext.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\PO\PO.h" />
+    <ClInclude Include="src\RND\RND.h" />
     <ClInclude Include="src\SCT\SCT.h" />
     <ClInclude Include="src\SCT\SCT_Def.h" />
     <ClInclude Include="src\SND\SND.h" />
@@ -309,6 +310,7 @@ cd .</Command>
     <ClCompile Include="src\JFFTXT\JFFTXT.c" />
     <ClCompile Include="src\MMG\MMG.c" />
     <ClCompile Include="src\POS\POS.c" />
+    <ClCompile Include="src\RND\RND.c" />
     <ClCompile Include="src\SCT\SCT.c" />
     <ClCompile Include="src\SND\SND.c" />
     <ClCompile Include="src\SND\SND_Ext.c" />
