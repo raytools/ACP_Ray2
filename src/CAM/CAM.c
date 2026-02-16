@@ -11,3 +11,4 @@ void (*CAM_fn_vUpdateTargetPosition)( CAM_tdstCineinfo *hCineinfo ) = OFFSET(0x4
 
 void (*CAM_fn_vInitCompleteCineinfo)( CAM_tdstCineinfo *hCineinfo ) = OFFSET(0x413DB0);
 void (*CAM_fn_vSetCineinfoWorkFromCurrent)( CAM_tdstCineinfo *hCineinfo ) = OFFSET(0x4140A0);
+void (*CAM_fn_vCameraManagement)() = OFFSET(0x40bad0);

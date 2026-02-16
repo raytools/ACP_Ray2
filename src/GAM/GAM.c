@@ -54,11 +54,18 @@ void (*GAM_fn_vSetNextLevelName)( char const *szName ) = OFFSET(0x404DC0);
 char * (*GAM_fn_p_szGetFirstLevelName)( void ) = OFFSET(0x404CF0);
 void (*GAM_fn_vSetFirstLevelName)( char const *szName ) = OFFSET(0x404CC0);
 void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame ) = OFFSET(0x4054D0);
+void (*GAM_fn_vReinitTheMap)() = OFFSET(0x4032A0);
 
 HANDLE (*GAM_fn_hGetWindowHandle)( void ) = OFFSET(0x401400);
 BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd ) = OFFSET(0x402020);
 BOOL(*GAM_fn_bCreateMainDisplayScreen)(void) = OFFSET(0x402150);
 long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);
+
+void (*GAM_fn_vUpdateDynamicHierarchy)() = OFFSET(0x40b7b0);
+void (*GAM_fn_vTreatDynamicHierarchy)(HIE_tdstSuperObject* hSuperObj, HIE_tdstSuperObject* hMainChar, MTH3D_tdstVector* p_stMainCharTranslation) = OFFSET(0x40a7c0);
+void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x40aa10);
+
+void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)() = OFFSET(0x40c2f0);
 
 
 /****************************************************************************

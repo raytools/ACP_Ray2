@@ -10,6 +10,7 @@
 #include "HIE/HIE_Def.h"
 #include "GLI/GLI_Def.h"
 #include "SND/SND_Def.h"
+#include <GLI/GLD.h>
 #include "LST.h"
 #include "MTH.h"
 #include "apidef.h"
@@ -116,3 +117,6 @@ SCT_tdstSectInfo;
  */
 
 ACP_FUNC void (*SCT_fn_vRemoveObjectInSectorList)( HIE_tdstSuperObject *hCharacter );
+ACP_FUNC long (*SCT_fn_lSendSectorToViewportStatic)(MTH3D_tdstVector *_p_stAbsolutePositionOfCamera, GLD_tdstViewportAttributes *_p_stVpt, HIE_tdstSuperObject *_hSprObjSector, long _lDrawMask);
+ACP_FUNC void (*SCT_fn_vSendSectorWhereIAmToViewportWithMirror) (MTH3D_tdstVector *_p_stAbsolutePositionOfCamera, GLD_tdhDevice _hDevice, GLD_tdhViewport _hViewport,
+	GLD_tdstViewportAttributes *_p_stVpt, HIE_tdstSuperObject *_hSprObjSector, long _lDrawMask);

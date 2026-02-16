@@ -111,5 +111,7 @@ ACP_FUNC ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix )
 ACP_FUNC void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj );
 ACP_FUNC ACP_tdxBool (*HIE_fn_bPopMatrix)( void );
 ACP_FUNC void (*HIE_fn_vComputeNewRelativeMatrix)( HIE_tdstSuperObject *hSprObj );
+ACP_FUNC void (*HIE_fn_vInvalidateAllGlobalMatrices)();
 
 ACP_FUNC void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO );
+ACP_FUNC void (*HIE_fn_vSendCharacterModulesToViewPort)(GLD_tdstViewportAttributes *_hVpt, HIE_tdstSuperObject *_hSprObj, long _DrawMask);

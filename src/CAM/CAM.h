@@ -190,3 +190,4 @@ ACP_FUNC void (*CAM_fn_vUpdateTargetPosition)( CAM_tdstCineinfo *hCineinfo );
 
 ACP_FUNC void (*CAM_fn_vInitCompleteCineinfo)( CAM_tdstCineinfo *hCineinfo );
 ACP_FUNC void (*CAM_fn_vSetCineinfoWorkFromCurrent)( CAM_tdstCineinfo *hCineinfo );
+ACP_FUNC void (*CAM_fn_vCameraManagement)();

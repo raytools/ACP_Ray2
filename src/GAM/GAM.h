@@ -233,8 +233,15 @@ ACP_FUNC void (*GAM_fn_vSetFirstLevelName)( char const *szName );
  * @param bSaveGame Show the yes/no save prompt
  */
 ACP_FUNC void (*GAM_fn_vAskToChangeLevel)( char const *szLevelName, ACP_tdxBool bSaveGame );
+ACP_FUNC void (*GAM_fn_vReinitTheMap)();
 
 ACP_FUNC HANDLE (*GAM_fn_hGetWindowHandle)( void );
 ACP_FUNC BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd );
 ACP_FUNC BOOL (*GAM_fn_bCreateMainDisplayScreen)(void);
 ACP_FUNC long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam );
+
+ACP_FUNC void (*GAM_fn_vUpdateDynamicHierarchy)();
+ACP_FUNC void (*GAM_fn_vTreatDynamicHierarchy)(HIE_tdstSuperObject *hSuperObj, HIE_tdstSuperObject *hMainChar, MTH3D_tdstVector *p_stMainCharTranslation);
+ACP_FUNC void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject *hSuperObj);
+
+ACP_FUNC void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)();

@@ -100,3 +100,4 @@ ACP_VAR long *const SND_g_lSoundObjectTypeMenu;
  */
 
 ACP_FUNC long (*SND_fn_lSendRequestSound)( long lIndice, long lType, SND_tduRefEvt uEvt, long lPrio, SND_td_pfn_vSoundCallback pfnProc );
+ACP_FUNC void (*SND_fn_vSynchroSound)();

@@ -22,5 +22,7 @@ ACP_tdxBool (*HIE_fn_bStoreMatrix)( POS_tdstCompletePosition *hMatrix ) = OFFSET
 void (*HIE_fn_vPushMatrix)( HIE_tdstSuperObject *hSprObj ) = OFFSET(0x45BF80);
 ACP_tdxBool (*HIE_fn_bPopMatrix)( void ) = OFFSET(0x45B7E0);
 void (*HIE_fn_vComputeNewRelativeMatrix)( HIE_tdstSuperObject *hSprObj ) = OFFSET(0x45C030);
+void (*HIE_fn_vInvalidateAllGlobalMatrices)() = OFFSET(0x45bf10);
 
 void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO ) = OFFSET(0x45B9B0);
+void (*HIE_fn_vSendCharacterModulesToViewPort)(GLD_tdstViewportAttributes* _hVpt, HIE_tdstSuperObject* _hSprObj, long _DrawMask) = OFFSET(0x45c360);

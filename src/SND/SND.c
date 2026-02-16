@@ -13,3 +13,4 @@ long *const SND_g_lSoundObjectTypeMenu = OFFSET(0x4FF78C);
 
 
 long (*SND_fn_lSendRequestSound)( long lIndice, long lType, SND_tduRefEvt uEvt, long lPrio, SND_td_pfn_vSoundCallback pfnProc ) = OFFSET(0x452D20);
+void (*SND_fn_vSynchroSound)() = OFFSET(0x452b70);
