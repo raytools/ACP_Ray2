@@ -9,6 +9,9 @@
 #include "CAM_Def.h"
 
 #include "HIE/HIE_Def.h"
+#include "DNM/DNM_Def.h"
+#include "AI/AI_Def.h"
+#include "POS/POS.h"
 #include "MTH.h"
 #include "apidef.h"
 
@@ -181,13 +184,136 @@ typedef struct CAM_tdstCineinfo
 }
 CAM_tdstCineinfo;
 
+typedef struct CAM_tdstCameraConstants {
+
+	MTH_tdxReal xRayCameraSphereToGo1;
+	MTH_tdxReal xRayCameraSphereToGo2;
+	MTH_tdxReal xRayCameraSphereToSee1;
+	MTH_tdxReal xRayCameraSphereToSee2;
+
+	MTH_tdxReal xBaseAngleComputePosNormal;
+	MTH_tdxReal xBaseAngleComputePosFailure;
+
+	MTH_tdxReal xAverageForComputePos;
+	MTH_tdxReal xAverageForComputeLinearSpeed;
+
+	MTH_tdxReal xMinLinearSpeedCamera;
+	MTH_tdxReal xMinLinearSpeedTgtPerso;
+	MTH_tdxReal xMinAngularSpeedTgtPerso;
+
+	MTH_tdxReal xEpsilonDynTgtAngle;
+	MTH_tdxReal xEpsilonDynTgtFocalAngle;
+	MTH_tdxReal xEpsilonForEqualVectors;
+
+	MTH_tdxReal xOffsetMinDistPerso;
+	MTH_tdxReal xDistanceForNoCut;
+
+	short xNumRayCameraCanGo;
+	short xNumRayCameraCanSee;
+
+	short xTickTestVisibility;
+	short xTickFindBetterPos;
+	short xTickFindBetterPosIfNoMove;
+	short xTickFailureCantSee;
+
+	MTH_tdxReal xDynSpeed_LinearFactNorm;
+	MTH_tdxReal xDynSpeed_LinearMax;
+	MTH_tdxReal xDynSpeed_LinearMulPerso;
+	MTH_tdxReal xDynSpeed_AngularFactNorm;
+	MTH_tdxReal xDynSpeed_AngularMax;
+	MTH_tdxReal xDynSpeed_AngularMulPerso;
+	MTH_tdxReal xDynSpeed_TargetFactNorm;
+	MTH_tdxReal xDynSpeed_TargetMax;
+	MTH_tdxReal xDynSpeed_TargetMulPerso;
+
+	MTH_tdxReal xBaseCutAngle;
+	MTH_tdxReal xCutAngleFactorPos;
+	MTH_tdxReal xCutAngleFactorTgt;
+
+	short			wFlags;
+	short			wAlign;
+} CAM_tdstCameraConstants;
+
+typedef struct CAM_tdstComputedPosition
+{
+	MTH3D_tdstVector stTarget;
+	MTH3D_tdstVector stMovePos;
+	MTH3D_tdstVector stRefAxisZ;
+	MTH_tdxReal xLinearSpeed;
+	MTH_tdxReal xAngularSpeed;
+	MTH_tdxReal xTargetSpeed;
+} CAM_tdstComputedPosition;
+
+typedef struct CAM_tdstUpdateCamera
+{
+	DNM_tdstReport *p_stReport;
+	DNM_tdstDynamics *p_stDynamics;
+
+	CAM_tdstCineinfo*	hCineinfo;
+	CAM_tdstInternalStructurCineinfo*	hCineinfoWork;
+	CAM_tdstInternalStructurCineinfo*	hCineinfoCurrent;
+	CAM_tdstInternalStructurCineinfo*	hCineinfoInit;
+	CAM_tdstInternalStructurCineinfo*	hCineinfoVisibility;
+
+	HIE_tdstSuperObject* hSuperObjCamera;
+
+	MTH3D_tdstVector stCurrentCameraPos;
+	MTH3D_tdstVector stWantedCameraPos;
+	MTH3D_tdstVector stRealWantedCameraPos;
+									 
+	MTH3D_tdstVector stTargetedPersoRealPos;
+	MTH3D_tdstVector stTargetedPersoPos;
+	MTH3D_tdstVector stSecondTargetedPersoRealPos;
+	MTH3D_tdstVector stSecondTargetedPersoPos;
+
+	char cHasCutAlpha;
+	MTH_tdxReal xAngleAlphaCut;
+	MTH_tdxReal xAngleDeltaAlphaCut;
+
+	char cTgtPersoIsMovingAbsolute;
+	MTH3D_tdstVector stTgtPersoMoveAbsolute;
+	char cTgtPersoIsMovingRelative;
+	MTH3D_tdstVector stTgtPersoMoveRelative;
+
+	CAM_tdstComputedPosition		stCptPos;
+} CAM_tdstUpdateCamera;
+
+/* 
+ * Variables
+ */
+
+ACP_VAR CAM_tdstInternalStructurCineinfo *const CAM_g_stIdeal;
+
+ACP_VAR char *const CAM_g_cCanTestStatic;
+ACP_VAR char *const CAM_g_cRefAxisIsAlreadyComputed;
+ACP_VAR char *const CAM_g_cNoDynChangeTheta;
+ACP_VAR char *const CAM_g_cJustBetterPos;
+
+ACP_VAR CAM_tdstCameraConstants *const CAM_g_stCameraConstants;
+ACP_VAR CAM_tdstCameraConstants *const CAM_g_stCameraCopyConstants;
+
+ACP_VAR HIE_tdstSuperObject **const g_hOldTargetedPerso;
 
 /*
  * Functions
  */
 
+
+ACP_FUNC AI_tdstNodeInterpret *(*CAM_fn_p_stUpdatePosition)(HIE_tdstSuperObject* _hSuperObjPerso, AI_tdstNodeInterpret *p_stTree);
 ACP_FUNC void (*CAM_fn_vUpdateTargetPosition)( CAM_tdstCineinfo *hCineinfo );
 
 ACP_FUNC void (*CAM_fn_vInitCompleteCineinfo)( CAM_tdstCineinfo *hCineinfo );
 ACP_FUNC void (*CAM_fn_vSetCineinfoWorkFromCurrent)( CAM_tdstCineinfo *hCineinfo );
 ACP_FUNC void (*CAM_fn_vCameraManagement)();
+ACP_FUNC long (*CAM_lHaveITakeSThgIntoTheMug)(DNM_tdstMecObstacle *_p_stResultObstacle, HIE_tdstSuperObject *_p_stSupObj, POS_tdstCompletePosition * _p_stStartPosition, POS_tdstCompletePosition * _p_stEndPosition);
+ACP_FUNC DNM_tdstMecObstacle* (*DNM_p_stObstacleCameraObstacle)(DNM_tdstMecObstacle *_p_stObstacle, DNM_tdstDynamics *_p_stDynamics, DNM_tdstParsingDatas *_p_stExternData, HIE_tdstSuperObject *_hSupObj,
+	MTH3D_tdstVector *_p_stWantedPosition, MTH3D_tdstVector *_p_stNewPosition, MTH_tdxReal _xDT);
+ACP_FUNC DNM_tdstDynamics *(*DNM_p_stDynamicsCameraParsing) (DNM_tdstDynamics *_p_stDynamics, HIE_tdstSuperObject *_h_SupObj, DNM_tdstParsingDatas *_p_stExternData, void *_h_MecIdCard, MTH_tdxReal _xDT);
+
+ACP_FUNC void (*CAM_fn_vInitCameraStructure)(HIE_tdstSuperObject *_hSuperObjPerso, CAM_tdstUpdateCamera *_p_stStruct);
+ACP_FUNC void (*MEC_fn_vUpdateSpeed)(HIE_tdstSuperObject *hSupObj);
+ACP_FUNC void (*CAM_fn_vRemindSpeed)(CAM_tdstCineinfo *_hCineinfo, MTH_tdstMove *_p_Speed);
+ACP_FUNC void (*CAM_fn_vRemindPos)(CAM_tdstCineinfo *_hCineinfo, MTH_tdstMove *_p_Pos);
+ACP_FUNC void (*CAM_fn_vRemindTime)(CAM_tdstCineinfo *_hCineinfo, MTH_tdxReal _dt);
+ACP_FUNC void (*CAM_fn_vUpdateGeneralCamera)(CAM_tdstUpdateCamera *_p_stStruct);
+ACP_FUNC void (*CAM_fn_vSendParametersToParsing)(CAM_tdstUpdateCamera *_p_stStruct);

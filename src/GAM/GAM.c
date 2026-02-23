@@ -26,6 +26,7 @@ HANDLE* g_hWnd = OFFSET(0x49F080);
 unsigned char *const GAM_g_ucIsEdInGhostMode = OFFSET(0x500370);
 char *const GAM_g_cIsLevelOk = OFFSET(0x500371);
 
+MTH3D_tdstVector * const g_stSpeedVector = OFFSET(0x4a6c48);
 
 GAM_tdeEngineMode (*GAM_fn_ucGetEngineMode)( void ) = OFFSET(0x404C60);
 void (*GAM_fn_vChangeEngineMode)( GAM_tdeEngineMode ucMode ) = OFFSET(0x404BF0);
@@ -67,6 +68,8 @@ void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject* hSuperObj)
 
 void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)() = OFFSET(0x40c2f0);
 
+void (*GAM_fn_vMakeCharacterReact)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x412230);
+void (*GAM_fn_vMakeCharacterThink)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x4120d0);
 
 /****************************************************************************
  * GAM_ObjType.h

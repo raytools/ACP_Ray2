@@ -46,6 +46,7 @@ extern "C" {
 #include "AGO/AGO.h"
 #include "RND/RND.h"
 #include "MGT/MGT.h"
+#include "COL/COL.h"
 #include "JFFTXT/JFFTXT.h"
 
 /* Include the GLI driver DLL functions */

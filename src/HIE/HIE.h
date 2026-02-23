@@ -115,3 +115,4 @@ ACP_FUNC void (*HIE_fn_vInvalidateAllGlobalMatrices)();
 
 ACP_FUNC void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO );
 ACP_FUNC void (*HIE_fn_vSendCharacterModulesToViewPort)(GLD_tdstViewportAttributes *_hVpt, HIE_tdstSuperObject *_hSprObj, long _DrawMask);
+ACP_FUNC void (*HIE_fn_vSendStaticWorldToViewport)(GLD_tdstViewportAttributes *_hVpt, HIE_tdstSuperObject *_hSprObj, long _DrawMask, long _lCullingResult);

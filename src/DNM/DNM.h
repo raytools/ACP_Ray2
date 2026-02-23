@@ -277,4 +277,18 @@ typedef struct DNM_tdstMecReport
  * Functions
  */
 
+ACP_FUNC DNM_tdstDynamics *(*DNM_p_stDynamicsCameraMechanics)(
+	DNM_tdstDynamics *_p_stDynamics,
+	HIE_tdstSuperObject* _hSupObj,
+	DNM_tdstParsingDatas *_p_stParsingDatas,
+	void*	_h_MecIdCard,
+	MTH_tdxReal						_xDT);
+
+ACP_FUNC DNM_tdstDynamics *(*MEC_p_stDynamicsBaseMechanics)(
+	DNM_tdstDynamics *_p_stDynamics,
+	HIE_tdstSuperObject *_hSupObj,
+	DNM_tdstParsingDatas *_p_stParsingDatas,
+	void *_h_MecIdCard,
+	MTH_tdxReal						_xDT);
+
 ACP_FUNC MTH_tdxReal (*DNM_fn_xComputeAngleOfPerso)( HIE_tdstSuperObject *pSuperObjPerso );

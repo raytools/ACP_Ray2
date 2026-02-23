@@ -35,3 +35,4 @@ ACP_tdxBool (*IPT_fn_bIsEntryActionValid)( IPT_tdstEntryElement *hEntryElement )
 ACP_tdxBool (*IPT_fn_bIsKeyWordValid)( IPT_tdstKeyWordElement *hEntryElement ) = OFFSET(0x42EAF0);
 
 ACP_FUNC void (*IPT_fn_vEngineReadInput)(void) = OFFSET(0x413890);
+ACP_FUNC void (*IPT_fn_vReadInput)(void) = OFFSET(0x42e710);

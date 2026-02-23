@@ -128,3 +128,4 @@ ACP_FUNC ACP_tdxBool (*IPT_fn_bIsEntryActionValid)( IPT_tdstEntryElement *hEntry
 ACP_FUNC ACP_tdxBool (*IPT_fn_bIsKeyWordValid)( IPT_tdstKeyWordElement *hEntryElement );
 
 ACP_FUNC void (*IPT_fn_vEngineReadInput)(void);
+ACP_FUNC void (*IPT_fn_vReadInput)(void);

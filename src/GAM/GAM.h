@@ -168,6 +168,9 @@ ACP_VAR HANDLE *g_hWnd;
 ACP_VAR unsigned char *const GAM_g_ucIsEdInGhostMode;
 ACP_VAR char *const GAM_g_cIsLevelOk;
 
+/** Static variable **/
+ACP_VAR MTH3D_tdstVector * const g_stSpeedVector; // Used in PLA_fn_stGetLinearSpeedVector
+
 /*
  * Functions
  */
@@ -245,3 +248,6 @@ ACP_FUNC void (*GAM_fn_vTreatDynamicHierarchy)(HIE_tdstSuperObject *hSuperObj, H
 ACP_FUNC void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject *hSuperObj);
 
 ACP_FUNC void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)();
+
+ACP_FUNC void (*GAM_fn_vMakeCharacterReact)(HIE_tdstSuperObject *hSuperObj);
+ACP_FUNC void (*GAM_fn_vMakeCharacterThink)(HIE_tdstSuperObject *hSuperObj);

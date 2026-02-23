@@ -26,3 +26,4 @@ void (*HIE_fn_vInvalidateAllGlobalMatrices)() = OFFSET(0x45bf10);
 
 void (*HIE_fn_SO_vSetSuperimposedFlag)( HIE_tdstSuperObject *hSO ) = OFFSET(0x45B9B0);
 void (*HIE_fn_vSendCharacterModulesToViewPort)(GLD_tdstViewportAttributes* _hVpt, HIE_tdstSuperObject* _hSprObj, long _DrawMask) = OFFSET(0x45c360);
+void (*HIE_fn_vSendStaticWorldToViewport)(GLD_tdstViewportAttributes* _hVpt, HIE_tdstSuperObject* _hSprObj, long _DrawMask, long _lCullingResult) = OFFSET(0x45c210);
