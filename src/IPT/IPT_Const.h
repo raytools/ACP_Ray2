@@ -4,6 +4,10 @@
 
 #pragma once
 
+#define IPT_C_Pad_DefaultXMinCalibration -50
+#define IPT_C_Pad_DefaultXMaxCalibration 50
+#define IPT_C_Pad_DefaultYMinCalibration -50
+#define IPT_C_Pad_DefaultYMaxCalibration 50
 
 typedef enum IPT_tdeDeviceEvent
 {

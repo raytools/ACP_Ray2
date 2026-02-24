@@ -11,6 +11,13 @@
 IPT_tdstInput *const IPT_g_stInputStructure = OFFSET(0x509E60);
 IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine = OFFSET(0x50A980);
 
+signed char* const IPT_g_cJoystickXcenter = OFFSET(0x4b9b5c);
+signed char* const IPT_g_cJoystickYcenter = OFFSET(0x4b9b60);
+signed char* const IPT_g_cJoystickXmin = OFFSET(0x4a40a4);
+signed char* const IPT_g_cJoystickYmin = OFFSET(0x4a40ac);
+signed char* const IPT_g_cJoystickXmax = OFFSET(0x4a40a8);
+signed char* const IPT_g_cJoystickYmax = OFFSET(0x4a40b0);
+
 float *const IPT_g_FieldPadGlobalVectorX = OFFSET(0x4b9b68);
 float *const IPT_g_FieldPadGlobalVectorY = OFFSET(0x4b9b6c);
 float *const IPT_g_FieldPadGlobalVectorZ = OFFSET(0x4b9b70);

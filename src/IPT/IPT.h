@@ -101,6 +101,13 @@ IPT_tdstInput;
 ACP_VAR IPT_tdstInput *const IPT_g_stInputStructure;
 ACP_VAR IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine;
 
+ACP_VAR signed char *const IPT_g_cJoystickXcenter;
+ACP_VAR signed char *const IPT_g_cJoystickYcenter;
+ACP_VAR signed char *const IPT_g_cJoystickXmin;
+ACP_VAR signed char *const IPT_g_cJoystickYmin;
+ACP_VAR signed char *const IPT_g_cJoystickXmax;
+ACP_VAR signed char *const IPT_g_cJoystickYmax;
+
 ACP_VAR float *const IPT_g_FieldPadGlobalVectorX;
 ACP_VAR float *const IPT_g_FieldPadGlobalVectorY;
 ACP_VAR float *const IPT_g_FieldPadGlobalVectorZ;
