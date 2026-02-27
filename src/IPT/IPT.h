@@ -118,6 +118,11 @@ ACP_VAR float *const IPT_g_FieldPadTrueAnalogForce;
 ACP_VAR float *const IPT_g_FieldPadRotationAngle;
 ACP_VAR int		*const IPT_g_FieldPadSector;
 
+ACP_VAR ACP_tdxBool *const IPT_g_bCancelKeyboardInertia;
+ACP_VAR float *const IPT_s_xPrevKeyXValue;
+ACP_VAR float *const IPT_s_xPrevKeyYValue;
+
+
 /*
  * Functions
  */

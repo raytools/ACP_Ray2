@@ -14,8 +14,8 @@ IPT_tdstKeyAndPadDefine *const IPT_gd_hKeyAndPadDefine = OFFSET(0x50A980);
 signed char* const IPT_g_cJoystickXcenter = OFFSET(0x4b9b5c);
 signed char* const IPT_g_cJoystickYcenter = OFFSET(0x4b9b60);
 signed char* const IPT_g_cJoystickXmin = OFFSET(0x4a40a4);
-signed char* const IPT_g_cJoystickYmin = OFFSET(0x4a40ac);
 signed char* const IPT_g_cJoystickXmax = OFFSET(0x4a40a8);
+signed char* const IPT_g_cJoystickYmin = OFFSET(0x4a40ac);
 signed char* const IPT_g_cJoystickYmax = OFFSET(0x4a40b0);
 
 float *const IPT_g_FieldPadGlobalVectorX = OFFSET(0x4b9b68);
@@ -27,6 +27,10 @@ float *const IPT_g_FieldPadAnalogForce = OFFSET(0x4b9b78);
 float *const IPT_g_FieldPadTrueAnalogForce = OFFSET(0x4b9b7c);
 float *const IPT_g_FieldPadRotationAngle = OFFSET(0x4b9b80);
 int   *const IPT_g_FieldPadSector = OFFSET(0x4b9b84);
+
+ACP_tdxBool* const IPT_g_bCancelKeyboardInertia = OFFSET(0x4b9b9c);
+float* const IPT_s_xPrevKeyXValue = OFFSET(0x4b9ba0);
+float* const IPT_s_xPrevKeyYValue = OFFSET(0x4b9ba4);
 
 /* Functions */
 void (*IPT_fn_vResetInputEntry)( void ) = OFFSET(0x42E090);

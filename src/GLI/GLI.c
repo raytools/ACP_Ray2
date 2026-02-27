@@ -144,6 +144,7 @@ void (**GLI_DRV_vSendSingleTrianglesToClip_)(
 	GLI_tdstInternalGlobalValuesFor3dEngine *p_stGlobaleMT
 	) = OFFSET(0x504828);
 
+void (**GLI_DRV_vFlipDevice)( void ) = OFFSET(0x504818);
 void (**GLI_DRV_vFlipDeviceWithSyncro_)( void ) = OFFSET(0x504538);
 void (**GLI_DRV_vReadaptDisplay_)( void ) = OFFSET(0x504878);
 BOOL (**GLI_DRV_bEndScene_)( void ) = OFFSET(0x504844);
