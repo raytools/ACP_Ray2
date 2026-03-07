@@ -62,6 +62,7 @@ BOOL (*GAM_fn_bCreateMainWindow)( HANDLE hInstance, int nShowCmd ) = OFFSET(0x40
 BOOL(*GAM_fn_bCreateMainDisplayScreen)(void) = OFFSET(0x402150);
 long (CALLBACK *GAM_fn_WndProc)( HANDLE hWnd, unsigned int uMsg, unsigned int wParam, long lParam ) = OFFSET(0x4022D0);
 
+void (*GAM_fn_vFillDynamicHierarchy)(HIE_tdstSuperObject* _hSOCurrentSector, ACP_tdxBool _bInit) = OFFSET(0x40b620);
 void (*GAM_fn_vUpdateDynamicHierarchy)() = OFFSET(0x40b7b0);
 void (*GAM_fn_vTreatDynamicHierarchy)(HIE_tdstSuperObject* hSuperObj, HIE_tdstSuperObject* hMainChar, MTH3D_tdstVector* p_stMainCharTranslation) = OFFSET(0x40a7c0);
 void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x40aa10);
@@ -70,6 +71,8 @@ void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)() = OFFSET(0x40c2f0);
 
 void (*GAM_fn_vMakeCharacterReact)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x412230);
 void (*GAM_fn_vMakeCharacterThink)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x4120d0);
+
+void (*GAM_fn_vInsertActorInDynamicHierarchy)(HIE_tdstSuperObject* hSuperObj, ACP_tdxBool _bNewInsert) = OFFSET(0x40b4c0);
 
 /****************************************************************************
  * GAM_ObjType.h
