@@ -58,6 +58,8 @@ typedef struct HIE_tdstSuperObject
 
 	void *pBoundingVolume;
 	MTH_tdxReal fTransparenceLevel;
+
+	MTH3D_tdstVector stSemiLookAtVector;
 }
 HIE_tdstSuperObject;
 

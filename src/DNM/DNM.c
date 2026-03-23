@@ -22,3 +22,6 @@ DNM_tdstDynamics* (*MEC_p_stDynamicsBaseMechanics)(
 	MTH_tdxReal						_xDT) = OFFSET(0x431ad0);
 
 MTH_tdxReal (*DNM_fn_xComputeAngleOfPerso)( HIE_tdstSuperObject *pSuperObjPerso ) = OFFSET(0x416370);
+
+void (*DNM_fn_vDynamAlloc)(HIE_tdstEngineObject* p_stObject) = OFFSET(0x412be0);
+void (*DNM_fn_vDynamCopyClone)(HIE_tdstEngineObject* p_stObjectDest, HIE_tdstEngineObject* p_stObjectSrc) = OFFSET(0x412ff0);

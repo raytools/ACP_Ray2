@@ -252,6 +252,10 @@ ACP_FUNC void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject *h
 ACP_FUNC void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)();
 
 ACP_FUNC void (*GAM_fn_vMakeCharacterReact)(HIE_tdstSuperObject *hSuperObj);
+ACP_FUNC void (*GAM_fn_vMakeCharacterMechanicallyReact)(HIE_tdstSuperObject *hSuperObj);
 ACP_FUNC void (*GAM_fn_vMakeCharacterThink)(HIE_tdstSuperObject *hSuperObj);
+
+ACP_FUNC void (*GAM_fn_bDoIntelligencePerso)(HIE_tdstSuperObject *hSuperObj);
+ACP_FUNC void (*GAM_fn_bDoReflexPerso)(HIE_tdstSuperObject *hSuperObj);
 
 ACP_FUNC void (*GAM_fn_vInsertActorInDynamicHierarchy)(HIE_tdstSuperObject *hSuperObj, ACP_tdxBool _bNewInsert);

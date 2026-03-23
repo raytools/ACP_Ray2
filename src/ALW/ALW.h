@@ -43,3 +43,13 @@ ALW_tdstAlways;
  */
 
 ACP_VAR ALW_tdstAlways *const ALW_g_stAlways;
+
+/*
+ * Functions
+ */
+
+ACP_FUNC HIE_tdstSuperObject* (*ALW_fn_p_stAllocateAlways) (long otObjectModelType,
+	HIE_tdstSuperObject *p_stFatherSuperObject,
+	HIE_tdstSuperObject *_hGenerator,
+	unsigned short uwAction,
+	POS_tdstCompletePosition *p_stMatrix);

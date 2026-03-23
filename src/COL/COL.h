@@ -1,5 +1,7 @@
 #pragma once
 #include "COL_Def.h"
+#include "HIE/HIE_Def.h"
+#include "GAM/GAM_Def.h"
 
 #include "MTH.h"
 #include "GMT/GMT.h"
@@ -42,3 +44,10 @@ COL_tdstCollisionCase;
 
 ACP_VAR COL_tdstCollisionCase *const COL_g_stCollisionCase;
 ACP_VAR COL_tdstCollisionCase **const COL_g_stCollisionCaseReal;
+
+/*
+ * Functions
+ */ 
+
+ACP_FUNC ZDX_tdstCollSet *(*COL_fn_vCollSetAlloc) (HIE_tdstEngineObject *engineObject);
+ACP_FUNC ZDX_tdstCollSet *(*COL_fn_vCollSetCopyClone) (HIE_tdstEngineObject *p_stObjectDest, HIE_tdstEngineObject *p_stObjectSrc);

@@ -93,7 +93,15 @@ ACP_FUNC AI_tdstNodeInterpret *(*AI_fn_p_stEvalKeyWord)( HIE_tdstSuperObject *p_
 
 ACP_FUNC void (*AI_fn_vReinitAI)( AI_tdstMind *p_stMind );
 
+ACP_FUNC void* (*AI_fn_p_vTrueAlloc)(unsigned long ulSize);
+ACP_FUNC void (*AI_fn_vTrueFree)(void* ptr);
+
 ACP_FUNC void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject );
+ACP_FUNC void (*AI_fn_vBrainCopyClone)(HIE_tdstEngineObject *p_stObjectDest, HIE_tdstEngineObject *p_stObjectSrc);
+
+ACP_FUNC AI_tdstIntelligence *(*AI_fn_p_stSimulateAllocIntelligence) (char **p_ptr, AI_tdstScriptAI **pp_stScriptAI, unsigned char ucActionTableNbEntry);
+ACP_FUNC AI_tdstDsgMem *(*AI_fn_p_stSimulateAllocDsgMem) (char **p_ptr, AI_tdstDsgVar **pp_stDsgVar, unsigned long ulSize);
+ACP_FUNC char *(*AI_fn_p_cSimulateAllocDsgMemBuffer) (char **p_ptr, unsigned long ulSize);
 
 ACP_FUNC unsigned char (*AI_fn_ucChangeComportIntell)( AI_tdstIntelligence *p_stIntelligence, AI_tdstComport *p_stComport);
 

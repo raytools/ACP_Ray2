@@ -292,3 +292,6 @@ ACP_FUNC DNM_tdstDynamics *(*MEC_p_stDynamicsBaseMechanics)(
 	MTH_tdxReal						_xDT);
 
 ACP_FUNC MTH_tdxReal (*DNM_fn_xComputeAngleOfPerso)( HIE_tdstSuperObject *pSuperObjPerso );
+
+ACP_FUNC void (*DNM_fn_vDynamAlloc)(HIE_tdstEngineObject *p_stObject);
+ACP_FUNC void (*DNM_fn_vDynamCopyClone)(HIE_tdstEngineObject *p_stObjectDest, HIE_tdstEngineObject *p_stObjectSrc);

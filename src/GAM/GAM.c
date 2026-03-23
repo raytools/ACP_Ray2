@@ -70,7 +70,11 @@ void (*GAM_fn_vTreatDynamicHierarchyOfPlatForms)(HIE_tdstSuperObject* hSuperObj)
 void (*GAM_fn_vKillAllAlwaysInNonActiveSectors)() = OFFSET(0x40c2f0);
 
 void (*GAM_fn_vMakeCharacterReact)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x412230);
+void (*GAM_fn_vMakeCharacterMechanicallyReact)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x0412150);
 void (*GAM_fn_vMakeCharacterThink)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x4120d0);
+
+void (*GAM_fn_bDoIntelligencePerso)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x4668f0);
+void (*GAM_fn_bDoReflexPerso)(HIE_tdstSuperObject* hSuperObj) = OFFSET(0x466920);
 
 void (*GAM_fn_vInsertActorInDynamicHierarchy)(HIE_tdstSuperObject* hSuperObj, ACP_tdxBool _bNewInsert) = OFFSET(0x40b4c0);
 
