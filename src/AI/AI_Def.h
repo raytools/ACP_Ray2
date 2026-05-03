@@ -26,5 +26,7 @@ typedef struct WP_tdstGraph WP_tdstGraph;
 typedef struct WP_tdstArc WP_tdstArc;
 typedef struct WP_tdstListOfArc WP_tdstListOfArc;
 
+typedef struct WP_tdstMSWay WP_tdstMSWay;
+
 /* not yet defined */
 typedef enum AI_tdeProcedureId AI_tdeProcedureId;

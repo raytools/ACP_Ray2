@@ -144,7 +144,6 @@ typedef struct GAM_tdstEngineStructure
 }
 GAM_tdstEngineStructure;
 
-
 /*
  * Variables
  */
@@ -190,6 +189,9 @@ ACP_FUNC void (*GAM_fn_vFirstInitEngine)( void );
 ACP_FUNC void (*GAM_fn_vInitGameLoop)( void );
 /** Called on E_EM_ModeEnterLevel, loads the current map. */
 ACP_FUNC void (*GAM_fn_vInitLevelLoop)( void );
+ACP_FUNC void (*GAM_fn_vDesInitLevelLoop)( void );
+ACP_FUNC void (*GAM_fn_vInitDeadLoop)( void );
+ACP_FUNC void (*GAM_fn_vInitAllObjectsWhenMapJustLoaded)( void );
 
 /**
  * Handles all initialization modes.
@@ -220,6 +222,7 @@ ACP_FUNC void (*GAM_fn_vResetEngineFromPaused)( void );
 
 ACP_FUNC void (*GAM_fn_vSaveEngineClock)( void );
 ACP_FUNC void (*GAM_fn_vLoadEngineClock)( void );
+ACP_FUNC void (*GAM_fn_vStopEngineClock)( void );
 ACP_FUNC void (*GAM_fn_vActualizeEngineClock)( void );
 
 ACP_FUNC char * (*GAM_fn_p_szGetLevelName)( void );

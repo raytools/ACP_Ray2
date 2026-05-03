@@ -310,6 +310,7 @@ ACP_FUNC DNM_tdstMecObstacle* (*DNM_p_stObstacleCameraObstacle)(DNM_tdstMecObsta
 	MTH3D_tdstVector *_p_stWantedPosition, MTH3D_tdstVector *_p_stNewPosition, MTH_tdxReal _xDT);
 ACP_FUNC DNM_tdstDynamics *(*DNM_p_stDynamicsCameraParsing) (DNM_tdstDynamics *_p_stDynamics, HIE_tdstSuperObject *_h_SupObj, DNM_tdstParsingDatas *_p_stExternData, void *_h_MecIdCard, MTH_tdxReal _xDT);
 
+ACP_FUNC void (*CAM_fn_vInitCameras)();
 ACP_FUNC void (*CAM_fn_vInitCameraStructure)(HIE_tdstSuperObject *_hSuperObjPerso, CAM_tdstUpdateCamera *_p_stStruct);
 ACP_FUNC void (*MEC_fn_vUpdateSpeed)(HIE_tdstSuperObject *hSupObj);
 ACP_FUNC void (*CAM_fn_vRemindSpeed)(CAM_tdstCineinfo *_hCineinfo, MTH_tdstMove *_p_Speed);

@@ -11,6 +11,7 @@
 #include "AI_DsgVar.h"
 #include "AI_Scr.h"
 #include "AI_Way.h"
+#include "AI_Array.h"
 
 #include "HIE/HIE_Def.h"
 #include "GMT/GMT.h"
@@ -75,12 +76,20 @@ typedef struct AI_tdstExtendDatas4Ray
 } AI_tdstExtendDatas4Ray;
 
 
+typedef struct WP_tdstMSWay
+{
+	WP_tdstGraph *m_hPath;
+	long m_lIndex;
+	char m_bIsCircular;
+} WP_tdstMSWay;
+
 /*
  * Variables
  */
 
 ACP_VAR ACP_tdxBool *const AI_g_bInGameMenu;
 ACP_VAR AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray;
+ACP_VAR char *const AI_gcGlobAleat;
 
 
 /*

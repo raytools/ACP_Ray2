@@ -13,7 +13,7 @@ typedef struct WP_tdstArc {
 LST_M_DynamicListDecl(WP_tdstArc);
 
 typedef struct WP_tdstListOfArc {
-  LST_M_DynamicAnchorTo(WP_tdstArc);
+  LST_M_DynamicAnchorTo(WP_tdstArc) m_hArc;
 } WP_tdstListOfArc;
 
 typedef struct WP_tdstWayPoint {
@@ -34,4 +34,6 @@ LST_M_DynamicListDecl(WP_tdstGraphNode);
 
 typedef struct WP_tdstGraph {
   LST_M_DynamicAnchorTo(WP_tdstGraphNode) m_hListOfNode;
+  char *m_szNameOfGraph;
+  char *m_szReferenceSection;
 } WP_tdstGraph;

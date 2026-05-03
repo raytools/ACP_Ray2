@@ -20,6 +20,7 @@ DNM_tdstMecObstacle* (*DNM_p_stDynamicsCameraUpdate)(DNM_tdstDynamics* _p_stDyna
 
 DNM_tdstDynamics* (*DNM_p_stDynamicsCameraParsing) (DNM_tdstDynamics* _p_stDynamics, HIE_tdstSuperObject* _h_SupObj, DNM_tdstParsingDatas* _p_stExternData, void* _h_MecIdCard, MTH_tdxReal _xDT) = OFFSET(0x433d70);
 
+void (*CAM_fn_vInitCameras)() = OFFSET(0x40b8d0);
 void (*CAM_fn_vInitCameraStructure)(HIE_tdstSuperObject* _hSuperObjPerso, CAM_tdstUpdateCamera* _p_stStruct) = OFFSET(0x474270);
 void (*MEC_fn_vUpdateSpeed)(HIE_tdstSuperObject* hSupObj) = OFFSET(0x433210);
 void (*CAM_fn_vRemindSpeed)(CAM_tdstCineinfo * _hCineinfo, MTH_tdstMove * _p_Speed) = OFFSET(0x414370);
