@@ -120,3 +120,4 @@ ACP_FUNC void (*SCT_fn_vRemoveObjectInSectorList)( HIE_tdstSuperObject *hCharact
 ACP_FUNC long (*SCT_fn_lSendSectorToViewportStatic)(MTH3D_tdstVector *_p_stAbsolutePositionOfCamera, GLD_tdstViewportAttributes *_p_stVpt, HIE_tdstSuperObject *_hSprObjSector, long _lDrawMask);
 ACP_FUNC void (*SCT_fn_vSendSectorWhereIAmToViewportWithMirror) (MTH3D_tdstVector *_p_stAbsolutePositionOfCamera, GLD_tdhDevice _hDevice, GLD_tdhViewport _hViewport,
 	GLD_tdstViewportAttributes *_p_stVpt, HIE_tdstSuperObject *_hSprObjSector, long _lDrawMask);
+ACP_FUNC HIE_tdstSuperObject *(*SCT_fn_hResearchInWhatSectorIAm)(HIE_tdstSuperObject *SECT_hFatherSector, MTH3D_tdstVector *p_stAbsolutePosition);

@@ -91,6 +91,14 @@ ACP_VAR ACP_tdxBool *const AI_g_bInGameMenu;
 ACP_VAR AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray;
 ACP_VAR char *const AI_gcGlobAleat;
 
+// Related to fn_vComputeCollideResult
+ACP_VAR MTH3D_tdstVector *const AI_g_stCollideParameterPoint;
+ACP_VAR MTH3D_tdstVector *const AI_g_stCollideParameterVector;
+ACP_VAR MTH3D_tdstVector *const AI_g_stCollideResultPoint;
+ACP_VAR MTH3D_tdstVector *const AI_g_stCollideResultVector;
+ACP_VAR HIE_tdstSuperObject* *const AI_g_hSuperObjectHit;
+ACP_VAR unsigned long *const AI_g_ulMode;
+
 
 /*
  * Functions
@@ -113,6 +121,8 @@ ACP_FUNC AI_tdstDsgMem *(*AI_fn_p_stSimulateAllocDsgMem) (char **p_ptr, AI_tdstD
 ACP_FUNC char *(*AI_fn_p_cSimulateAllocDsgMemBuffer) (char **p_ptr, unsigned long ulSize);
 
 ACP_FUNC unsigned char (*AI_fn_ucChangeComportIntell)( AI_tdstIntelligence *p_stIntelligence, AI_tdstComport *p_stComport);
+
+ACP_FUNC void (*AI_fn_vComputeCollideResult)(HIE_tdstSuperObject *sender);
 
 /* function tables */
 

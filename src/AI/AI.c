@@ -6,10 +6,25 @@
 
 #include "AI.h"
 
+ /*
+	* Variables
+	*/
 
 ACP_tdxBool *const AI_g_bInGameMenu = OFFSET(0x4B9BC8);
 AI_tdstExtendDatas4Ray *const AI_g_stExtendDatas4Ray = OFFSET(0x4E9300);
 char* const AI_gcGlobAleat = OFFSET(0x4a7070);
+
+// Related to fn_vComputeCollideResult
+MTH3D_tdstVector* const AI_g_stCollideParameterPoint = OFFSET(0x4e93d0);
+MTH3D_tdstVector* const AI_g_stCollideParameterVector = OFFSET(0x4e93b0);
+MTH3D_tdstVector* const AI_g_stCollideResultPoint = OFFSET(0x4e9400);
+MTH3D_tdstVector* const AI_g_stCollideResultVector = OFFSET(0x4e93a0);
+HIE_tdstSuperObject** const AI_g_hSuperObjectHit = OFFSET(0x4e93f8);
+unsigned long* const AI_g_ulMode = OFFSET(0x4a40e4);
+
+/*
+ * Functions
+ */
 
 AI_tdstNodeInterpret *(*AI_fn_p_stEvalTree)(
 	HIE_tdstSuperObject *p_stSpo,
@@ -35,6 +50,7 @@ void (*AI_fn_vTrueFree)(void* ptr) = OFFSET(0x4668b0);
 void (*AI_fn_vBrainAlloc)( HIE_tdstEngineObject *p_stObject ) = OFFSET(0x417E10);
 void (*AI_fn_vBrainCopyClone)(HIE_tdstEngineObject* p_stObjectDest, HIE_tdstEngineObject* p_stObjectSrc) = OFFSET(0x4180d0);
 
+void (*AI_fn_vComputeCollideResult)(HIE_tdstSuperObject* sender) = OFFSET(0x474780);
 
 /* ultra operator */
 
