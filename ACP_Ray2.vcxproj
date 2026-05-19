@@ -256,6 +256,7 @@ cd .</Command>
     <ClInclude Include="src\IPT\IPT_Ext.h" />
     <ClInclude Include="src\LST.h" />
     <ClInclude Include="src\MGT\MGT.h" />
+    <ClInclude Include="src\POS\POS_Def.h" />
     <ClInclude Include="src\PO\PO.h" />
     <ClInclude Include="src\RND\RND.h" />
     <ClInclude Include="src\SCT\SCT.h" />

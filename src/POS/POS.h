@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "POS_Def.h"
 #include "MTH.h"
 #include "apidef.h"
 
