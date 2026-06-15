@@ -39,6 +39,16 @@ typedef struct GAM_tdstFrame3d
 }
 GAM_tdstFrame3d;
 
+typedef struct GAM_tdstAChannel {
+
+	HIE_tdstSuperObject* hSupObject;
+	HIE_tdstSuperObject* hZoomSupObject; // For symmetric channels
+	GAM_tdstAChannel *p_stNextActiveChannel;
+	GAM_tdstAChannel *p_stFatherChannel;
+	ACP_tdxBool bControlledChannel; // If the channel is controlled by AI, don't update with anim player
+	ACP_tdxBool bActiveChannel; // If the AI wants the channel to be ignored
+} GAM_tdstAChannel;
+
 typedef struct GAM_tdstAnim3d
 {
 	unsigned short		uwNumberOfFrames;
@@ -85,9 +95,9 @@ typedef struct GAM_tdst3dData
 	unsigned char ucFlagEndState;
 	unsigned char ucFlagEndOfAnim;
 
-	/* CHN_tdxHandleToChannelArray */ void *hArrayOfChannels;
+	GAM_tdstAChannel *hArrayOfChannels;
 	unsigned long ulNumberOfChannels;
-	/* CHN_tdxHandleToChannel */ void *hFirstActiveChannel;
+	GAM_tdstAChannel *hFirstActiveChannel;
 	GAM_tdstFrame3d stFrame3d;
 
 	/* CHN_tdxHandleToMorphList */ void *hMorphChannelList;
